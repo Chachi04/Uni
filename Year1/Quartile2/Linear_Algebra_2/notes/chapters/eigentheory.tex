@@ -1,0 +1,215 @@
+\section{Eigenvalues and Eigenvectors}
+
+\subsection{Diagonalization of matrices}
+\begin{definition}
+    A square matrix $A$ has \emph{diagonal form} if all elements $a_{ij}$ with $i \neq j$ are zero.
+\end{definition}
+
+\begin{theorem}
+    Let $\mathcal{A}: V \to V$ be a linear map and let $\alpha = \{\vec{a}_1, \dots, \vec{a}_n\}$ be a basis of $V$. 
+    The matrix $A_\alpha$ has a diagonal form 
+    $$A_\alpha = \begin{pmatrix}
+        \lambda_1 & 0 & \dots & 0 \\
+        0 & \lambda_2 & \ddots & \vdots \\
+        \vdots & \ddots & \ddots & 0\\
+    0 & \dots & 0 & \lambda_n\end{pmatrix}$$
+    if and only if $\mathcal{A}\vec{a}_1 = \lambda_i\vec{a}_i$ for all $i \in \{1, \dots, n\}$.
+\end{theorem}
+
+\subsection{Eigenvalues and eigenvectors}
+
+% \begin{definition}[Eigenvalue]
+%     Let $\mathcal{A}: V \to V$ be a linear map. A scalar $\lambda \in \mathbb{K}$ is called an \emph{eigenvalue} of $\mathcal{A}$
+%     if there exists a vector $\vec{v} \in V$ such that $\vec{v} \neq \vec{0}$ and $\mathcal{A}\vec{v} = \lambda\vec{v}$.
+% \end{definition}
+
+\begin{definition}[Eigenvector and eigenvalue]
+    Let $\mathcal{A}: V \to V$ be a linear map from a $\mathbb{K}$-vector space $V$ to itself. A vector $\vec{v} \ne \vec{0} \in V$ is called an \emph{eigenvector} of $\mathcal{A}$
+    with \emph{eigenvalue} $\lambda$ if $\mathcal{A}\vec{v} = \lambda\vec{v}$. We denote the set of all eigenvalues of
+    $\mathcal{A}$ by $\spec{\mathcal{A}}$ and call it the \emph{spectrum} of $\mathcal{A}$.
+\end{definition}
+
+\begin{theorem}
+    Let $\mathcal{A}: V \to V$ be a linear map with representation matrix $A_\alpha$ for a basis $\alpha$. Then $A_\alpha$
+    is in diagonal form if and only if $\alpha$ is a basis of eigenvectors of $\mathcal{A}$. In this case, the diagonal
+    entries of $A_\alpha$ are the eigenvalues of $\mathcal{A}$.
+\end{theorem}
+
+\begin{definition}[Eigenspace]
+    Let $\mathcal{A}: V \to V$ be a linear map. For any scalar $\lambda \in \mathbb{K}$, we denote
+    $$E_\lambda := \mathcal{N}(\mathcal{A} - \lambda\mathcal{I})$$
+    Since \emph{null spaces} are subspaces, $E_\lambda$ is a subspace, called \emph{the eigenspace} of $\mathcal{A}$ for $\lambda$.
+\end{definition}
+
+\begin{remark}
+Eigenspaces \emph{indeed are spaces of eigenvectors for a given eigenvalue}: $E_\lambda$ is the null space of the linear map $\mathcal{A} - \lambda \mathcal{I}$.
+\begin{itemize}
+    \item $\vec{v} \in E_\lambda \iff (\mathcal{A}-\lambda\mathcal{I})\vec{v} = \vec{0}$.
+    \item $\vec{v} \in E_\lambda \iff \mathcal{A}\vec{v} - \lambda\vec{v} = \vec{0}$.
+\end{itemize}
+So any vector $\vec{v}$ lies in $E_\lambda$ if and only if $(\mathcal{A}-\lambda\mathcal{I})\vec{v} = \vec{0}$, which is equivalent to $\mathcal{A}\vec{v} - \lambda\vec{v} = \vec{0}.$
+\end{remark}
+
+\begin{remark}[null space as eigenspace]
+    We can also write the null space of $\mathcal{A}$ as an eigenspace: $E_0$ consists of vectors that are mapped to $0$ times itself, so on $\vec{0}$.
+\end{remark}
+
+\subsection{Computing eigenvalues and eigenspaces}
+
+\begin{theorem}
+    $\lambda$ is an eigenvalue if and only if $det(A - \lambda \Id) = 0$. Let $\alpha = \{\vec{a}_1,\dots, \vec{a}_n\}$ be a basis for $V$, and let
+    $$A = \begin{pmatrix} a_{11} & a_{12} & \dots & a_{1n} \\ a_{21}  & a_{22}  & & \vdots \\ \vdots & & \ddots & \vdots \\ a_{n1} & \dots & \dots & a_{nn} \end{pmatrix}$$
+    be the matrix of $\mathcal{A}$ w.r.t. this basis. Then the eigenvectors for eigenvalue $\lambda$, in $\alpha$-coordinates, are the non-zero solutions of the system
+    $$\begin{pmatrix} a_{11}-\lambda & a_{12} & \dots & a_{1n} \\ a_{21} & a_{22} - \lambda & & \vdots \\ \vdots & & \ddots & \vdots \\ a_{n1} & \dots & \dots & a_{nn} - \lambda \end{pmatrix}
+    \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ \vdots \\ 0 \end{pmatrix} $$
+\end{theorem}
+
+\subsection{Characteristic polynomial}
+\begin{definition}[Characteristic polynomial]
+    Let $\mathcal{A}: V \to V$ be a linear map and let $A_\alpha$ be the matrix of $\mathcal{A}$ w.r.t. a basis $\alpha$. We call the equation $\det(A_\alpha - \lambda \Id) = 0$
+    the \emph{characteristic equation} of $A_\alpha$, and the left-hand side off this equation, $\det(A_\alpha - \lambda \Id)$, the \emph{characteristic polynomial} of $A_\alpha$.
+\end{definition}
+
+We also call them characteristic equation/polynomial of $\mathcal{A}$, and denote the characteristic polynomial by $\chi_\mathcal{A}$.
+
+\begin{theorem}
+    Let $\mathcal{A}: V \to V$ be a linear map, $\alpha$ and $\beta$ be two bases for $V$ and let $A_\alpha/A_\beta$ be the matrix of $\mathcal{A}$ w.r.t. a basis $\alpha/\beta$. 
+    Then $\det(A_\alpha - \lambda \Id) = \det(A_\beta - \lambda \Id)$.
+\end{theorem}
+
+\begin{remark}
+    The characteristic polynomial is independent of the choice of basis.
+\end{remark}
+
+\begin{theorem}
+    Let $\mathcal{A}: V \to V$ be a linear map on a vector space $V$ of dimension $n$, and let
+    $$A = \begin{pmatrix} a_{11} & a_{12} & \dots & a_{1n} \\ 
+                          a_{21} & a_{22} &       & \vdots \\
+                          \vdots &        & \ddots & \vdots \\ a_{n1} & \dots & \dots & a_{nn} \end{pmatrix}$$
+    be the matrix of $\mathcal{A}$ w.r.t. a basis $\alpha$. Then the characteristic polynomial $\chi_\mathcal{A}$ is a polynomial of degree (exactly) $n$, and of the following shape:
+    $$\chi_\mathcal{A}(\lambda) = (-1)^n\lambda^n + (-1)^{n-1}(a_{11}+a_{22}+\dots+a_{nn})\lambda^{n-1} + \dots + c_1\lambda + c_0$$
+    for some coefficients $c_0, c_1, \dots \in \K$.
+\end{theorem}
+
+\begin{definition}[Trace]
+    The sum of the diagonal elements of a square matrix $A$ is called the \emph{trace} of the matrix $A$. We denote it by $\tr(A)$.
+\end{definition}
+
+\begin{theorem}
+    Let $\mathcal{A}: V \to V$ be a linear map with $\dim(V) < \infty$. For every basis $\alpha$, the matrix $A_\alpha$
+    \begin{enumerate}
+        \item has the same trace, which we therefore also call the \emph{trace}  of $\mathcal{A}$, and denote it by $\tr(\mathcal{A})$. 
+        \item has the same determinant, which we therefore also call the \emph{determinant} of $\mathcal{A}$, and denote it by $\det(\mathcal{A})$. We have the identity $\det(\mathcal{A}) = c_0$,
+            where $c_0$ is the constant coefficient of the characteristic equation.
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+    Let $A$ be a square matrix with entries in $\K$, where $\K \in \{\C, \C\}$, with characteristic polynomial $\chi_A(\lambda)$. Then the
+    \begin{itemize}
+        \item trace of the matrix is the sum of the roots of $\chi_A$; and the
+        \item determinant of the matrix is the product of the roots of $\chi_A$.
+    \end{itemize}
+\end{theorem}
+
+\subsection{Linear independence of eigenvectors}
+\begin{theorem}
+    Let $\mathcal{A}: V \to V$ be a linear map and let $\vec{v}_1, \dots, \vec{v}_n$ be eigenvectors of $\mathcal{A}$ for \emph{mutually different} eigenvalues
+    $\lambda_1, \dots, \lambda_n$. Then $\vec{v}_1, \dots, \vec{v}_n$ are linearly independent.
+\end{theorem}
+
+\section{Invariant subspaces}
+\begin{definition}[Invariant subspace]
+    Let $W$ be a subspace of $V$. $W$ is called \emph{invariant under linear map $\mathcal{A}: V \to V$} if $\mathcal{A}\vec{w} \in W$ for all $\vec{w} \in W$.
+\end{definition}
+
+\begin{example}[Null space and range]
+    \begin{itemize}
+        \item The null space $\ns$ pf a linear map $\mathcal{A}$ is always invariant: if $\vec{x} \in \ns$, then $\mathcal{A}\vec{x} = \vec{0}$,
+            and $\vec{0} \in \ns$.
+        \item The range $\range$ of a linear map $\mathcal{A}$ is invariant if and only if $\mathcal{A}$ is surjective: if $\vec{y} \in \range$,
+            then $\vec{y} = \mathcal{A}\vec{x}$ for some $\vec{x} \in V$, and $\mathcal{A}\vec{x} \in \range$.
+    \end{itemize}
+\end{example}
+
+\begin{example}[Counterexample, rotation in two-dimension space]
+    Let $\mathcal{A}$ be a $90^\circ$ rotation map. Then let $W = <e_1>$. $W$ is not invariant
+\end{example}
+
+\begin{theorem}
+    Let $\mathcal{A}: V \to V$ be linear and let $W = <\vec{a}_1, \dots, \vec{a}_n>$. W is invariant under $\mathcal{A}$ if
+    and only if $\mathcal{A}\vec{a}_i \in W$ for $i = 1,\dots,n$.
+\end{theorem}
+
+\begin{definition}[Restriction unto an invariant subspace]
+    If $W$ is invariant under $\mathcal{A}$, then all image vectors $\mathcal{A}\vec{w}$ with $\vec{w} \in W$ are again in $W$.
+    So if we restrict $\mathcal{A}$ to $W$, we obtain a well-defined linear map $W \to W$, the \emph{restriction of the map} $\mathcal{A}$
+    unto $W$, which we denote by $\mathcal{A}|_W$.
+\end{definition}
+
+\emph{Invariant spaces give us a simpler matrix shape}, because the matrix contains a block of the restriction:
+
+\begin{theorem}
+    Suppose $\alpha = \{\vec{a}_1, \dots, \vec{a}_2\}$ is a basis for $V$ such that $W = <\vec{a}_1, \dots, \vec{a}_m>$ is invariant under $\A$. Then the matrix $A_\alpha$ has the following form:
+    $$\begin{pmatrix} & & & * & \dots & * \\
+            & M_1 & &  \vdots & & \vdots \\
+        0 & \dots & 0 & \vdots & & \vdots \\
+          & \vdots\vdots & & \vdots & & \vdots \\
+    0 & \dots & 0 & * & \dots & * \end{pmatrix},$$
+    The $m \times m$-matrix $M_1$ is the matrix of the restriction $\A_{|W}: W \to W$ w.r.t. the basis $\{\vec{a}_1, \dots, \vec{a}_m\}$.
+\end{theorem}
+
+\begin{example}[Proving invariance and analysing a map without even knowing its full map description]
+    Consider in $\R^4$ the (independent) vectors
+    $$\vec{a}=(1,-1,1,-1) \text{ and } \vec{b}=(1,1,1,1).$$
+    Say we have a linear map $\A: \R^4 \to \R^4$ of which we only know that
+    $$\A\vec{a} = (4,-6,4,-6) \text{ and } \A\vec{b} = (4,6,4,6).$$
+    Even without knowing the full description of $\A$, we will now show that $W = <\vec{a},\vec{b}>$ is 
+    invariant and determine a matrix of the restriction unto $W$ - $\A_{|W}:W \to W$.
+
+    To show the invariance of $<\vec{a}, \vec{b}>$, we must verify that $\A\vec{a}$ and $\A\vec{b}$ are linear combinations of $\vec{a}$ and $\vec{b}$.
+    We do this by simultaneously solving the systems of equations with columns $\vec{a}, \vec{b}, \A\vec{a}$ and $\A\vec{b}$:
+    $$\left(\begin{array}{cc|cc}
+        1 & 1 & 4 & 4 \\
+        -1 & 1 & -6 & -6 \\
+        1 & 1 & 4 & 4 \\
+        -1 & 1 & -6 & -6 \\
+    \end{array}\right)$$
+
+    After row reduction and deleting zero rows, the system reduces to
+    $$\left( \begin{array}{cc|cc}
+        1 & 0 & 5 & -1 \\
+    0 & 1 & -1 & 5\end{array} \right),$$
+    which tells us that $\A\vec{a} = 5\vec{a} - \vec{b}$ and $\A\vec{b} = -\vec{a} + 5\vec{b}$, so $W$ is invariant under $\A$.
+    This also tells us how the matrix of the restriction $A_{|W}W \to W$ w.r.t. the basis $\{\vec{a}, \vec{b}\}$ looks like:
+    $$\begin{pmatrix} 5 & -1 \\ -1 & 5 \end{pmatrix}.$$
+
+    Using the restriction matrix, we can now even \emph{determine some eigenvectors without knowing the full map}.
+    The characteristic polynomial of the restriction is $\chi_{A_{|W}}(\lambda) = (5-\lambda)^2 - 1 = 25-10\lambda+\lambda^2-1 = (\lambda-4)(\lambda-6)$.
+    We find that the matrix has eigenvalues $4$ and $6$. In coordinates, we compute the respective $E_4 = <(1,1)>$ and $E_6 = <(1,-1>$.
+    In this basis, the restriction map is simply the diagonal map with the eigenvalues on the diagonal:
+    $$\begin{pmatrix} 4 & 0 \\ 0 & 6 \end{pmatrix}.$$
+
+    We transform the coordinate vectors back into elements of $\R^4:$ $\vec{a} + \vec{b} = (2,0,2,0)$ and $\vec{a} - \vec{b} = (0,2,0,2)$.
+    So the eigenvector basis of $W$ is $\{(2,0,2,0), (0,2,0,2)\}$.
+
+    \emph{We now can simplify the representation of the full map:} if we pick any basis $\alpha$ of $\R^4$ such that the first two basis vectors
+    are the eigenvectors $(2,0,2,0)$ and $(0,2,0,2)$, then the full matrix has the shape
+    $$A_\alpha = \begin{pmatrix} 
+                                                      & * & \dots & * \\
+         \begin{pmatrix} 4 & 0 \\ 0 & 6\end{pmatrix}  & \vdots & & \vdots \\
+        0  \dots  0 & \vdots & & \vdots \\
+           \vdots\vdots & \vdots & & \vdots \\
+        0  \dots  0 & * & \dots & * \\
+    \end{pmatrix}$$
+\end{example}
+
+\begin{remark}
+    The characteristic polynomial of a restriction always divides the characteristic polynomial of the larger map.
+\end{remark}
+
+\begin{theorem}
+    If $W$ is an invariant subspace for the linear map $\A V \to V$, then $\chi_{A_{|W}}$, the characteristic polynomial of $\A$'s restriction unto
+    $W$, $\A_{|W}: W \to W$, is a factor of $\chi_\A$, the characteristic polynomial of the map $\A: V \to V$.
+\end{theorem}
+

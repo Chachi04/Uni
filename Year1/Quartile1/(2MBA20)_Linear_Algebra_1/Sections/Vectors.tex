@@ -1,0 +1,99 @@
+\section{Vectors in two and three dimensions}
+
+\subsection{Vectors}
+
+\begin{definition}[Linear combination]
+    Let $\underbar{v}_1$, $\underbar{v}_2$, $\dots$, $\underbar{v}_n$
+    be n vectors and $\lambda_1, \lambda_2, \dots, \lambda_n$ be
+    scalars. A vector of the form
+    $$ \lambda_1\underbar{v}_1 + \lambda_2\underbar{v}_2 + \dots \lambda_n\underbar{v}_n $$
+    is called \emph{linear combination} of the vectors $\underbar{v}_1,\underbar{v}_2,\dots,\underbar{v}_n$.
+
+\end{definition}
+
+\subsection{Vector descriptions of lines and planes}
+
+\subsubsection{Lines}
+$$ \textit{l}: \underbar{x} = \underbar{v} + \lambda \underbar{u} $$
+where $\underbar{v}$ lands on the line and is called the \emph{position vector},
+and $\underbar{u}$ is vector that is in the "direction" of the line, called the
+direction vector.
+
+\subsubsection{Plane}
+$$ V: \underbar{x} = \underbar{u} + \lambda\underbar{v} + \mu\underbar{w} $$
+where $\underbar{u}$ is a vector that lands on the plane, and $\underbar{v}$
+and $\underbar{w}$ are two linearly independant vectors in the plane.
+
+\subsection{Bases, coordinates, and equations}
+
+\subsubsection{Basis a coordinates}
+\begin{itemize}
+    \item The plane \newline
+    The set of two vectors $ \underbar{e}_1, \underbar{e}_2 $ that are not a multiple of each other (linearly independant) is called a basis.\par
+    Every vector $ \underbar{v} $ can be expressed as a linear combination of the vectors $ \underbar{e}_1 $ and $ \underbar{e}_2 $.
+    $$ \underbar{v} = v_1\underbar{e}_1 + v_2\underbar{e}_2 $$
+    A basis where the two vectors are with length 1 and perpendicular is called an \emph{orthonormal basis}.
+    \item 3-dimensional space \newline
+    In space we choose three vectors $ \underbar{e}_1, \underbar{e}_2, \underbar{e}_3 $ that are not coplanar. Then any vector $ \underbar{v} $ can be written as a linear combination of these three vectors:
+    $$ \underbar{v} = v_1\underbar{e}_1 + v_2\underbar{e}_2 + v_3\underbar{e}_3 $$
+
+\end{itemize}
+
+\subsubsection{The vector spaces $\mathbb{R}^2$ and $\mathbb{R}^3$}
+
+\subsubsection{Describing lines in the plane with coordinates}
+$$ \ell : \binom{x_1}{x_2} = \binom{a_1}{a_2} + \lambda \binom{v_1}{v_2} $$
+
+\subsubsection{Describing lines in space with coordinates}
+$$ \ell : \begin{pmatrix}
+    x_1 \\ x_2 \\ x_3
+\end{pmatrix} = \begin{pmatrix}
+    a_1 \\ a_2 \\ a_3
+\end{pmatrix} + \lambda \begin{pmatrix}
+    v_1 \\ v_2 \\ v_3
+\end{pmatrix}$$
+
+\subsubsection{Describing planes in space with coordinates}
+\begin{itemize}
+    \item Parametric descriptions in 'row notation'
+    $$ V : (x_1,x_2,x_3) = (a_1,a_2,a_3) + \mu(u_1,u_2,u_3) + \lambda(v_1,v_2,v_3) $$
+
+    \item Parametric descriptions in 'column notation'
+    $$
+    V : \begin{pmatrix}
+        x_1 \\ x_2 \\ x_3
+    \end{pmatrix} = \begin{pmatrix}
+        a_1 \\ a_2 \\ a_3
+    \end{pmatrix} + \lambda \begin{pmatrix}
+        u_1 \\ u_2 \\ u_3
+    \end{pmatrix} + \mu \begin{pmatrix}
+        v_1 \\ v_2 \\ v_3
+    \end{pmatrix}
+    $$
+
+    \item Each coordinate separately
+    \begin{align*}
+        x_1 &= a_1 + \lambda u_1 + \mu v_1 \\
+        x_2 &= a_2 + \lambda u_2 + \mu v_2 \\
+        x_3 &= a_3 + \lambda u_3 + \mu v_3 \\
+    \end{align*}
+\end{itemize}
+
+\subsection{Distances, Angles and the Inner Product}
+
+\begin{definition}[]
+    $$\lVert\underbar{x}\rVert \text{ (length of vector $\underbar{x}$)}$$
+    $$ \lVert\underbar{x} - \underbar{y} \rVert \text{ (distance between $\underbar{x},\underbar{y}$) } $$
+    \begin{nb}
+        If $ \underbar{a} $ and $ \underbar{b} $ are perpendicular, then
+        $$ \lVert\underbar{a} - \underbar{b} \rVert = \len{a}^2 + \len{b}^2 $$
+        $$ \len{\vec{a} + \vec{b}} = \len{\vec{a}}^2 + \len{\vec{b}}^2 $$
+    \end{nb}
+\end{definition}
+
+\begin{definition}[(Inner product)]
+    The inner product of two vectors $ \vec{a} = (a_1,a_2) $ and $ \vec{b} = (b_1,b_2) $
+    (or $ \vec{a} = (a_1,a_2,a_3) $ and $ \vec{b} = (b_1,b_2,b_3) $ in space) is defined as:
+    $$ a_1b_1 + a_2b_2 \text{ (or in space $a_1b_1+a_2b_2+a_3b_3$).}$$
+    It is denoted by $ (\vec{a}, \vec{b}) $.
+\end{definition}

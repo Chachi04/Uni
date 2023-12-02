@@ -1,0 +1,266 @@
+\section{Modular Arithmetic}
+
+\subsection{Arthimetic modulo n}
+\begin{definition}
+    Let $n$ be an integer. On the set $ \mathbb{Z} $ of integers we define
+    the relation \emph{congruence modulo n} as follows: $a$ and $b$ are
+    \emph{congruent modulo n} if and only if $ n \mid a - b $.
+
+    We write $ a \equiv b \pmod{n} $ to denote that $a$ and $b$ are congruent
+    modulo $n$.
+\end{definition}
+
+\begin{example}
+    If $a =342, b=241$, and $n=17$, then $a$ is not congruent to $b$ modulo $n$.
+\end{example}
+
+\begin{proposition}
+    Let $n$ be an integer. The relation congruence modulo $n$ is an equivalence
+    relation.
+
+    For nonzero $n$, there are exactly $n$ distinct equivalence classes
+
+    The set of equivalence classes of $ \mathbb{Z} $ modulo $n$ is denoted
+    by $ \mathbb{Z}/n\mathbb{Z} $.
+\end{proposition}
+
+\begin{example}
+    The relation modulo 2 partitions the integers into two clases, the even
+    numbers and the odd numbers.
+\end{example}
+
+\begin{theorem}[Addition and Multiplication]
+    On $ \modset{n} $ we define two so-called binary operations, an
+    \emph{addition} and a \emph{multiplication}, by:
+    \begin{itemize}
+        \item Addition: $ x \pmod{n} + y \pmod{n} = x + y \pmod{n} $
+        \item Multiplication: $ x \pmod{n} \cdot y \pmod{n} = x \cdot y \pmod{n} $
+    \end{itemize}
+
+    Both operations are well defined.
+\end{theorem}
+
+\begin{proposition}[Propoerties of Modular Arithmetic]
+    Let $n$ be an integer bnigger than 1. For all integers $a,b,c$ we have
+    the following equalities.
+    \begin{itemize}
+        \item Commutativity of addition:
+        $$ a + b = b + a \pmod{n} $$
+        \item Commutativity of multiplication:
+        $$ a \cdot b = b \cdot a \pmod{n} $$
+        \item Associativity of additiono:
+        $$ (a + b) + c = a + (b + c) \pmod{n} $$
+        \item Associativity of multiplication:
+        $$ (a \cdot b) \cdot c = a \cdot (b \cdot c) \pmod{n} $$
+        \item Distributivity of multiplication over addition:
+        $$ a \cdot (b + c) = a \cdot b + a \cdot c \pmod{n} $$
+    \end{itemize}
+\end{proposition}
+
+\subsection{Invertible elements and zero divisors}
+\begin{definition}
+    An element $ a \in \modset{n} $ is called \emph{invertible} if there is
+    an element $b$, called \emph{inverse} of $a$, such that $ a \cdot b = 1 $.
+
+    Of $a$ is invertible, its inverse will be denoted by $ a\inv $.
+
+    The set of all invertible elements in $\modset{n}$ will be denoted by
+    $ \modset{n}^\times $. This set is also called the \emph{multiplicative
+    group} of $ \modset{n} $.
+\end{definition}
+
+\begin{proposition}[Uniqueness of the Inverse]
+    Let $ n > 1 $. If an element $a \in \modset{n}$ is invertible, then its
+    inverse is unique.
+\end{proposition}
+
+In $ \mathbb{Z} $ division is not always possible. Some nonzero elemetns do
+have an inverse, others don't. The following theorem tells us precisely
+which elements of $ \modset{n} $ have an inverse.
+
+\begin{theorem}[Characterization of Modular Invertibility]
+    Let $ n>1 $ and $ a \in \mathbb{Z} $
+    \begin{enumerate}[label=(\alph*)]
+        \item The class $a \pmod{n}$ in $ \mathbb{Z}/n\mathbb{Z} $ has a multiplicative inverse if and only if $ \gcd(a,n) = 1 $
+        \item If $a$ and $n$ are relatively prime, then the inverse of $ a \pmod{n} $ is the class $ \egcd(a,n)_2 \pmod{n} $
+        \item In $ \mathbb{Z}/n\mathbb{Z} $, every class distinct from 0 has an inverse if and only if $n$ is prime.
+    \end{enumerate}
+\end{theorem}
+
+\begin{example}
+    The invertible elements in $ \modset{2^n} $ are the classes $ x \pmod{2^n} $
+    for which $x$ is an ood integer.
+\end{example}
+
+An arithmetical system such as $ \modset{n} $ with $p$ prime, in which every
+element not equal to 0 has a multiplicative inverse, is called a \emph{field},
+just like $ \mathbb{Q}, \mathbb{R}, \mathbb{C} $.
+
+Besides invertible elements in $ \modset{n} $, which can be viewed as divisors
+of 1, one can also consider the divisors of 0.
+
+\begin{definition}[Zero Divisor]
+    An element $ a \in \modset{n} $ not equal to 0 is called a \emph{zero
+    divisor} if there is a nonzero element $b$ such that $a \cdot b = 0$.
+\end{definition}
+
+The following theorem shows which elements of $ \modset{n} $ are zero divisors.
+They turn out to be those nonzero elements that are not invertible.
+
+\begin{theorem}[Zero Divisor Characterization]
+    Let $ n>1 $ and $ n \in \mathbb{Z} $
+    \begin{enumerate}
+        \item The class $ a \pmod{n} $ in $ \mathbb{Z}/n\mathbb{Z} $ is a zero divisor if and only if $ \gcd(a,n) > 1 $ and $ a \pmod{n} $ is nonzero.
+        \item The residue ring $ \mathbb{Z}/n\mathbb{Z} $ has no zero divisors if and only if $n$ is prime.
+    \end{enumerate}
+\end{theorem}
+
+Let $n$ be an integer. Inside $ \modset{n} $, we can distinguish the set of
+invertible elements and the set of zero divisors. The set of invertible
+elements is closed under multiplication, the set of zero divisors together
+with 0 is even closed under multiplication by arbitrary elements.
+
+\begin{lemma}
+    Let $n$ be an integer with $n > 1$.
+    \begin{enumerate}
+        \item If $a$ and $b$ are elements in $\modset{n}^\times$, then their
+        product $a \cdot b$ is invertible and therefore also in
+        $ \modset{n}^\times $. The inverse of $a\cdot b$ is given by
+        $ b\inv\cdot a\inv$.
+        \item If $a$ is a zero divisor in $ \modset{n} $ and $b$ is an item
+        arbitrary element, then $a \cdot b$ is either 0 or a zero divisor.
+    \end{enumerate}
+\end{lemma}
+
+\subsection{Linear congruence}
+
+\begin{algorithm}[Linear Congruence]
+    % \KwIn{integers}
+    % \KwOut{the set }
+    % \begin{itemize}
+    %     \item Input:
+    %     \item Output:
+    % \end{itemize}
+\end{algorithm}
+
+\begin{remark}
+    There are exactly $ \gcd(a,n) $ distict solutions.
+\end{remark}
+
+\begin{example}
+In order to find all solutions to the congruence $ 24x \equiv 12 \pmod{15} $
+we first compute the $ \gcd(24,15) $.Using the Extended Euclidean Algorithm
+we find
+$$ \gcd(24,15) = 3 = 2 \cdot 24 - 3 \cdot 15 $$
+
+Now 3 divide 12, so the solution set is
+$$ \{2 \cdot 12 + k \cdot 15 \mid k \in \mathbb{Z}\} $$
+\end{example}
+
+Instead of using the algorithm, we can also use the expression of the gcd as
+a linear combination of 24 and 15 to argue what the solution is. To this end,
+multiply both sides of the equality $ 3 = 2 \cdot 24 - 3 \cdot 15 $ by 4. This
+gives $ 12 = 8 \cdot 24 - 12 \cdot 15 $.
+
+So, a solution of the confgurence is $ x = 8 \pmod{15} $.
+
+We extend the study of a single congruence to a method for solvin special
+systems of congruences.
+
+\begin{theorem}[Chinese Remainder Theorem]
+    Suppose that $ n_1,\dots,n_k $ are pairwise coprime integers. Then for
+    all integers $ a_1,\dots,a_k $ the system of linear congruences
+    $$ x \equiv a_1 \pmod{n_i} $$
+    with $ i \in  \{1,\dots,k\} $ has solution.
+
+    Indeed, the integer
+    $$ x = \sum_{i=1}^{k}a_i \cdot y_i \cdot \frac{n}{n_i} $$
+    where
+    $$ n = \prod_{i=1}^kn_i $$
+    and for each $i$ we have
+    $$ y_i = \egcd\left(\frac{n}{n_i},n_i\right)_3 $$
+    satisfies all congruences.
+
+    Any two solutions to the system of congruences are congruent modulo the
+    product $ \displaystyle\prod_{i=1}^{k}n_i $.
+\end{theorem}
+
+
+\subsection{The theorems of Fermat and Euler}
+Let $p$ be a prime. Consider $ \modset{p} $, the set of equivalence classes
+of $ \mathbb{Z} $ modulo $p$. In $ \modset{p} $ we can add, subtract, multiply
+and divide by elemnts which are not 0. Moreover, it contains no zero divisors.
+
+\begin{theorem}[Fermat's Little Theorem]
+    Let $p$ be a prime. For every integer $a$ we have
+    $$ a^p \equiv a \pmod{p} $$
+    In particular, if $a$ is not in $ 0 \pmod{p} $ then
+    $$ a^{p-1} \equiv 1 \pmod{p} $$
+\end{theorem}
+
+\begin{example}
+    The integer $ 1234^1234 - 2 $ is divisible by 7.
+
+    Indeed, if we compute modulo 7, then we find that $ 1234 \equiv 2 \pmod{7} $.
+    Moreover, by Fermat's Little Theorem we have $ 2^6 \equiv 1 \pmod{7} $, so
+    $$ 1324^1234 = 2^1234 = 2^{6 \cdot 205 + 4} = 2^4 = 2 \pmod{7} $$
+\end{example}
+
+Fermat's Little Theorem states that the multiplicative group
+$ \modset{p}^\times $, where $p$ is a prime, contains precisely $p-1$
+elements. For arbitrary positive $n$, the number of elements in the multiplicative
+group $ \modset{n}^\times $ is given by the so-called \emph{Euler totient function}.
+
+\begin{definition}[Euler totient function]
+    The Euler totient function $ \Phi: \mathbb{N} \to \mathbb{N} $ is defined
+    by $$ \Phi(n) = \left\vert\modset{n}^\times\right\vert $$
+    for all $ n \in \mathbb{N} $ with $ n > 1 $, and by $ \Phi(1) = 1 $.
+\end{definition}
+
+\begin{theorem}[Euler Totient]
+    The Euler totient function satisfies the following properties.
+    \begin{enumerate}
+        \item Suppose that $n$ and $m$ are positive integers. If $ \gcd(n,m) = 1 $,
+        then $$ \Phi(n \cdot m) = \Phi(n) \cdot \Phi(m) $$
+
+        \item If $p$ is a prime and $n$ is a positive integer, then
+        $$ \Phi(p^n) = p^n - p^n-1 $$
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Euler's Theorem]
+    Suppose $n$ is an integer with $n \ge 2$. Let $a$ be an element of
+    $ \modset{n}^\times $. Then $$ a^{\Phi(n)} = 1 $$
+\end{theorem}
+
+Let $n$ be an integer. The \emph{order} of an element $a$ in $\modset{n}^\times$
+is the smallest positive integer $m$ such that $a^m = 1$. By Euler's Theorem
+the order of $a$ exists and is at most $ \Phi(n) $. More precise statements
+on the order of elements in $ \modset{n}^\times $ can be found in the
+following result.
+
+\begin{theorem}[Orders]
+    Let $n$ be an integer greater than 1.
+    \begin{enumerate}
+        \item If $a \in \modset{n}$ satisfies $a^m=1$ for some positive integer
+        $m$, then $a$ is invertible and its order divides $m$.
+
+        \item For all elements $a \in \modset{n}^\times$ the order of $a$ is
+        a divisor of $ \Phi(n) $
+
+        \item If $ \modset{n} $ contains an element $a$ of order $n-1$, then
+        $n$ is prime.
+    \end{enumerate}
+\end{theorem}
+
+\begin{definition}
+    An element $a$ from $ \modset{p} $ is called a \emph{primitive element}
+    of $ \modset{p} $ if every element of $ \modset{p}^\times $ is a power
+    of $a$.
+\end{definition}
+
+\begin{theorem}
+    For each prime $p$ there exists a primitive element in $ \modset{p} $.
+\end{theorem}
+
+\subsection{The RSA cryptosystem}

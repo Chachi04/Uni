@@ -1,0 +1,282 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define Article %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{empheq}
+\usepackage{mdframed}
+\usepackage{booktabs}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{psfrag}
+\usepackage{pgfplots}
+\usepackage{bm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Other Settings
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\e}{\epsilon}
+\newcommand{\de}{\delta}
+
+\newcommand{\limn}{\lim_{n\to\infty}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Page Setting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\geometry{a4paper}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define some useful colors %%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{ocre}{RGB}{243,102,25}
+\definecolor{mygray}{RGB}{243,243,244}
+\definecolor{deepGreen}{RGB}{26,111,0}
+\definecolor{shallowGreen}{RGB}{235,255,255}
+\definecolor{deepBlue}{RGB}{61,124,222}
+\definecolor{shallowBlue}{RGB}{235,249,255}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define an orangebox command %%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\orangebox[1]{\fcolorbox{ocre}{mygray}{\hspace{1em}#1\hspace{1em}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% English Environments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{mytheoremstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\newtheoremstyle{myproblemstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowGreen,linecolor=deepGreen,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{theorem}{Theorem}[section]
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowBlue,linecolor=deepBlue,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{definition}{Definition}[section]
+\theoremstyle{myproblemstyle}
+\newmdtheoremenv[linecolor=black,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{problem}{Problem}[section]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Plotting Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepgfplotslibrary{colorbrewer}
+\pgfplotsset{width=8cm,compat=1.9}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Homework: Week 2}
+\author{Jiaqi Wang}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+    \maketitle
+
+    \section{Exercise 6.8.1}
+    \begin{problem}
+        Let $a: \N \to \R$ be a sequence. Then $a: \N \to \R$ is bounded if and only if it is both bounded above and bounded below. Prove it.
+    \end{problem}
+    \begin{proof}
+        We prove both directions of the if and only if statement.
+        $a: \N \to \R$ is bounded if and only if it is both bounded above and bounded below.
+        
+        1. We prove the forward direction. \\
+        Suppose $a: \N \to \R$ is bounded. \\
+        Then 
+        \begin{center}
+            \parbox{\linewidth}{
+                \leftskip=0.4\linewidth
+                there exists $M_0 > 0$, \\
+                \hspace*{1em} for all $n \in \N$, \\
+                \hspace*{2em} $|a_n| \leq M_0$.
+            }
+        \end{center}
+        Obtain such $M_0$. \\ 
+        It holds that
+        \begin{center}
+            \parbox{\linewidth}{
+                \leftskip=0.4\linewidth
+                for all $n \in \N$, \\
+                \hspace*{1em} $-M_0 \leq a_n \leq M_0$.
+            }
+        \end{center}
+        Choose $m = -M_0$, then $m \in \R$. \\
+        It holds that
+        \begin{center}
+            \parbox{\linewidth}{
+                \leftskip=0.4\linewidth
+                for all $n \in \N$, \\
+                \hspace*{1em} $m \leq a_n$.
+            }
+        \end{center}
+        We conclude that $a:\N \to \R$ is bounded from below.
+
+        Choose $M = M_0$, then $M \in \R$. \\
+        It holds that
+        \begin{center}
+            \parbox{\linewidth}{
+                \leftskip=0.4\linewidth
+                for all $n \in \N$, \\
+                \hspace*{1em} $a_n \leq M$.
+            }
+        \end{center}
+        We conclude that $a:\N \to \R$ is bounded from above.
+
+        2. Now we prove the reverse direction. \\
+        Assume $a:\N \to \R$ is bounded from above and bounded from below. \\
+        By definition of bounded from above, we have
+        \begin{center}
+            \parbox{\linewidth}{
+                \leftskip=0.4\linewidth
+                there exists $M_1 \in \R$, \\
+                \hspace*{1em} for all $n \in \N$, \\
+                \hspace*{2em} $a_n \leq M_1$.
+            }
+        \end{center}
+
+        By definition of bounded from below, we have
+        \begin{center}
+            \parbox{\linewidth}{
+                \leftskip=0.4\linewidth
+                there exists $M_2 \in \R$, \\
+                \hspace*{1em} for all $n \in \N$, \\
+                \hspace*{2em} $M_2 \leq a_n$.
+            }
+        \end{center}
+
+        We need to show that
+        \begin{center}
+            \parbox{\linewidth}{
+                \leftskip=0.4\linewidth
+                there exists $M_0 > 0$, \\
+                \hspace*{1em} for all $n \in \N$, \\
+                \hspace*{2em} $|a_n| \leq M_0$.
+            }
+        \end{center}
+
+        Choose $M_0 = \max\{|M_1|, |M_2|\}$, then $M_0 \in \R$. \\
+        It holds that
+        \begin{center}
+            \parbox{\linewidth}{
+                \leftskip=0.4\linewidth
+                for all $n \in \N$, \\
+                \hspace*{1em} $-M_0 \leq a_n$ and $a_n \leq M_0$.
+            }
+        \end{center}
+        Then it holds that $|a_n| \leq M_0$.\\
+        We conclude that $a: \N \to \R$ is bounded.
+
+        Since both directions hold, we conclude that $a: \N \to \R$ is bounded if and only if it is both bounded above and bounded below.
+    \end{proof}
+
+    \section{Exercise 6.8.2}
+    \begin{problem}
+        Let $a: \N \to \R$ and $b: \N \to (0,\infty)$ be real-valued sequences. Prove that
+        $$\lim_{n\to\infty}a_n = \infty \iff \lim_{n\to\infty}(-a_n) = -\infty$$
+    \end{problem}
+    \begin{proof}
+        We show both directions of the if and only if statement.
+        $$\lim_{n\to\infty}a_n = \infty \iff \lim_{n\to\infty}(-a_n) = -\infty$$
+
+        1. First we prove the forward direction. \\
+        Suppose $\lim_{n\to\infty}a_n = \infty$. \\
+        Then
+        \begin{center}
+            \parbox{\linewidth}{
+                \leftskip=0.4\linewidth
+                for all $M \in \R$, \\
+                \hspace*{1em} there exists $N_0 \in \N$, \\
+                \hspace*{2em} for all $n \geq N_0$, \\
+                \hspace*{3em} $a_n > M$.
+            }
+        \end{center}
+        We need to show that
+        \begin{center}
+            \parbox{\linewidth}{
+                \leftskip=0.4\linewidth
+                for all $M \in \R$, \\
+                \hspace*{1em} there exists $N \in \N$, \\
+                \hspace*{2em} for all $n \geq N$, \\
+                \hspace*{3em} $-a_n \leq M$.
+            }
+        \end{center}
+        Take $M \in \R$
+        Choose $N = N_0$, then $N \in \N$. \\
+        It holds that
+        \begin{center}
+            \parbox{\linewidth}{
+                \leftskip=0.4\linewidth
+                for all $n \geq N$, \\
+                \hspace*{1em} $a_n > M$.
+            }
+        \end{center}
+    \end{proof}
+
+    \section{Exercise 6.8.3}
+    \begin{problem}
+        Let $a: \N \to \R$ and $b: \N \to (0,\infty)$ be real-valued sequences. Prove that
+        $$\lim_{n\to\infty}b_n = \infty \iff \lim_{n\to\infty}\frac{1}{b_n} = 0$$
+    \end{problem}
+    \begin{proof}
+    \end{proof}
+
+    \section{Exercise 6.8.5}
+    \begin{problem}
+        Define the sequence $x: \N \to \R$ recursively by 
+        $$x_{n+1} := \frac{2+x_n^2}{2x_n}$$
+        for $n \in \N$ while $x_0 = 2$. Prove that the sequence $x: \N \to \R$ converges and determine its limit.
+    \end{problem}
+    \begin{proof}
+    \end{proof}
+
+    \section{Exercise 6.8.6}
+    \begin{problem}
+        Determine whether the following sequences converge, diverge to $+\infty$, diverge to $-\infty$, or diverge in a different way.
+        In case the sequence converges, determine the limit.
+        \begin{itemize}
+            \item $a_n := \frac{1}{n^3} - 3$
+            \item $b_n := \frac{5n^5 + 2n^2}{3n^5+7n^3+4}$
+            \item $c_n := n - \sqrt{n}$
+            \item $d_n := \frac{2^n}{n^100}$
+            \item $e_n := \sqrt{n^2+n}-n$
+            \item $f_n := \sqrt[n]{3n^2}$
+            \item $g_n := \frac{2^n + 5n^200}{3^n+n^10}$
+            \item $h_n := (-1)^n3^n$
+            \item $i_n := \sqrt[n]{5^n + n^2}$
+        \end{itemize}
+    \end{problem}
+    \begin{proof}
+        By limit laws and standard limits, we have
+        \begin{align*}
+            \limn a_n &= \limn\left(\frac{1}{n^3} - 3\right) \\
+                      &= \limn\frac{1}{n^3} - \limn 3 \\
+                      &= \left(\limn\frac{1}{n}\right)^3 - 3 \\
+                      &= 0^3 - 3 \\
+                      &= -3 \\
+        \end{align*}
+        \begin{align*}
+            \limn b_n &= \limn\left(\frac{5n^5 + 2n^2}{3n^5+7n^3+4}\right) \\
+                      &= \limn\frac{5 + \frac{2}{n^3}}{3+\frac{7}{n^2}+\frac{4}{n^5}} \\
+                      &= \frac{\limn(5 + \frac{2}{n^3})}{\limn(3+\frac{7}{n^2}+\frac{4}{n^5})} \\
+                      &= \frac{\limn 5 + \limn\frac{2}{n^3}}{\limn 3+\limn\frac{7}{n^2}+\limn\frac{4}{n^5}} \\
+                      &= \frac{5}{3} \\
+        \end{align*}
+        \begin{align*}
+            \limn c_n &= \limn(n - \sqrt{n}) \\
+                      &= \limn\left(\frac{(n - \sqrt{n})(n + \sqrt{n})}{n + \sqrt{n}}\right) \\
+                      &= \limn\left(\frac{n^2 - n}{n + \sqrt{n}}\right) \\
+                      &= \limn\left(\frac{n(n - 1)}{n(1 + \frac{1}{\sqrt{n}})}\right) \\
+                      &= \limn\left(\frac{n - 1}{1 + \frac{1}{\sqrt{n}}}\right) \\
+                        &= \frac{\limn(n - 1)}{\limn(1 + \frac{1}{\sqrt{n}})} \\
+                        &= \frac{\limn n - \limn 1}{\limn 1 + \limn\frac{1}{\sqrt{n}}} \\
+                        &= \frac{\limn n - 1}{1 + \limn\frac{1}{\sqrt{n}}} \\
+                        &= \frac{\limn n - 1}{1 + 0} \\
+                        &= \limn n - 1 \\
+                        &= \infty \\
+        \end{align*}
+        \begin{align*}
+            \limn d_n &= \limn(\frac{2^n}{n^100}) \\
+                      &= \limn\left(\frac{2^n}{n^{100}}\right) \\
+        \end{align*}
+    \end{proof}
+\end{document}
