@@ -79,10 +79,10 @@
     \begin{proof}
         We prove both directions of the if and only if statement.
         $a: \N \to \R$ is bounded if and only if it is both bounded above and bounded below.
-        
+
         1. We prove the forward direction. \\
         Suppose $a: \N \to \R$ is bounded. \\
-        Then 
+        Then
         \begin{center}
             \parbox{\linewidth}{
                 \leftskip=0.4\linewidth
@@ -91,7 +91,7 @@
                 \hspace*{2em} $|a_n| \leq M_0$.
             }
         \end{center}
-        Obtain such $M_0$. \\ 
+        Obtain such $M_0$. \\
         It holds that
         \begin{center}
             \parbox{\linewidth}{
@@ -190,6 +190,7 @@
                 \hspace*{3em} $a_n > M$.
             }
         \end{center}
+        Obtain such $N_0$. \\
         We need to show that
         \begin{center}
             \parbox{\linewidth}{
@@ -197,7 +198,7 @@
                 for all $M \in \R$, \\
                 \hspace*{1em} there exists $N \in \N$, \\
                 \hspace*{2em} for all $n \geq N$, \\
-                \hspace*{3em} $-a_n \leq M$.
+                \hspace*{3em} $-a_n < M$.
             }
         \end{center}
         Take $M \in \R$
@@ -206,8 +207,20 @@
         \begin{center}
             \parbox{\linewidth}{
                 \leftskip=0.4\linewidth
-                for all $n \geq N$, \\
-                \hspace*{1em} $a_n > M$.
+                for all $M \in \R$, \\
+                \hspace*{1em} for all $n \geq N$, \\
+                \hspace*{2em} $a_n > M$. \\
+                \hspace*{3em} $-a_n < -M$.
+            }
+        \end{center}
+        Because $M$ is arbitrary, we conclude that
+        \begin{center}
+            \parbox{\linewidth}{
+                \leftskip=0.4\linewidth
+                for all $M \in \R$, \\
+                \hspace*{1em} there exists $N \in \N$, \\
+                \hspace*{2em} for all $n \geq N$, \\
+                \hspace*{3em} $-a_n < M$.
             }
         \end{center}
     \end{proof}
@@ -218,15 +231,109 @@
         $$\lim_{n\to\infty}b_n = \infty \iff \lim_{n\to\infty}\frac{1}{b_n} = 0$$
     \end{problem}
     \begin{proof}
+        We need to show both directions of the if and only if statement.
+        $$\lim_{n\to\infty}b_n = \infty \iff \lim_{n\to\infty}\frac{1}{b_n} = 0$$
+
+        1. First we prove the forward direction. \\
+        We need to show that $\lim_{n\to\infty}b_n = \infty \implies \lim_{n\to\infty}\frac{1}{b_n} = 0$. \\
+        I.e.
+        \begin{center}
+            \parbox{\linewidth}{
+                \leftskip=0.4\linewidth
+                for all $\e > 0$, \\
+                \hspace*{1em} there exists $N \in \N$, \\
+                \hspace*{2em} for all $n \geq N$, \\
+                \hspace*{3em} $|\frac{1}{b_n} - 0| < \e$.
+            }
+        \end{center}
+        Take $\e > 0$. \\
+        Suppose $\lim_{n\to\infty}b_n = \infty$. \\
+        Then
+        \begin{center}
+            \parbox{\linewidth}{
+                \leftskip=0.4\linewidth
+                for all $M \in \R$, \\
+                \hspace*{1em} there exists $N_0 \in \N$, \\
+                \hspace*{2em} for all $n \geq N_0$, \\
+                \hspace*{3em} $b_n > M$.
+            }
+        \end{center}
+        Choose $M = \frac{1}{\e}$, then $M \in \R$. \\
+        Obtain such $N_0$. \\
+        Take $\e > 0$. \\
+        Choose $N = N_0$, then $N \in \N$. \\
+        It holds that
+        \begin{center}
+            \parbox{\linewidth}{
+                \leftskip=0.4\linewidth
+                for all $\e > 0$, \\
+                \hspace*{1em} for all $n \geq N$, \\
+                \hspace*{2em} $b_n > M$. \\
+                \hspace*{3em} $\frac{1}{b_n} < \frac{1}{M}$. \\
+                \hspace*{4em} $|\frac{1}{b_n} - 0| < \frac{1}{M}$. \\
+                \hspace*{5em} $|\frac{1}{b_n} - 0| < \e$.
+            }
+        \end{center}
+
+        2. Now we prove the reverse direction. \\
+        We need to show that $\lim_{n\to\infty}\frac{1}{b_n} = 0 \implies \lim_{n\to\infty}b_n = \infty$. \\
+        I.e.
+        \begin{center}
+            \parbox{\linewidth}{
+                \leftskip=0.4\linewidth
+                for all $M \in (0,\infty)$, \\
+                \hspace*{1em} there exists $N \in \N$, \\
+                \hspace*{2em} for all $n \geq N$, \\
+                \hspace*{3em} $b_n > M$.
+            }
+        \end{center}
+        Take $M \in \R$. \\
+        Assume $\lim_{n\to\infty}\frac{1}{b_n} = 0$. \\
+        Then
+        \begin{center}
+            \parbox{\linewidth}{
+                \leftskip=0.4\linewidth
+                for all $\e > 0$, \\
+                \hspace*{1em} there exists $N_0 \in \N$, \\
+                \hspace*{2em} for all $n \geq N_0$, \\
+                \hspace*{3em} $|\frac{1}{b_n} - 0| < \e$.
+            }
+        \end{center}
+        Choose $\e = \frac{1}{M}$, then $\e > 0$. \\
+        Obtain such $N_0$. \\
+        Choose $N = N_0$, then $N \in \N$. \\
+        It holds that
+        \begin{center}
+            \parbox{\linewidth}{
+                \leftskip=0.4\linewidth
+                \hspace*{1em} for all $n \geq N$, \\
+                \hspace*{2em} $|\frac{1}{b_n} - 0| < \e$. \\
+                \hspace*{3em} $\frac{1}{b_n} < \e$. \\
+                \hspace*{4em} $\frac{1}{b_n} < \frac{1}{M}$. \\
+                \hspace*{5em} $b_n > M$.
+            }
+        \end{center}
     \end{proof}
 
     \section{Exercise 6.8.5}
     \begin{problem}
-        Define the sequence $x: \N \to \R$ recursively by 
+        Define the sequence $x: \N \to \R$ recursively by
         $$x_{n+1} := \frac{2+x_n^2}{2x_n}$$
         for $n \in \N$ while $x_0 = 2$. Prove that the sequence $x: \N \to \R$ converges and determine its limit.
     \end{problem}
     \begin{proof}
+        $$x_{n + 1} := \frac{2 + x_n ^2}{2x_n} = \frac{1}{x_n} + \frac{x_n}{2}$$ \\
+        Since we are starting with $x_0 = 2$, and never substracting to get the following $x$, we know $x_n \geq 0$.\\
+        This gives us a lower bound for the sequence.\\
+        Notice, that for $x_n > 1$ we have $x_n = \frac{x_n}{2} + \frac{x_n}{2} > \frac{1}{x_n} + \frac{x_n}{2}$.\\
+        And $\frac{1}{x_n} + \frac{x_n}{2} > 1 \iff \frac{2 + x_n ^2}{2x_n} > 1 \iff x_n ^2 - 2x_n + 1 > 0$, which is always true for every $x > 0$.\\
+        Thus since we start at $x_0 = 2$, our sequence decreases. \\
+        Hence $x_n > x_{n + 1} \iff x_n > \frac{2 + x_n ^2}{2x_n} \iff 2x_n ^2 - x_n ^2 > 2 \iff x_n ^2 > 2$
+        This gives us that $x_n$ is either larger than $\sqrt{2}$ or smaller than $-\sqrt{2}$. The latter is impossible
+        since $x_n$ is always positive, hence our new lower bound is $\sqrt{2}$.
+        This lower bound is in fact our infimum. \\
+        Since our infimum is $\sqrt{2}$ and the function is decreasing,
+        the sequence converges to $\sqrt{2}$.
     \end{proof}
 
     \section{Exercise 6.8.6}
@@ -237,7 +344,7 @@
             \item $a_n := \frac{1}{n^3} - 3$
             \item $b_n := \frac{5n^5 + 2n^2}{3n^5+7n^3+4}$
             \item $c_n := n - \sqrt{n}$
-            \item $d_n := \frac{2^n}{n^100}$
+            \item $d_n := \frac{2^n}{n^{100}}$
             \item $e_n := \sqrt{n^2+n}-n$
             \item $f_n := \sqrt[n]{3n^2}$
             \item $g_n := \frac{2^n + 5n^200}{3^n+n^10}$
@@ -245,38 +352,121 @@
             \item $i_n := \sqrt[n]{5^n + n^2}$
         \end{itemize}
     \end{problem}
-    \begin{proof}
+    \subsection{a)}
+    $$a_n := \frac{1}{n^3} - 3$$
         By limit laws and standard limits, we have
         \begin{align*}
             \limn a_n &= \limn\left(\frac{1}{n^3} - 3\right) \\
-                      &= \limn\frac{1}{n^3} - \limn 3 \\
-                      &= \left(\limn\frac{1}{n}\right)^3 - 3 \\
-                      &= 0^3 - 3 \\
-                      &= -3 \\
+                    &= \limn\frac{1}{n^3} - \limn 3 \\
+                    &= \left(\limn\frac{1}{n}\right)^3 - 3 \\
+                    &= 0^3 - 3 \\
+                    &= -3 \\
         \end{align*}
+        So the sequence converges to $-3$.
+    \subsection{b)}
+    $$b_n := \frac{5n^5 + 2n^2}{3n^5+7n^3+4}$$
+    By limit laws and standard limits, we have
+    \begin{align*}
+        \limn b_n &= \limn\left(\frac{5n^5 + 2n^2}{3n^5+7n^3+4}\right) \\
+        &= \limn\left(\frac{n^5(5 + \frac{2}{n^3})}{n^5(3+\frac{7}{n^2}+\frac{4}{n^5})}\right) \\
+        &= \limn\left(\frac{5 + \frac{2}{n^3}}{3+\frac{7}{n^2}+\frac{4}{n^5}}\right) \\
+        &= \frac{\limn(5 + \frac{2}{n^3})}{\limn(3+\frac{7}{n^2}+\frac{4}{n^5})} \\
+        &= \frac{\limn 5 + \limn\frac{2}{n^3}}{\limn 3+\limn\frac{7}{n^2}+\limn\frac{4}{n^5}} \\
+        &= \frac{5 + 0}{3+0+0} \\
+        &= \frac{5}{3}
+    \end{align*}
+    So the sequence converges to $\frac{5}{3}$.
+    \subsection{c)}
+    $$c_n := n - \sqrt{n}$$
+    By limit laws and standard limits, we have
+    \begin{align*}
+        \limn c_n &= \limn(n - \sqrt{n}) \\
+                    &= \limn\left(\frac{(n - \sqrt{n})(n + \sqrt{n})}{n + \sqrt{n}}\right) \\
+                    &= \limn\left(\frac{n^2 - n}{n + \sqrt{n}}\right) \\
+                    &= \limn\left(\frac{n(n - 1)}{n(1 + \frac{1}{\sqrt{n}})}\right) \\
+                    &= \limn\left(\frac{n - 1}{1 + \frac{1}{\sqrt{n}}}\right) \\
+                    &= \frac{\limn(n - 1)}{\limn(1 + \frac{1}{\sqrt{n}})} \\
+                    &= \frac{\limn n - \limn 1}{\limn 1 + \limn\frac{1}{\sqrt{n}}} \\
+                    &= \frac{\limn n - 1}{1 + \limn\frac{1}{\sqrt{n}}} \\
+                    &= \frac{\limn n - 1}{1 + 0} \\
+                    &= \limn n - 1 \\
+                    &= \infty \\
+    \end{align*}
+    So the sequence diverges to $\infty$.
+    \subsection{d)}
+    $$d_n := \frac{2^n}{n^{100}}$$
+        By limit laws and standard limits, we have
         \begin{align*}
-            \limn b_n &= \limn\left(\frac{5n^5 + 2n^2}{3n^5+7n^3+4}\right) \\
-                      &= \limn\frac{5 + \frac{2}{n^3}}{3+\frac{7}{n^2}+\frac{4}{n^5}} \\
-                      &= \frac{\limn(5 + \frac{2}{n^3})}{\limn(3+\frac{7}{n^2}+\frac{4}{n^5})} \\
-                      &= \frac{\limn 5 + \limn\frac{2}{n^3}}{\limn 3+\limn\frac{7}{n^2}+\limn\frac{4}{n^5}} \\
-                      &= \frac{5}{3} \\
-        \end{align*}
-        \begin{align*}
-            \limn c_n &= \limn(n - \sqrt{n}) \\
-                      &= \limn\left(\frac{(n - \sqrt{n})(n + \sqrt{n})}{n + \sqrt{n}}\right) \\
-                      &= \limn\left(\frac{n^2 - n}{n + \sqrt{n}}\right) \\
-                      &= \limn\left(\frac{n(n - 1)}{n(1 + \frac{1}{\sqrt{n}})}\right) \\
-                      &= \limn\left(\frac{n - 1}{1 + \frac{1}{\sqrt{n}}}\right) \\
-                        &= \frac{\limn(n - 1)}{\limn(1 + \frac{1}{\sqrt{n}})} \\
-                        &= \frac{\limn n - \limn 1}{\limn 1 + \limn\frac{1}{\sqrt{n}}} \\
-                        &= \frac{\limn n - 1}{1 + \limn\frac{1}{\sqrt{n}}} \\
-                        &= \frac{\limn n - 1}{1 + 0} \\
-                        &= \limn n - 1 \\
-                        &= \infty \\
-        \end{align*}
-        \begin{align*}
-            \limn d_n &= \limn(\frac{2^n}{n^100}) \\
+            \limn d_n &= \limn(\frac{2^n}{n^{100}}) \\
                       &= \limn\left(\frac{2^n}{n^{100}}\right) \\
+                      &= \limn{\left(\frac{1}{\frac{n^{100}}{2^n}}\right)} \\
+                      &= \frac{\limn 1}{\limn\frac{n^{100}}{2^n}} \\
+                      &= \frac{1}{\limn\frac{n^{100}}{2^n}} \\
+                      &= \infty
         \end{align*}
-    \end{proof}
+    So the sequence diverges to $\infty$.
+    \subsection{e)}
+    $$e_n := \sqrt{n^2+n}-n$$
+        By limit laws and standard limits, we have
+        \begin{align*}
+            \limn{e_n} &= \limn{\sqrt{n^2+n} - n} \\
+            &= \limn{\frac{(\sqrt{n^2+n} - n)(\sqrt{n^2+n} + n)}{\sqrt{n^2+n} + n}} \\
+            &= \limn{\frac{n^2+n - n^2}{\sqrt{n^2+n} + n}} \\
+            &= \limn{\frac{n}{\sqrt{n^2+n} + n}} \\
+            &= \limn{\frac{1}{\frac{\sqrt{n^2+n}}{n} + 1}} \\
+            &= \frac{\limn 1}{\limn\frac{\sqrt{n^2+n}}{n} + \limn 1} \\
+            &= \frac{1}{\limn\frac{\sqrt{n^2+n}}{n} + 1} \\
+            &= \frac{1}{\limn\sqrt{\frac{n^2+n}{n^2}} + 1} \\
+            &= \frac{1}{\limn\sqrt{1 + \frac{1}{n}} + 1} \\
+            &= \frac{1}{\sqrt{\limn 1 + \limn\frac{1}{n}} + 1} \\
+            &= \frac{1}{\sqrt{1 + 0} + 1} \\
+            &= \frac{1}{2}
+        \end{align*}
+    So the sequence converges to $\frac{1}{2}$.
+    \subsection{f)}
+    $$f_n := \sqrt[n]{3n^2}$$
+    By limit laws and standard limits, we have
+        \begin{align*}
+            \limn{f_n} &= \limn{\sqrt[n]{3n^2}} \\
+            &= \limn{\sqrt[n]{3}\sqrt[n]{n^2}} \\
+            &= \limn{\sqrt[n]{3}(\sqrt[n]{n})^2} \\
+            &= \limn{\sqrt[n]{3}}(\limn{\sqrt[n]{n}})^2 \\
+            &= 1 \cdot 1^2 \\
+            &= 1
+        \end{align*}
+        So the sequence converges to $1$.
+    \subsection{g)}
+    $$g_n := \frac{2^n + 5n^200}{3^n+n^10}$$
+    By limit laws and standard limits, we have
+        \begin{align*}
+            \limn{g_n} &= \limn{\frac{2^n + 5n^{200}}{3^n+n^{10}}} \\
+            &= \limn{\frac{\frac{2^n}{3^n} + \frac{5n^{200}}{3^n}}{1+\frac{n^{10}}{3^n}}} \\
+            &= \frac{\limn{(\frac{2^n}{3^n} + \frac{5n^{200}}{3^n})}}{\limn{(1+\frac{n^{10}}{3^n})}} \\
+            &= \frac{\limn{(\frac{2}{3})^n + 5\limn{\frac{n^{200}}{3^n}}}}{\limn{1}+\limn{\frac{n^{10}}{3^n}}} \\
+            &= \frac{0 + 5\cdot 0}{1+0} \\
+            &= 0
+        \end{align*}
+        So the sequence converges to $0$.
+    \subsection{h)}
+    $$h_n := (-1)^n3^n$$
+        Since the sequence $3^n$ diverges to $\infty$ and $(-1)^n$ osilates between $-1$ and $1$, the sequence $h_n$ doesn't converge, but neither diverges to $\infty$ or to $-\infty$.
+    \subsection{i)}
+    $$i_n := \sqrt[n]{5^n + n^2}$$
+    By limit laws and standard limits, we have
+        \begin{align*}
+            \limn{i_n} &= \limn{\sqrt[n]{5^n + n^2}} \\
+            &= \limn{\left(5^n+\left(1+\frac{n^2}{5^n}\right)\right)^{\frac{1}{n}}} \\
+            &= \limn{\exp{\left(\ln{\left(5^n+\left(1+\frac{n^2}{5^n}\right)\right)^{\frac{1}{n}}}\right)}} \\
+            &= \limn{\exp\left(\frac{1}{n}\ln{\left(5^n+\frac{n^2}{5^n}\right)}\right)} \\
+            &= \exp\left(\limn{\frac{\ln{\left(5^n+\frac{n^2}{5^n}\right)}}{n}}\right) \\
+            &= \exp\left(\limn{\frac{\ln{5^n} + \ln{\left(1+\frac{n^2}{5^n}\right)}}{n}}\right) \\
+            &= \exp\left(\limn{\frac{n\ln{5}}{n} + \limn{\frac{\ln{\left(1+\frac{n^2}{5^n}\right)}}{n}}}\right) \\
+            &= \exp\left(\ln{5} + \frac{\limn{\ln\left(1+\frac{n^2}{5^n}\right)}}{\limn{n}}\right) \\
+            &= \exp\left(\ln{5} + \frac{\ln(\limn\left(1+\frac{n^2}{5^n}\right))}{\limn{n}}\right) \\
+            &= \exp\left(\ln{5} + \frac{\ln\left(\limn 1 + \limn\left(\frac{n^2}{5^n}\right)\right)}{\limn{n}}\right) \\
+            &= \exp\left(\ln{5} + \frac{\ln{1}}{\limn n}\right) \\
+            &= \exp\left(\ln{5} + 0\right) \\
+            &= 5
+        \end{align*}
+        So the sequence converges to $5$.
 \end{document}

@@ -6,8 +6,8 @@
 \end{definition}
 
 \begin{theorem}
-    Let $\mathcal{A}: V \to V$ be a linear map and let $\alpha = \{\vec{a}_1, \dots, \vec{a}_n\}$ be a basis of $V$. 
-    The matrix $A_\alpha$ has a diagonal form 
+    Let $\mathcal{A}: V \to V$ be a linear map and let $\alpha = \{\vec{a}_1, \dots, \vec{a}_n\}$ be a basis of $V$.
+    The matrix $A_\alpha$ has a diagonal form
     $$A_\alpha = \begin{pmatrix}
         \lambda_1 & 0 & \dots & 0 \\
         0 & \lambda_2 & \ddots & \vdots \\
@@ -73,7 +73,7 @@ So any vector $\vec{v}$ lies in $E_\lambda$ if and only if $(\mathcal{A}-\lambda
 We also call them characteristic equation/polynomial of $\mathcal{A}$, and denote the characteristic polynomial by $\chi_\mathcal{A}$.
 
 \begin{theorem}
-    Let $\mathcal{A}: V \to V$ be a linear map, $\alpha$ and $\beta$ be two bases for $V$ and let $A_\alpha/A_\beta$ be the matrix of $\mathcal{A}$ w.r.t. a basis $\alpha/\beta$. 
+    Let $\mathcal{A}: V \to V$ be a linear map, $\alpha$ and $\beta$ be two bases for $V$ and let $A_\alpha/A_\beta$ be the matrix of $\mathcal{A}$ w.r.t. a basis $\alpha/\beta$.
     Then $\det(A_\alpha - \lambda \Id) = \det(A_\beta - \lambda \Id)$.
 \end{theorem}
 
@@ -83,7 +83,7 @@ We also call them characteristic equation/polynomial of $\mathcal{A}$, and denot
 
 \begin{theorem}
     Let $\mathcal{A}: V \to V$ be a linear map on a vector space $V$ of dimension $n$, and let
-    $$A = \begin{pmatrix} a_{11} & a_{12} & \dots & a_{1n} \\ 
+    $$A = \begin{pmatrix} a_{11} & a_{12} & \dots & a_{1n} \\
                           a_{21} & a_{22} &       & \vdots \\
                           \vdots &        & \ddots & \vdots \\ a_{n1} & \dots & \dots & a_{nn} \end{pmatrix}$$
     be the matrix of $\mathcal{A}$ w.r.t. a basis $\alpha$. Then the characteristic polynomial $\chi_\mathcal{A}$ is a polynomial of degree (exactly) $n$, and of the following shape:
@@ -98,7 +98,7 @@ We also call them characteristic equation/polynomial of $\mathcal{A}$, and denot
 \begin{theorem}
     Let $\mathcal{A}: V \to V$ be a linear map with $\dim(V) < \infty$. For every basis $\alpha$, the matrix $A_\alpha$
     \begin{enumerate}
-        \item has the same trace, which we therefore also call the \emph{trace}  of $\mathcal{A}$, and denote it by $\tr(\mathcal{A})$. 
+        \item has the same trace, which we therefore also call the \emph{trace}  of $\mathcal{A}$, and denote it by $\tr(\mathcal{A})$.
         \item has the same determinant, which we therefore also call the \emph{determinant} of $\mathcal{A}$, and denote it by $\det(\mathcal{A})$. We have the identity $\det(\mathcal{A}) = c_0$,
             where $c_0$ is the constant coefficient of the characteristic equation.
     \end{enumerate}
@@ -119,6 +119,7 @@ We also call them characteristic equation/polynomial of $\mathcal{A}$, and denot
 \end{theorem}
 
 \section{Invariant subspaces}
+\subsection{Invariant subspace}
 \begin{definition}[Invariant subspace]
     Let $W$ be a subspace of $V$. $W$ is called \emph{invariant under linear map $\mathcal{A}: V \to V$} if $\mathcal{A}\vec{w} \in W$ for all $\vec{w} \in W$.
 \end{definition}
@@ -141,6 +142,7 @@ We also call them characteristic equation/polynomial of $\mathcal{A}$, and denot
     and only if $\mathcal{A}\vec{a}_i \in W$ for $i = 1,\dots,n$.
 \end{theorem}
 
+\subsection{Restriction unto an invariant subspace}
 \begin{definition}[Restriction unto an invariant subspace]
     If $W$ is invariant under $\mathcal{A}$, then all image vectors $\mathcal{A}\vec{w}$ with $\vec{w} \in W$ are again in $W$.
     So if we restrict $\mathcal{A}$ to $W$, we obtain a well-defined linear map $W \to W$, the \emph{restriction of the map} $\mathcal{A}$
@@ -164,7 +166,7 @@ We also call them characteristic equation/polynomial of $\mathcal{A}$, and denot
     $$\vec{a}=(1,-1,1,-1) \text{ and } \vec{b}=(1,1,1,1).$$
     Say we have a linear map $\A: \R^4 \to \R^4$ of which we only know that
     $$\A\vec{a} = (4,-6,4,-6) \text{ and } \A\vec{b} = (4,6,4,6).$$
-    Even without knowing the full description of $\A$, we will now show that $W = <\vec{a},\vec{b}>$ is 
+    Even without knowing the full description of $\A$, we will now show that $W = <\vec{a},\vec{b}>$ is
     invariant and determine a matrix of the restriction unto $W$ - $\A_{|W}:W \to W$.
 
     To show the invariance of $<\vec{a}, \vec{b}>$, we must verify that $\A\vec{a}$ and $\A\vec{b}$ are linear combinations of $\vec{a}$ and $\vec{b}$.
@@ -195,7 +197,7 @@ We also call them characteristic equation/polynomial of $\mathcal{A}$, and denot
 
     \emph{We now can simplify the representation of the full map:} if we pick any basis $\alpha$ of $\R^4$ such that the first two basis vectors
     are the eigenvectors $(2,0,2,0)$ and $(0,2,0,2)$, then the full matrix has the shape
-    $$A_\alpha = \begin{pmatrix} 
+    $$A_\alpha = \begin{pmatrix}
                                                       & * & \dots & * \\
          \begin{pmatrix} 4 & 0 \\ 0 & 6\end{pmatrix}  & \vdots & & \vdots \\
         0  \dots  0 & \vdots & & \vdots \\
