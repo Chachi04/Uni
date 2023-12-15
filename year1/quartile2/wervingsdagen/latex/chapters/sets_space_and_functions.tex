@@ -1,0 +1,97 @@
+\section{Sets, Spaces and Function}
+
+\subsection{Metric Space}
+\begin{definition}[distance]
+    Let X be a set. A function $d: X \times X \to X$ is called a
+    \emph{distance} on X if it satisfies the following properties:
+    \begin{enumerate}[label=(\roman*)]
+        \item Positivity: For all $a,b \in X$, it holds that $d(a,b) \ge 0$.
+        \item Non-degeneracy: For all $a,b \in X$, if $d(a,b) = 0$, then $a = b$.
+        \item Symmetry: For all $a,b \in X$, it holds that $d(a,b) = d(b,a)$.
+        \item Triangle inequality: For all $a,b,c \in X$, it holds that $d(a,c) \le d(a,b) + d(b,c)$.
+        \item Reflexivity: For all $a \in X$, it holds that $d(a,a) = 0$.
+    \end{enumerate}
+\end{definition}
+% \section{"Distance" between two points in $\mathbb{R}$}
+
+Usually conditions (ii) and (v) are combined into one condition: For all $a,b
+\in X, d(a,b) = 0$ if and only if $a = b$.
+
+% $$ d_\mathbb{R}: \mathbb{R} \times \mathbb{R} \to \mathbb{R}, d_\mathbb{R}(a,b) = |a-b| $$
+
+\begin{definition}[metric space]
+    A metric space is a pair $(X,dist)$, where $X$ is a set and $dist$ is a
+    distance function $dist: X \times X \to \mathbb{R}$ on $X$.
+\end{definition}
+
+\begin{example}
+    Let $ X = \{\text{Die Hard, Barbie, Oppenheimer} \}$
+
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{c|c|c|c|}
+            \cline{2-4}
+            d & Die Hard & Barbie & Oppenheimer \\ \hline
+            \multicolumn{1}{|c|}{Die Hard}      & 0 & 5 & 2 \\ \hline
+            \multicolumn{1}{|c|}{Barbie}        & 5 & 0 & 3 \\ \hline
+            \multicolumn{1}{|c|}{Oppenheimer}   & 2 & 3 & 0 \\ \hline
+        \end{tabular}
+    \end{table}
+
+
+    Then d is a distance function on $X$
+\end{example}
+
+\begin{definition}[ball in a metric space]
+    Let $(X,d)$ be a metric space. Let $c \in X$ and $r \in \mathbb{R}$. The ball of radius $r$ centered at $c$ is the set
+    $$ B(c,r) = \{ x \in X | d(c,x) < r \} $$
+\end{definition}
+
+\begin{example}
+    If $(X,d) = (\mathbb{R}, \text{d}_\mathbb{R})$, then $B(1,3) = (-2,4) = \{x \in \mathbb{R} \mid |x-1| < 3\}$
+\end{example}
+
+\begin{example}
+    Let $X := \{\text{Die Hard, Barbie, Oppenheimer}\}$, with distance defined before. 
+    Then $B$(Barbie, 4)  $=$ \{ Barbie, Oppenheimer \} $= \{x \in X \mid \text{d}(x, \text{Barbie}) < 3\}$.
+\end{example}
+
+\subsection{Normed Vector Spaces}
+
+\begin{definition}[norm]
+    Let $V$ be a vector space over $\mathbb{R}$. A norm on $V$ is a function
+    $\norm{ \cdot }: V \to \mathbb{R}$ such that
+
+    \begin{itemize}
+        \item Positivity: for all $u,v \in V$ we have $\norm{ u } \geq 0$ and $\norm{ u } = 0$ if and only if $u = 0$.
+        \item Non-degeneracy: for all $u \in V$ if $\norm{ u } = 0$ then $u = 0$.
+        \item Absolute Homogeneity: for all $u \in V$ and for all $\lambda \in \mathbb{R}$ we have $\norm{ \lambda u } = |\lambda| \norm{ u }$.
+        \item Triangle inequality: for all $u,v \in V$ we have $\norm{ u+v } \leq \norm{ u } + \norm{ v }$.
+    \end{itemize}
+\end{definition}
+
+\begin{example}
+    Let $V = \mathbb{R}^n$. Then $\norm{ \cdot }_2: \mathbb{R}^n \to \mathbb{R}$ defined by $\norm{ x }_2 = \sqrt{x_1^2 + \cdots + x_n^2}$ is a norm on $\mathbb{R}^n$.
+\end{example}
+
+\begin{proposition}
+    Let $(V, \norm{ \cdot })$ be a normed vector space. 
+    Then the function $d: V \times V \to \mathbb{R}$ defined by $d(u,v) = \norm{ u-v }$ is a distance on $V$.
+    And $(V,d)$ is a metric space.
+\end{proposition}
+
+\begin{remark}[Notation for Euclidean distance on $\mathbb{R}^d$ and $\mathbb{R}$]
+    We will usually write dist$_{\mathbb{R}^d}$ instead of dist$_{\norm{\cdot}_2}$ for the standard (Euclidean) distance on $\mathbb{R}^d$.
+    In particular, if $d \ge 2$, we have
+    $$\text{dist}_{\mathbb{R}^d}(v,w) = \norm{v-w}_2 = \sqrt{\displaystyle\sum_{i=1}^d(v_i-w_i)^2} $$
+    and if $d = 1$ we just have
+    $$\text{dist}_\mathbb{R} = |v - w|$$
+    And if there is no room for confusion, we will just leave out the subscript altogether and write dist instead of dist$_{\mathbb{R}^d}$.
+\end{remark}
+
+\subsection{The reverse triangle inequality}
+\begin{lemma}[Reverse triangle inequality]
+    Let $(V, \norm{\cdot})$ be a normed vector space. 
+    Then for all $u,v \in V$ we have,
+    $$|\norm{v} - \norm{w}| \le \norm{v - w}$$
+\end{lemma}

@@ -1,0 +1,88 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define Article %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage{assignment}
+
+\newcommand{\blue}{\text{\color{blue}{blue}}}
+\newcommand{\orange}{\text{\color{orange}{orange}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Assignment 7}
+\author{Jiaqi Wang}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+    \maketitle
+    \section{Exercise 10.7.6}
+    \begin{problem}
+        Let $P: \N \to \{\blue, \orange\}$ be a sequence taking values in the set with exactly the two elements \blue\ and \orange.
+        Assume that
+        \begin{center}
+            \parbox{\linewidth}{
+                \leftskip=0.4\linewidth
+                for all $k \in \N$, \\
+                \hspace*{1em}there exists $m \ge k$, \\
+                \hspace*{2em}$P_m = \blue$. \hfill (*)
+
+            }
+        \end{center}
+
+        Show that there is a subsequence of $P: \N \to \{\blue, \orange\}$ for which every term equal \blue.%$by going through the following 
+        % \begin{enumerate}
+        %     \item Inductively define an index sequence $n: \N \to \N$ such that for all $k \in \N$, $P_{n_k} = \blue$.
+        %         \begin{enumerate}
+        %             \item First define $n_0 \in \N$ appropriately and prove that $CP_{n_0$
+        %         \end{enumerate}
+        % \end{enumerate}
+    \end{problem}
+    \begin{proof}
+        We construct a index sequence $n: \N \to \N$ inductively such that for all $\ell \in \N$, $P_{n_\ell} = \blue$ and $n_\ell < n_{\ell+1}$.\\
+
+        \noindent\textbf{Base step:} \\
+        Choose $k = 0$ in (*), then there exists $m \ge 0$, such that $P_m = \blue$. \\
+        Obtain such $m$. \\
+        Set $n_0 = m$. \\
+
+        \noindent\textbf{Inductive step:} \\
+        Suppose we have defined $n_0,\dots,n_\ell$ for some $\ell \in \N$ \\
+        such that $P_{n_0} = \blue,\dots,P_{n_\ell} = \blue$ and $n_0 < \dots < n_\ell$. \\
+        Choose $k = n_\ell + 1$ in (*), then there exists $m \ge n_\ell + 1 > n_\ell$ such that $P_m = \blue$. \\
+        Obtain such $m$. \\
+        Choose $n_{\ell+1} = m$. \\
+        Then $P_{n_{\ell+1}} = \blue$ and $n_{\ell+1} > n_\ell$. \\
+
+        By induction, we have defined $n: \N \to \N$ such that for all $\ell \in \N$, $P_{n_\ell} = \blue$ and $n_\ell < n_{\ell+1}$. \\
+        Then $P_{n_\ell} = \blue$ for all $\ell \in \N$. \\
+    \end{proof}
+
+    \section{Exercise 11.6.1}
+    \begin{problem}
+        Let $V, \norm{\cdot})$ be a normed linear space and let $A$ be the closed ball of radius $1$ aroudn the origin, i.e.
+        $$A:=\{v \in V \mid \norm{v} \le 1\}.$$
+        Show that the set $A$ is closed
+    \end{problem}
+    \begin{proof}
+        Need to show that $A$ is closed, i.e. $V \setminus A$ is open. \\
+    \end{proof}
+
+    \section{Exercise 11.6.2}
+    \begin{problem}
+        Show that the interval $[0,1)$ is neither open nor closed (seen as a subset of the normed linear space $(\R, |\cdot|)$).
+    \end{problem}
+
+    \begin{proof}
+    \end{proof}
+
+    \section{Exercise 11.6.4}
+    \begin{problem}
+        Consider the following line $\R^2$
+        $$L:=\{(x,y) \in \R^2 \mid x+2y = 1\}.$$
+        Show that $L$ is a closed subset of $\R^2$ and that $L$ is complete.
+    \end{problem}
+
+    \begin{proof}
+    \end{proof}
+
+\end{document}

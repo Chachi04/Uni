@@ -1,0 +1,1351 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     49316,       1343]
+NotebookOptionsPosition[     40149,       1215]
+NotebookOutlinePosition[     41090,       1245]
+CellTagsIndexPosition[     41010,       1240]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[{
+ "2MBA50 ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " Practicum 4"
+}], "Chapter",
+ Evaluatable->False,
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{{3.568979377057939*^9, 3.5689793787131042`*^9}, {
+   3.638284530110354*^9, 3.63828458471045*^9}, 3.6382854280167313`*^9, 
+   3.638285579446197*^9, {3.7253478643157444`*^9, 3.7253478659728394`*^9}, {
+   3.909822226337406*^9, 
+   3.909822227601316*^9}},ExpressionUUID->"3ed31416-c8dc-4ba9-910e-\
+8ff1b63776de"],
+
+Cell["This series of notebooks is made in Mathematica 13.3", "Text",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{{3.456653049256811*^9, 3.4566530626008167`*^9}, {
+   3.568979385946828*^9, 3.5689793980050335`*^9}, {3.5987707015809364`*^9, 
+   3.598770704591756*^9}, 3.598776242383092*^9, {3.629800152049239*^9, 
+   3.6298001737957783`*^9}, {3.6382851621922646`*^9, 3.638285164641468*^9}, {
+   3.638285234919592*^9, 3.638285242345205*^9}, {3.638285287881685*^9, 
+   3.6382853111257257`*^9}, {3.6382853425753813`*^9, 3.6382853586122093`*^9}, 
+   3.6382854280167313`*^9, {3.7253478677449408`*^9, 3.7253478773854923`*^9}, {
+   3.72925299071832*^9, 3.729252991230258*^9}, {3.76033943629106*^9, 
+   3.760339437538753*^9}, {3.823620116670001*^9, 3.823620117055912*^9}, {
+   3.909822231018667*^9, 
+   3.909822231506009*^9}},ExpressionUUID->"b40e249c-1e25-4449-a6a0-\
+ff1357c8490f"],
+
+Cell["\<\
+Contact: Jan Willem Knopper, MF 5.121, j.w.knopper@tue.nl
+Author: ir. W.J.P.M. Kortsmit, small adjustments by Benne de Weger, Jan \
+Willem Knopper.\
+\>", "Text",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{{3.456653049256811*^9, 3.4566530626008167`*^9}, {
+   3.568979385946828*^9, 3.5689793980050335`*^9}, {3.5987707015809364`*^9, 
+   3.598770704591756*^9}, 3.598776242383092*^9, {3.629800152049239*^9, 
+   3.6298001737957783`*^9}, {3.6382851621922646`*^9, 3.638285164641468*^9}, {
+   3.638285234919592*^9, 3.638285242345205*^9}, {3.638285287881685*^9, 
+   3.638285297241701*^9}, 3.6382854280167313`*^9, {3.725347879666623*^9, 
+   3.725347887864092*^9}, {3.729252994542194*^9, 3.729253012078045*^9}, {
+   3.854622710191957*^9, 3.854622712518071*^9}, {3.854622918109407*^9, 
+   3.8546229189826927`*^9}},ExpressionUUID->"c1e226dd-2a8f-4881-b157-\
+cedd7a97c6bd"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ 
+ CounterBox["Section"],
+ ". Functions and derivatives"
+}], "Section",
+ Evaluatable->False,
+ CellChangeTimes->{{3.7253479320096164`*^9, 3.7253479413111486`*^9}},
+ CounterAssignments->{{"Section", 3}},
+ AspectRatioFixed->
+  True,ExpressionUUID->"bf5a2565-fdd6-4fe8-9753-fef4b0c5de35"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ 
+ CounterBox["Section"],
+ ".",
+ 
+ CounterBox["Subsection"],
+ ". Functions with name"
+}], "Subsection",
+ CellChangeTimes->{{3.7253479432222576`*^9, 
+  3.7253479467854614`*^9}},ExpressionUUID->"7abfc0ab-e28c-4270-9777-\
+69bf45391130"],
+
+Cell[TextData[{
+ "A ",
+ StyleBox["function",
+  FontSlant->"Italic"],
+ " assigns to all elements from it\[CloseCurlyQuote]s input set (or ",
+ StyleBox["domain)",
+  FontSlant->"Italic"],
+ " exactly one element from it\[CloseCurlyQuote]s output set (or ",
+ StyleBox["range, codomain",
+  FontSlant->"Italic"],
+ "). That element, not necessary a number, is often called a ",
+ StyleBox["function value",
+  FontSlant->"Italic"],
+ ". It is important to distinguish between functions and expressions, which \
+are structures built from names and numbers."
+}], "Text",
+ CellChangeTimes->{{3.725347978004247*^9, 3.725348119962367*^9}, {
+  3.72925344585918*^9, 3.72925349304211*^9}, {3.72925365547279*^9, 
+  3.72925371600049*^9}, {3.729253801791572*^9, 3.7292538292074413`*^9}, {
+  3.729253860823299*^9, 3.729253881926961*^9}, {3.729253953204493*^9, 
+  3.729253966206059*^9}},ExpressionUUID->"44d2bda7-0364-42b5-b29e-\
+6df1024fc294"],
+
+Cell[TextData[{
+ "Actually almost every ",
+ StyleBox["Mathematica ",
+  FontSlant->"Italic"],
+ "command is an example of a function: the command applied to an expression \
+gives another expression. "
+}], "Text",
+ CellChangeTimes->{{3.72534812351857*^9, 3.725348201651039*^9}, {
+  3.729253932558373*^9, 
+  3.729253933606085*^9}},ExpressionUUID->"1ff73cba-db95-4f96-a143-\
+2c39e337795a"],
+
+Cell[TextData[{
+ "In ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " we can also define our own functions. We start with an example."
+}], "Text",
+ CellChangeTimes->{{3.7253482522489333`*^9, 
+  3.7253482714500313`*^9}},ExpressionUUID->"2efe00ff-cfbd-42be-b9de-\
+76a3701e14fb"],
+
+Cell["f[x_] := x^2 - 2", "Input",ExpressionUUID->"54bc690a-a480-44f6-b52d-8918c1ecb6b1"],
+
+Cell[TextData[{
+ "This function ",
+ StyleBox["f",
+  FontSlant->"Italic"],
+ " assigns the expression ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["x", "2"], "-", "2"}], TraditionalForm]],ExpressionUUID->
+  "3b81eadc-b471-41e4-a42c-88614a4db94c"],
+ " to each expression x. This definition is very close to the regular way of \
+writing a function in mathematics. The lying bar on the left side is called a \
+",
+ StyleBox["blank",
+  FontSlant->"Italic"],
+ ". This is actually a pattern. Right now it is sufficient to consider that \
+bar as an indication that the ",
+ StyleBox["x",
+  FontSlant->"Italic"],
+ " in this definition is a ",
+ StyleBox["bound variable",
+  FontSlant->"Italic"],
+ ". If we for example request ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"f", "(", "p", ")"}], TraditionalForm]],ExpressionUUID->
+  "49b8d08d-237b-4b24-b586-bd520a0a118d"],
+ ", then the bound variable ",
+ StyleBox["x",
+  FontSlant->"Italic"],
+ " on the right-hand side is replaced by ",
+ StyleBox["p",
+  FontSlant->"Italic"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.725348277825396*^9, 3.725348464057048*^9}, {
+  3.725348551356041*^9, 3.7253485822718096`*^9}, {3.729253279588945*^9, 
+  3.729253284172344*^9}},ExpressionUUID->"e9ad0993-e6c1-4cd4-8cd9-\
+4bba05b1686f"],
+
+Cell[BoxData[
+ RowBox[{"f", "[", " ", 
+  RowBox[{
+   RowBox[{"a", "^", "2"}], " ", "+", " ", "3"}], "]"}]], "Input",ExpressionUU\
+ID->"3447221d-1438-4cf7-879f-107b76027d71"],
+
+Cell[TextData[{
+ "In the definition of the function ",
+ StyleBox["f",
+  FontSlant->"Italic"],
+ " we have used the delayed assignment instruction. If ",
+ StyleBox["x",
+  FontSlant->"Italic"],
+ " had no value, then a direct assignment would also have been allowed, \
+because the right-hand side would be directly computed to ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["x", "2"], "-", "2"}], TraditionalForm]],ExpressionUUID->
+  "e6d7b5a4-ca04-4059-ae8e-174481499ddf"],
+ " in that case, which is intended. But if ",
+ StyleBox["x",
+  FontSlant->"Italic"],
+ " would already have a value, then evaluation of the right-hand side could \
+be undesired. With the following instructions a constant function is defined \
+unintentionally: "
+}], "Text",
+ CellChangeTimes->{{3.7253485932814393`*^9, 3.725348760802021*^9}, {
+  3.7253488110148926`*^9, 3.7253488566635036`*^9}, {3.729254047078021*^9, 
+  3.729254094596939*^9}},ExpressionUUID->"3c462ef0-8eff-4f5d-bcd6-\
+8486017b1d18"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"x", " ", "=", " ", "p"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"f", "[", "x_", "]"}], " ", "=", " ", 
+   RowBox[{
+    RowBox[{"x", "^", "2"}], "-", "2"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"f", "[", "1", "]"}], ",", " ", 
+   RowBox[{"f", "[", "2", "]"}], ",", " ", 
+   RowBox[{"f", "[", "a", "]"}]}], "}"}]}], "Input",ExpressionUUID->"0ab37207-\
+0725-4f63-8f04-2e9d6a8741ff"],
+
+Cell["Similarly, we can define functions with more variables.", "Text",
+ CellChangeTimes->{{3.725348871879374*^9, 3.7253488973488307`*^9}, {
+  3.7292541171725817`*^9, 
+  3.7292541286048107`*^9}},ExpressionUUID->"57186dfc-23c7-47cd-8d6a-\
+9975d52eb619"],
+
+Cell["\<\
+g[x_, y_] := x^2 + y^2
+g[3, 4]\
+\>", "Input",ExpressionUUID->"3888ac95-f7c7-4de4-9bb4-17f4da52ef03"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ 
+ CounterBox["Section"],
+ ".",
+ 
+ CounterBox["Subsection"],
+ ". Anonymous functions"
+}], "Subsection",
+ CellChangeTimes->{{3.72534795217577*^9, 3.725347956812035*^9}},
+ CellTags->
+  "anoniemefuncties",ExpressionUUID->"18bf250d-1fcb-410f-84cf-2e2bf791aabd"],
+
+Cell[TextData[{
+ "If we define function by using blanks, then we always need a function name. \
+In the previous paragraph we used the names ",
+ StyleBox["f",
+  FontSlant->"Italic"],
+ " and ",
+ StyleBox["g",
+  FontSlant->"Italic"],
+ ". However, we can also make functions without a name, \
+\[OpenCurlyQuote]anonymous functions'. For this ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " uses the expression ",
+ StyleBox["Pure Functions",
+  FontFamily->"Courier"],
+ ". Mathematically we make the function which assigns to x the value ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"of", " ", 
+     SuperscriptBox["x", "2"]}], " ", "-", " ", "2"}], TraditionalForm]],
+  ExpressionUUID->"fff2192a-7b97-41a9-984f-912bf64f054a"],
+ " as"
+}], "Text",
+ CellChangeTimes->{{3.725348939538244*^9, 3.7253490712447767`*^9}, {
+  3.725349114513252*^9, 3.7253491180434537`*^9}, {3.7292541722682962`*^9, 
+  3.729254176604312*^9}, {3.7292542584923267`*^9, 3.7292543141395693`*^9}, {
+  3.729254370011503*^9, 3.729254370131802*^9}, {3.729254806463345*^9, 
+  3.729254806750835*^9}},ExpressionUUID->"811dcfb8-e75f-4ceb-9bb7-\
+05cd5c78dc06"],
+
+Cell["Function[x, x^2 - 2]", "Input",ExpressionUUID->"aa29e889-54cd-4791-aade-f1e0b5e131fb"],
+
+Cell[TextData[{
+ "and the function in two variables which assigns ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"to", " ", "each", " ", "pair", " ", 
+     RowBox[{"(", 
+      RowBox[{"x", ",", "y"}], ")"}], " ", "the", " ", "value", " ", "of", 
+     " ", 
+     SuperscriptBox["x", "2"]}], " ", "+", " ", 
+    RowBox[{"2", " ", "x", " ", "y"}]}], TraditionalForm]],ExpressionUUID->
+  "71c71a76-6b74-40b1-adb5-3755bfcef4cc"],
+ " as"
+}], "Text",
+ CellChangeTimes->{{3.725349073276893*^9, 3.7253491082108917`*^9}, {
+  3.7292543201308527`*^9, 
+  3.729254375986495*^9}},ExpressionUUID->"3dbb6647-50d0-4a5a-8940-\
+458cdd721719"],
+
+Cell["Function[{x, y}, x^2 + 2 x y]", "Input",ExpressionUUID->"ae1bf610-8d6a-494b-8557-af148dc94741"],
+
+Cell[TextData[{
+ "Note that both ",
+ StyleBox["Input",
+  FontFamily->"Courier New"],
+ "-cells contain expressions! It has the name ",
+ StyleBox["Function",
+  FontFamily->"Courier New"],
+ " followed by two arguments. The first is a list of names of the variables, \
+if there is only one variable, then that variable does not have to be in a \
+list. The second argument is the so-called function body. These ",
+ StyleBox["Function",
+  FontFamily->"Courier New"],
+ "-expressions behave like functions: its function values are computed by \
+putting the argument or the arguments behind it in square brackets."
+}], "Text",
+ CellChangeTimes->{{3.7253491230507402`*^9, 3.7253491389656506`*^9}, {
+  3.7253492142959595`*^9, 3.7253493020059757`*^9}, {3.7253493627104483`*^9, 
+  3.7253493865448112`*^9}},ExpressionUUID->"f6679a82-4403-4e07-a2e5-\
+284ef3a74cf0"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Function", "[", " ", 
+   RowBox[{"x", ",", " ", 
+    RowBox[{
+     RowBox[{"x", "^", "2"}], " ", "+", " ", 
+     RowBox[{"2", " ", "x"}]}]}], " ", "]"}], " ", "[", "10", 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Function", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"x", ",", " ", "y"}], "}"}], ",", " ", 
+    RowBox[{
+     RowBox[{"x", "^", "2"}], " ", "+", " ", 
+     RowBox[{"2", " ", "x", " ", "y"}]}]}], "]"}], "[", 
+  RowBox[{"3", ",", " ", "4"}], "]"}]}], "Input",ExpressionUUID->"5653c224-\
+ec92-4aee-977f-3b5e38cbbea9"],
+
+Cell[TextData[{
+ "The ",
+ StyleBox["Mathematica ",
+  FontSlant->"Italic"],
+ "function ",
+ StyleBox["Function",
+  FontFamily->"Courier New"],
+ " can also be used with a single argument. That argument is the ",
+ StyleBox["body",
+  FontSlant->"Italic"],
+ " of the function, in which the variables are indicated by hashtags, the \
+symbol #. That symbol is in ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " reserved as function arguments; if there are more arguments, they are \
+numbered: #1, #2, ....\nIf we use these hashtags, then we can make functions \
+as follows:    "
+}], "Text",
+ CellChangeTimes->{{3.72534938915596*^9, 3.7253494305723295`*^9}, {
+  3.7253495323491507`*^9, 3.725349607390443*^9}, {3.729254482626176*^9, 
+  3.729254487265847*^9}, {3.729254518593689*^9, 
+  3.729254634160264*^9}},ExpressionUUID->"ae6d378f-a09f-4f6a-a36d-\
+01bd27d80b20"],
+
+Cell["\<\
+Function[#^2 - 2]
+Function[Sqrt[ #1^2 + #2^2]]\
+\>", "Input",ExpressionUUID->"ec96777d-898e-43fe-8bca-4e0cff389bdc"],
+
+Cell[TextData[{
+ "Pay attention to the strange form of the output. This is the ",
+ StyleBox["postfix form",
+  FontSlant->"Italic"],
+ " of these functions. The symbol & stands for  ",
+ StyleBox["//Function",
+  FontFamily->"Courier New"],
+ ". So the argument,  the function body, is there as an argument in front of \
+it."
+}], "Text",
+ CellChangeTimes->{{3.7253496514119606`*^9, 
+  3.7253497543498487`*^9}},ExpressionUUID->"55837e44-1922-46a9-86bd-\
+9d62338b41d8"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"#2", " ", "-", " ", "2"}], " ", "//", " ", "Function"}]], "Input",E\
+xpressionUUID->"79223a3c-6d5d-40f4-9ecd-e949de0014a8"],
+
+Cell["We can use this form ourselves too:", "Text",
+ CellChangeTimes->{{3.7253497685276594`*^9, 
+  3.725349780450341*^9}},ExpressionUUID->"a828d0ae-b986-46b8-86a9-\
+92ce9a2696db"],
+
+Cell["#^2 - 2 & [a]", "Input",ExpressionUUID->"5877f4bb-d66d-4f18-8e04-42a370a2d7b7"],
+
+Cell["Sqrt[ #1^2 + #2^2 ] & [3, 4]", "Input",ExpressionUUID->"6ae6b0d8-cd5f-46f0-b977-0f76b43498a8"],
+
+Cell["\<\
+Anonymous functions are used very often. We give a couple of examples.\
+\>", "Text",
+ CellChangeTimes->{{3.7253497831674967`*^9, 
+  3.7253498015645485`*^9}},ExpressionUUID->"f199f99c-8e2e-4b7f-8db8-\
+fe01d8bdda7c"],
+
+Cell[TextData[{
+ "With the function Select we can select elements from a list which meet a \
+certain condition. The first argument is the list and the second a function; \
+the elements for which the function gives ",
+ StyleBox["True",
+  FontFamily->"Courier New"],
+ " are selected. The anonymous function",
+ StyleBox[" #>20&",
+  FontFamily->"Courier New"],
+ " gives ",
+ StyleBox["True",
+  FontFamily->"Courier New"],
+ " for all numbers which are larger than 20. So in the following way we \
+select the elements larger than 20 from a list:"
+}], "Text",
+ CellChangeTimes->{{3.7253498040856934`*^9, 
+  3.725349970731225*^9}},ExpressionUUID->"31debaa0-9722-484f-9c78-\
+3ceb4a045b1d"],
+
+Cell[BoxData[
+ RowBox[{"lst", "=", 
+  RowBox[{"RandomInteger", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"1", ",", "50"}], "}"}], ",", "100"}], "]"}]}]], "Input",Expressi\
+onUUID->"6cbdc068-7bdf-429e-8439-4c2e7fae6961"],
+
+Cell["Select[%, #>20&]", "Input",ExpressionUUID->"0b1766e5-c7c0-49c8-aef8-29d7d388daf1"],
+
+Cell["Length[%]", "Input",ExpressionUUID->"604ec520-fb98-40ae-a0da-bf82423d63c2"],
+
+Cell[TextData[{
+ "We have already mentioned the function ",
+ StyleBox["Split",
+  FontFamily->"Courier New"],
+ ". This splits a list in sublists. The second argument is a function of two \
+variables which gives ",
+ StyleBox["True",
+  FontFamily->"Courier New"],
+ " if two neighbors should be taken together. As an example we look for all \
+sublists of at least three consecutive numbers from a given list of natural \
+numbers."
+}], "Text",
+ CellChangeTimes->{{3.7253499772495975`*^9, 
+  3.725350086455844*^9}},ExpressionUUID->"ac7d6371-5c9d-4b71-adcd-\
+dd45f6e65404"],
+
+Cell[BoxData[
+ RowBox[{"lst", "=", 
+  RowBox[{"Array", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"RandomInteger", "[", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "5"}], "}"}], "]"}], "&"}], ",", 
+    RowBox[{"{", "100", "}"}]}], "]"}]}]], "Input",ExpressionUUID->"ab4cc043-\
+1c49-4b3c-bf95-552b649ef75c"],
+
+Cell[TextData[{
+ "The function  ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"#2", "-", "#1"}], "==", "1"}], "&"}], TraditionalForm]],
+  ExpressionUUID->"c26b1ce9-893e-40b6-982d-3a82837ae32b"],
+ " investigates if  #2 is a successor of #1."
+}], "Text",
+ CellChangeTimes->{{3.7253500894130125`*^9, 
+  3.7253501126993446`*^9}},ExpressionUUID->"ab9fa4ca-0533-4728-a425-\
+00978b625810"],
+
+Cell[BoxData[
+ RowBox[{"Split", "[", 
+  RowBox[{"lst", ",", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"#2", "-", "#1"}], "\[Equal]", "1"}], "&"}]}], " ", 
+  "]"}]], "Input",ExpressionUUID->"59e31ede-521a-45ce-bbe3-403206b587bc"],
+
+Cell["\<\
+From this we must now look for all lists which have at least three elements:\
+\>", "Text",
+ CellChangeTimes->{{3.7253501205817957`*^9, 
+  3.7253501393018665`*^9}},ExpressionUUID->"d7d83950-241b-47b3-96e6-\
+43670b651a07"],
+
+Cell[BoxData[
+ RowBox[{"Select", "[", 
+  RowBox[{"%", ",", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Length", "[", "#", "]"}], ">", "2"}], "&"}]}], "]"}]], "Input",E\
+xpressionUUID->"f1d1559c-09af-4e3c-badb-629f0fda8fd2"],
+
+Cell[TextData[{
+ "Anonymous functions can also be used to construct matrices. The ",
+ StyleBox["Mathematica ",
+  FontSlant->"Italic"],
+ "function Array has as a first argument a function which works on the \
+indices of elements of the  matrix and as a second argument the sizes of the \
+wanted matrix. As an example we have the bandmatrix."
+}], "Text",
+ CellChangeTimes->{{3.7253501894077325`*^9, 
+  3.7253502958528204`*^9}},ExpressionUUID->"aa5a3399-50ec-4d50-8bab-\
+ba796c404846"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Array", "[", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Abs", "[", 
+         RowBox[{"#1", "-", "#2"}], "]"}], "<", "2"}], ",", " ", 
+       RowBox[{"#1", "-", "#2"}], ",", " ", "0"}], "]"}], "&"}], ",", " ", 
+    RowBox[{"{", 
+     RowBox[{"6", ",", "6"}], "}"}]}], "]"}], " ", "//", " ", 
+  "MatrixForm"}]], "Input",ExpressionUUID->"2330517e-7b26-43fb-b134-\
+c4f167dbf041"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"Array", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"RandomReal", "[", "]"}], "&"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"4", ",", "3", ",", "2"}], "}"}]}], "]"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Input",ExpressionUUID->"3756bfd7-3436-49cf-\
+809a-79de6a2bf49d"],
+
+Cell[TextData[{
+ "Now we have seen that the functions  ",
+ StyleBox["Split",
+  FontFamily->"Courier New"],
+ ", ",
+ StyleBox["Select",
+  FontFamily->"Courier New"],
+ ", ",
+ StyleBox["Array",
+  FontFamily->"Courier New"],
+ " have an anonymous function as a second argument. That also holds for the \
+function ",
+ StyleBox["Sort",
+  FontFamily->"Courier New"],
+ ", which has an order function as a second element. We make a list of points \
+in the plane and want to find the point which is the furthest from the \
+origin. The distance from a point to the origin is given by the Norm of that \
+point. So the order function is ",
+ StyleBox["Norm[#1]<Norm[#2]&",
+  FontFamily->"Courier New"],
+ " and the point we are looking for is the last point of the ordered list."
+}], "Text",
+ CellChangeTimes->{{3.725350300440083*^9, 
+  3.72535043658287*^9}},ExpressionUUID->"91f864d1-68c8-41c5-9f57-\
+0af85e2f8b23"],
+
+Cell[BoxData[
+ RowBox[{"lst", "=", 
+  RowBox[{"Array", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"RandomReal", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "10"}], ",", "10"}], "}"}], "]"}], "&"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"40", ",", "2"}], "}"}]}], "]"}]}]], "Input",ExpressionUUID->\
+"b3ab40ad-a7e4-461f-b96f-c78963f82232"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Sort", "[", 
+   RowBox[{"lst", ",", " ", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Norm", "[", "#1", "]"}], "<", 
+      RowBox[{"Norm", "[", "#2", "]"}]}], " ", "&"}]}], " ", "]"}], "[", 
+  RowBox[{"[", 
+   RowBox[{"-", "1"}], "]"}], "]"}]], "Input",ExpressionUUID->"06539164-147f-\
+4924-a937-e42555390e30"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ 
+ CounterBox["Section"],
+ ".",
+ 
+ CounterBox["Subsection"],
+ ". Derivatives and differential equations"
+}], "Subsection",
+ CellChangeTimes->{{3.7253479586521406`*^9, 
+  3.725347968713716*^9}},ExpressionUUID->"e22ebbab-e230-4039-8269-\
+720ef109cff8"],
+
+Cell[TextData[{
+ "The difference between expressions and functions for example plays a role \
+with differentiating. The formula ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["x", "2"], 
+    RowBox[{"sin", "(", "x", ")"}]}], TraditionalForm]],ExpressionUUID->
+  "e7a357e1-4e1b-4c53-87e3-92df9d7ee64c"],
+ " is an expression. If we differentiate this expression with the command ",
+ StyleBox["D",
+  FontFamily->"Courier New"],
+ " to ",
+ StyleBox["x",
+  FontSlant->"Italic"],
+ ", then the result is an expression. Note that we explicitly have to mention \
+the name of the symbol to which we differentiate when using the ",
+ StyleBox["D",
+  FontFamily->"Courier New"],
+ "-instruction: "
+}], "Text",
+ CellChangeTimes->{{3.725350505876833*^9, 
+  3.7253506290798798`*^9}},ExpressionUUID->"1f45ac84-ec11-4b1e-88df-\
+2409f3dcb48d"],
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{"D", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"x", "^", "2"}], " ", 
+     RowBox[{"Sin", "[", 
+      RowBox[{"x", "^", "2"}], "]"}]}], ",", " ", "x"}], "]"}],
+  FontFamily->"Courier New"]], "Input",ExpressionUUID->"ed1cf580-50af-4f55-\
+8690-768ca07eed92"],
+
+Cell[TextData[{
+ "The derivative of a function is again a function. Because ",
+ StyleBox["D",
+  FontFamily->"Courier New"],
+ " needs a name for the variable to which we differentiate, we cannot use ",
+ StyleBox["D",
+  FontFamily->"Courier New"],
+ " to differentiate functions. After all, the function which to x assigns ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["x", 
+    RowBox[{"2", " "}]], TraditionalForm]],ExpressionUUID->
+  "d63a7214-9ebd-45d0-aff7-0a35358132a0"],
+ "is equal to the function which to t assigns ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["t", "2"], TraditionalForm]],ExpressionUUID->
+  "64dcd294-724c-4c38-bd1b-9ea6a1e344a0"],
+ ". To determine derivatives of functions ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " has the instruction Derivative.  ",
+ StyleBox["Derivative[n][f]",
+  FontFamily->"Courier"],
+ " determines the ",
+ StyleBox["n",
+  FontSlant->"Italic"],
+ "-th derivative of the function ",
+ StyleBox["f",
+  FontSlant->"Italic"],
+ " (of one variable); the result is again a function."
+}], "Text",
+ CellChangeTimes->{{3.725350664547909*^9, 3.725350822502943*^9}, {
+  3.729254913950264*^9, 
+  3.729254937093814*^9}},ExpressionUUID->"ecc66a14-b5a8-4341-b52f-\
+1ca401482845"],
+
+Cell["Derivative[1][ #^2 Sin[#^2] & ]", "Input",ExpressionUUID->"61397c32-d86b-44ac-9f18-f483397e664b"],
+
+Cell["\<\
+Just like we do in mathematics, we can also indicate the derivative with an \
+accent.\
+\>", "Text",
+ CellChangeTimes->{{3.7253574965436764`*^9, 
+  3.7253575213950977`*^9}},ExpressionUUID->"763111e6-1209-453a-b433-\
+1587f167cdf5"],
+
+Cell[BoxData[{
+ RowBox[{"Clear", "[", "f", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"f", "'"}], " ", "//", " ", "FullForm"}], "\[IndentingNewLine]", 
+ RowBox[{"f", " ", "=", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"#", "^", "2"}], " ", 
+    RowBox[{"Sin", "[", 
+     RowBox[{"#", "^", "2"}], "]"}]}], "&"}]}], "\[IndentingNewLine]", 
+ RowBox[{"f", "'"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"f", "'"}], "[", "x", "]"}]}], "Input",ExpressionUUID->"fcbf9aa0-\
+9782-4b3e-8269-5d5d53300ca4"],
+
+Cell[TextData[{
+ "We now determine the third derivative of ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["x", "2"], " ", 
+    RowBox[{"sin", "(", 
+     SuperscriptBox["x", "2"], ")"}]}], TraditionalForm]],ExpressionUUID->
+  "485956f0-989a-4d0b-8384-ef085e10775a"],
+ " in ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"x", " ", "=", " ", 
+    SqrtBox["\[Pi]"]}], TraditionalForm]],ExpressionUUID->
+  "527fcc1d-3f9d-4bb5-acda-76f69e72df50"],
+ " in multiple ways: "
+}], "Text",
+ CellChangeTimes->{{3.7253575249703026`*^9, 3.7253575464115286`*^9}, {
+  3.729254974532908*^9, 
+  3.729254977100968*^9}},ExpressionUUID->"d4af2194-69c4-4938-94c0-\
+e89821c87b52"],
+
+Cell["D[ x^2 Sin[ x^2 ], {x, 3} ] /. x->Sqrt[Pi]", "Input",ExpressionUUID->"81b77e63-b24d-4bda-ab2b-1cd845346218"],
+
+Cell["f'''[ Sqrt[Pi] ]", "Input",ExpressionUUID->"35a3985c-b3b7-44d8-b0bb-9d5d006de872"],
+
+Cell["Derivative[3][#^2 Sin[#^2] & ][Sqrt[\[Pi]]]", "Input",ExpressionUUID->"ae0863d5-8643-4ee6-9717-4e92ab0681d4"],
+
+Cell[TextData[{
+ "Pay attention to the syntax in the last instruction. The argument of ",
+ StyleBox["Derivative",
+  FontFamily->"Courier New"],
+ " is a natural number ",
+ StyleBox["n",
+  FontSlant->"Italic"],
+ ". The result is the ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " function ",
+ StyleBox["Derivative[n]",
+  FontFamily->"Courier New"],
+ " which maps a function to its ",
+ StyleBox["n",
+  FontSlant->"Italic"],
+ "-th derivative. So ",
+ StyleBox["Derivative[n][f]",
+  FontFamily->"Courier New"],
+ "is the ",
+ StyleBox["n",
+  FontSlant->"Italic"],
+ "-th derivative of the function ",
+ StyleBox["f",
+  FontSlant->"Italic"],
+ " and  ",
+ StyleBox["Derivative[n][f][x]",
+  FontFamily->"Courier New"],
+ " the value of the ",
+ StyleBox["n",
+  FontSlant->"Italic"],
+ "-th derivative of the function ",
+ StyleBox["f",
+  FontSlant->"Italic"],
+ " in the argument ",
+ StyleBox["x",
+  FontSlant->"Italic"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.7253575510167923`*^9, 3.725357597064426*^9}, {
+  3.725357632536455*^9, 
+  3.7253576996032906`*^9}},ExpressionUUID->"c42cb5ce-f6d5-4b94-aa59-\
+039e2de748a7"],
+
+Cell[TextData[{
+ "The function ",
+ StyleBox["Derivative",
+  FontFamily->"Courier New"],
+ " can also be used to find partial derivatives of functions with more \
+variables. In that case we use ",
+ StyleBox["Derivative",
+  FontFamily->"Courier New"],
+ " with more than one argument. The first argument indicates how many times \
+we differentiate with respect to the first variable, the second how many \
+times with respect to the second variable, etc. The use of ",
+ StyleBox["Derivative",
+  FontFamily->"Courier New"],
+ " is not limited to anonymous functions!"
+}], "Text",
+ CellChangeTimes->{{3.725357703188496*^9, 
+  3.7253578599224606`*^9}},ExpressionUUID->"6f3b19ce-723f-4d75-b413-\
+601de18faff5"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "f", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"f", "[", 
+   RowBox[{"x_", ",", " ", "y_"}], "]"}], " ", ":=", " ", 
+  RowBox[{
+   RowBox[{"x", "^", "2"}], " ", "+", " ", 
+   RowBox[{"2", " ", 
+    RowBox[{"x", "^", "3"}], " ", 
+    RowBox[{"y", "^", "4"}]}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Derivative", "[", 
+   RowBox[{"1", ",", "2"}], "]"}], "[", "f", "]"}]}], "Input",ExpressionUUID->\
+"cc49b80b-14dc-4ef2-a9ad-72fd295e02f7"],
+
+Cell["We now go to differential equations.", "Text",
+ CellChangeTimes->{{3.7253578665868416`*^9, 
+  3.7253578754333477`*^9}},ExpressionUUID->"ea47b322-dec1-4d7a-ac60-\
+33f0771350db"],
+
+Cell[TextData[{
+ "Solving differential equations is similar to finding primitives (which is \
+actually solving a differential equation): usually there does not exist a ",
+ StyleBox["closed-form ",
+  FontSlant->"Italic"],
+ "expression for the solution and we will have to make do with numerical \
+approximations. So in ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " there are two functions: ",
+ StyleBox["DSolve",
+  FontFamily->"Courier"],
+ " for differential equations which can be solved analytically and ",
+ StyleBox["NDSolve",
+  FontFamily->"Courier"],
+ " for numerically solving differential equations. \nBoth instructions have \
+three arguments:\n-\tthe first argument is the differential equation or the \
+system of differential equations (a list),\n-\tthe second argument is the \
+function (or a list of functions) which we want to find,\n-\tthe third \
+argument is an independent variable or the list of independent variables."
+}], "Text",
+ CellChangeTimes->{{3.725357924860175*^9, 3.7253581815418563`*^9}, {
+  3.72925512422163*^9, 3.729255129772089*^9}, {3.729255186612109*^9, 
+  3.7292551919396048`*^9}},ExpressionUUID->"d86af3f5-7d10-4fd7-bfa9-\
+fc6123854420"],
+
+Cell[TextData[{
+ "We now elaborate on some subtleties by means of a few examples. If we use ",
+ StyleBox["DSolve",
+  FontFamily->"Courier New"],
+ " and ",
+ StyleBox["NDSolve",
+  FontFamily->"Courier New"],
+ " we must write ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"y", "'"}], "'"}], 
+    RowBox[{"(", "t", ")"}]}], TraditionalForm]],ExpressionUUID->
+  "0c805a52-0fab-4f9f-ad4e-6746e1fd48bb"],
+ ", ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"y", "'"}], 
+    RowBox[{"(", "t", ")"}]}], TraditionalForm]],ExpressionUUID->
+  "53c6ded1-5584-4f21-bbec-8b2ef20adc47"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"y", "(", "t", ")"}], TraditionalForm]],ExpressionUUID->
+  "aacf6bf5-718f-4bfd-a477-f341b900a128"],
+ " in full in the equations:"
+}], "Text",
+ CellChangeTimes->{{3.7253581934665384`*^9, 
+  3.725358273513117*^9}},ExpressionUUID->"11941371-bdeb-49bc-a9c9-\
+7b3369c5f9a3"],
+
+Cell[BoxData[
+ RowBox[{"DSolve", "[", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"y", "'"}], "'"}], "[", "t", "]"}], " ", "+", " ", 
+     RowBox[{"2", " ", 
+      RowBox[{
+       RowBox[{"y", "'"}], "[", "t", "]"}]}], " ", "+", " ", 
+     RowBox[{"y", "[", "t", "]"}]}], " ", "==", " ", 
+    RowBox[{"Exp", "[", 
+     RowBox[{"-", "t"}], "]"}]}], ",", " ", 
+   RowBox[{"y", "[", "t", "]"}], ",", " ", "t"}], "]"}]], "Input",ExpressionUU\
+ID->"d2deade2-e959-4d73-9f19-13aed943012f"],
+
+Cell[TextData[{
+ "We see that the differential equation has one solution, which depends on \
+two constants ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["c", "1"], TraditionalForm]],ExpressionUUID->
+  "6b2c7a2a-0113-4a68-b7bc-7adb1c63f4ea"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["c", "2"], TraditionalForm]],ExpressionUUID->
+  "3431311a-739f-4a72-809c-44c5078f0cc4"],
+ ". If we add two conditions, then the solution is unambiguously determined. \
+We have to add these conditions ",
+ StyleBox["as equations",
+  FontSlant->"Italic"],
+ " to the first argument of ",
+ StyleBox["DSolve",
+  FontFamily->"Courier New"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.72535827601926*^9, 
+  3.7253583658854*^9}},ExpressionUUID->"dbfb441d-5de2-4a6d-b60d-583b58e74f74"],
+
+Cell[TextData[{
+ "The conditions must be given with a double equal-sign(",
+ StyleBox["==",
+  FontFamily->"Courier"],
+ "). If we would  use a single equal-sign then we give an assignment which \
+has to be executed! Before we continue we would then have to undo these \
+assignments. That is the easiest with ",
+ StyleBox["Unset",
+  FontFamily->"Courier New"],
+ " (=.)."
+}], "Text",
+ CellChangeTimes->{{3.7253584277819405`*^9, 3.7253585170200443`*^9}, {
+  3.729255705382769*^9, 3.729255706062702*^9}},
+ Background->RGBColor[
+  1, 1, 0],ExpressionUUID->"caf78085-365f-465b-9349-0cf393b99845"],
+
+Cell[BoxData[
+ RowBox[{"DSolve", "[", " ", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"y", "'"}], "'"}], "[", "t", "]"}], " ", "+", " ", 
+       RowBox[{"2", " ", 
+        RowBox[{
+         RowBox[{"y", "'"}], "[", "t", "]"}]}], " ", "+", " ", 
+       RowBox[{"y", "[", "t", "]"}]}], " ", "==", " ", 
+      RowBox[{"Exp", "[", 
+       RowBox[{"-", "t"}], "]"}]}], ",", " ", 
+     RowBox[{
+      RowBox[{"y", "[", "0", "]"}], "==", 
+      RowBox[{"-", "4"}]}], ",", " ", 
+     RowBox[{
+      RowBox[{"y", "[", "5", "]"}], "==", "1"}]}], "}"}], ",", " ", 
+   RowBox[{"y", "[", "t", "]"}], ",", " ", "t"}], "]"}]], "Input",ExpressionUU\
+ID->"cd7d3a5b-17b0-408c-a082-590b28eb26d2"],
+
+Cell[TextData[{
+ "Just like with ",
+ StyleBox["Solve",
+  FontFamily->"Courier New"],
+ ", the function ",
+ StyleBox["DSolve",
+  FontFamily->"Courier New"],
+ " gives a list of solutions and each solution is a list of substitution \
+rules. We are interested in the first (and only) solution."
+}], "Text",
+ CellChangeTimes->{{3.7253586613452997`*^9, 
+  3.7253587393597617`*^9}},ExpressionUUID->"6035ed13-80bf-4a2c-af65-\
+d5c61a74ed9a"],
+
+Cell[BoxData[{
+ RowBox[{"f", " ", "=", " ", 
+  RowBox[{
+   RowBox[{"y", "[", "t", "]"}], " ", "/.", " ", 
+   RowBox[{"%", "[", 
+    RowBox[{"[", "1", "]"}], "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{"Plot", "[", 
+  RowBox[{"f", ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", " ", "0", ",", " ", "5"}], "}"}]}], " ", 
+  "]"}]}], "Input",ExpressionUUID->"a30b5433-00d1-4027-9698-abb430cf2fc8"],
+
+Cell[TextData[{
+ "Instead of using the substitution rule to find the solution, we can also \
+use ",
+ StyleBox["Part",
+  FontFamily->"Courier New"],
+ " again:"
+}], "Text",
+ CellChangeTimes->{{3.7253587434859977`*^9, 
+  3.7253587654532537`*^9}},ExpressionUUID->"fe596e7c-f4dc-414f-9d29-\
+671bac3050d4"],
+
+Cell[BoxData[
+ RowBox[{"%%%", "[", 
+  RowBox[{"[", 
+   RowBox[{"1", ",", "1", ",", "2"}], "]"}], "]"}]], "Input",ExpressionUUID->\
+"037e3e73-1f12-46a2-b054-7fd38ad5ca72"],
+
+Cell[TextData[{
+ "Now we have solved to the ",
+ StyleBox["expression",
+  FontSlant->"Italic"],
+ " ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"y", "(", "t", ")"}], TraditionalForm]],ExpressionUUID->
+  "f61c4a6d-e8e4-48d6-881b-08f5beb7e286"],
+ ". We can also solve to the ",
+ StyleBox["function",
+  FontSlant->"Italic"],
+ " ",
+ StyleBox["y",
+  FontSlant->"Italic"],
+ ". From practice we know that this has a couple of advantages. Instead of \
+the expression y(t) we then have to use the function symbol ",
+ StyleBox["y",
+  FontSlant->"Italic"],
+ " as the second argument of the instruction."
+}], "Text",
+ CellChangeTimes->{{3.7253587689314528`*^9, 3.7253588226795273`*^9}, {
+  3.7253589078303976`*^9, 
+  3.7253589709990106`*^9}},ExpressionUUID->"170f1c34-2a58-4eb1-bc31-\
+ec178577c8ce"],
+
+Cell[BoxData[{
+ RowBox[{"DSolve", "[", " ", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"y", "'"}], "'"}], "[", "t", "]"}], " ", "+", " ", 
+       RowBox[{"2", " ", 
+        RowBox[{
+         RowBox[{"y", "'"}], "[", "t", "]"}]}], " ", "+", " ", 
+       RowBox[{"y", "[", "t", "]"}]}], " ", "==", " ", 
+      RowBox[{"Exp", "[", 
+       RowBox[{"-", "t"}], "]"}]}], ",", " ", 
+     RowBox[{
+      RowBox[{"y", "[", "0", "]"}], "==", 
+      RowBox[{"-", "4"}]}], ",", " ", 
+     RowBox[{
+      RowBox[{"y", "[", "5", "]"}], "==", "1"}]}], "}"}], ",", " ", "y", ",", 
+   " ", "t"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"f", " ", "=", " ", 
+  RowBox[{"y", "/.", " ", 
+   RowBox[{"%", "[", 
+    RowBox[{"[", "1", "]"}], "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{"Plot", "[", 
+  RowBox[{
+   RowBox[{"f", "[", "x", "]"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", " ", "0", ",", " ", "5"}], "}"}]}], " ", 
+  "]"}]}], "Input",ExpressionUUID->"d162035e-e4bb-4202-b141-075931934b0d"],
+
+Cell["\<\
+We will now change the differential equation a bit such that it cannot be \
+solved analytically anymore:\
+\>", "Text",
+ CellChangeTimes->{{3.725359122174657*^9, 
+  3.7253591513583264`*^9}},ExpressionUUID->"814efe86-a565-4c23-8683-\
+142144e869ec"],
+
+Cell[BoxData[
+ RowBox[{"DSolve", "[", " ", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"y", "'"}], "'"}], "[", "t", "]"}], " ", "+", " ", 
+      RowBox[{"2", " ", 
+       RowBox[{
+        RowBox[{"y", "'"}], "[", "t", "]"}]}], " ", "+", " ", 
+      RowBox[{
+       RowBox[{"y", "[", "t", "]"}], "^", "2"}]}], " ", "==", " ", 
+     RowBox[{"Exp", "[", 
+      RowBox[{"-", "t"}], "]"}]}], "}"}], ",", " ", "y", ",", " ", "t"}], 
+  "]"}]], "Input",ExpressionUUID->"dc9ec613-8c06-4930-96d5-57623ca466d6"],
+
+Cell[TextData[{
+ "So we will now solve numerically. For this we of course have to give an \
+interval over which the solution has to be computed and we must assume ",
+ StyleBox["initial conditions",
+  FontSlant->"Italic"],
+ ". Because the solution is constructed step by step with numerical \
+procedures, the conditions have to be in the same point, but that point is \
+not necessarily a boundary point of the interval. Now the result is a \
+numerically defined function. It is not needed to go into what a ",
+ StyleBox["InterpolatingFunction",
+  FontFamily->"Courier New"],
+ " is exactly; we can use it like any other function."
+}], "Text",
+ CellChangeTimes->{{3.7253591582587214`*^9, 3.725359207977565*^9}, {
+  3.725359286022029*^9, 3.7253593434933157`*^9}, {3.7253593737090445`*^9, 
+  3.7253594314043446`*^9}},ExpressionUUID->"79823d76-79d4-4218-a769-\
+2beb20bf95ba"],
+
+Cell[BoxData[{
+ RowBox[{"NDSolve", "[", " ", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"y", "'"}], "'"}], "[", "t", "]"}], " ", "+", " ", 
+       RowBox[{"2", " ", 
+        RowBox[{
+         RowBox[{"y", "'"}], "[", "t", "]"}]}], " ", "+", " ", 
+       RowBox[{
+        RowBox[{"y", "[", "t", "]"}], "^", "2"}]}], " ", "==", " ", 
+      RowBox[{"Exp", "[", 
+       RowBox[{"-", "t"}], "]"}]}], ",", " ", 
+     RowBox[{
+      RowBox[{"y", "[", "0", "]"}], "==", "1"}], ",", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"y", "'"}], "[", "0", "]"}], "==", "5"}]}], "}"}], ",", " ", 
+   "y", ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", " ", "0", ",", " ", "5"}], "}"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"f", " ", "=", " ", 
+  RowBox[{"y", " ", "/.", " ", 
+   RowBox[{"%", "[", 
+    RowBox[{"[", "1", "]"}], "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{"Plot", "[", 
+  RowBox[{
+   RowBox[{"f", "[", "x", "]"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", " ", "0", ",", " ", "5"}], "}"}]}], " ", 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.8546231936124887`*^9, 
+  3.854623194021562*^9}},ExpressionUUID->"13bc5649-7edd-4b4e-8dcb-\
+a95dba975d87"],
+
+Cell["\<\
+We can simply find the maximum with the functions FindMaximum or NMaximize.\
+\>", "Text",
+ CellChangeTimes->{{3.7253594370396667`*^9, 
+  3.7253594548136835`*^9}},ExpressionUUID->"310ab958-6449-4a62-a046-\
+44d640adad1e"],
+
+Cell[BoxData[
+ RowBox[{"FindMaximum", "[", " ", 
+  RowBox[{
+   RowBox[{"f", "[", "t", "]"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", " ", "1"}], "}"}]}], "]"}]], "Input",ExpressionUUID->\
+"0cea97fc-91d1-4cee-b0ad-9a462a43c19e"],
+
+Cell[BoxData[
+ RowBox[{"NMaximize", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"f", "[", "t", "]"}], ",", 
+     RowBox[{"t", ">=", "0"}]}], "}"}], ",", " ", "t"}], "]"}]], "Input",
+ CellChangeTimes->{{3.8546229262166348`*^9, 3.8546229618162518`*^9}, {
+  3.854623189423312*^9, 
+  3.8546231903327923`*^9}},ExpressionUUID->"9689454a-86eb-4aeb-8059-\
+bc398a2625f5"],
+
+Cell["And it can of course also be done like this:", "Text",
+ CellChangeTimes->{{3.7253594581798754`*^9, 
+  3.725359468289454*^9}},ExpressionUUID->"05015b40-f0e8-4391-b67f-\
+b4f05187b408"],
+
+Cell[BoxData[
+ RowBox[{"FindRoot", "[", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"f", "'"}], "[", "t", "]"}], "==", "0"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", " ", "1"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.854622909361692*^9, 
+  3.854622911659193*^9}},ExpressionUUID->"6bf0b5c2-4d44-4829-a93d-\
+1d7da42c2b9b"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"f", "[", "t", "]"}], " ", "/.", " ", "%"}]], "Input",ExpressionUUID\
+->"2af7c89e-9ead-4404-b693-e4711c596ef2"],
+
+Cell[TextData[{
+ "For ",
+ StyleBox["NDSolve",
+  FontFamily->"Courier New"],
+ " and partial differential equations check out the extra examples in the ",
+ StyleBox["Help Browser",
+  FontFamily->"Courier New"],
+ " with NDSolve."
+}], "Text",
+ CellChangeTimes->{{3.7253594711656184`*^9, 
+  3.7253595255757303`*^9}},ExpressionUUID->"899b8234-1122-49f4-83e0-\
+cb06127f9f0a"]
+}, Closed]]
+}, Open  ]]
+},
+WindowSize->{720, 757.5},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification->1.25,
+FrontEndVersion->"13.3 for Linux x86 (64-bit) (July 24, 2023)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[StyleDefinitions -> "Default.nb"]], 
+   Cell[
+    StyleData["Input"], Background -> RGBColor[1, 0.9, 0.8]]}, 
+  WindowMargins -> {{417, Automatic}, {59.25, Automatic}}, Visible -> False, 
+  FrontEndVersion -> "13.3 for Linux x86 (64-bit) (July 24, 2023)", 
+  StyleDefinitions -> "PrivateStylesheetFormatting.nb"],
+ExpressionUUID->"51af5c21-ad86-4c84-b7fd-96adb3e9d650"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "anoniemefuncties"->{
+  Cell[8495, 245, 273, 10, 46, "Subsection",ExpressionUUID->"18bf250d-1fcb-410f-84cf-2e2bf791aabd",
+   CellTags->"anoniemefuncties"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"anoniemefuncties", 40852, 1234}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 509, 13, 86, "Chapter",ExpressionUUID->"3ed31416-c8dc-4ba9-910e-8ff1b63776de",
+ Evaluatable->False,
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}],
+Cell[1092, 37, 900, 13, 43, "Text",ExpressionUUID->"b40e249c-1e25-4449-a6a0-ff1357c8490f",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}],
+Cell[1995, 52, 897, 15, 101, "Text",ExpressionUUID->"c1e226dd-2a8f-4881-b157-cedd7a97c6bd",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2929, 72, 300, 9, 83, "Section",ExpressionUUID->"bf5a2565-fdd6-4fe8-9753-fef4b0c5de35",
+ Evaluatable->False,
+ CounterAssignments->{{"Section", 3}}],
+Cell[CellGroupData[{
+Cell[3254, 85, 249, 10, 67, "Subsection",ExpressionUUID->"7abfc0ab-e28c-4270-9777-69bf45391130"],
+Cell[3506, 97, 920, 21, 96, "Text",ExpressionUUID->"44d2bda7-0364-42b5-b29e-6df1024fc294"],
+Cell[4429, 120, 384, 10, 69, "Text",ExpressionUUID->"1ff73cba-db95-4f96-a143-2c39e337795a"],
+Cell[4816, 132, 282, 8, 42, "Text",ExpressionUUID->"2efe00ff-cfbd-42be-b9de-76a3701e14fb"],
+Cell[5101, 142, 88, 0, 37, "Input",ExpressionUUID->"54bc690a-a480-44f6-b52d-8918c1ecb6b1"],
+Cell[5192, 144, 1260, 38, 123, "Text",ExpressionUUID->"e9ad0993-e6c1-4cd4-8cd9-4bba05b1686f"],
+Cell[6455, 184, 173, 4, 37, "Input",ExpressionUUID->"3447221d-1438-4cf7-879f-107b76027d71"],
+Cell[6631, 190, 983, 24, 123, "Text",ExpressionUUID->"3c462ef0-8eff-4f5d-bcd6-8486017b1d18"],
+Cell[7617, 216, 473, 13, 92, "Input",ExpressionUUID->"0ab37207-0725-4f63-8f04-2e9d6a8741ff"],
+Cell[8093, 231, 252, 4, 42, "Text",ExpressionUUID->"57186dfc-23c7-47cd-8d6a-9975d52eb619"],
+Cell[8348, 237, 110, 3, 60, "Input",ExpressionUUID->"3888ac95-f7c7-4de4-9bb4-17f4da52ef03"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[8495, 245, 273, 10, 46, "Subsection",ExpressionUUID->"18bf250d-1fcb-410f-84cf-2e2bf791aabd",
+ CellTags->"anoniemefuncties"],
+Cell[8771, 257, 1129, 29, 124, "Text",ExpressionUUID->"811dcfb8-e75f-4ceb-9bb7-05cd5c78dc06"],
+Cell[9903, 288, 92, 0, 37, "Input",ExpressionUUID->"aa29e889-54cd-4791-aade-f1e0b5e131fb"],
+Cell[9998, 290, 628, 17, 42, "Text",ExpressionUUID->"3dbb6647-50d0-4a5a-8940-458cdd721719"],
+Cell[10629, 309, 101, 0, 37, "Input",ExpressionUUID->"ae1bf610-8d6a-494b-8557-af148dc94741"],
+Cell[10733, 311, 850, 18, 151, "Text",ExpressionUUID->"f6679a82-4403-4e07-a2e5-284ef3a74cf0"],
+Cell[11586, 331, 583, 17, 65, "Input",ExpressionUUID->"5653c224-ec92-4aee-977f-3b5e38cbbea9"],
+Cell[12172, 350, 862, 22, 124, "Text",ExpressionUUID->"ae6d378f-a09f-4f6a-a36d-01bd27d80b20"],
+Cell[13037, 374, 126, 3, 60, "Input",ExpressionUUID->"ec96777d-898e-43fe-8bca-4e0cff389bdc"],
+Cell[13166, 379, 462, 12, 70, "Text",ExpressionUUID->"55837e44-1922-46a9-86bd-9d62338b41d8"],
+Cell[13631, 393, 158, 3, 37, "Input",ExpressionUUID->"79223a3c-6d5d-40f4-9ecd-e949de0014a8"],
+Cell[13792, 398, 179, 3, 42, "Text",ExpressionUUID->"a828d0ae-b986-46b8-86a9-92ce9a2696db"],
+Cell[13974, 403, 85, 0, 37, "Input",ExpressionUUID->"5877f4bb-d66d-4f18-8e04-42a370a2d7b7"],
+Cell[14062, 405, 100, 0, 37, "Input",ExpressionUUID->"6ae6b0d8-cd5f-46f0-b977-0f76b43498a8"],
+Cell[14165, 407, 224, 5, 42, "Text",ExpressionUUID->"f199f99c-8e2e-4b7f-8db8-fe01d8bdda7c"],
+Cell[14392, 414, 679, 17, 125, "Text",ExpressionUUID->"31debaa0-9722-484f-9c78-3ceb4a045b1d"],
+Cell[15074, 433, 226, 6, 37, "Input",ExpressionUUID->"6cbdc068-7bdf-429e-8439-4c2e7fae6961"],
+Cell[15303, 441, 88, 0, 37, "Input",ExpressionUUID->"0b1766e5-c7c0-49c8-aef8-29d7d388daf1"],
+Cell[15394, 443, 81, 0, 37, "Input",ExpressionUUID->"604ec520-fb98-40ae-a0da-bf82423d63c2"],
+Cell[15478, 445, 566, 14, 98, "Text",ExpressionUUID->"ac7d6371-5c9d-4b71-adcd-dd45f6e65404"],
+Cell[16047, 461, 309, 9, 37, "Input",ExpressionUUID->"ab4cc043-1c49-4b3c-bf95-552b649ef75c"],
+Cell[16359, 472, 403, 12, 42, "Text",ExpressionUUID->"ab9fa4ca-0533-4728-a425-00978b625810"],
+Cell[16765, 486, 230, 6, 37, "Input",ExpressionUUID->"59e31ede-521a-45ce-bbe3-403206b587bc"],
+Cell[16998, 494, 230, 5, 42, "Text",ExpressionUUID->"d7d83950-241b-47b3-96e6-43670b651a07"],
+Cell[17231, 501, 224, 6, 37, "Input",ExpressionUUID->"f1d1559c-09af-4e3c-badb-629f0fda8fd2"],
+Cell[17458, 509, 482, 10, 96, "Text",ExpressionUUID->"aa5a3399-50ec-4d50-8bab-ba796c404846"],
+Cell[17943, 521, 471, 14, 37, "Input",ExpressionUUID->"2330517e-7b26-43fb-b134-c4f167dbf041"],
+Cell[18417, 537, 318, 10, 37, "Input",ExpressionUUID->"3756bfd7-3436-49cf-809a-79de6a2bf49d"],
+Cell[18738, 549, 899, 24, 152, "Text",ExpressionUUID->"91f864d1-68c8-41c5-9f57-0af85e2f8b23"],
+Cell[19640, 575, 357, 11, 37, "Input",ExpressionUUID->"b3ab40ad-a7e4-461f-b96f-c78963f82232"],
+Cell[20000, 588, 343, 10, 37, "Input",ExpressionUUID->"06539164-147f-4924-a937-e42555390e30"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[20380, 603, 266, 10, 46, "Subsection",ExpressionUUID->"e22ebbab-e230-4039-8269-720ef109cff8"],
+Cell[20649, 615, 835, 23, 130, "Text",ExpressionUUID->"1f45ac84-ec11-4b1e-88df-2409f3dcb48d"],
+Cell[21487, 640, 293, 9, 35, "Input",ExpressionUUID->"ed1cf580-50af-4f55-8690-768ca07eed92"],
+Cell[21783, 651, 1223, 35, 158, "Text",ExpressionUUID->"ecc66a14-b5a8-4341-b52f-1ca401482845"],
+Cell[23009, 688, 103, 0, 38, "Input",ExpressionUUID->"61397c32-d86b-44ac-9f18-f483397e664b"],
+Cell[23115, 690, 239, 6, 43, "Text",ExpressionUUID->"763111e6-1209-453a-b433-1587f167cdf5"],
+Cell[23357, 698, 506, 13, 141, "Input",ExpressionUUID->"fcbf9aa0-9782-4b3e-8269-5d5d53300ca4"],
+Cell[23866, 713, 661, 20, 45, "Text",ExpressionUUID->"d4af2194-69c4-4938-94c0-e89821c87b52"],
+Cell[24530, 735, 114, 0, 38, "Input",ExpressionUUID->"81b77e63-b24d-4bda-ab2b-1cd845346218"],
+Cell[24647, 737, 88, 0, 38, "Input",ExpressionUUID->"35a3985c-b3b7-44d8-b0bb-9d5d006de872"],
+Cell[24738, 739, 115, 0, 38, "Input",ExpressionUUID->"ae0863d5-8643-4ee6-9717-4e92ab0681d4"],
+Cell[24856, 741, 1106, 42, 130, "Text",ExpressionUUID->"c42cb5ce-f6d5-4b94-aa59-039e2de748a7"],
+Cell[25965, 785, 700, 17, 130, "Text",ExpressionUUID->"6f3b19ce-723f-4d75-b413-601de18faff5"],
+Cell[26668, 804, 512, 14, 89, "Input",ExpressionUUID->"cc49b80b-14dc-4ef2-a9ad-72fd295e02f7"],
+Cell[27183, 820, 182, 3, 43, "Text",ExpressionUUID->"ea47b322-dec1-4d7a-ac60-33f0771350db"],
+Cell[27368, 825, 1179, 24, 245, "Text",ExpressionUUID->"d86af3f5-7d10-4fd7-bfa9-fc6123854420"],
+Cell[28550, 851, 914, 31, 72, "Text",ExpressionUUID->"11941371-bdeb-49bc-a9c9-7b3369c5f9a3"],
+Cell[29467, 884, 524, 15, 36, "Input",ExpressionUUID->"d2deade2-e959-4d73-9f19-13aed943012f"],
+Cell[29994, 901, 764, 22, 101, "Text",ExpressionUUID->"dbfb441d-5de2-4a6d-b60d-583b58e74f74"],
+Cell[30761, 925, 588, 14, 121, "Text",ExpressionUUID->"caf78085-365f-465b-9349-0cf393b99845"],
+Cell[31352, 941, 755, 22, 36, "Input",ExpressionUUID->"cd7d3a5b-17b0-408c-a082-590b28eb26d2"],
+Cell[32110, 965, 431, 12, 72, "Text",ExpressionUUID->"6035ed13-80bf-4a2c-af65-d5c61a74ed9a"],
+Cell[32544, 979, 396, 10, 63, "Input",ExpressionUUID->"a30b5433-00d1-4027-9698-abb430cf2fc8"],
+Cell[32943, 991, 300, 9, 43, "Text",ExpressionUUID->"fe596e7c-f4dc-414f-9d29-671bac3050d4"],
+Cell[33246, 1002, 170, 4, 36, "Input",ExpressionUUID->"037e3e73-1f12-46a2-b054-7fd38ad5ca72"],
+Cell[33419, 1008, 781, 24, 101, "Text",ExpressionUUID->"170f1c34-2a58-4eb1-bc31-ec178577c8ce"],
+Cell[34203, 1034, 1065, 31, 89, "Input",ExpressionUUID->"d162035e-e4bb-4202-b141-075931934b0d"],
+Cell[35271, 1067, 256, 6, 43, "Text",ExpressionUUID->"814efe86-a565-4c23-8683-142144e869ec"],
+Cell[35530, 1075, 559, 16, 36, "Input",ExpressionUUID->"dc9ec613-8c06-4930-96d5-57623ca466d6"],
+Cell[36092, 1093, 869, 16, 158, "Text",ExpressionUUID->"79823d76-79d4-4218-a769-2beb20bf95ba"],
+Cell[36964, 1111, 1241, 38, 89, "Input",ExpressionUUID->"13bc5649-7edd-4b4e-8dcb-a95dba975d87"],
+Cell[38208, 1151, 229, 5, 43, "Text",ExpressionUUID->"310ab958-6449-4a62-a046-44d640adad1e"],
+Cell[38440, 1158, 237, 6, 36, "Input",ExpressionUUID->"0cea97fc-91d1-4cee-b0ad-9a462a43c19e"],
+Cell[38680, 1166, 378, 10, 36, "Input",ExpressionUUID->"9689454a-86eb-4aeb-8059-bc398a2625f5"],
+Cell[39061, 1178, 188, 3, 43, "Text",ExpressionUUID->"05015b40-f0e8-4391-b67f-b4f05187b408"],
+Cell[39252, 1183, 350, 10, 36, "Input",ExpressionUUID->"6bf0b5c2-4d44-4829-a93d-1d7da42c2b9b"],
+Cell[39605, 1195, 145, 3, 36, "Input",ExpressionUUID->"2af7c89e-9ead-4404-b693-e4711c596ef2"],
+Cell[39753, 1200, 368, 11, 72, "Text",ExpressionUUID->"899b8234-1122-49f4-83e0-cb06127f9f0a"]
+}, Closed]]
+}, Open  ]]
+}
+]
+*)
+

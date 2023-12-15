@@ -1,0 +1,16 @@
+trial,trial_for_input_method,use_tue_laptop,input_method,mouse_speed,mouse_accuracy,trackpad_speed_set,right_handed,right_mouse_handed,right_trackpad_handed,major,gender,touchpad_speed,touchpad_honor,mouse_speed_rec,mouse_threshold_1,mouse_threshold_2,mouse_acceleration,platform,platform_version,screen_width,screen_height,target_x,target_y,target_radius,delay
+5,5,1,0,1,1,1,1,1,1,Computer Science,0,-1,-1,-1,-1,-1,-1,Linux,6.6.5-arch1-1,1920,1080,77,77,3,3.0045617849973496
+6,6,1,0,1,1,1,1,1,1,Computer Science,0,-1,-1,-1,-1,-1,-1,Linux,6.6.5-arch1-1,1920,1080,129,129,9,3.5383413070012466
+7,7,1,0,1,1,1,1,1,1,Computer Science,0,-1,-1,-1,-1,-1,-1,Linux,6.6.5-arch1-1,1920,1080,0,171,6,3.0904143109983124
+8,8,1,0,1,1,1,1,1,1,Computer Science,0,-1,-1,-1,-1,-1,-1,Linux,6.6.5-arch1-1,1920,1080,-177,-177,6,2.514383943998837
+9,9,1,0,1,1,1,1,1,1,Computer Science,0,-1,-1,-1,-1,-1,-1,Linux,6.6.5-arch1-1,1920,1080,0,-121,3,3.102558137001324
+10,10,1,0,1,1,1,1,1,1,Computer Science,0,-1,-1,-1,-1,-1,-1,Linux,6.6.5-arch1-1,1920,1080,-83,-83,3,3.966389828001411
+11,11,1,0,1,1,1,1,1,1,Computer Science,0,-1,-1,-1,-1,-1,-1,Linux,6.6.5-arch1-1,1920,1080,-138,0,6,3.806423795998853
+12,12,1,0,1,1,1,1,1,1,Computer Science,0,-1,-1,-1,-1,-1,-1,Linux,6.6.5-arch1-1,1920,1080,161,0,9,2.6963677769999777
+13,13,1,0,1,1,1,1,1,1,Computer Science,0,-1,-1,-1,-1,-1,-1,Linux,6.6.5-arch1-1,1920,1080,0,-127,3,2.6813925619971997
+14,14,1,0,1,1,1,1,1,1,Computer Science,0,-1,-1,-1,-1,-1,-1,Linux,6.6.5-arch1-1,1920,1080,256,0,9,2.170372338001471
+15,15,1,0,1,1,1,1,1,1,Computer Science,0,-1,-1,-1,-1,-1,-1,Linux,6.6.5-arch1-1,1920,1080,-201,-201,9,2.19136975299989
+16,16,1,0,1,1,1,1,1,1,Computer Science,0,-1,-1,-1,-1,-1,-1,Linux,6.6.5-arch1-1,1920,1080,96,96,3,2.397537541000929
+17,17,1,0,1,1,1,1,1,1,Computer Science,0,-1,-1,-1,-1,-1,-1,Linux,6.6.5-arch1-1,1920,1080,155,0,3,2.0233961320009257
+18,18,1,0,1,1,1,1,1,1,Computer Science,0,-1,-1,-1,-1,-1,-1,Linux,6.6.5-arch1-1,1920,1080,111,111,9,3.2986693829989235
+19,19,1,0,1,1,1,1,1,1,Computer Science,0,-1,-1,-1,-1,-1,-1,Linux,6.6.5-arch1-1,1920,1080,-219,0,9,2.8683799669997825

@@ -1,0 +1,151 @@
+\section{Matrices and systems of linear equation}
+
+\subsection{Matrices}
+
+\subsubsection{What is a matrix?}
+
+\begin{definition}[Matrix]
+    A \emph{matrix} is a rectangular array of numbers or elements from some arithmetical structure, like
+    $$ A =
+    \begin{pmatrix}
+        1 & 0 & 4 & -2 \\
+        0 & 2 & 0 & 1
+    \end{pmatrix}
+    $$
+\end{definition}
+
+\subsubsection{Matrix arithmetic: addition}
+Add each element of matrix A to the corresponding element to matrix B.
+
+\subsubsection{Properties}
+\begin{enumerate}
+    \item $ A + B = B + A $ (commutativity)
+    \item $ (A + B) + C = A + (B + C) $ (associativity)
+\end{enumerate}
+
+\subsubsection{Matrix arithmetic: scalar multiplication}
+Let $ \lambda $ be a scalar and $ A $ be a $ m \times n $-matrix.
+The matrix $ \lambda A $ is obtained by multiplying \emph{every} element of $A$
+with $\lambda$.
+
+\subsubsection{Matrix arithmetic: multiplication}
+We only define the product $AB$ of two matrices $A$ and $B$ if the
+\emph{row} of $A$ have the same length as the columns of $B$
+
+\begin{nb}
+    $AB$ and $BA$ are not necessarily the same. Thus matrix multiplication is not commutative
+\end{nb}
+
+\subsubsection{Property}
+For matrices with correc dimensions, various arithmetic rules hold.
+$$ A(B+C) = AB + AC $$
+$$ (E+F)G = EG + FG $$
+$$ (\lambda A)B = \lambda (AB) $$
+$$ \lambda (\mu A) = (\lambda\mu) A $$
+$$ (AB)C = A(BC) $$
+
+\subsubsection{Zero matrix}
+$$ O = \begin{pmatrix}
+    0 & \dots & 0 \\
+    \vdots & \ddots & \vdots \\
+    0 & \dots & 0
+\end{pmatrix} $$
+
+\subsubsection{The opposite matrix}
+The opposite matrix of $A$ is $(-1)A$ or $-A$. And it satisfies $A + (-A) = O$.
+
+\subsubsection{The identity matrix}
+The $n \times n$-matrix
+$$ I = \begin{pmatrix}
+    1 & 0 & \dots & 0 \\
+    0 & 1 & \ddots & \vdots \\
+    \vdots & \ddots & \ddots & 0 \\
+    0 & \dots & 0 & 1
+\end{pmatrix} $$
+It satisfies $IA = AI = A$ for every $n \times n$-matrix $A$.
+
+\subsubsection{The inverse matrix}
+$A^{-1}$ is called the \emph{inverse} of $A$ if $A \times A^{-1} = I$ and $A$ is called \emph{invertible}.
+
+\subsubsection{Property}
+\begin{enumerate}
+    \item Let $A$ and $B$ be invertible $n \times n$ matrices. Then the prodcut $AB$ is also invertible and
+$$ (AB)^{-1} = A^{-1}B^{-1} $$
+    \item Let $A$ be an invertible $n$ by $n$ matrix and $m$ be a positive integer. Then $A^m$ is invertible
+    $$ (A^m)^{-1}  = (A^{-1})^m = A^{-m} $$
+    \item $A^k\cdot A^l = A^{k+l}$
+\end{enumerate}
+
+\subsubsection{The transpose of a matrix}
+If $A = (a_{ij})$ is an $m \times n$ matrix, then its \emph{transpose} $A^T$ is the $n \times m$ matrix whose entries
+in position $i,j$ equal $a_{ji}$.
+\par A matrix $A$ is called symmetric if $A = A^T$
+
+\subsubsection{Property}
+\begin{align*}
+(A+B)^T & = A^T + B^T \\
+(\lambda A)^T & = \lambda A^T \\
+(AB)^T & = B^TA^T \\
+(A^T)^T & = A
+\end{align*}
+
+\subsubsection{Matrix Algebra rules}
+\begin{center}
+    \begin{tabular}{ c | l | r }
+        1. & $A+B=B+A$ & Commutative Law of Addition \\
+        2. & $ A+(B+C) = (A+B)+C $ & Associative Law of Addition \\
+        3. & $ \lambda(A+B) \lambda A + \lambda B $, where $ \lambda \in \mathbb{R} $ & Distributive Law of a Scalar over Matrices \\
+        4. & $ (\lambda + \mu)A = \lambda A + \mu A  $, where $ \lambda,\mu \in \mathbb{R} $& Distributive Law of Scalars over a Matrix \\
+        5. & $ \lambda(\mu A) = (\lambda \cdot \mu)A $, where $ \lambda,\mu \in \mathbb{R} $ & Associative Law of Scalar Multiplication \\
+        6. & $ OA = O $, where $O$ is the zero matrix & Zero Matrix Annihilates all Products \\
+        7. & $ 0A = O $, where $0$ on the left is the scalar $0$ & Zero Scalar Annihilates all Products \\
+        8. & $ A + O = A $ & Zero Matrix is an identity for Addition \\
+        9. & $ A + (-1)A = O $ & Negation produced additive inverses \\
+        10. & $ (B+C)A=BA+CA $ & Right Distributive Law of Matrix Multiplication \\
+        11. & $ A(B+C)=AB+AC $ & Left Distributive Law of Matrix Multiplication \\
+        12. & $ A(BC)=(AB)C $ & Associative Law of Matrix Multiplication \\
+        13. & $ IA=A $ and $ AI = A $ & Identity Matrix is a Multiplicative Identity \\
+        14. & If $ A^{-1} $ exists, $ (A^{-1})^{-1} = A $ & Involution Property of Inverses \\
+        15. & If $ A^{-1} \text{ and } B^{-1} $ exist, $ (AB)^{-1} = B^{-1}A^{-1} $ & Inverse of Product Rule \\
+    \end{tabular}
+\end{center}
+
+\subsection{Row reduction}
+
+\subsubsection{Elementary row operations}
+\begin{enumerate}
+    \item Interchange the order of the rows.
+    \item Multiply every entry in a row by a non-zero constant.
+    \item Replace a row by the sum of this row and a scalar multiple of another row.
+\end{enumerate}
+
+\subsubsection{Reduced row echalon form}
+A matrix in reduced row ecchalon form has the following properties:
+\begin{itemize}
+    \item Every row starts with (possibly zero) zeros.
+    \item Its first non-zero entry (if there is any) is 1 (its leading entry). The column containing this 1 has zeros in all other entries.
+    \item Every non-zero row starts with more zeros than the row directly above it. In particular, if there are any 'zero rows', they are all below the non-zero rows.
+\end{itemize}
+
+\subsection{Systems of linear equations}
+
+\begin{definition}[(System of linear equations)]
+    A linear equation in the variables $x_1,x_2,\dots,x_n$ is an equation of the form
+    $$ a_1x_1 + a_2x_2 + \dots + a_nx_n = b$$
+    where $ a_1,a_2,\dots,a_n,b$ are scalars from the field, coefficients of the equation. \par
+    A \emph{system of linear equations} in the unknowns $ x_1,\dots,x_2 $ consists of $m$ such equations:
+    $$ \begin{matrix}
+        a_{11}x_1&+&a_{12}x_2&+&\dots&+&a_{1n}x_n&=&b_1 \\
+        a_{21}x_1&+&a_{22}x_2&+&\dots&+&a_{2n}x_n&=&b_2 \\
+        \vdots& &&&               &  &  \vdots&&\vdots \\
+        a_{m1}x_1&+&a_{m2}x_2&+&\dots&+&a_{mn}x_n&=&b_m
+    \end{matrix} $$
+    The matrix
+    $$ A = \begin{pmatrix}
+        a_{11} &\dots &a_{1n} \\
+        \vdots & & \vdots \\
+        a_{m1} & \dots & a_{mn}
+    \end{pmatrix} $$
+    is called the \emph{coefficient matrix} and the row $ \vec{b} = (b_1,\dots,b_m) $ is called the \emph{right-hand side}. \par
+    If $ b_i=0 $ for all $ i $ then the system is called \emph{homogeneous}, and otherwise is called \emph{inhomogeneous}.
+\end{definition}

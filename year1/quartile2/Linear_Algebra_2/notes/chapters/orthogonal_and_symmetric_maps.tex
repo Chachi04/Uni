@@ -1,0 +1,85 @@
+\section{Orthogonal and symmetric maps}
+
+\subsection{Orthogonal maps}
+\begin{definition}[Orthogonal map]
+    Let $v$ be a real inner product space. A linear map $\A: V \to V$ is called \emph{orthogonal} if
+    $$\norm{\A\vec{x}} = \norm{\vec{x}}$$
+    for all vectors $\vec{x} \in V$. In other words, a linear map $\A: V \to V$ is orthogonal if the \emph{length is invariant} under $\A$.
+\end{definition}
+
+\begin{theorem}[Polarization formula]
+    In a real inner product space $V$, we always have
+    $$(\vec{x},\vec{y}) = \frac{1}{2}\left((\vec{x}+\vec{y},\vec{x}+\vec{y})-(\vec{x},\vec{x})-(\vec{y},\vec{y})\right)$$
+    As a consequence, we can express \emph{inner products between vectors in terms of vector lengths}:
+    $$(\vec{x},\vec{y}) = \frac{1}{2}\left(\norm{\vec{x}+\vec{y}}-\norm{x}-\norm{y}\right).$$
+\end{theorem}
+
+\begin{theorem}
+    Let $V$ ba a finite real inner product space, and let $\A: V \to V$ be linear. Then the following are equivalent:
+    \begin{enumerate}
+        \item $\A$ is orthogonal.
+        \item $\norm{\A\vec{x}} = \norm{\vec{x}}$ for all $\vec{x} \in V$.
+        \item $(\A\vec{x},\A\vec{y}) = (\vec{x},\vec{y})$ for all $\vec{x},\vec{y} \in V$.
+        \item For every orthonormal system $\vec{a}_1,\dots,\vec{a}_n$ in $V$, the system $\A\vec{a}_1,\dots,\A\vec{a}_n$ is again orthonormal.
+        \item For every orthonormal basis $\alpha$ of $V$, the basis $\A\alpha$ is again orthonormal.
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+    Let $V$ be a finite real inner product space, and let $\A: V \to V$ and $\B: v \to V$ be orthogonal linear maps. 
+    \begin{enumerate}
+        \item The composition $\A\B: V \to V$ is orthogonal.
+        \item $\A$ is invertible and $\A\inv$ is orthogonal.
+    \end{enumerate}
+\end{theorem}
+
+\begin{remark}
+    As a consequence, powers of orthogonal maps are orthogonal. However, in infinite dimensional spaces, there are exist orthogonal maps that are not invertible.
+\end{remark}
+
+\subsection{Orthogonal matrices}
+\begin{corollary}
+    We now consider $\R^n$ with the standard inner product. A linear map $\A: \R^n \to \R^n$ is orthogonal if and only if the matrix $\A e_1, \dots, \A e_n$ is an orthonormal system.
+\end{corollary}
+
+\begin{definition}[Orthogonal matrix]
+    A real $n \times n$-matrix $A$ is called \emph{orthogonal} if the columns of $A$ form an orthonormal system in $\R^n$.
+\end{definition}
+
+\begin{theorem}
+    Let $\A: \R^n \to \R^n$ be a linear map with representation matrix $A$. The following statements are equivalent: 
+    \begin{enumerate}
+        \item $\A$ is orthogonal.
+        \item $A$ is orthogonal.
+        \item $A\trans A = \Id_n$. In other words, the transpose the inverse.
+        \item Thr rows of $A$ form an orthonormal system in $\R^n$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{lemma}
+    Let $V$ be an n-dimensional real inner product space, with its inner product denoted as $(\cdot, \cdot)_V$, and $\alpha$ an orthonormal basis of $V$. 
+    Let $\A:V \to V$ be an orthogonal map. We denote $\norm{\cdot}_\text{st}$ the standard length in $\R^n$ and by $\norm{\cdot}_V$ the length implied by $V$'s inner product.
+    \begin{enumerate}
+        \item $\norm{\alpha{\A\vec{v}}}_\text{st} = \norm{\vec{v}}_V$
+        \item $\norm{\A\alpha\inv\vec{x}} = \norm{\vec{x}}_\text{st}$
+        \item $\alpha \A \alpha\inv: \R^n \to \R^n$ is orthogonal.
+        \item If $\B: \R^n \to \R^n$ is orthogonal, the so is $\alpha\inv\B\alpha:V \to V$.
+    \end{enumerate}
+\end{lemma}
+
+\begin{theorem}
+    If $\alpha, \beta$ are two \emph{orthonormal} bases of in a real inner product space, then the transition matrix $\beta S \alpha$ is orthogonal.
+\end{theorem}
+
+\begin{theorem}
+    If $\alpha$ and $\beta$ are two orthonormal bases in a real inner product space, then
+    $$\alpha S \beta = \beta S \alpha \inv = \beta S \alpha \trans$$
+\end{theorem}
+
+\begin{theorem}
+    Let $\alpha$ be an orthonormal basis for a finite-dimensional real inner product space $V$, and 
+    let $\A : V \to V$ be a linear map and $A_\alpha$ the matrix of $\A$ (with respect to basis $\alpha$).
+    Then the map $\A$ is orthogonal if and only if its matrix $A_\alpha$ is orthogonal.
+\end{theorem}
+
+\subsection{Symmetric maps}

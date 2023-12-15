@@ -1,0 +1,56 @@
+\contentsline {chapter}{\numberline {1}Exploratory Data Analysis}{3}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Data Types and Representations}{3}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Tables}{4}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Investigating data in tables}{4}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Questions you should ask}{4}{subsection.1.3.1}%
+\contentsline {section}{\numberline {1.4}Going beyond plots}{5}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Summary Statistics}{5}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}Location Summary Statistics}{5}{subsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.5.2}Scale Summary Statistics}{6}{subsection.1.5.2}%
+\contentsline {subsection}{\numberline {1.5.3}Association Summary Statistics}{6}{subsection.1.5.3}%
+\contentsline {section}{\numberline {1.6}Elementary Statistical Plots}{7}{section.1.6}%
+\contentsline {subsection}{\numberline {1.6.1}Dot plots / Strip plots}{7}{subsection.1.6.1}%
+\contentsline {subsection}{\numberline {1.6.2}Scatter plot}{8}{subsection.1.6.2}%
+\contentsline {subsection}{\numberline {1.6.3}Histogram}{8}{subsection.1.6.3}%
+\contentsline {subsection}{\numberline {1.6.4}Cumulative histogram}{8}{subsection.1.6.4}%
+\contentsline {subsection}{\numberline {1.6.5}Bar chart}{9}{subsection.1.6.5}%
+\contentsline {section}{\numberline {1.7}Advanced Statistical Plots}{9}{section.1.7}%
+\contentsline {subsection}{\numberline {1.7.1}Box plot}{9}{subsection.1.7.1}%
+\contentsline {subsection}{\numberline {1.7.2}Kernel density plot}{9}{subsection.1.7.2}%
+\contentsline {subsubsection}{How to generate a kernel density plot?}{9}{section*.3}%
+\contentsline {subsection}{\numberline {1.7.3}Typical distribution shapes}{10}{subsection.1.7.3}%
+\contentsline {subsection}{\numberline {1.7.4}Violin plot}{10}{subsection.1.7.4}%
+\contentsline {subsection}{\numberline {1.7.5}Empirical cumulative distribution function (ECDF)}{10}{subsection.1.7.5}%
+\contentsline {subsubsection}{Interpreting ECDF}{10}{section*.4}%
+\contentsline {chapter}{\numberline {2}Data visualization and Communication}{11}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Visualization in communication and exploration}{11}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Purpose}{11}{subsection.2.1.1}%
+\contentsline {section}{\numberline {2.2}Search}{11}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Human Perception}{11}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Visual processing}{11}{subsection.2.3.1}%
+\contentsline {section}{\numberline {2.4}Encoding data}{12}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Marks and Channels}{12}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Arrangement}{12}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Mapping color}{12}{subsection.2.4.3}%
+\contentsline {section}{\numberline {2.5}Idioms}{12}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Elements of a chart}{12}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Scatter plot}{12}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.3}Bar chart}{12}{subsection.2.5.3}%
+\contentsline {subsection}{\numberline {2.5.4}Stacked bar chart}{12}{subsection.2.5.4}%
+\contentsline {subsection}{\numberline {2.5.5}Normalized stacked bar chart}{13}{subsection.2.5.5}%
+\contentsline {subsection}{\numberline {2.5.6}Line chart}{13}{subsection.2.5.6}%
+\contentsline {subsection}{\numberline {2.5.7}Choosing a chart}{13}{subsection.2.5.7}%
+\contentsline {subsection}{\numberline {2.5.8}Histogram}{13}{subsection.2.5.8}%
+\contentsline {subsection}{\numberline {2.5.9}Heatmap}{13}{subsection.2.5.9}%
+\contentsline {subsection}{\numberline {2.5.10}Box plot}{13}{subsection.2.5.10}%
+\contentsline {subsection}{\numberline {2.5.11}Violin plot}{13}{subsection.2.5.11}%
+\contentsline {subsection}{\numberline {2.5.12}Box plot vs violin plot}{13}{subsection.2.5.12}%
+\contentsline {subsection}{\numberline {2.5.13}Pie chart}{13}{subsection.2.5.13}%
+\contentsline {subsection}{\numberline {2.5.14}Scatter plot matrix, parallel coordinates}{13}{subsection.2.5.14}%
+\contentsline {section}{\numberline {2.6}Effectiveness, Evils, Ethics}{13}{section.2.6}%
+\contentsline {chapter}{\numberline {3}Data mining methods}{14}{chapter.3}%
+\contentsline {section}{\numberline {3.1}What is data mining}{14}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Categories}{14}{subsection.3.1.1}%
+\contentsline {section}{\numberline {3.2}Data mining methods}{14}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Linear Regression}{14}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Clustering}{14}{section.3.4}%

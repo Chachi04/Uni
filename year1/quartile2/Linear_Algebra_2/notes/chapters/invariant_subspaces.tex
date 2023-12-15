@@ -1,0 +1,139 @@
+\section{Invariant subspaces}
+\subsection{Invariant subspace}
+\begin{definition}[Invariant subspace]
+    Let $W$ be a subspace of $V$. $W$ is called \emph{invariant under linear map $\mathcal{A}: V \to V$} if $\mathcal{A}\vec{w} \in W$ for all $\vec{w} \in W$.
+\end{definition}
+
+\begin{example}[Null space and range]
+    \begin{itemize}
+        \item The null space $\ns$ pf a linear map $\mathcal{A}$ is always invariant: if $\vec{x} \in \ns$, then $\mathcal{A}\vec{x} = \vec{0}$,
+            and $\vec{0} \in \ns$.
+        \item The range $\range$ of a linear map $\mathcal{A}$ is invariant if and only if $\mathcal{A}$ is surjective: if $\vec{y} \in \range$,
+            then $\vec{y} = \mathcal{A}\vec{x}$ for some $\vec{x} \in V$, and $\mathcal{A}\vec{x} \in \range$.
+    \end{itemize}
+\end{example}
+
+\begin{example}[Counterexample, rotation in two-dimension space]
+    Let $\mathcal{A}$ be a $90^\circ$ rotation map. Then let $W = <e_1>$. $W$ is not invariant
+\end{example}
+
+\begin{theorem}
+    Let $\mathcal{A}: V \to V$ be linear and let $W = <\vec{a}_1, \dots, \vec{a}_n>$. W is invariant under $\mathcal{A}$ if
+    and only if $\mathcal{A}\vec{a}_i \in W$ for $i = 1,\dots,n$.
+\end{theorem}
+
+\subsection{Restriction unto an invariant subspace}
+\begin{definition}[Restriction unto an invariant subspace]
+    If $W$ is invariant under $\mathcal{A}$, then all image vectors $\mathcal{A}\vec{w}$ with $\vec{w} \in W$ are again in $W$.
+    So if we restrict $\mathcal{A}$ to $W$, we obtain a well-defined linear map $W \to W$, the \emph{restriction of the map} $\mathcal{A}$
+    unto $W$, which we denote by $\mathcal{A}|_W$.
+\end{definition}
+
+\emph{Invariant spaces give us a simpler matrix shape}, because the matrix contains a block of the restriction:
+
+\begin{theorem}
+    Suppose $\alpha = \{\vec{a}_1, \dots, \vec{a}_2\}$ is a basis for $V$ such that $W = <\vec{a}_1, \dots, \vec{a}_m>$ is invariant under $\A$. Then the matrix $A_\alpha$ has the following form:
+    $$\begin{pmatrix} & & & * & \dots & * \\
+            & M_1 & &  \vdots & & \vdots \\
+        0 & \dots & 0 & \vdots & & \vdots \\
+          & \vdots\vdots & & \vdots & & \vdots \\
+    0 & \dots & 0 & * & \dots & * \end{pmatrix},$$
+    The $m \times m$-matrix $M_1$ is the matrix of the restriction $\A_{|W}: W \to W$ w.r.t. the basis $\{\vec{a}_1, \dots, \vec{a}_m\}$.
+\end{theorem}
+
+\begin{example}[Proving invariance and analysing a map without even knowing its full map description]
+    Consider in $\R^4$ the (independent) vectors
+    $$\vec{a}=(1,-1,1,-1) \text{ and } \vec{b}=(1,1,1,1).$$
+    Say we have a linear map $\A: \R^4 \to \R^4$ of which we only know that
+    $$\A\vec{a} = (4,-6,4,-6) \text{ and } \A\vec{b} = (4,6,4,6).$$
+    Even without knowing the full description of $\A$, we will now show that $W = <\vec{a},\vec{b}>$ is
+    invariant and determine a matrix of the restriction unto $W$ - $\A_{|W}:W \to W$.
+
+    To show the invariance of $<\vec{a}, \vec{b}>$, we must verify that $\A\vec{a}$ and $\A\vec{b}$ are linear combinations of $\vec{a}$ and $\vec{b}$.
+    We do this by simultaneously solving the systems of equations with columns $\vec{a}, \vec{b}, \A\vec{a}$ and $\A\vec{b}$:
+    $$\left(\begin{array}{cc|cc}
+        1 & 1 & 4 & 4 \\
+        -1 & 1 & -6 & -6 \\
+        1 & 1 & 4 & 4 \\
+        -1 & 1 & -6 & -6 \\
+    \end{array}\right)$$
+
+    After row reduction and deleting zero rows, the system reduces to
+    $$\left( \begin{array}{cc|cc}
+        1 & 0 & 5 & -1 \\
+    0 & 1 & -1 & 5\end{array} \right),$$
+    which tells us that $\A\vec{a} = 5\vec{a} - \vec{b}$ and $\A\vec{b} = -\vec{a} + 5\vec{b}$, so $W$ is invariant under $\A$.
+    This also tells us how the matrix of the restriction $A_{|W}W \to W$ w.r.t. the basis $\{\vec{a}, \vec{b}\}$ looks like:
+    $$\begin{pmatrix} 5 & -1 \\ -1 & 5 \end{pmatrix}.$$
+
+    Using the restriction matrix, we can now even \emph{determine some eigenvectors without knowing the full map}.
+    The characteristic polynomial of the restriction is $\chi_{A_{|W}}(\lambda) = (5-\lambda)^2 - 1 = 25-10\lambda+\lambda^2-1 = (\lambda-4)(\lambda-6)$.
+    We find that the matrix has eigenvalues $4$ and $6$. In coordinates, we compute the respective $E_4 = <(1,1)>$ and $E_6 = <(1,-1>$.
+    In this basis, the restriction map is simply the diagonal map with the eigenvalues on the diagonal:
+    $$\begin{pmatrix} 4 & 0 \\ 0 & 6 \end{pmatrix}.$$
+
+    We transform the coordinate vectors back into elements of $\R^4:$ $\vec{a} + \vec{b} = (2,0,2,0)$ and $\vec{a} - \vec{b} = (0,2,0,2)$.
+    So the eigenvector basis of $W$ is $\{(2,0,2,0), (0,2,0,2)\}$.
+
+    \emph{We now can simplify the representation of the full map:} if we pick any basis $\alpha$ of $\R^4$ such that the first two basis vectors
+    are the eigenvectors $(2,0,2,0)$ and $(0,2,0,2)$, then the full matrix has the shape
+    $$A_\alpha = \begin{pmatrix}
+                                                      & * & \dots & * \\
+         \begin{pmatrix} 4 & 0 \\ 0 & 6\end{pmatrix}  & \vdots & & \vdots \\
+        0  \dots  0 & \vdots & & \vdots \\
+           \vdots\vdots & \vdots & & \vdots \\
+        0  \dots  0 & * & \dots & * \\
+    \end{pmatrix}$$
+\end{example}
+
+\begin{remark}
+    The characteristic polynomial of a restriction always divides the characteristic polynomial of the larger map.
+\end{remark}
+
+\begin{theorem}
+    If $W$ is an invariant subspace for the linear map $\A V \to V$, then $\chi_{A_{|W}}$, the characteristic polynomial of $\A$'s restriction unto
+    $W$, $\A_{|W}: W \to W$, is a factor of $\chi_\A$, the characteristic polynomial of the map $\A: V \to V$.
+\end{theorem}
+
+\begin{lemma}
+    Let $A$ be a $p \times p$-matrix, and let B be a $q \times q$-matrix. Then
+    $$\det \begin{pmatrix}A & * \\ O  & B \end{pmatrix} = \det(A)\cdot\det(B),$$
+    where $*$ stands for na arbitrary $(p \times q)$-matrix and $O$ for the $q \times p$-zero matrix.
+\end{lemma}
+
+\subsection{Nice results for combinations of invariant subspaces}
+\begin{theorem}
+    Let $\alpha = \{\vec{a}_1, \dots, \vec{a}_n\}$ be a basis for $V$ such that $W_1 = <\vec{a}_1,\dots,\vec{a}_m>$ and $W_2 = <\vec{a}_{m+1}, \dots, \vec{a}_n$ are invariant under $\A: V \to V$.
+    Then the matrix $A_\alpha$ has the following form:
+    $$A_\alpha = \begin{pmatrix}
+        & 0 & \dots & 0 \\
+        M_1 & \vdots & & \vdots\\
+            & 0 & \dots & 0 \\
+        0 \dots 0 & & \\
+        \vdots \vdots & & M_2 & \\
+    0 \dots 0&&\end{pmatrix}$$
+
+    Here $M_1$ and $M_2$ are the $m \times m$ and $(n-m) \times (n-m)$ matrices of the two restrictions $\A_{|W_1}: W_1 \to W_1$ and
+    $\A_{|W_2}: W_2 \to W_2$.
+    
+    In addition we have that
+    $$\det(A_\alpha) = \det(M_1)\det(M_2),$$
+    and that the characteristic polynomial of $\A$ is the product of the characteristic polynomials of the two restrictions:
+    $$\chi_\A = \chi_{A_{|W_1}}\chi_{A_{|W_2}}.$$
+\end{theorem}
+
+\begin{remark}
+    We remark that this result can be generalised further such that it holds
+    for an arbitrary number of invariant subspaces: if $V$ can be broken down
+    into invariant subspaces $W_1 , \dots,W_p$, we can pick a basis $\alpha$ whose $i$-th
+    section is a basis for $W_i$. Let $A_i : W_i \to W_i$ denote the restriction of $\A$
+    unto the subspace $W_i$. 
+
+    Then the matrix $A_\alpha$ has the form.
+    $$A_\alpha = \begin{pmatrix}
+        M_1 & & \\
+            &\ddots&\\
+            &&M_p\end{pmatrix},$$
+            where $M_i$ is the matrix of the respective restriction $\A_i$ w.r.t. the respective basis.
+\end{remark}
+

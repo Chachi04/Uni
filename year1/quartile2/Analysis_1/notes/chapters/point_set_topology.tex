@@ -1,0 +1,74 @@
+\section{Point-set topology of metric spaces}
+Here we introduce three properties for subsets of a metric space: \emph{closedness}, \emph{completeness}, and \emph{compactness}.
+For those three properties we known that every compact set is complete, and every complete set is closed. However, not every closed set is complete,
+and not every complete set is compact.
+
+\subsection{Open sets}
+\begin{definition}[Open set]
+    Let $(X, \dist)$ be a metric space. We say that a subset $O \subseteq X$ is \emph{open} if every $x \in O$ is an interior point of $O$.
+\end{definition}
+
+Now we need to say what it means to be an interior point.
+\begin{definition}[Interior point]
+    Let $(X, \dist)$ be a metric space and let $A$ be subset of $X$. A point $a \in A$ is called an \emph{interior point} of $A$ if
+    \begin{myCenter}
+        \tabline{there exists $r > 0$}
+        \tabline{$B(a,r) \subseteq A$ }
+    \end{myCenter}
+    where $B(a,r)$ is an (open) ball around point $a$ with radius $r$ (\cref{ball}).
+\end{definition}
+
+\begin{proposition}
+    Let $(X, \dist)$ be a metric space. The ball
+    $$B(p,r) := \{x \in X | \dist(x,p) < r \}$$
+    is indeed open.
+\end{proposition}
+
+\begin{proposition}['Open' intervals are open]
+    Let $a,b \in \R$ with $a<b$. Then the intervals $(a,b), (-\infty,b), (a,\infty)$ are all open subsets of $\R$.
+\end{proposition}
+
+\begin{proposition}
+    Let $(X, \dist)$ be a metric space. Then both the empty set $\emptyset$ and the set $X$ itself (both of these are subsets of $X$) are open.
+\end{proposition}
+\begin{proof}
+    We first show that the empty set is open. We argue by contradiction. Suppose there exists a point $x \in \emptyset$ such that
+    $x$ is not an interior point of $X$. Then we have a contradiction, because the empty set has no elements.
+
+    We will now show that $X$ is open. Let $x \in X$. We will show that $x$ is an interior point, i.e. we will show that there exists an $r > 0$
+    such that $B(x,r) \subseteq X$.\\
+    Choose $r:=1$. Then $B(x,r) = B(x,1) \subseteq X$.
+\end{proof}
+
+The set of all interior points of a subset $A \subseteq X$ is called the \emph{interior} of the set $A$.
+\begin{definition}[The interior of a set]
+    Let $(X,\dist)$ be a metric space and let $A \subseteq X$ be a subset of $X$. Then the \emph{interior} of the set $A$, denoted
+    by $\inter\ A$ is the set of all interior points of $A$, i.e $\inter\ A$ is defined as
+    $$\inter\ A := \{x \in A \mid x \text{ is an interior point of } A \}.$$
+\end{definition}
+\begin{example}
+    The interior of the interval $[2,5)$ (viewed as subset of $(\R, |\cdot|)$) is the interval $(2,5)$.
+\end{example}
+
+The interior of a set is always open.
+\begin{proposition}
+    Let $(X, \dist)$ be a metric space and let $A \subseteq X$. Then $\inter\ A$ is open.
+\end{proposition}
+
+\subsubsection*{The union of open sets is always open}
+Unions of open sets are always open. You may recall that if $\mathcal{I}$ is some set and if for every $\alpha \in \mathcal{I}$
+we have a subset $A_\alpha \subseteq X$, then the union
+$$\bigcup_{\alpha \in \mathcal{I}}A_\alpha$$
+is defined as 
+$$\bigcup_{\alpha \in \mathcal{I}}A_\alpha := \{x \in X \mid \text{ there exists } \alpha \in \mathcal{I} \text{ such that } x \in A_\alpha\}$$
+
+\begin{proposition}
+    Let $(X, \dist)$
+
+\subsection{Closed sets}
+
+\subsection{Cauchy sequences}
+
+\subsection{Completeness}
+
+\subsection{Series characterization of completeness in normed vector spaces}

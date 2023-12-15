@@ -1,0 +1,407 @@
+\chapter{Exploratory Data Analysis}
+
+\section{Data Types and Representations}
+\begin{definition}[Data and Information]
+    In data analysis we are interested in the following two concepts:
+    \begin{itemize}
+        \item Data - raw numbers, facts, etc.
+        \item Information - structured, meaningful and useful numbers, facts
+    \end{itemize}
+\end{definition}
+
+\begin{definition}[Data types]
+    We can classify data into two types:
+    \begin{itemize}
+        \item Categorical - data that has no intrinsic numerical value
+            \begin{itemize}
+                \item Nominal - two or more outcomes that have no natural order, e.g. movie genre, hair color, etc.
+                \item Ordinal - two or more outcomes that have a natural order, e.g. movie ratings, level of education, etc.
+            \end{itemize}
+
+        \item Numerical - data that has an intrinsic numerical value
+            \begin{itemize}
+                \item Discrete - data that can attain certain values (typically integers). E.g. the number of days
+                    with sunshine in a certain year, the number of traffic incidents.
+                \item Continuous - data that can attain any value on a given measurement scale.
+                    \begin{itemize}
+                        \item Interval data - equal intervals represent equal differences, there is \emph{no fixed "zero point"}.
+                            e.g. temperature in Celsius, clock time, birth year, etc.
+                        \item Ratio data - both differences and ratios make sense; there is a \emph{fixed "zero point"}.
+                            e.g. temperature in Kelvin, height, weight, movie budget, distance, time duration, etc.
+                    \end{itemize}
+            \end{itemize}
+    \end{itemize}
+\end{definition}
+
+\begin{remark}[Key points]
+    Some key points to remember:
+    \begin{itemize}
+        \item The difference between continuous and discrete data: \\
+            Discrete data has "gaps".
+        \item Why are distances ratio data? \\
+            Because 0 km is an absolute minimum (and 10 km is twice as long as 5 km).
+        \item Why is temperature in degrees Celsius interval data? \\
+            Because 0 degrees Celsius is not an absolute minimum (and 10 degrees Celsius is not twice as hot as 5 
+            degrees Celsius).
+        \item Is temperature difference in Celsius not ratio data either? \\
+            It is ratio data, since the difference of $0^\circ$C represents a fixed minimum.
+        \item Can data represented by numbers be categorical? \\
+            Yes, e.g. sectors of a stadium (nominal), or movie ratings (ordinal).
+            No arithmetic operations can be performed on these numbers.
+    \end{itemize}
+\end{remark}
+
+\begin{remark}[Logarithmic scale data]
+    Logarithmic scale data is numerical, but it is neither ratio nor truly interval.
+    \begin{itemize}
+        \item Logarithmic scale data is a special case of ratio data.
+        \item It is used to represent data that spans a large range of values.
+        \item It is used to represent data that is highly skewed.
+    \end{itemize}
+\end{remark}
+
+\section{Tables}
+\begin{definition}[Tables]
+    Tables are a common way to represent data.
+    \begin{itemize}
+        \item Each row represents an observation.
+        \item Each column represents a variable.
+    \end{itemize}
+
+    They are good for reading off values and drawing attention to actual values.
+
+    There are two types of tables
+    \begin{itemize}
+        \item Reference tables - stores "all" raw data in a table so that it can be looked up easily.
+        \item Demonstration tables - stores a subset of the data in a table to demonstrate a point.
+    \end{itemize}
+\end{definition}
+
+\section{Investigating data in tables}
+
+\subsection{Questions you should ask}
+\begin{itemize}
+    \item What is the \emph{unit of observation}?
+    \item What is the \emph{unit of measurement}?
+    \item Do the values make sense when you compare columns or rows?
+    \item What is the \emph{data type}?
+    \item Which column/row has the largest values?
+    \item Which column/row has the smallest values?
+    \item What is the \emph{population}?
+    \item What is the \emph{sample}?
+\end{itemize}
+
+
+
+% \begin{definition}[Frequency table]
+%     A frequency table is a table that shows the number of observations in each category of a categorical variable.
+% \end{definition}
+%
+% \begin{definition}[Relative frequency table]
+%     A relative frequency table is a table that shows the proportion of observations in each category of a categorical variable.
+% \end{definition}
+
+\section{Going beyond plots}
+Plots help us to explore and give clues.
+
+Numerical summaries like averages help us to document essential features of
+data sets.
+
+One should use both plots and numerical summaries. They complement each
+other.
+
+Numerical summaries are often called statistics or summary statistics (note the
+double meaning of the word: both a scientific field and computed numbers).
+
+\section{Summary Statistics}
+There are different types of summary statistics:
+\begin{itemize}
+    \item Level - location summary statistics \textrightarrow what are "typical" values?
+    \item Spread - scale summary statistics \textrightarrow how much do values vary?
+    \item Relation - association summary statistics \textrightarrow how do values of different quantities vary simultaneously?
+\end{itemize}
+
+
+\subsection{Location Summary Statistics}
+\begin{definition}[Location summary statistics]
+    Location summary statistics are statistics that describe the location of the data.
+    \begin{itemize}
+        \item Mean (average) - $ \bar{x} = \displaystyle\frac{1}{n}\sum_{i=1}^{n}x_i $
+        \item Median - the value separating the higher half from the lower half of a data set.
+        \item Mode - the most frequently occurring value in a data set (it may not be unique).
+    \end{itemize}
+\end{definition}
+
+\begin{remark}
+    The mean is sensitive to outliers, while the median and the mode are not.
+
+    The mean can be misleading / difficult to interpret for non-symmetric data sets.
+\end{remark}
+
+\begin{definition}[Percentiles]
+    Percentiles are a way to describe the location of a data point in a data set.
+    \begin{itemize}
+        \item The $p$-th percentile is the value such that $p$ percent of the data is below it.
+        \item The 0-th percentile is the minimum.
+        \item The 100-th percentile is the maximum.
+        \item For a dataset with $n$ observations, the interval between neighboring percentiles is $\displaystyle\frac{100}{n-1}\%$.
+        \item The median is the 50-th percentile.
+        \item The first quartile is the 25-th percentile.
+        \item The third quartile is the 75-th percentile.
+    \end{itemize}
+\end{definition}
+
+\begin{definition}[Quartiles]
+    Quartiles are a way to describe the location of a data point in a data set.
+    \begin{itemize}
+        \item The first quartile is the 25-th percentile.
+        \item The second quartile = 20-th percentile = median.
+        \item The third quartile is the 75-th percentile.
+        \item The interquartile range (IQR) is the difference between the third and the first quartile.
+    \end{itemize}
+\end{definition}
+
+\subsection{Scale Summary Statistics}
+\begin{definition}[Scale summary statistics]
+    Scale summary statistics are statistics that describe the scale of the data.
+    \begin{itemize}
+        \item Range - the difference between the maximum and the minimum.
+        \item Interquartile Range (IQR) - the difference between the third and the first quartile.
+        \item Sample Variance - $\sigma^2 = \displaystyle\frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2$ (sometime denoted as $s^2$).
+        \item Sample Standard Deviation - $\sigma = \sqrt{\displaystyle\frac{1}{n-1}\sum_{i=1}^{n}(x_i-\bar{x})^2}$
+        \item Median Absolute Deviation (MAD) - the median of the absolute deviations from the median.
+    \end{itemize}
+    
+    The higher these statistics, the more spread/variability in the data.
+\end{definition}
+
+\begin{remark}
+    \begin{itemize}
+        \item The standard deviation has right (physical) unit.
+        \item The variance is more convenient for calculations.
+        \item The range, variance and standard deviation are sensitive to outliers, while IQR and MAD are not. 
+        \item The standard deviation can be used as a general unit to describe variability.
+    \end{itemize}
+\end{remark}
+
+\subsubsection*{Standardization}
+\begin{definition}[z-score]
+    The z-score $z$ (=normalized value) of values $x$ shows is a standardized value of a data point.
+    \begin{itemize}
+        \item It is the number of standard deviations that a data point is above or below the mean.
+        \item It is a dimensionless quantity.
+        \item And it is calculated as $z = \displaystyle\frac{x-\bar{x}}{\sigma}$.
+    \end{itemize}
+\end{definition}
+
+\begin{remark}[Rule of thumb]
+    Observations with a z-score larger than 2.5 or smaller than -2.5 are considered extreme (\emph{outliers}).
+\end{remark}
+
+\subsection{Association Summary Statistics}
+Association statistics try to quantify the strength of the relation between two variables (attributes).
+
+\begin{definition}[Sample Covariance]
+    The covariance of two variables $x$ and $y$ is a measure of how much they vary together.
+    \begin{itemize}
+        \item It is calculated as $s_{xy} = \displaystyle\frac{1}{n-1}\sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})$.
+        \item It is sensitive to the scale of the variables.
+        \item The sample covariance is not bounded.
+    \end{itemize}
+\end{definition}
+
+In order to be useful, the smaple covariance needs to be scaled / standardized.
+
+\begin{definition}[Sample Correlation]
+    The correlation of two variables $x$ and $y$ is a standardized measure of how much they vary together.
+    \begin{itemize}
+        \item It is calculated as $r = \displaystyle\frac{cov(x,y)}{\sigma_x\sigma_y}$.
+        \item It is bounded between -1 and 1.
+    \end{itemize}
+\end{definition}
+
+\begin{remark}[Some remarks about correlation]
+    
+    \begin{itemize}
+        \item The correlation is a measure of linear association.
+        \item The correlation is not a measure of causation.
+        \item The correlation is sensitive to outliers.
+    \end{itemize}
+
+\end{remark}
+
+\begin{remark}[Beware of spurious correlations!]
+    \emph{Spurious correlations} are statistical phenomenon where two variables
+    \emph{appear to be related or correlated}, but \emph{their relation is coincidental}, due to chance
+    or the influence of an unaccounted-for variable.
+\end{remark}
+
+\section{Elementary Statistical Plots}
+
+Typical data analysis questions are:
+\begin{itemize}
+    \item Are values as you expect?
+    \item What are typical sizes?
+    \item How much do values vary?
+    \item How are values distributed?
+    \item Are there exceptional values?
+\end{itemize}
+
+Graphs/Plots/Charts are useful for answering these questions.
+
+\subsection{Dot plots / Strip plots}
+\begin{definition}[Dot plot]
+    A dot plot is a type of plot that displays data values as dots on a number line.
+
+    \begin{itemize}
+        \item One-dimensional numerical data
+        \item Plotting actual values of observations
+        \item The \emph{jitter} option is used to avoid over-plotting.
+        \item Tasks: find clusters, outliers, gaps, etc.
+        \item Not suitable for large data sets.
+    \end{itemize}
+\end{definition}
+
+\subsection{Scatter plot}
+\begin{definition}[Scatter plot]
+    A scatter plot is a type of plot that displays values of two numerical variables as points in a plane.
+
+    \begin{itemize}
+        \item Two-dimensional numerical data
+        \item Plotting actual values of observations
+        \item Tasks: investigate relations; find clusters, outliers, gaps, etc.
+        \item Not suitable for large data sets.
+    \end{itemize}
+
+\end{definition}
+
+\subsection{Histogram}
+\begin{definition}[Histogram]
+    A histogram is a type of plot that displays the distribution of numerical data.
+
+    \begin{itemize}
+        \item One-dimensional numerical data
+        \item Plotting counts of observations in bins (interval of values)
+        \item Tasks: investigate distribution; compare the counts/percentages of bins
+        \item Suitable for large data sets.
+    \end{itemize}
+\end{definition}
+
+\begin{remark}[Bin width sensitivity]
+    Histograms are sensitive to the choice of bin width.
+    \begin{itemize}
+        \item Bin width too small \textrightarrow too many bins \textrightarrow too much detail (wiggly)
+        \item Bin width too large \textrightarrow too few bins \textrightarrow too little detail (smooth)
+    \end{itemize}
+\end{remark}
+
+\begin{remark}[Rule of thumb]
+    The number of bins should be $\approx \sqrt{n}$, where $n$ is the number of observations.
+\end{remark}
+
+\subsection{Cumulative histogram}
+\begin{definition}[Cumulative histogram]
+    A cumulative histogram is a type of plot that displays the distribution of numerical data.
+
+    \begin{itemize}
+        \item One-dimensional numerical data
+        \item Plotting counts of observations in bins (interval of values)
+        \item Tasks: investigate distribution; explore unexpected "jumps"; to lookup percentiles or thresholds
+    \end{itemize}
+
+\end{definition}
+
+\subsection{Bar chart}
+\begin{definition}[Bar chart]
+    A bar chart is a type of plot that displays the distribution of categorical data.
+
+    \begin{itemize}
+        \item One-dimensional categorical data
+        \item Also used for two-dimensional data with one categorical variable and one numerical variable.
+        \item Plotting counts of observations in categories
+        \item Tasks: lookup and compare values.
+    \end{itemize}
+\end{definition}
+
+\section{Advanced Statistical Plots}
+\subsection{Box plot}
+\begin{definition}[Box and whisker plot]
+    Convenient way to display summary statistics.
+
+    \begin{itemize}
+        \item Box: IQR (interquartile range)
+        \item Outliers: dots/crosses/diamonds... for all values above/below $1.5 \times IQR$
+        \item Endpoints of whiskers: min and max (excluding outliers)
+        \item Median: line in the box
+        \item Mean: dot in the box (Optional)
+    \end{itemize}
+
+    Insights are:
+    \begin{itemize}
+        \item Is the plot symmetric with the median in the middle?
+        \item Are there outliers?
+    \end{itemize}
+
+\end{definition}
+
+\subsection{Kernel density plot}
+\begin{definition}[Kernel density plot]
+    The kernel density function shows the likelihood of finding a data point at a specific value.
+
+    \begin{itemize}
+        \item The total area under the curve is 1.
+        \item The area under the curve between two values is the probability of finding a data point between these values.
+        \item It is impossible to determine the minimal and maximal values or to find the mode of a dataset based on its kernel density plot!
+    \end{itemize}
+
+\end{definition}
+
+\subsubsection{How to generate a kernel density plot?}
+\begin{itemize}
+    \item Choose a kernel function and a bandwidth to be taken around each data point.
+    \item Generate a kernel with the chose bandwidth for every data point in the data set
+    \item For a data set with $n$ points, the area under the curve of the kernel of a point is $\displaystyle\frac{1}{n}$.
+    \item The kernel density plot is the sum of the kernels of the data points.
+    \item Bandwidth choice is important!
+\end{itemize}
+
+\subsection{Typical distribution shapes}
+\begin{itemize}
+    \item Symmetric
+    \item Skewed (right or left skewed)
+    \item Types of peaks: kurtosis 
+    \item Unimodal (1 peak)
+    \item Bimodal (2 peaks)
+    % \item Uniform
+    % \item U-shaped
+\end{itemize}
+
+\subsection{Violin plot}
+\begin{definition}[Violin plot]
+    A violin plot is a combination of a box plot and a kernel density plot.
+
+    \begin{itemize}
+        \item Global shape of box-and-whisker plot
+        \item Local details of kernel density plot
+    \end{itemize}
+
+\end{definition}
+
+\subsection{Empirical cumulative distribution function (ECDF)}
+\begin{definition}[Empirical cumulative distribution function (ECDF)]
+    The empirical cumulative distribution function (ECDF) is a function that maps a value to the fraction of values that are smaller or equal to it.
+
+    \begin{itemize}
+        \item It is a step function.
+        \item It is a non-parametric estimator of the cumulative distribution function (CDF).
+        \item It is a good way to visualize the distribution of a data set.
+        \item It is a good way to compare the distribution of two data sets.
+    \end{itemize}
+
+\end{definition}
+
+\subsubsection{Interpreting ECDF}
+\begin{itemize}
+    \item For all $x$ \emph{smaller} than the \emph{minimal} value of the data set, the ECDF is 0.
+    \item For all $x$ \emph{larger or equal} to the \emph{maximal} value of the data set, the ECDF is 1.
+\end{itemize}

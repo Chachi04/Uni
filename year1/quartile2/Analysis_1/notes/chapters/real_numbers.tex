@@ -1,0 +1,160 @@
+\section{Real Numbers}
+
+\subsection{What are the real numbers?}
+\begin{definition}[Real numbers]
+    The real numbers are a complete totally ordered field.
+\end{definition}
+
+\subsection{The completeness axiom}
+
+\begin{definition}[Upper and Lower bound]
+    We say a number $M \in \mathbb{R}$ is an \emph{upper bound} for a set $A \subseteq \mathbb{R}$ if
+    $$\forall a \in A [a \le M].$$
+
+    We say a number $m \in \mathbb{R}$ is a \emph{lower bound} for a set $A \subseteq \mathbb{R}$ if
+    $$\forall a \in A [a \ge M].$$
+\end{definition}
+
+Given the definition of upper and lower bounds, we define what it means
+for a set to be bounded from above, bounded from below and just bounded.
+
+\begin{definition}[bounded from above, bounded from below, bounded]
+    A set $A \subseteq \mathbb{R}$ is \emph{bounded from above} if there exists an upper bound for $A$.
+
+    A set $A \subseteq \mathbb{R}$ is \emph{bounded from below} if there exists a lower bound for $A$.
+
+    A set $A \subseteq \mathbb{R}$ is \emph{bounded} if it is bounded from above and bounded from below.
+\end{definition}
+
+\begin{definition}[Least upper bound (supremum)]
+    Precisely, $M$ is a \emph{least upper bound} of a subset $A$ if both
+    \begin{enumerate}
+        \item $M$ is an upper bound of $A$.
+        \item For every upper bound $L \in \mathbb{R}$ of $A$, it holds that $M \le L$.
+    \end{enumerate}
+\end{definition}
+
+\begin{proposition}
+    Suppose both $M$ and $W$ are a least upper bound of a subset $A \subseteq \mathbb{R}$. Then $M = W$.
+\end{proposition}
+
+\begin{axiom}[Completeness axiom]
+    We say that a totally ordered field \textbf{R} satisfies the \emph{completeness axiom} if every nonempty subset of \textbf{R} that is bounded from above has a least upper bound.
+\end{axiom}
+
+\begin{lemma}
+    Every non-empty subset of the real line that is bounded from below has a \emph{largest lower bound}.
+\end{lemma}
+
+\begin{definition}[infimum]
+    We usually call the largest lower bound of a non-empty set $A \subseteq \R$ that is bounded from below the \emph{infimum} of $A$, and we denote it by $\inf A$.
+\end{definition}
+
+\subsection{Alternative characterizations of suprema and infima}
+\begin{proposition}[alternative characterizationa of supremum]
+    Let $A \subseteq \R$ be non-empty and bounded from above. Let $M \in \R$. Then $M$ is the supremum of $A$ if and only if
+    \begin{enumerate}
+        \item $M$ is an upper bound for $A$,
+        \item and 
+            \begin{center}
+                \parbox{\linewidth}{
+                    \leftskip=0.4\linewidth
+                    for all $\epsilon > 0$, \\
+                    \tab there exists $a \in A$, \\
+                    \tab\tab $a > M - \epsilon$.
+                }
+            \end{center}
+    \end{enumerate}
+\end{proposition}
+
+\begin{proposition}[alternative characterizationa of infimum]
+    Let $A \subseteq \R$ be non-empty and bounded from below. Let $m \in \R$. Then $m$ is the infimum of $A$ if and only if
+    \begin{enumerate}
+        \item $m$ is a lower bound for $A$,
+        \item and 
+            \begin{center}
+                \parbox{\linewidth}{
+                    \leftskip=0.4\linewidth
+                    for all $\epsilon > 0$, \\
+                    \tab there exists $a \in A$, \\
+                    \tab\tab $a < m + \epsilon$.
+                }
+            \end{center}
+    \end{enumerate}
+\end{proposition}
+
+These alternative characterizations of the supremum and infimum really provide a standard way to determining the supremum and infimum of subsets of the real line.
+
+\subsection{Maxima and minima}
+\begin{definition}[maximum and minimum]
+    Let $A \subseteq \R$ be a subset of the real numbers. We say that $y \in A$ is the \emph{maximum} of $A$, and write $y = \max A$, if 
+    \begin{center}
+        for all $a \in A$, \\
+        $a \le y$.
+    \end{center}
+
+    We say that $x \in A$ is the \emph{minimum} of $A$, and write $x = \min A$, if
+    \begin{center}
+        for all $a \in A$, \\
+        $a \ge x$.
+    \end{center}
+\end{definition}
+
+\begin{remark}
+    Even if a set $A \subseteq \R$ is non-empty and bounded, it may not have a maximum or minimum. For example, the set $(0, 1)$ has no maximum or minimum.
+\end{remark}
+
+\begin{proposition}
+    Let $A$ be a subset of $\R$. If $A$ has a maximum, then $A$ is non-empty and bounded from above, and $\sup A = \max A$. If $A$ has a minimum, then $A$ is non-empty and bounded from below, and $\inf A = \min A$.
+\end{proposition}
+
+\begin{proposition}
+    Let $A$ be a subset of $\R$. Assume that $A$ is non-empty and bounded from above. If $\sup A \in A$ then $A$ has a maximum and $\max A = \sup A$.
+\end{proposition}
+
+\begin{proposition}
+    Let $A$ be a subset of $\R$. Assume that $A$ is non-empty and bounded from below. If $\inf A \in A$ then $A$ has a minimum and $\min A = \inf A$.
+\end{proposition}
+
+\subsection{The Archimedean property}
+\begin{proposition}[Archimedeean property]
+    For every real number $x \in \R$ there exists a natural number $n \in \N$ such that $x < n$.
+\end{proposition}
+
+Given this proposition, we can define the ceiling function.
+
+\begin{definition}[ceiling function]
+    The \emph{ceiling function} $\ceil{\cdot}: \R \to \Z$ is defined as follows. For $x \in \R$, $\ceil{x}$ denotes the smallest integer $z \in \Z$ such that $x \le z$.
+\end{definition}
+
+\begin{proposition}
+    For every two real numbers $a,b \in \R$ with $a < b$ there exists a $q \in \Q$ with $a < q < b$.
+\end{proposition}
+
+\subsection{Computation rules for suprema}
+In the proposition below, we use the defintions
+$$ A + B = \{a + b \mid a \in A, b \in B\}$$
+and 
+$$\lambda A = \{\lambda a \mid a \in A\}$$
+for subsets $A,B \subseteq \R$ and a scalar $\lambda \in \R$.
+
+\begin{proposition}
+    Let $A,B,C,D$ be non-empty subsets of $\R$. Assume that $A$ and $B$ are bounded from above and $C$ and $D$ are bounded from below. Then
+    \begin{enumerate}
+        \item $\sup(A+B) = \sup A + \sup B$.
+        \item $\inf(C+D) = \inf C + \inf D$.
+        \item For all $\lambda \ge 0$, $\sup(\lambda A) = \lambda \sup A$.
+        \item For all $\lambda \le 0$, $\sup(\lambda A) = \lambda \inf A$.
+        \item $\sup(-C) = -\inf C$.
+        \item $\inf(-C) = -\sup C$.
+    \end{enumerate}
+\end{proposition}
+
+\subsection{Bernoulli's inequality}
+\begin{proposition}[Bernoulli's inequality]
+    Let $x \in \R$ and $n \in \N$. Then
+    \begin{enumerate}
+        \item If $x \ge -1$, then $(1 + x)^n \ge 1 + nx$.
+        \item If $x \ge 0$ and $n \ge 2$, then $(1 + x)^n \ge 1 + nx$.
+    \end{enumerate}
+\end{proposition}

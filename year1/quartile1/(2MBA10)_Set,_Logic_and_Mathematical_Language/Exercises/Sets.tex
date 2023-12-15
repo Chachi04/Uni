@@ -1,0 +1,57 @@
+\subsection{Exercises}
+\subsubsection{Which of the following sets are equal to each other: $\emptyset, \{0\}, \{\emptyset\}$}
+None
+
+\subsubsection{What are the sets that have no proper subset?}
+Since the empty set is a subset of any set, all non-empty sets have
+at least one proper subset, namely $\emptyset$.
+
+\subsubsection{How many elements does the set $\{\emptyset, \{\emptyset\}, \emptyset\}$}
+Since we do not count multiplicity there are 2 elements.
+
+\subsubsection{Suppose $A = \{\{1\},\{2,3\}\}$. Which of the following is true:}
+\begin{itemize}
+    \item $\{1\} \subseteq A$ - Since $1 \not\in A$, it is false.
+    \item $\{2,3\} \subseteq A$ - Since $2 \not\in A$ and $3 \not\in A$, it is false.
+    \item $\{\{2,3\}\} \subseteq A$ - Since $\{2,3\} \in A$, it is true.
+\end{itemize}
+
+\subsubsection{Suppose A = \{0, \{1,2\}\}. Give all subsets of $\mathcal{P}(A)$}
+$\mathcal{P}(A) = \{\emptyset, \{0\},\{\{1,2\}\}, A\}$  \\
+$\mathcal{P}(\mathcal{P}(A)) = \{$ \\ 
+$\emptyset,$ \\
+$\{\emptyset\}, \{0\}, \{\{1,2\}\}, A,$\\
+$\{\emptyset, \{0\}\}, \{\emptyset, \{\{1,2\}\}\},$
+$\{\emptyset, A\}, \{\{0\}, \{\{1,2\}\}\}, \{\{0\}, A\}, \{\{\{1,2\}, A\}\}$ \\
+$\{\emptyset, \{0\}, \{\{1,2\}\}\}, \{\emptyset,\{0\},\{A\}\}, \{\{0\},\{\{1,2\}\}, A\},$\\
+$\{\emptyset, \{0\}, \{\{1,2\}\}, A\}$\\
+$ \}$
+
+\subsubsection{Suppose a set A contains n elements. How many elements does P(A) have?}
+$|A| = n \Rightarrow |\mathcal{P}(A)| = 2^n$
+
+\subsubsection{Which of the following statements is true for all sets A, B and C? Give a proof or a counter example}
+\begin{enumerate}[label=(\alph*)]
+    \item $A \subseteq ((A \cap B) \cup C) \rightarrow false$ 
+    \begin{proof}[Proof]
+        take $a \in (A\backslash B \backslash C)$, then $a \not\in (A\cap B)$ and $a \not\in C$ \\
+        hence $a \not\in (S\cap B) \cup C $\\
+        we conclude $A \not \subseteq ((A\cap B)\cup C)$
+    \end{proof}
+    \item $(A\cup B) \cap C = (A\cap B)\cup C \rightarrow false$
+    \begin{proof}[Proof]
+        take $a \in C\backslash (A\cup B)$\\
+        then $a \in (A \cap B) \cup C$ \\
+        but $a \not\in (A \cup B)$, so $a \not\in (A\cup B) \cap C$\\
+        we conclude $(A \cup B) \cap C \ne (A \cap B) \cup C$
+    \end{proof}
+    \item $(A \backslash B) \cap C = (A \cap C) \backslash (B \cap C) \rightarrow true$
+    \begin{proof}[Proof]
+        take $a \in (A \backslash B) \cap C$, so $a \in (A \cap C) \backslash (B \cap C)$
+    \end{proof}
+\end{enumerate}
+
+\subsubsection*{Let A,B and C be sets. Prove the following.}
+    \begin{enumerate}[label=(\alph*)]
+        \item
+    \end{enumerate}

@@ -1,0 +1,223 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define Article %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{empheq}
+\usepackage{mdframed}
+\usepackage{booktabs}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{psfrag}
+\usepackage{pgfplots}
+\usepackage{bm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Other Settings
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Page Setting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\geometry{a4paper}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define some useful colors %%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{ocre}{RGB}{243,102,25}
+\definecolor{mygray}{RGB}{243,243,244}
+\definecolor{deepGreen}{RGB}{26,111,0}
+\definecolor{shallowGreen}{RGB}{235,255,255}
+\definecolor{deepBlue}{RGB}{61,124,222}
+\definecolor{shallowBlue}{RGB}{235,249,255}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define an orangebox command %%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\orangebox[1]{\fcolorbox{ocre}{mygray}{\hspace{1em}#1\hspace{1em}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% English Environments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{mytheoremstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\newtheoremstyle{myproblemstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowGreen,linecolor=deepGreen,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{theorem}{Theorem}[section]
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowBlue,linecolor=deepBlue,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{definition}{Definition}[section]
+\theoremstyle{myproblemstyle}
+\newmdtheoremenv[linecolor=black,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{problem}{Problem}[section]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Plotting Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepgfplotslibrary{colorbrewer}
+\pgfplotsset{width=8cm,compat=1.9}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Homework: Week 2}
+\author{Jiaqi Wang}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+    \maketitle
+
+    \section{Exercise 4.9.1}
+    \begin{problem}
+        Show that for all $a,b \in \mathbb{R}$, if $a < b$ then
+        $$\inf[a,b) = a$$
+    \end{problem}
+    \begin{proof}
+        To show that $a$ is an infima we need to show that $a$ is a lower bound and that
+        \begin{center}
+            for all $\epsilon > 0$, \\
+            there exists $x \in [a,b)$, \\
+            $x < a + \epsilon$.
+        \end{center}
+
+        First we show that $a$ is a lower bound. \\
+        Take $x \in [a,b)$. \\
+        It holds that $a \le x$. \\
+        We conclude that $a$ is a lower bound. \\
+
+        Now we show that for all $\epsilon > 0$, there exists $x \in [a,b)$, $x < a + \epsilon$. \\
+        Take $\epsilon > 0$. \\
+        Choose $x = a$. Then $x \in [a,b)$ \\
+        It holds that $x = a < a + \epsilon$. \\
+        We conclude that $\inf [a,b) = a$.
+    \end{proof}
+
+    \section{Exercise 4.9.2}
+    \begin{problem}
+        Let $A$ be a subset of $\mathbb{R}$. Prove that if $\sup A \in A$ then $A$ has a maximum and $\max A = \sup A$.
+        % Let $A$ be a subset of $\mathbb{R}$. Assume that $A$ is non-empty and
+        % bounded from below. If $\inf A \in A$ then $A$ has a minimum and $\min
+        % A = \inf A$. Prove this.
+    \end{problem}
+    \begin{proof}
+        We need to show that $\max A = \sup A$.
+        
+        \noindent Assume $\sup A \in A$. \\
+        Choose $x = \sup A$. \\
+        It holds that $x \in A$. \\
+        Take $a \in A$. \\
+        It holds that $a \le x$. \\
+        We conclude that $a = \sup A = \max A$.
+    \end{proof}
+
+    \section{Exercise 4.9.3}
+    \begin{problem}
+        Show that
+        $$\sup[0,4) = 4$$
+    \end{problem}
+    \begin{proof}
+        We need to show that $4$ is an upper bound and that
+        \begin{center}
+            for all $\epsilon > 0$, \\
+            there exists $x \in [0,4)$, \\
+            $x > 4 - \epsilon$.
+        \end{center}
+
+        First we show that $4$ is an upper bound. \\
+        Take $x \in [0,4)$. \\
+        It holds that $x \le 4$. \\
+        We conclude that $4$ is an upper bound. \\
+
+        Now we show that for all $\epsilon > 0$, there exists $x \in [0,4)$, $x > 4 - \epsilon$. \\
+        Take $\epsilon > 0$. \\
+        Choose $x = \max(0, 4 - \frac{\epsilon}{2})$. Then $x \in [0,4)$ \\
+        It holds that $x > 4 - \epsilon$. \\
+        We conclude that $\sup [0,4) = 4$.
+    \end{proof}
+
+    \newpage
+
+    \section{Exercise 4.9.5}
+    \begin{problem}
+        Let $A$ be a non-empty subset of $\mathbb{R}$. Assume that $A$ is bounded from above.
+        Prove that for all $\lambda \ge 0, \sup(\lambda A) = \lambda \sup A$.
+    \end{problem}
+    \begin{proof}
+        Take $A \subseteq \mathbb{R}$.
+        Suppose $A$ is bounded from above. \\
+        It holds that $\sup A$ exists. \\
+        Take $\lambda \ge 0$. \\
+        By the alternative characterization of the supremum we need to show that $\lambda \sup A$ is an upper bound for $\lambda A$ and that
+        \begin{center}
+            for all $\epsilon > 0$, \\
+            there exists $a \in \lambda A$, \\
+            $a > \lambda \sup A - \epsilon$.
+        \end{center}
+
+        First we show that $\lambda \sup A$ is an upper bound for $\lambda A$. \\
+        Since $\sup A$ is a supremum for $A$, it is an upper bound for $A$. \\
+        It holds that $\sup A \ge a$ for all $a \in A$. \\
+        It holds that $\lambda \sup A \ge \lambda a$ for all $a \in A$ and $\lambda a \in \lambda A$ \\
+        We conclude that $\lambda \sup A$ is an upper bound for $\lambda A$. \\
+
+        Now we show that for all $\epsilon > 0$, there exists $a \in \lambda A$, $a > \lambda \sup A - \epsilon$. \\
+        Take $\epsilon > 0$. \\
+        Since $\sup A$ is a supremum for $A$, it is an upper bound for $A$. \\
+        By the alternative characterization of the supremum, 
+        \begin{center}
+            for all $\epsilon_1 > 0$, \\
+            there exists $a_1 \in A$, \\
+            $a_1 > \sup A - \epsilon_1$. \\
+        \end{center}
+        Either $\lambda = 0$ or $\lambda > 0$. \\
+
+        - Case $\lambda = 0$, then $\lambda \sup A - \epsilon = -\epsilon < 0$. \\
+        Choose $a = 0$ and $a \in \lambda A$. \\
+        It holds that $a = 0 > \lambda \sup A - \epsilon = -\epsilon$. \\
+
+        - Case $\lambda > 0$ \\
+        Choose $\epsilon_1 = \displaystyle\frac{\epsilon}{\lambda}$. Then $\epsilon_1 > 0$ and there exists $a_1 \in A$, such that $a_1 > \sup A - \epsilon_1 = \sup A - \frac{\epsilon}{\lambda}$ \\
+        Obtain such $a_1$. \\
+        Choose $a = \lambda a_1$. \\
+        It holds that $a = \lambda a_1 > \lambda \sup A - \epsilon$. \\
+        We have shown that for all $\epsilon > 0$, there exists $a = \lambda a_1 \in \lambda A$, $a > \lambda \sup A - \epsilon$. \\
+        We conclude that $\sup (\lambda A) = \lambda \sup A$.
+    \end{proof}
+
+    \newpage
+
+    \section{Exercise 4.9.6}
+    \begin{problem}
+        Let $A$ be a non-empty subset of $\mathbb{R}$. Assume that $A$ is bounded from below.
+        Prove that for all $\lambda \ge 0, \inf(\lambda A) = \lambda \inf A$.
+    \end{problem}
+    \begin{proof}
+        We need to show that $\lambda \inf A$ is a lower bound for $\lambda A$ and that
+        \begin{center}
+            for all $\epsilon > 0$, \\
+            there exists $a \in \lambda A$, \\
+            $a < \lambda \inf A + \epsilon$.
+        \end{center}
+
+        First we show that $\lambda \inf A$ is a lower bound for $\lambda A$. \\
+        Since $\inf A$ is a infimum for $A$, it is a lower bound for $A$. \\
+        It holds that $\inf A \le a$ for all $a \in A$. \\
+        It holds that $\lambda \inf A \le \lambda a$ for all $a \in A$ and $\lambda a \in \lambda A$ \\
+        We conclude that $\lambda \inf A$ is a lower bound for $\lambda A$. \\
+
+        Now we show that for all $\epsilon > 0$, there exists $x \in \lambda A$, $x < \lambda \inf A + \epsilon$. \\
+        Take $\epsilon > 0$. \\
+        Since $\inf A$ is a infimum for $A$, by the alternative characterization of the infimum it holds that
+        \begin{center}
+            for all $\epsilon_1 > 0$, \\
+            there exists $a_1 \in A$, \\
+            $a_1 < \inf A + \epsilon_1$. \\
+        \end{center}
+        Either $\lambda = 0$ or $\lambda > 0$. \\
+
+        - Case $\lambda = 0$, then $\lambda \inf A + \epsilon = \epsilon > 0$. \\
+        Choose $a = 0$ and $a \in \lambda A$. \\
+        It holds that $a = 0 < \lambda \inf A + \epsilon = \epsilon$. \\
+
+        - Case $\lambda > 0$ \\
+        Choose $\epsilon_1 = \frac{\epsilon}{\lambda}$. Then $\epsilon_1 > 0$ and there exists $a_1 \in A$, such that $a_1 < \inf A + \epsilon_1 = \inf A + \frac{\epsilon}{\lambda}$ \\
+        Obtain such $a_1$. \\
+        It holds that $a_1 < \inf A + \frac{\epsilon}{\lambda}$. \\
+        It holds that $a = \lambda a_1 < \lambda \inf A + \epsilon$. \\
+        We conclude that $\inf(\lambda A) = \lambda \inf A$
+    \end{proof}
+\end{document}

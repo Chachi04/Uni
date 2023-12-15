@@ -1,0 +1,101 @@
+\section{Series with general terms}
+
+
+
+\subsection{Series with real terms: the Leibniz test}
+\begin{theorem}[Leibniz test, a.k.a Alternating series test]
+    Let $a,b: \N \to \R$ be two real-valued sequences such that for all $k \in \N$, $b_k = (-1)^ka_k$. Assume that there exists a $K \in \N$ such that
+    \begin{enumerate}
+        \item $a_k \ge 0$ for every $k \ge K$,
+        \item $a_k \ge a_{k+1}$ for every $k \ge K$,
+        \item $\lim_{k \to \infty} a_k = 0$.
+    \end{enumerate}
+    Then, the series
+    $$\sum_{k=K}^\infty b_k = \sum_{k=K}^\infty (-1)^k a_k$$
+    is convergent. In addition, the following esitmate holds for every $N \ge K$,
+    $$\left| S_N - \sum_{k=K}^\infty b_k \right| \le a_{N+1}.$$
+    where for all $n \in \N$, $S_n := \sum_{k=K}^\infty b_k$.
+\end{theorem}
+
+\begin{example}
+    We claim that the series
+    $$\sum_{k=1}^\infty (-1)^k \frac{1}{k}$$
+    converges.
+
+    We would like to apply the Alternating series test. To do so, we need toe check its conditions.
+
+    We define the sequence $a: \N \to \R$ by 
+    $$a_k := \frac{1}{k}$$
+    for $k \ge 1$ (and $a_0 = a_1 = 1$).
+
+    We now check the conditions for the Alternating Series Test.
+
+    \begin{enumerate}
+        \item We need to show that $a_k \ge 0$ for all $k \in \N$. Let $k \in \N$. Then, 
+            $$a_k = \frac{1}{k} \ge 0.$$ 
+        \item We need to show that $a_k \ge a_{k+1}$ for all $k \in \N$. Let $k \in \N$. Then, 
+            $$a_k = \frac{1}{k} \ge \frac{1}{k+1} = a_{k+1}.$$
+        \item We need to show that
+            $$\lim_{k\to\infty} a_k = 0$$.
+            This follow as this is a standard limit.
+    \end{enumerate}
+
+    It follows from the Alternating Series Test that the series
+    $$\sum_{k=1}^\infty (-1)^k \frac{1}{k}$$
+    converges.
+\end{example}
+
+\subsection{Series charactersization of completeness in normed vector space}
+\begin{definition}
+    Let $(V, \norm{\cdot})$ be a normed vector space. Let $a: \N \to V$ be a sequence of vectors in $V$. We say the series
+    $$\sum_{k=0}^\infty a_k$$
+    converges \emph{absolutely} if
+    $$\sum_{k=0}^\infty \norm{a_k}$$
+    converges.
+\end{definition}
+
+\begin{definition}[Series characterization of completeness]
+    We say a normed vector space $(V, \norm{\cdot})$ satisfies the \emph{series characterization of completeness} if every series in $V$ that is absolutely convergent is also convergent.
+\end{definition}
+
+\begin{proposition}
+    Every finite-dimensional normed vector space satisfies the series characterization of completeness.
+\end{proposition}
+\begin{example}
+    Consider the series 
+    $$\sum_{k=1}^\infty \frac{\sin(k)}{k^2}.$$
+    Since this is not an alternataing series, we cannot apply the Leibniz test. 
+
+    However, for every $k \\in \N \setminus \{0\}$, we have
+    $$\left| \frac{\sin(k)}{k^2}\right| \le \frac{1}{k^2}.$$
+    The series
+    $$\sum_{k=1}^\infty \frac{1}{k^2}$$
+    is a standard hyperharmonic seris, of which we know that it converges. By the Cmomparison Test, we conclude that the series
+    $$\sum_{k=1}^\infty \left|\frac{\sin(k)}{k^2}\right|$$
+    converges as well.
+
+    Therefore, the series 
+    $$\sum_{k=1}^\infty \frac{\sin(k)}{k^2}$$
+    converges absolutely. Since $(\R, | \cdot |)$ is complete, we find that
+    $$\sum_{k=1}^\infty \frac{\sin(k)}{k^2}$$
+    converges.
+\end{example}
+
+\begin{definition}
+        Let $(V, \norm{\cdot})$ be a normed vector space. Let $a: \N \to V$ be a sequence. We say that a series
+        $$\sum_{k=0}^\infty a_k$$
+        converges \emph{conditionally} if it converges but does not converge absolutely.
+\end{definition}
+
+\subsection{The Cauchy product}
+\begin{theorem}[Cauchy product]
+    Let $a,b: \N \to \R$ be two real-valued sequences. Assume that the series
+    $$\sum_{k=0}^\infty a_k$$
+    and
+    $$\sum_{k=0}^\infty b_k$$
+    converge absolutely. Then, the series
+    $$\sum_{k=0}^\infty c_k$$
+    converges absolutely as well, where 
+    $$c_k := \sum_{\ell = 0}^k a_\ell b_{k-\ell},$$ and
+    $$\sum_{k=0}^\infty c_k = \left(\sum_{k=0}^\infty a_k\right)\left(\sum_{k=0}^\infty b_k\right)$$
+\end{theorem}

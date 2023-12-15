@@ -1,0 +1,227 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define Article %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{empheq}
+\usepackage{mdframed}
+\usepackage{booktabs}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{psfrag}
+\usepackage{pgfplots}
+\usepackage{bm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{assignment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Assignment 6}
+\author{Jiaqi Wang }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+    \maketitle
+
+    \section{Exercise 10.7.1}
+    \begin{problem}
+        Let $A := \{a,b,\dots,z\}$ be the set of all letters of the alphabet. Let $\alpha: \N \to A$ be a sequence.
+        Let $v: \N \to \N$ be an index sequence defined by $v_k = k+5$ and $\mu: \N \to \N$ be an index sequence defined by $\mu_k = 3k$.
+        Write first 33 terms of the subsequence $(\alpha_{v_{\mu_k}})_k$
+    \end{problem}
+    \begin{proof}[Proof]
+        \begin{align*}
+            \alpha_{v_{\mu_k}} &= \alpha_{v_{3k}} \\
+            &= \alpha_{3k+5} \\
+        \end{align*}
+        So $(\alpha_{v_\mu})_0 = \alpha_5, (\alpha_{v_\mu})_1 = \alpha_8, (\alpha_{v_\mu})_2 = \alpha_{11}, \dots$. Following the diagram we get the following for the first 33 terms
+        \begin{center}
+            goodluckinthesecondhalfofanalysis, or with spaces \\
+            good luck in the second half of analysis
+        \end{center}
+    \end{proof}
+
+    \section{Exercise 10.7.3}
+    \begin{problem}
+        Let $(X, \dist)$ be a metric space and let $a : \N \to X$ and
+        $b : \N \to X$ be two sequences, such that $a : \N \to X$ converges to some $p \in X$.
+
+        Now consider the following sequence $c : \N \to X$, defined by
+        $$c_k := \begin{cases} a_k \quad \text{if } k \text{ even}\\ b_k \quad \text{if } k \text{ odd}\end{cases}$$
+        Show that $p$ is an accumulation point of $c : \N \to X$.
+    \end{problem}
+    \begin{proof}[Proof]
+        Define $n: \N \to \N$ a index sequence defined by $n_k := 2k$, then the subsequences $(c_{n_k})_k$ is the even terms of $c$, which is $a$. Since $a$ converges to $p$, then $p$ is an accumulation point of $c$.
+    \end{proof}
+
+    \section{Exercise 10.7.5}
+    \begin{problem}
+        Let $a: \N \to \R$ be a real-valued sequence and let $L \in \R$. Then $a: \N \to \R$ converges to $L$ if and only if
+        $$\liminf_{\ell \to \infty}a_\ell = \limsup_{\ell\to\infty}a_\ell = L$$
+    \end{problem}
+    \begin{proof}[Proof]
+        We prove both directions.
+
+        First assume that $(a_k)_k$ converges to $L$.
+        Then it holds
+        \begin{center}
+            \parbox{\linewidth}{
+                \leftskip=0.4\linewidth
+                for all $\epsilon_0 > 0$, \\
+                \hspace*{1em} there exists $N_0 \in \N$, \\
+                \hspace*{2em} for all $n \ge N_0$, \\
+                \hspace*{3em} $|a_n - L| < \epsilon$.
+                \hfill (1)
+            }
+        \end{center}
+        Need to show $\limsup_{\ell\to\infty}a_\ell = L$ and $\liminf_{\ell\to\infty}a_\ell = L$. \\
+        By the alternative characterization of $\limsup$ we need to show that \\
+        1. \begin{center}
+            \parbox{\linewidth}{
+                \leftskip=0.4\linewidth
+                for all $\epsilon > 0$, \\
+                \hspace*{1em} there exists $N \in \N$, \\
+                \hspace*{2em} for all $n \ge N$, \\
+                \hspace*{3em} $a_n < L + \epsilon$.
+            }
+        \end{center}
+        2. \begin{center}
+            \parbox{\linewidth}{
+                \leftskip=0.4\linewidth
+                for all $\epsilon > 0$, \\
+                \hspace*{1em} for all $K \in \N$ \\
+                \hspace*{2em} there exists $m \ge K$, \\
+                \hspace*{3em} $a_m > L - \epsilon$.
+            }
+        \end{center}
+
+        We first show 1. \\
+        Let $\epsilon > 0$, \\
+        Choose $\epsilon_0 = \epsilon$ in (1), then there exists $N_0 \in \N$, for all $n > N_0$, $|a_n - L| < \epsilon_0$. \\
+        Obtain such $N_0$, \\
+        Choose $N = N_0$, \\
+        Then for all $n \ge N = N_0$, we have \\
+        $|a_n - L| < \epsilon$, in particular \\
+        $a_n < L + \epsilon$
+
+        Now we show 2. \\
+        Let $\epsilon > 0$, \\
+        Take $K \in N$, \\
+        Choose $\epsilon_0 = $ in (1), then there exists $N_0 \in \N$, for all $n > N_0$, $|a_n -L| < \epsilon_0$, \\
+        Obtain such $N_0$, \\
+        Choose $m = N_0 + K$, then we have\\
+        $|a_m - L| < \epsilon_0$, in particular \\
+        $a_m > L - \epsilon$
+
+        By alternative characterization of $\liminf$ we need to show that \\
+        1. \begin{center}
+            \parbox{\linewidth}{
+                \leftskip=0.4\linewidth
+                for all $\epsilon > 0$, \\
+                \hspace*{1em} there exists $N \in \N$, \\
+                \hspace*{2em} for all $n \ge N$, \\
+                \hspace*{3em} $a_n > L - \epsilon$.
+            }
+        \end{center}
+        2. \begin{center}
+            \parbox{\linewidth}{
+                \leftskip=0.4\linewidth
+                for all $\epsilon > 0$, \\
+                \hspace*{1em} for all $K \in \N$ \\
+                \hspace*{2em} there exists $m \ge K$, \\
+                \hspace*{3em} $a_m < L + \epsilon$.
+            }
+        \end{center}
+
+        We first show 1. \\
+        Let $\epsilon > 0$, \\
+        Choose $\epsilon_o = \epsilon$ in (1), then there exists $N_0 \in \N$, for all $n > N_0$, $|a_n - L| < \epsilon_0$. \\
+        Obtain such $N_0$, \\
+        Choose $N = N_0$, \\
+        Then for all $n \ge N = N_0$, we have \\
+        $|a_n - L| < \epsilon_0 = \epsilon$, in particular \\
+        $a_n > L - \epsilon$
+
+        Now we show 2. \\
+        Let $\epsilon > 0$, \\
+        Take $K \in \N$, \\
+        Choose $\epsilon_0 = \epsilon$ in (1), then there exists $N_0 \in \N$, for all $n > N_0$, $|a_n -L| < \epsilon_0$, \\
+        Obtain such $N_0$, \\
+        Choose $m = N_0 + K$, then we have\\
+        $|a_m - L| < \epsilon_0 = \epsilon$, in particular \\
+        $a_m < L + \epsilon$
+
+        Now we prove the other direction. \\
+        Assume that $\liminf_{\ell \to \infty}a_\ell = \limsup_{\ell\to\infty}a_\ell = L$. \\
+        We need to show that $(a_k)_k$ converges to $L$, \\
+        i.e. 
+        \begin{center}
+            \parbox{\linewidth}{
+                \leftskip=0.4\linewidth
+                for all $\epsilon > 0$, \\
+                \hspace*{1em}there exists $N \in \N$, \\
+                \hspace*{2em}for all $n > N$, \\
+                \hspace*{3em}$|a_n - L| < \epsilon$
+            }
+        \end{center}
+
+        Since $\liminf_{\ell \to \infty}a_\ell = L$, we have \\
+        \begin{center}
+            \parbox{\linewidth}{
+                \leftskip=0.4\linewidth
+                for all $\epsilon_1 > 0$, \\
+                \hspace*{1em}there exists $N_1 \in \N$, \\
+                \hspace*{2em}for all $n \ge N_1$, \\
+                \hspace*{3em}$a_n > L - \epsilon_1$
+                \hfill (2)
+            }
+        \end{center}
+
+        Since $\limsup_{\ell\to\infty}a_\ell = L$, we have \\
+        \begin{center}
+            \parbox{\linewidth}{
+                \leftskip=0.4\linewidth
+                for all $\epsilon_2 > 0$, \\
+                \hspace*{1em}there exists $N_2 \in \N$, \\
+                \hspace*{2em}for all $n \ge N_2$, \\
+                \hspace*{3em}$a_n < L + \epsilon_2$
+                \hfill (3)
+            }
+        \end{center}
+
+        \noindent Let $\epsilon > 0$, \\
+        Choose $\epsilon_1 = \epsilon$ in (2), then there exists $N_1 \in \N$, for all $n \ge N_1$, $a_n > L - \epsilon_1 = L - \epsilon$. \\
+        Obtain such $N_1$, \\
+        Choose $\epsilon_2 = \epsilon$ in (3), then there exists $N_2 \in \N$, for all $n \ge N_2$, $a_n < L + \epsilon_2 = L + \epsilon$. \\
+        Choose $N = \max(N_1,N_2)$, then for all $n \ge N$, we have \\
+        $a_n > L - \epsilon$ and $a_n < L + \epsilon$, in particular \\
+        $|a_n - L| < \epsilon$
+
+    \end{proof}
+
+    \section{Exercise 10.7.7}
+    \begin{problem}
+        Let $a:\N \to \R$ be a sequence with at least two sequential accumulation points $p, q \in \R$ with $p \ne q$.
+        Prove that the sequence $a: \N \to \R$ does not converge.
+    \end{problem}
+    \begin{proof}[Proof]
+        Assume $(a_n)$ has two accumulations points $p,q \in \R$ with $p \ne q$. \\
+
+        We argue by contradiction. \\
+        Assume $(a_n)$ converges to $L \in \R$. \\
+        % Then it holds that 
+        % $$\limsup_{k\to\infty}a_k = L$$
+        Since $p$ is a sequential accumulation point we have that 
+        $$\limsup_{k\to\infty}a_k = p = L$$
+        Similarly, since $q$ is a sequential accumulation point we have
+        $$\limsup_{k\to\infty}a_k = q = L$$
+        Then $p = q$, which is a contradiction.
+        Therefore $(a)$ does not converge.
+    \end{proof}
+\end{document}

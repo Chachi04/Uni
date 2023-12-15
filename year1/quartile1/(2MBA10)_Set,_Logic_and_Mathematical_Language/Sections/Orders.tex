@@ -1,0 +1,166 @@
+\section{Orders}
+
+\subsection{Orders and Posets}
+
+\begin{definition}[Order and Partially ordered sets]
+    A relation $\sqsubseteq$ on a set $P$ is called an \emph{order} if it is reflexive, anitsymmetric and transitive.
+    That means that for all $ x,y $ and $z$ in $P$ we have:
+    \begin{itemize}
+        \item $ x \sqsubseteq x $
+        \item if $ x \sqsubseteq y $ and $ y \sqsubseteq x $, then $ x = y $
+        \item if $ x \sqsubseteq y $ and $ y \sqsubseteq z $, then $ x \sqsubseteq z $
+    \end{itemize}
+    \par The pair $ (P, \sqsubseteq) $ is called a \emph{partially ordered set}, or for short, a \emph{poset}.
+    \par Two elements $x$ and $y$ in a poset $ (P, \sqsubseteq) $ are called \emph{comparable} if $ x \sqsubseteq y $ or $ y \sqsubseteq x $.
+    The elements are called \emph{incomparable} if $ x \not \sqsubseteq y $ and $ y \not\sqsubseteq x $.
+    \par If any two elements $ x,y \in P $ are comparable, so we have $ x \sqsubseteq y $ or $ y \sqsubseteq x $, then the relation is called a \emph{linear} order.
+\end{definition}
+
+\begin{example}
+    \begin{itemize}
+        \item The identity relation $I$ on a set $P$ is an order.
+        \item If $ \sqsubseteq $ is an order on a set $P$, then $ \sqsupseteq $
+        also defines an order on $P$. Here $ x \sqsupseteq y $ if and only if
+        $ y \sqsubseteq x $. The order $ \sqsupseteq $ is called the \emph{dual}
+        order of $ \sqsubseteq $.
+        \item On the set $P$ of partitions of a set X we define the relation
+        "refines" by the following. The partition $ \Pi_1 $ refines $ \Pi_2 $ if
+        and only if each $ \pi_1 \in \Pi_1 $ is contained in some $ \pi_2 \in \Pi_2 $.
+        The relation "refines" is a partial order on $P$.
+    \end{itemize}
+\end{example}
+
+If $ \sqsubseteq $ is an order on the set $P$, then the corresponding directed
+graph with vertex $P$ and edges $ (x,y) $, where $ x \sqsubseteq y $ is \emph{acyclic}
+(i.e. contains no cycles of length > 1).
+
+If we want to draw a picture of the poset, we usually do not draw the whole digraph.
+Instead, we only draw an edge from $x$ to $y$ from $P$ with $ x \sqsubseteq y $ if
+there is no $z$, distinct from both $x$ and $y$, for which we have $ x \sqsubseteq z $
+and $ z \sqsubseteq y $. This digraph is called the \emph{Hasse diagram} for
+($P, \sqsubseteq$), named after the German mathematician Helmut Hasse.
+
+\begin{definition}[Hasse diagram]
+    Let ($P, \sqsubseteq$) be a poset. The graph with vertex set $P$ and two vertices
+    $ x,y \in P $ adjacent if and only if $ x \sqsubseteq y $ and there is no
+    $z \in P$ different from $x$ and $y$ with $x \sqsubseteq z$ and $z \sqsubseteq y$.
+\end{definition}
+
+\subsubsection{New posets from old ones}
+\begin{itemize}
+    \item If $P^\prime$ is a subset of $P$, then $P^\prime$ is also a poset with
+    order $\sqsubseteq$ restricted to $P^\prime$. This is called an \emph{induced}
+    order on $P^\prime$.
+
+    \item Let $S$ be some set. On the set of maps from $S$ to $P$ we can define
+    an ordering as follows. Let $f : S \to P$ and $g : S \to P$, then we define
+    $f \sqsubseteq g$ if and only if $f(s) \sqsubseteq g(s)$ for all $s \in S$.
+
+    \item On the Cartesian product $P \times Q$ we can define an order as follows.
+    For $(p_1, q_1), (p_2,q_2) \in P \times Q$ we define $(p_1,q_1) \sqsubseteq (p_2,q_2)$
+    if and only if $p_1 \sqsubseteq p_2$ and $q_1 \subseteq q_2$. This order is
+    called the \emph{product order}
+
+    \item A second ordering on $P \times Q$ can be obtained by the following rule.
+    For $(p_1,q_1), (p_2,q_2) \in P \times Q$ we define $(p_1,q_1) \sqsubseteq (p_2,q_2)$
+    if and only if $p_1 \sqsubseteq p_2$ and $p_1 \ne p_2$ or if $p_1 = p_2$
+    and $q_1 \sqsubseteq q_2$. This order is called the \emph{lexicographic order}
+    on $P \times Q$.
+\end{itemize}
+
+\subsection{Maximal and minimal element}
+
+\begin{definition}[Maximal and Minimal element]
+    Let ($P, \sqsubseteq$) be a poset and $A \subseteq P$. An element $ a \in A $
+    is called the \emph{largest element} or \emph{maximum} of $A$, if for all
+    $ a^\prime \in A $ we have $ a^\prime \sqsubseteq a $. Notice that a maximum
+    is unique.
+
+    An element $ a \in A $ is called \emph{maximal} if for all $a^\prime \in A$ we
+    have that either $a^\prime \sqsubseteq a$ or $a$ and $a^\prime$ are incomparable.
+
+    Similarly we can define the notion of \emph{smallest element} or \emph{minimum}
+    and \emph{minimal element}.
+
+    If the poset $ (P, \sqsubseteq) $ has a maximum, then this is often denoted as
+    $\top$ (top). A smallest element is denoted by $\bot$ (bottom).
+
+    If a poset $ (P,\sqsubseteq) $ has a minimum $\bot$, then the
+    minimal elements of $P \setminus \{\bot\}$ are called the
+    \emph{atoms} of $P$.
+\end{definition}
+
+\begin{lemma}
+    Let $ (P, \sqsubseteq) $ be a poset. Then $P$ contains at most one
+    maximum and one minimum.
+\end{lemma}
+
+\begin{example}
+    \begin{itemize}
+        \item If we consider the poset of all subsets of $S$, then the
+        empty set $ \emptyset $ is the minimum of the poset, whereas
+        the whole set $S$ is the maximum. The atoms are the subsets
+        of $S$ that have 1 element.
+        \item If we consider the $\mid$ as an order on $\mathbb{N}$,
+        then 1 is the minimal element and 0 is the maximal element. The
+        atoms are those natural numbers greater than 1, that are only
+        divisible by 1 and itself, i.e. the prime numbers.
+    \end{itemize}
+\end{example}
+
+\begin{lemma}
+    Let $ (P, \sqsubseteq) $ be a finite poset. Then $P$ contains a
+    minimal and a maximal element.
+\end{lemma}
+
+\begin{example}
+    Notice that minimal elements and maximal elements are not necessarily unique.
+    In fact, they do not even have to exist. In $(R,\le)$ for example, there is
+    no maximal nor a minimal element.
+\end{example}
+
+\begin{algorithm} [H]
+    Minimal Element
+\end{algorithm}
+
+\begin{algorithm} [H]
+    Topological order
+\end{algorithm}
+
+\begin{definition}
+    If $ (P, \sqsubseteq) $ is a poset and $A \subseteq P$, then an \emph{upperbound}
+    for $A$ is an element $u$ with $a \sqsubseteq u$ for all $a \in A$.
+
+    A \emph{lowerbound} for $A$ is an element $u$ with $u \sqsubseteq a$ for all
+    $a \in A$.
+
+    If the set of all upperbounds of $A$ has a minimal element, then this element is
+    called the \emph{least upperbound} or \emph{supremum} of $A$. Such an element,
+    if it exists, is denoted by $ \sup A $. If the set of all lowerbounds of
+    $A$ has a maximal element, then this element is called the \emph{largest lowerbound}
+    of \emph{infimum} of $A$. If it exists, the infimum of $A$ is denoted by $\inf A$.
+\end{definition}
+
+\begin{example}
+    Let $S$ be a set. In $ (\mathcal{P}(S), \subseteq) $ any set $A$ of subsets of
+    $S$ has a supremum and an infimum. Indeed,
+    $$ \sup A = \bigcup_{X \in A}X \text{ and } \inf A = \bigcap_{X \in A}X $$
+\end{example}
+
+\begin{definition}[Ascending/Descending chain]
+    An \emph{ascending chain} in a $ (P, \sqsubseteq) $ is a (finite or infinte)
+    sequence $ p_0 \sqsubseteq p_1 \sqsubseteq \dots $ of elements $p_i$ in $P$. A
+    \emph{descending chain} in $ (P, \sqsubseteq) $ is a (finite or infinite)
+    sequence of elements $p_i, i \ge 0$ with $ p_0 \sqsupseteq p_1 \sqsupseteq \dots $
+    of elements $p_i \in P$
+
+    The poset $ (P, \sqsubseteq) $ is called \emph{well founded} if any descending
+    chain if finite.
+\end{definition}
+
+\begin{example}
+    The natural numbers $\mathbb{N}$ with the ordinary ordering $\le$ is well
+    founded. Also the ordering $\mid$ on $\mathbb{N}$ is well founded.
+
+    However, on $\mathbb{Z}$ the order $\le$ is not well founded.
+\end{example}

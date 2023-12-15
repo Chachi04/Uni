@@ -1,2 +1,4 @@
-Year1/Quartile2/Foundations_of_Data_Analytics/books/Visualization of Data.pdf
-Year1/Quartile2/Foundations_of_Data_Analytics/GA1/GA1_files/aqw.db
+year1/quartile2/Foundations_of_Data_Analytics/books/Visualization of Data.pdf
+year1/quartile2/Foundations_of_Data_Analytics/GA1/GA1_files/aqw.db
+*.db
+*.zip
