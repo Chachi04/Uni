@@ -1,4 +1,4 @@
-\section{Subsequences, $\lim\sup$ and $\lim\inf$}
+\section{Subsequences, \texorpdfstring{$\lim\sup$}{limsup} and \texorpdfstring{$\lim\inf$}{liminf}}
 
 \subsection{Index sequences and subsequences}
 \begin{definition}[Index sequence]
@@ -27,11 +27,11 @@ Just as we often write $(a_n)_{n \in \N}$ for a sequence called $a$, we often wr
     Let $(X, \dist)$ be a metric space. Let $(a_n)$ be a sequence in $X$ converging to $p \in X$. Then every subsequence of $(a_n)$ is convergent to $p$.
 \end{proposition}
 
-\subsection{$\limsup$}
+\subsection{\texorpdfstring{$\limsup$}{limsup}}
 Consider a real-valued sequence $(a_n)$ that is bounded from above and does not diverge to $-\infty$. We can then define a new sequence
 $$k \mapsto \sup_{n \ge k} a_n.$$
 
-Note that this sequence is decreasing, beacuse for larger $k$ the supremum is taken over a smaller set. 
+Note that this sequence is decreasing, because for larger $k$ the supremum is taken over a smaller set. 
 \begin{lemma}
     Let $a: \N \to \R$ be a sequence that is bounded from above and does not diverge to $-\infty$. Then, the sequence $k \mapsto \sup_{n \ge k}a_n$ is bounded
     from below.
@@ -70,6 +70,7 @@ Since the sequence $k \mapsto \sup_{n \ge k}a_n$ is decreasing and bounded from 
 \end{proposition}
 
 \begin{theorem}
+    \label{thm:8.4.3}
     Let $a: \N \to \R$ be a real-valued sequence that is bounded from above and does not diverge to $-\infty$. Then
     $\limsup_{\ell \to \infty}a_\ell$ is a (sequential) accumulation point of $a$, i.e. there exists a subsequences of $a$ that converges to $\limsup_{\ell \to \infty}a_\ell$.
 \end{theorem}
@@ -84,7 +85,7 @@ Since the sequence $k \mapsto \sup_{n \ge k}a_n$ is decreasing and bounded from 
     is the maximum of the set of sequential accumulation points.
 \end{theorem}
 
-\subsection{$\liminf$}
+\subsection{\texorpdfstring{$\liminf$}{liminf}}
 Similarly to the $\limsup$, we can define the $\liminf$. In some sense,
 $$\liminf_{\ell\to\infty}a_\ell = -\limsup_{\ell\to\infty}(-a_\ell)$$
 More precisely, 
@@ -130,7 +131,7 @@ More precisely,
     $\liminf_{\ell\to\infty}a_\ell$ is the minimum of the set of sequential accumulation points.
 \end{theorem}
 
-\subsection{Relations between $\lim$, $\lim\sup$ and $\lim\inf$}
+\subsection{Relations between \texorpdfstring{$\lim$}{lim}, \texorpdfstring{$\lim\sup$}{limsup} and \texorpdfstring{$\lim\inf$}{liminf}}
 \begin{proposition}
     Let $a: \N \to \R$ be a real-valued sequence and let $L \in \R$. Then $a: \N \to \R$ converges to $L$ if and only if
     $$\liminf_{\ell\to\infty}a_\ell = \limsup_{\ell\to\infty} = L$$

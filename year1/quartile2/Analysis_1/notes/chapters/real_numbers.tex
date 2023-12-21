@@ -56,14 +56,11 @@ for a set to be bounded from above, bounded from below and just bounded.
     \begin{enumerate}
         \item $M$ is an upper bound for $A$,
         \item and 
-            \begin{center}
-                \parbox{\linewidth}{
-                    \leftskip=0.4\linewidth
-                    for all $\epsilon > 0$, \\
-                    \tab there exists $a \in A$, \\
-                    \tab\tab $a > M - \epsilon$.
-                }
-            \end{center}
+            \begin{myCenter}
+                \tabline{for all $\epsilon > 0$,}
+                \tabline{there exists $a \in A$,}
+                \tabline{$a > M - \epsilon$.}
+            \end{myCenter}
     \end{enumerate}
 \end{proposition}
 
@@ -72,14 +69,11 @@ for a set to be bounded from above, bounded from below and just bounded.
     \begin{enumerate}
         \item $m$ is a lower bound for $A$,
         \item and 
-            \begin{center}
-                \parbox{\linewidth}{
-                    \leftskip=0.4\linewidth
-                    for all $\epsilon > 0$, \\
-                    \tab there exists $a \in A$, \\
-                    \tab\tab $a < m + \epsilon$.
-                }
-            \end{center}
+            \begin{myCenter}
+                \tab{for all $\epsilon > 0$,}
+                \tab{there exists $a \in A$,}
+                \tab{$a < m + \epsilon$.}
+            \end{myCenter}
     \end{enumerate}
 \end{proposition}
 
@@ -132,7 +126,7 @@ Given this proposition, we can define the ceiling function.
 \end{proposition}
 
 \subsection{Computation rules for suprema}
-In the proposition below, we use the defintions
+In the proposition below, we use the definitions
 $$ A + B = \{a + b \mid a \in A, b \in B\}$$
 and 
 $$\lambda A = \{\lambda a \mid a \in A\}$$
