@@ -1,9 +1,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define Article %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\documentclass{article}
+\documentclass[problem]{classnotes}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\usepackage{assignment}
+% \usepackage{assignment}
+% \usepackage{environments}
 
 \newcommand{\blue}{\text{\color{blue}{blue}}}
 \newcommand{\orange}{\text{\color{orange}{orange}}}
@@ -57,14 +58,49 @@
         Then $P_{n_\ell} = \blue$ for all $\ell \in \N$. \\
     \end{proof}
 
+    \newpage
+
     \section{Exercise 11.6.1}
     \begin{problem}
-        Let $V, \norm{\cdot})$ be a normed linear space and let $A$ be the closed ball of radius $1$ aroudn the origin, i.e.
+        Let $(V, \norm{\cdot})$ be a normed linear space and let $A$ be the closed ball of radius $1$ around the origin, i.e.
         $$A:=\{v \in V \mid \norm{v} \le 1\}.$$
         Show that the set $A$ is closed
     \end{problem}
     \begin{proof}
         Need to show that $A$ is closed, i.e. $V \setminus A$ is open. \\
+        I.e. $\overline{A} = V \setminus A$, defined by
+        $$\overline{A} := \{v \in V \mid \norm{v} > 1\}$$
+        is open. \\
+        We need to show that for all $q \in \overline{A}$, $q$ is an interior point of $\overline{A}$. \\
+        I.e. for all $q \in \overline{A}$, there exists $r > 0$ such that $B(q,r) \subseteq \overline{A}$. \\
+        Let $q \in \overline{A}$. \\
+        Then $\norm{q} > 1$. \\
+        Choose $r = \frac{\norm{q}-1}{2} > 0$. \\
+        Need to show that $B(q,r) \subseteq \overline{A}$, i.e. for all $p \in B(q,r)$, $p \in \overline{A}$. \\
+        Let $p \in B(q,r)$. \\
+        % Then $\norm{p-q} < r = \frac{\norm{q}-1}{2}$. \\
+        Need to show that $\norm{p} > 1$ \\
+        Note: $\norm{p} > \inf \{\norm{v} \mid v \in B(q,r)\}= \norm{q}-r = \norm{q}-\frac{\norm{q}-1}{2} = \frac{\norm{q}+1}{2} > 1$\\
+        Since $\norm{p} > 1$ \\
+        Then $p \in \overline{A}$. \\
+        So $B(q,r) \subseteq \overline{A}$. \\
+        And $\overline{A}$ is open. \\
+        Therefore $A$ is closed. \\
+
+
+        % By the sequence characterization of closedness it suffices to show that for all sequences $a: \N \to A$ converging to
+        % some $q \in V$, we have $q \in A$. \\
+        % Let $a: \N \to A$ be a sequence converging to some $q \in V$. \\
+        % Then 
+        % \begin{myCenter}
+        %     \tabline{for all $\epsilon_0 > 0$}
+        %     \tabline{there exists $N_0 \in \N$}
+        %     \tabline{for all $n \ge N$}
+        %     \tabline{$\norm{a_n - q} < \epsilon_0$ \hfill (*)}
+        % \end{myCenter}
+        % Choose $\epsilon_0 = $ in (*), then there exists $N_0 \in \N$ such that for all $n \ge N$, we have $\norm{a_n - q} < \epsilon_0$. \\
+        % Obtain such $N_0$
+
     \end{proof}
 
     \section{Exercise 11.6.2}
@@ -73,6 +109,27 @@
     \end{problem}
 
     \begin{proof}
+        We first show that $[0,1)$ is not open. \\
+        i.e. there exists $q \in [0,1)$ such that for all $r > 0$, $B(q,r) \not\subseteq [0,1)$. \\
+        Choose $q = 0$, then $q \in [0,1)$ \\
+        Let $r > 0$, \\
+        We need to show that $B(q,r) \not\subseteq [0,1)$, i.e. there exists $p \in B(q,r)$ such that $p \not\in [0,1)$. \\
+        Let $p = -\frac{r}{2}$. \\
+        Then $p \in B(q,r)$. \\
+        But $p \not\in [0,1)$. \\
+        So $B(q,r) \not\subseteq [0,1)$. \\
+        Therefore $[0,1)$ is not open. \\
+
+        Now we show that $[0,1)$ is not closed. \\
+        i.e. there exists $q \in \R \setminus [0,1)$ such that for all $r > 0$, $B(q,r) \not\subseteq \R \setminus [0,1)$. \\
+        Choose $q = 1$, then $q \in \R \setminus [0,1)$ \\
+        Let $r > 0$, \\
+        Need to show that $B(q,r) \not\subseteq \R \setminus [0,1)$, i.e. there exists $p \in B(q,r)$ such that $p \not\in \R \setminus [0,1)$. \\
+        Let $p = 1 + \frac{r}{2}$. \\
+        Then $p \in B(q,r)$. \\
+        But $p \not\in \R \setminus [0,1)$. \\
+        So $B(q,r) \not\subseteq \R \setminus [0,1)$. \\
+        Therefore $[0,1)$ is not closed. \\
     \end{proof}
 
     \section{Exercise 11.6.4}
@@ -83,6 +140,67 @@
     \end{problem}
 
     \begin{proof}
+        First we show that $L$ is closed. \\
+        I.e. $\overline{L} := \R^2 \setminus L = \{(x,y) \in \R^2 \mid x+2y \ne 1\}$ is open. \\
+        We need to show that for all $q \in \overline{L}$, $q$ is an interior point of $\overline{L}$. \\
+        I.e. for all $q \in \overline{L}$, there exists $r > 0$ such that $B(q,r) \subseteq \overline{L}$. \\
+        Let $q \in \overline{L}$. \\
+        Choose $r = |\mathcal{P}(q) - q|$, where $\mathcal{P}(q)$ is the orthogonal projection of $q$ onto $L$. \\
+        Then $r > 0$. \\
+        and $B(q,r) \subseteq \overline{L}$, i.e. for all $p \in B(q,r)$, $p \in \overline{L}$. \\
+        Thus $L$ is closed. \\
+        
+        Now we show that $L$ is complete. \\
+        By proposition 11.4.3, we have that $\R^d$ is complete, in particular $\R^2$ \\
+        Since $L$ is a closed subset of $\R^2$, by proposition 11.4.5, we have that $L$ is complete. \\
+        % Then $q \not\in L$. \\
+        % Then $q \not\in L$, i.e. $q \not\in \{(x,y) \in \R^2 \mid x+2y = 1\}$. \\
+        % Then $q \not\in \{(x,y) \in \R^2 \mid x+2y = 1\}$, i.e. $q \not\in \{(x,y) \in \R^2 \mid x+2y = 1\}$. \\
+        % Then $q \not\in \{(x,y) \in \R^2 \mid x+2y = 1\}$, i.e. $q \not\in \{(x,y) \in \R^2 \mid x+2y = 1\}$. \\
+        % Then $q \not\in \{(x,y) \in \R^2 \mid x+2y = 1\}$, i.e. $q \not\in \{(x,y) \in \R^2 \mid x+2y = 1\}$. \\
+        % Then $q \not\in \{(x,y) \in \R^2 \mid x+2y = 1\}$, i.e. $q \not\in \{(x,y) \in \R^2 \mid x+2y = 1\}$. \\
+        % Then $q \not\in \{(x,y) \in \R^2 \mid x+2y = 1\}$, i.e. $q \not\in \{(x,y) \in \R^2 \mid x+2y = 1\}$. \\
+        % Then $q \not\in \{(x,y) \in \R^2 \mid x+2y = 1\}$, i.e. $q \not\in \{(x,y) \in \R^2 \mid x+2y = 1\}$. \\
+        % Then $q \not\in \{(x,y) \in \R^2 \mid x+2y = 1\}$, i.e. $q \not\in \{(x,y) \in \
+
+        % By the sequence characterization of closedness, it suffices to show that for all sequences $a: \N \to L$ converging to some $q \in \R^2$, we have $q \in L$. \\
+        % Let $a:\N \to L$ be a sequence converging to some $q \in \R^2$. \\
+        % Then
+        % \begin{myCenter}
+        %     \tabline{for all $\epsilon_0 > 0$}
+        %     \tabline{there exists $N_0 \in \N$}
+        %     \tabline{for all $n \ge N_0$}
+        %     \tabline{$\norm{a_n - q} < \epsilon_0$ \hfill (*)}
+        % \end{myCenter}
+        % and we know that the sequence $a: \N \to L$ is convergent if and only if the component sequences of $a$ converge to the corresponding components of $q$. \\
+        % so we have
+        % $$\limn a_1^{(n)} = q_1 \quad \text{and} \quad \limn a_2^{(n)} = q_2.$$
+        
+
+        % Choose $\epsilon_0 = \frac{1}{2}$ in (*), then there exists $N_0 \in \N$ such that for all $n \ge N_0$, we have $\norm{a_n - q} < \frac{1}{2}$. \\
+        % Obtain such $N_0$. \\
+        % Let $n \ge N_0$. \\
+        % Then $\norm{a_n - q} < \frac{1}{2}$. \\
+        % Then $a_n \in B(q,\frac{1}{2})$. \\
+        % Since $a_n \in L$, we have $a_n \in L \cap B(q,\frac{1}{2})$. \\
+        % Since $L \cap B(q,\frac{1}{2})$ is open, there exists $r > 0$ such that $B(a_n,r) \subseteq L \cap B(q,\frac{1}{2})$. \\
+        % Choose $r = \frac{1}{2}$. \\
+        % Then $B(a_n,r) \subseteq L \cap B(q,\frac{1}{2})$. \\
+        % Then $B(a_n,r) \subseteq L$. \\
+        % Then $a_n$ is an interior point of $L$. \\
+        % Then $a_n \in \overline{L}$. \\
+        % Since $a: \N \to L$, we have $a_n \in L$ for all $n \in \N$. \\
+        % Then $a_n \in L \cap \overline{L}$. \\
+        % Then $a_n \in L \cap \overline{L} \cap B(q,\frac{1}{2})$. \\
+        % Then $a_n \in L \cap \overline{L} \cap B(q,\frac{1}{2}) \subseteq L \cap B(q,\frac{1}{2})$. \\
+        % Then $a_n \in L \cap B(q,\frac{1}{2})$. \\
+        % Then $a_n \in B(q,\frac{1}{2})$. \\
+        % Then $\norm{a_n - q} < \frac{1}{2}$. \\
+        % Then $\norm{a_n - q} < \epsilon_0$. \\
+        % Then $q \in \overline{L}$. \\
+        % Then $q \in L \cap \overline{L}$. \\
+        % Then $q \in L$. \\
+        % Therefore $L$ is closed. \\
     \end{proof}
 
 \end{document}
