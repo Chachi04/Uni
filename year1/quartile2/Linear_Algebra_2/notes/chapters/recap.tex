@@ -3,26 +3,60 @@
 
 \subsection{Field}
 \begin{definition}[Field]
-    Sets in which we can compute like in $\R$.
+    A field is a set $\K$ that contains two special elements, $0$ and $1$, together with two binary operations, addition and
+    multiplication $+, \cdot: \K \times \K \to \K$, such that addition and multiplication obey the following axioms:
+    \begin{enumerate}
+        \item $a+b=b+a$ \hfill (addition is commutative)
+        \item $(a+b)+c=a+(b+c)$ \hfill (addition is associative)
+        \item $a+0=a$ \hfill ($0$ is the additive identity)
+        \item $\forall a, \exists (-a) [a+(-a)=0]$ \hfill (existence of an inverse for addition)
+
+            In short, i-iv express that $(\K, +, 0)$ is an abelian group.
+        \item $a\cdot b=b\cdot a$ (or simply $ab$) \hfill (multiplication is commutative)
+        \item $(ab)c=a(bc)$ \hfill (multiplication is associative) 
+        \item $a\cdot 1=a$ \hfill ($1$ is the multiplicative identity)
+        \item $\forall a \neq 0, \exists a^{-1} [aa^{-1}=1]$ \hfill (existence of an inverse for multiplication)
+
+            In short, v-viii express that $(\K \setminus \{0\}, \cdot, 1)$ is an abelian group.
+
+        \item $a(b+c)=ab+ac$ \hfill (multiplication is distributive over addition)
+    \end{enumerate}
 \end{definition}
 
 \subsection{Vector Space and Subspace}
-\begin{definition}[Vector Space]
-    A set $V$ with two operations, addition and scalar multiplication, such that
+\begin{definition}[Vector space]
+    Let $\K$ be a field. A $\K$-vector space is a set $V$ that contains a special element, $\vec{0}$, called the zero vector,
+    together with two operations:
     \begin{enumerate}
-        \item $V$ is an abelian group under addition.
-        \item $\forall \alpha, \beta \in F, \forall \vec{u}, \vec{v} \in V$, we have
-            \begin{enumerate}
-                \item $\alpha(\vec{u} + \vec{v}) = \alpha\vec{u} + \alpha\vec{v}$.
-                \item $(\alpha + \beta)\vec{u} = \alpha\vec{u} + \beta\vec{u}$.
-                \item $(\alpha\beta)\vec{u} = \alpha(\beta\vec{u})$.
-                \item $1\vec{u} = \vec{u}$.
-            \end{enumerate}
+        \item addition: $V \times V \to V$,
+        \item scalar multiplication: $\K \times V \to V$,
+    \end{enumerate}
+    such that addition and and multiplication obey the following axioms:
+    \begin{enumerate}[label=\roman*)]
+        \item $\vec{a}+\vec{b} = \vec{b}+\vec{a}$ \hfill (addition is commutative)
+        \item $(\vec{a} + \vec{b}) + \vec{c} = \vec{a} + (\vec{a} + \vec{c})$ \hfill (addition is associative)
+        \item $\vec{a} + \vec{0} = \vec{a}$ \hfill ($\vec{0}$ is the additive identity)
+        \item $\forall \vec{a}, \exists (-\vec{a}) [\vec{a}+(-\vec{a}) = \vec{0}]$ \hfill (existence of an inverse for addition) 
+
+            In short, i-iv express that $(V, + , \vec{0})$ is an abelian group.
+        \item $1\cdot\vec{a} = \vec{a}$ \hfill ($1$ is the multiplicative identity)
+        \item $\lambda(\vec{a}+\vec{b} = \lambda\vec{a} + \lambda\vec{b}$ \hfill (multiplication is distributive over vector addition)
+        \item $(\lambda + \mu)\vec{a} = \lambda\vec{a} + \mu\vec{a}$ \hfill (multiplication is distributive over scalar addition)
+        \item $(\lambda\mu)\vec{a} = \lambda(\mu\vec{a})$ \hfill (associativity of combining field multiplication with scalar multiplication)
     \end{enumerate}
 \end{definition}
 
 \begin{definition}[Subspace]
-    A subset $W$ of a vector space $V$ is a subspace of $V$ if $W$ is a vector space under the same operations as $V$.
+    A subset $W$ of a vector space $V$ is a (linear) subspace of $V$ if 
+    \begin{enumerate}
+        \item $\vec{0} \in W$.
+        \item $\lambda\vec{u} + \mu\vec{v} \in W$ for all $\vec{u}, \vec{v} \in W$ and $\lambda, \mu \in \K$.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Span]
+    Let $V$ be a vector space over $\K$. Let $\vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n \in V$. The span of $\vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n$ is the set of all linear combinations
+    $\lambda_1\vec{v}_1 + \lambda_2\vec{v}_2 + \cdot \lambda_n\vec{v}_n$. We denote it by $<\vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n>$.
 \end{definition}
 
 \begin{definition}[Bases]
@@ -31,6 +65,44 @@
         \item $\{\vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n\}$ is linearly independent.
         \item $\{\vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n\}$ spans $V$.
     \end{enumerate}
+\end{definition}
+
+\begin{definition}[Dimension]
+    All bases of a vector space have the same size (cardinality), called the dimension of $V$ and denoted by $\dim V$.
+\end{definition}
+
+\subsection{Inner product spaces}
+\begin{definition}[Standard inner product of $\K^n$]
+    Let $\K$ be a field. For two vectors $\vec{v}, \vec{u} \in \K^n$, the standard inner product $(\cdot, \cdot): \K^n \times \K^n \to \K$ is defined by
+    $$(\vec{v}, \vec{u}) = v_1u_1 + v_2u_2 + \dots + v_nu_n.$$
+    Let $\vec{u} = (u_1, u_2, \cdots, u_n)$ and $\vec{v} = (v_1, v_2, \cdots, v_n)$ be vectors in $\mathbb{R}^n$. The standard inner product of $\vec{u}$ and $\vec{v}$ is defined as
+
+    (Other popular notations are $\langle \vec{u}, \vec{v} \rangle$ or $\vec{u} \cdot \vec{v}$)
+\end{definition}
+
+\begin{definition}[Inner product]
+    Let $V$ be a vector space. We say that $V$ together with map $(\cdot, \cdot): V \times V \to \K$ is an inner product space if the following properties are satisfied:
+    \begin{enumerate}
+        \item $(\vec{u},\vec{v}) = (\vec{v}, \vec{u})$ \hfill (symmetry)
+        % \item $(\lambda\vec{u}, \mu\vec{v}) = \lambda\mu(\vec{u}, \vec{v})$ \hfill (homogeneity)
+        \item $(\lambda\vec{u}, \vec{v} + \vec{w}) = \lambda(\vec{u}, \vec{v}) + \lambda(\vec{u}, \vec{w})$ \hfill (linearity)
+        \item $(\vec{v}, \vec{v}) \ge 0$ and $(\vec{v},\vec{v}) = 0 \iff \vec{v} = \vec{0}$ \hfill (positive definite)
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Orthogonal]
+    Let $V$ be an inner product space. Two vectors $\vec{u}, \vec{v} \in V$ are orthogonal if $(\vec{u}, \vec{v}) = 0$.
+    We write $\vec{u} \perp \vec{v}$.
+\end{definition}
+
+\begin{definition}[Length]
+    Let $V$ be an inner product space. The length of a vector $\vec{v} \in V$ is defined as
+    $$\norm{\vec{v}} = \sqrt{(\vec{v}, \vec{v})}.$$
+\end{definition}
+
+\begin{definition}[Angle between vectors]
+    Let $V$ be an inner product space. The angle between two vectors $\vec{u}, \vec{v} \in V$ is defined as
+    $$\cos \theta = \frac{(\vec{u}, \vec{v})}{\norm{\vec{u}}\norm{\vec{v}}}.$$
 \end{definition}
 
 \subsection{Linear Map}

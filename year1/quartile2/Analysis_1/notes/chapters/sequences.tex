@@ -27,15 +27,12 @@
 \subsubsection{Bounded sequences}
 \begin{definition}[bouneded sequence]
     Let $(X, \dist)$ be a metric space. We say a sequence $a: \naturals \to X$ is bounded if
-    \begin{center}
-        \parbox{\linewidth}{
-            \leftskip=0.4\linewidth
-            there exists $q \in X$, \\
-            \tab there exists $M > 0$, \\
-            \tab\tab for all $n \in \naturals$, \\
-            \tab\tab\tab $\dist(a_n,q) \le M$.
-        }
-    \end{center}
+    \begin{myCenter}
+        \tab{there exists $q \in X$, \\}
+        \tab{ there exists $M > 0$, \\}
+        \tab{for all $n \in \naturals$, \\}
+        \tab{$\dist(a_n,q) \le M$.}
+    \end{myCenter}
 \end{definition}
 
 In a normed linear space, we can use a simpler criterion to check whether a sequence is bounded. That is the content of the
@@ -44,28 +41,22 @@ following proposition.
 \begin{proposition}
     Let $(V, \norm{\cdot})$ be a normed vector space. Let $a: \naturals \to V$ be a sequence. The sequence $a$ is bounded
     if and only if
-    \begin{center}
-        \parbox{\linewidth}{
-            \leftskip=0.4\linewidth
-            there exists $M > 0$, \\
-            \tab for all $n \in \naturals$, \\
-            \tab\tab $\norm{a_n} \le M$.
-        }
-    \end{center}
+    \begin{myCenter}
+        \tab{there exists $M > 0$, \\}
+        \tab{ for all $n \in \naturals$, \\}
+        \tab{$\norm{a_n} \le M$.}
+    \end{myCenter}
 \end{proposition}
 
 \subsection{Convergence of sequences}
 \begin{definition}[Convergence of sequences]
     Let $(X, \dist)$ be a metric space. We say that a sequence $a: \naturals \to X$ converges to a point $p \in X$ if
-    \begin{center}
-        \parbox{\linewidth}{
-            \leftskip=0.4\linewidth
-            for all $\epsilon > 0$, \\
-            \tab there exists $N \in \naturals$, \\
-            \tab\tab for all $n \ge N$, \\
-            \tab\tab\tab $\dist(a_n,p) < \epsilon$.
-        }
-    \end{center}
+    \begin{myCenter}
+        \tab{for all $\epsilon > 0$, \\}
+        \tab{there exists $N \in \naturals$, \\}
+        \tab{for all $n \ge N$, \\}
+        \tab{$\dist(a_n,p) < \epsilon$.}
+    \end{myCenter}
 \end{definition}
 
 We sometimes write
