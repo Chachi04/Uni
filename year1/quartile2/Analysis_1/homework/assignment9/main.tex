@@ -1,7 +1,7 @@
 \documentclass{assignment}
 
 \title{Assignment 9}
-\author{Jiaqi Wang}
+\author{Group 1}
 
 \begin{document}
 
@@ -10,35 +10,169 @@
 \section{Exercise 12.4.4}
 \begin{problem}
     Let $(X, \dist)$ be a metric space and let $K \subseteq X$ be a compact subset. Let $a: \N \to X$ be a sequence with values in $X$, such that
-    \begin{myCenter}[label=(*)]
+    \begin{myCenter}
         \tab{for all $N \in \N$,}
         \tab{there exists $\ell \ge N$,}
-        \tab{$a_\ell \in K$ }
+        \tab{$a_\ell \in K$ } 
     \end{myCenter}
+    \vspace*{-\dimexpr\parskip+2\baselineskip}\hfill$(*)$
     \begin{enumerate}
-        \item Use $(*)$ to indeuctively define an indeex sequence $n: \N to \N$ such that for every $k \in \N$, $a_{n_k} \in K$.
+        \item Use $(*)$ to inductively define an index sequence $n: \N \to \N$ such that for every $k \in \N$, $a_{n_k} \in K$.
         \item Use the fact that $K$ is compact to show that there is a point $p \in K$ and a subsequence of $a: \N \to X$ converging to $p$.
     \end{enumerate}
 \end{problem}
 \begin{proof}
+    1. We define an index sequence $n: \N \to \N$ inductively as follows:
+    \textbf{Base:} \\
+    Choose $N = 0$ in $(*)$, then there exists $\ell \ge 0$, such that $a_\ell \in K$.\\
+    Obtain such $\ell$ \\
+    Set $n_0 = \ell$
+
+    \textbf{Inductive step:} \\
+    Suppose we have defined $n_0, n_1, \dots, n_k$ for some $k \in \N$, such that for all $0 \le i \le k$, $a_{n_i} \in K$.\\
+    Choose $N = n_k + 1$ in $(*)$, then there exists $\ell \ge N$, such that $a_\ell \in K$.\\
+    Obtain such $\ell$ \\
+    Set $n_{k+1} = \ell$ \\
+    Then it holds that $n_k < n_{k+1}$ and $a_{n_{k+1}} \in K$.
+
+    2. Since $K$ is compact, it holds that 
+    \begin{myCenter}
+        \tab{for all sequences $b: \N \to \K$,}
+        \tab{there exists a subsequence $b': \N \to \K$,}
+        \tab{such that $b'$ converges to a point $p \in K$}
+    \end{myCenter}
+    \vspace*{-\dimexpr\parskip+1\baselineskip}\hfill$(**)$ \\
+    Choose $b = a \circ n$ in $(**)$, then there exists a subsequence $b': \N \to \K$, such that $b'$ converges to a point $p \in K$.\\
+    I.e. there exists an index sequence $m: \N \to \N$, such that $b \circ m$ converges to $p$.\\
+    The the subsequence $a \circ n \circ m$ converges to $p \in K$.\\
 \end{proof}
 
 \section{Exercise 12.4.5}
 \begin{problem}
+    Consider the sets
+    $$A := \{(x_1,x_2) \in \R^2 \mid x_1-x_2 = 1\}$$
+    and 
+    $$B := \{(x_1,x_2) \in \R^2 \mid (x_1)^2 + (x_2)^2 \le 1\}$$
+    Prove that the set $A \cap B$ is compact (as a subset of the normed vector space $(\R^2, \norm{\cdot}_2)$).
 \end{problem}
 \begin{proof}
+    Note: $B$ is the closed unit ball in $(\R^2, \norm{\cdot}_2)$. \\
+    % Since $\norm[(x_1,x_2)] = \sqrt{x_1^2 + x_2^2} \le x_1^2+x_2^2 \le 1$
+    Since $A \cap B \subseteq (\R^2, \norm{\cdot}_2)$ by the Heine-Borel Theorem, it suffices to show that $A \cap B$ is closed and bounded.\\
+    Note: $A \cap B = \{(x_1,x_2) \mid x_1-x_2=1 \land x_1^2+x_2^2\le1\}$ which is the closed line segment from $(0,-1)$ to $(1,0)$.\\
+
+    \textbf{Closed:} \\
+    By the sequence characterization of closedness, it suffices to show that 
+    \begin{myCenter}
+        \tab{for all sequences $a: \N \to A \cap B$,}
+        \tab{if $a$ converges to a point $p \in \R^2$,}
+        \tab{then $p \in A \cap B$}
+    \end{myCenter}
+    Let $a: \N \to A \cap B$ be a sequence, such that $a$ converges to a point $p \in \R^2$. \\
+    We need to show that $p \in A \cap B$. \\
+    Since $a_n \in A \cap B$ for all $n \in \N$, it holds that $p = \lim_{n\to\infty}a_n \in A \cap B$. \\
+    Hence $A \cap B$ is closed.
+
+    \textbf{Bounded:} \\
+    Need to show that $A \cap B$ is bounded, i.e. 
+    \begin{myCenter}
+        \tab{there exists $q \in A \cap B$,}
+        \tab{there exists $M > 0$,}
+        \tab{for all $p \in A \cap B$,}
+        \tab{$\norm{p-q} \le M$}
+    \end{myCenter}
+    Choose $q = (1,0)$, then $q \in A \cap B$, \\
+    Choose $M = 2$, then $M > 0$, \\
+    Let $p = (p_1, p_2) \in A \cap B$, \\
+    Need to show that $\norm{p-q} \le M$ \\
+    $\norm{p-q} = \sqrt{(p_1-1)^2 + p_2^2} = \sqrt{p_1^2+p_2^2-2p_1+1} \le \sqrt{2 - 2p_1} \le \sqrt{2} < 2 = M$
+
+    Since $A \cap B$ is closed and bounded, by the Heine-Borel Theorem, $A \cap B$ is compact.
 \end{proof}
+
+\newpage
 
 \section{Exercise 13.11.1}
 \begin{problem}
+    Let $(X, \dist_X) := (\R^2, \dist_{\norm{\cdot}_2})$ and $(Y, \dist_Y):=(\R,\dist_\R)$. Let $D = B(0,1) \subseteq \R^2$.
+    Let $f: D \to \R$ be defined as
+    $$f(x) := \begin{cases}
+        x_1^2+x_2^2 & \text{if } x \ne (0,0) \\
+        185 & \text{if } x = (0,0).
+    \end{cases}$$
+    Show that
+    $$\lim_{x\to(0,0)}f(x)=0$$
 \end{problem}
 \begin{proof}
+    \textbf{Method 1: ($\epsilon-\delta$ proof)} \\
+    We need to show that 
+    \begin{myCenter}
+        \tab{for all $\epsilon > 0$,}
+        \tab{there exists $\delta > 0$,}
+        \tab{for all $x \in D$,}
+        \tab{$0 < \norm{x - (0,0)} < \delta \implies |f(x) - 0| < \epsilon$}
+    \end{myCenter}
+    Let $\epsilon > 0$, \\
+    Choose $\delta = \sqrt{\epsilon}$, \\
+    Let $x \in D$, \\
+    Assume $0 < \norm{x - (0,0)} < \delta$, i.e. $0 < \sqrt{x_1^2 + x_2^2} < \delta$ \\
+    Then $x \ne (0,0)$ and $f(x) = x_1^2 + x_2^2$ \\
+    Need to show that $|f(x) - 0| < \epsilon$ \\
+    Indeed $|f(x) - 0| = |x_1^2+x_2^2| < \delta^2 = \epsilon$\\
+    Therefore,
+    $$\lim_{x \to (0, 0)} f(x) = 0$$
+
+    \textbf{Method 2: (Sequence characterization proof)} \\
+    By the sequence characterization of limits, it suffices to show that, 
+    \begin{myCenter}
+        \tab{for all sequences $(x^n)$ in $D \setminus \{(0, 0)\}$ converging to $(0, 0)$,}
+        \tab{$\limn f(x^n) = 0$}
+    \end{myCenter}
+    Let $(x^n)$ be a sequence in $D \setminus \{(0, 0)\}$ converging to $(0, 0)$. \\
+    It holds that $\limn x^n = (0,0)$. \\
+    Since $x^n \ne (0,0)$ for all $n \in \N$, we know $f(x^n) = (x^n)_1^2 + (x^n)_2^2$ for all $n \in \N$. \\
+    Hence $\limn f(x^n) = \limn (x^n)_1^2 + (x^n)_2^2 = 0^2 + 0^2 = 0$. \\
+    Since $\limn f(x^n) = 0$ for all $(x^n)$ in $D \setminus \{(0, 0)\}$ converging to $(0, 0)$, $$\lim_{x \to (0, 0)} f(x) = 0$$
+
+    %     Let $(x_n)$ be a sequence in $D \setminus \{(0, 0)\}$ converging to $(0, 0)$. \\
+    % It holds that $\limn x_n = (0,0)$. \\
+    % Since $x_n \ne (0,0)$ for all $n \in \N$, we know $f(x_n) = (x_n)_1^2 + (x_n)_2^2$ for all $n \in \N$. \\
+    % Hence $\limn f(x_n) = \limn (x_n)_1^2 + (x_n)_2^2 = 0^2 + 0^2 = 0$. \\
+    % Therefore,
+    % $$\lim_{x \to (0, 0)} f(x) = 0$$
+
+    % For all sequences $x_n$ in $D \setminus \{(0, 0)\}$ converging to $(0, 0)$,
+    % we know $\limn x_n = (0, 0)$ Since $x_n$ is never $(0, 0)$ no matter the
+    % $n$, we know $f(x_n) = (x_n)_1^2 + (x_n)_2^2$ for all $n \in \N$. Hence
+    % $\limn f(x_n) = \limn (x_n)_1^2 + (x_n)_2^2 = 0^2 + 0^2 = 0$. Since $\limn
+    % f(x_n) = 0$ for all $x_n$ in $D \setminus \{(0, 0)\}$ converging to $(0,
+    % 0)$, $$\lim_{x \to (0, 0)} f(x) = 0$$
+
 \end{proof}
 
 \section{Exercise 13.11.2}
 \begin{problem}
+    Consider the function $f: D \to \R$ defined by
+    $$f(x) = x \quad \text{for } x \in \R$$
+    where $D = \R$. 
+
+    Prove that for every $a \in D$, the function $f$ is continuous at $a$.
 \end{problem}
 \begin{proof}
+    We need to show that for every $a \in D$, $f$ is continuous at $a$. \\ 
+    Take $a \in D$. \\
+    By the sequence chracterization of continuity, it suffices to show that
+    \begin{myCenter}
+        \tab{for all sequences $x_n$ in $D$ converging to $a \in D$,}
+        \tab{$\limn f(x_n) = f(a)$}
+    \end{myCenter}
+    Let $x_n: \N \to D$ be a sequence converging to $a \in D$. \\
+    It holds that $f(x_n) = x_n$ for all $n \in \N$. \\
+    Therefore, $\limn f(x_n) = \limn x_n = a = f(a)$. \\
+    Thus, $f$ is continuous at $a$.
+
+    %    Take $a \in D$, then for every sequence $x_n : \N \to D$ converging to $a$, we know $f(x_n) = x_n \forall n \in \N$.
+    % Thus for all sequences $x_n$ in $D$ converging to $a$ we have $\limn f(x_n) = \limn x_n = a = f(a)$ which proves continuity of $f$ on $D$.
 \end{proof}
 
 \end{document}
