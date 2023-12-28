@@ -5,3 +5,6 @@ year1/quartile2/Foundations_of_Data_Analytics/GA1/GA1_files/aqw.db
 *.aux
 *.out
 *.log
+*.fdb_latexmk
+*.fls
+*.toc
