@@ -1,0 +1,119 @@
+\documentclass{assignment}
+
+\title{Assignment 10}
+\author{Group 1-1}
+
+\begin{document}
+\maketitle
+\section{Exercise 13.11.3}
+\begin{problem}
+    Let $(X, \dist_X) := (\R, \dist_\R)$ and set $D:=\N\subseteq \R$. Let $(Y,\dist_Y)$ be a metric space and 
+    let $a: \N \to Y$ be a function. Show that $a: \N \to Y$ is continuous (when viewed as a function defined on $D:=\N$
+    as a subset of the metric space $(X, \dist_X)$ mapping to the metric space $(Y,\dist_Y)$).
+\end{problem}
+\begin{proof}
+    Need to show that for all $n \in D:=\N$, $a$ is continuous at $n$. I.e. for all $\varepsilon > 0$, there exists $\delta > 0$,
+    for all $x \in D=\N$, if $0 < \dist_X(x,a) < \delta$, then $\dist_Y(a(x),a(n)) < \varepsilon$. \\
+    Let $\varepsilon > 0$. \\
+    Choose $\delta = 1/2$. \\
+    Take $x \in \N$. \\
+    % Assume $0 < \dist_X(x,a) < \delta$, i.e. $0< |x - a| < \delta$ \\
+    Need to show that $0 < |x-a| < \delta \implies \dist_Y(a(x),a(n)) < \varepsilon$. \\
+    Since $x,a \in N$ and, we have $|x-a|>=1$ or $|x-a|=0$\\ 
+    $0 < |x-a| < \delta \implies \dist_Y(a(x),a(n)) < \varepsilon$ is true. \\
+    We conclude $a$ is continuous on $\N$.
+\end{proof}
+
+\section{Exercise 13.11.5}
+\begin{problem}
+    Let $(X,\dist_X)$ and $(Y,\dist_Y)$ be metric spaces, let $D \subseteq X$ and let $f: D \to Y$. Assume that $f:D \to Y$
+    is \emph{Lipschitz continuous}, which means that there exists a constant $M > 0$ such that for all $x,z \in D$,
+    $$\dist_Y(f(x),f(z)) \le M\dist_X(x,z).$$
+    Show that $f: D \to Y$ is uniformly continuous on $D$.
+\end{problem}
+\begin{proof}
+    Need to show that
+    \begin{myCenter}
+        \tab{for all $\varepsilon > 0$,}
+        \tab{there exists $\delta > 0$,}
+        \tab{for all $p,q \in D$,}
+        \tab{$0<\dist_X(p,q)<\delta \implies \dist_Y(f(p),f(q)) < \varepsilon$}
+    \end{myCenter}
+
+    Let $\varepsilon > 0$. \\
+    Since $f$ is Lipschitz continuous, there exists a constant $M > 0$ such that for all $x,z \in D$, $\dist_Y(f(x),f(z)) \le M\dist_X(x,z)$. \\
+    Obtain such $M$. \\
+    Choose $\delta = \frac{\varepsilon}{M}$, \\
+    Let $p, q \in D$. \\
+    Then it holds that $\dist_Y(f(p),f(q)) \le M\dist_X(p,q)$ \\
+    Need to show that $0<\dist_X(p,q)<\delta \implies \dist_Y(f(p),f(q)) < \varepsilon$. \\
+    Assume $0<\dist_X(p,q)<\delta$, then it holds that
+    $$\dist_Y(f(p),f(q)) \le M\dist_X(p,q) < M\delta = \varepsilon$$
+    We conclude that $f$ is uniformly continuous on $D$.
+\end{proof}
+
+\section{Exercise 14.12.2}
+\begin{problem}
+    Consider the function $f: \R^2\setminus\{0\} \to \R$ defined by
+    $$f(x) = \frac{\exp(x_1^2-3x_2)}{x_1^2+x_2^2}.$$
+    Prove that $f:\R^2\setminus\{0\}\to\R$ is continuous considered as a function mapping from the domain $\R^2\setminus\{0\}$ in
+    the normed vector space $(\R^2, \norm{\cdot}_2)$ to $(\R, |\cdot|)$.
+\end{problem}
+\begin{proof}
+    Note: 
+    \begin{enumerate}
+        \item $p(x_1,x_2) = x_1^2 - 3x_2$ is a polynomial function, thus continuous.
+        \item $\exp: \R \to \R$ is continuous. (Standard function)
+        \item $\exp(p(x_1,x_2)) = \exp(x_1^2-3x_2)$ is continuous. (Composition of continuous functions)
+        \item $q(x_1,x_2) = x_1^2+x_2^2$ is a polynomial function, thus continuous, and $q(x_1,x_2) \ne 0$ for all $(x_1,x_2) \in \R^2\setminus\{0,0\}$.
+    \end{enumerate}
+
+    Then it holds that $f(x) = \frac{\exp(p(x))}{q(x)} = \frac{\exp(x_1^2-3x_2)}{x_1^2+x_2^2}$ is continuous.
+\end{proof}
+
+\section{Exercise 14.12.4}
+\begin{problem}
+    Show that the function $f: \R^2 \to \R$ defined by
+    $$f(x) = \begin{cases}
+        \frac{x_1^4+2x_2^4}{x_1^2+x_2^2} & \text{if } (x_1,x_2) \neq (0,0), \\
+        0 & \text{if } (x_1,x_2) = (0,0),
+    \end{cases}$$
+    is continuous as a function from the normed vector space $(\R^2,\norm{\cdot}_2)$ to the normed vector space $(\R,|\cdot|)$.
+\end{problem}
+\begin{proof}
+    Note:
+    \begin{enumerate}
+        \item $p(x_1,x_2) = x_1^4+2x_2^4$ is a polynomial function, thus continuous.
+        \item $q(x_1,x_2) = x_1^2+x_2^2$ is a polynomial function, thus continuous, and $q(x_1,x_2) \ne 0$ for all $(x_1,x_2) \in \R^2\setminus\{0,0\}$.
+    \end{enumerate}
+    Then it holds that $f(x) = \frac{x_1^4+2x_2^4}{x_1^2+x_2^2}$ is continuous on $\R^2 \setminus \{0,0\}$.
+
+    We need to show that $f$ is continuous at $(0,0)$. \\
+    By the $\varepsilon-\delta$ characterization of continuity, it suffices to show that
+    \begin{myCenter}
+        \tab{for all $\varepsilon > 0$}
+        \tab{there exists $\delta > 0$}
+        \tab{for all $x \in \R^2$}
+        \tab{$0 < \norm{x - (0,0)} < \delta \implies |f(x) - f(0,0)| < \varepsilon$}
+    \end{myCenter}
+    Let $\varepsilon > 0$. \\
+    Choose $\delta = \sqrt[4]{\frac{\varepsilon}{2}}$. \\
+    Take $x \in \R^2$. \\
+    Assume $0 < \norm{x} < \delta$, then it holds that $x \ne (0,0)$ and $x_1^2+x_2^2 < \delta^2$ \\ %and $f(x) = $
+    Need to show that $|f(x) - f(0,0)|  < \varepsilon$. \\
+    It holds that 
+    \begin{align*}
+        |f(x) - f(0,0)| &= \left|\frac{x_1^4+2x_2^4}{x_1^2+x_2^2} - 0\right| \\
+                        &= \frac{|x_1^4 + 2x_2^4|}{|x_1^2 + x_2^2|} \\
+                        &< |x_1^4 + 2x_2^4|  \\
+                        &\le |x_1^4| + |2x_2^4| \\
+                        &= x_1^4 + 2x_2^4 \\
+                        &< 2(x_1^4 + x_2^4) \\
+                        &< 2(x_1^2 + x_2^2)^2 \\
+                        &< 2\delta^4 \\
+                        &= 2\cdot \sqrt[4]{\frac{\varepsilon}{2}}^4 \\
+                        &= \varepsilon
+    \end{align*}
+    We conclude that $f$ is continuous on $\R^2$.
+\end{proof}
+\end{document}
