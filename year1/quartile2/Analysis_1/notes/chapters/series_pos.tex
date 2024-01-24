@@ -19,7 +19,7 @@
     $$\sum_{k=2}^{\infty}\frac{1}{k}$$
     diverges, the series
     $$\sum_{k=2}^{\infty}\frac{k}{k^2-1}$$
-    diverges as well byt the comparison test.
+    diverges as well by the comparison test.
 \end{example}
 
 \subsection{Limit comparison test}
@@ -45,9 +45,9 @@
     $$\frac{a_k}{b_k} = \frac{\frac{k }{k^2 + 1}}{\frac{1}{k }} = \frac{1}{1+\frac{1}{k^2}}.$$
     By limit laws, we find that the limit of the denominator is 1, i.e.
     $$\lim_{k\to\infty} \left(1 + \frac{1}{k^2}\right) = \lim_{k\to\infty} 1 + \lim_{k\to\infty} \frac{1}{k^2} = 1 + 0 = 1.$$
-    Therefore, we may apply the limit law for the quoteient and conclude that
+    Therefore, we may apply the limit law for the quotient and conclude that
     $$lim_{k\to\infty}\frac{a_k}{b_k} = \frac{1}{\lim_{k\to\infty}\left(1+\frac{1}{k^2}\right)} = \frac{1}{1} = 1.$$
-    The series $\displaystyle\sum_{k=2 }^{\infty}\frac{1}{k}$ diverges and therefore it follows from the Limit Comparison Test that the series
+    The series $\displaystyle\sum_{k=2 }^{\infty}\frac{1}{k}$ diverges, and therefore it follows from the Limit Comparison Test that the series
     $$\sum_{k=2 }^{\infty}a_k = \sum_{k=2 }^{\infty}\frac{k}{k^2+1}$$
     diverges as well.
 \end{example}
@@ -56,11 +56,11 @@
 \begin{theorem}[Ratio Test]
     Let $a: \N \to [0, \infty)$ be a sequence.
     \begin{enumerate}
-        \item if there exists an $N \in \N$ and a $q \in (0,1)$ such that for all $n \ge N$, it holds that
-            $$\frac{a_n+1}{a_n} \le q$$,
+        \item If there exists an $N \in \N$ and a $q \in (0,1)$ such that for all $n \ge N$, it holds that
+            $$\frac{a_{n+1}}{a_n} \le q,$$
             then the series $\sum_{k=1}^\infty a_k$ converges.
-        \item if there exists an $N \in \N$ such that for all $n \ge N$, it hodls that
-            $$\frac{a_n+1}{a_n} \ge 1,$$
+        \item If there exists an $N \in \N$ such that for all $n \ge N$, it holds that
+            $$\frac{a_{n+1}}{a_n} \ge 1,$$
             then the series $\sum_{k=1}^\infty a_k$ diverges.
     \end{enumerate}
 \end{theorem}
