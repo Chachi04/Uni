@@ -7,7 +7,142 @@
 
 \maketitle
 
+\section{Sets}
+\subsection{Functions}
+\begin{proposition}
+    Let $f: X \to Y$ and $g: Y \to Z$ be functions. Then
+    \begin{enumerate}[label=(\roman*)]
+        \item If $f,g$ are injective, then $g \circ f$ is also injective.
+        \item If $f,g$ are surjective, then $g \circ f$ is also surjective.
+        \item If $f,g$ are bijective, then $g \circ f$ is also bijective.
+        \item For any function $f: X \to Y$, there exist a set $Z$, an injective 
+            function $h: Z\to Y$, and a surjective function $g: X \to Z$, such that $f = h \circ g$
+    \end{enumerate}
+\end{proposition}
+\subsection{Relations}
+\begin{proposition}
+    Let $R$ be a relation on a set $X$. Then
+    \begin{enumerate}
+        \item $R$ is reflexive if and only if $\Delta_X \subseteq R$. 
+        \item $R$ is symmetric if and only if $R = R\inv$.
+        \item $R$ is antisymmetric if and only if $R \cap R\inv \subseteq \Delta_X$.
+        \item $R$ is transitive if and only if $R \circ R \subseteq R$.
+    \end{enumerate}
+    Where $\Delta_X = \{(x,x) \mid x \in X\}$.
+\end{proposition}
+
+\subsection{Orders}
+\begin{proposition}
+    Let $R$ be an order on a set $X$, Then $R \cup R\inv = X \times X$
+\end{proposition}
+\begin{definition}[Immediate predecessor]
+    Let $(X, \sqsubseteq)$ be an ordered set. We say that an element $x \in X$ is an \emph{immediate predecessor} of an element $y \in X$ if
+    \begin{itemize}
+        \item $x \sqsubseteq y$, and
+        \item there is no $t \in X$ such that $x \sqsubseteq y \sqsubseteq y$.
+    \end{itemize}
+\end{definition}
+\begin{proposition}
+    Let $(X,\sqsubseteq)$ be a finite-ordered set and let $\lhd$ be the corresponding immediate predecessor relation.
+    Then for any two elements $x,y \in X, x \sqsubseteq y$ holds if and only if there exists elements $x_1,\dots,x_k \in X$
+    such that $x \lhd x_1 \lhd \dots \lhd x_k \lhd y$ (possibly $k=0$, i.e. we may also have $x \lhd y$).
+\end{proposition}
+
+\begin{theorem}[Linear extension]
+    Let $(X,\sqsubseteq)$ be a finite-poset. Then there exists a linear ordering $\le$ on $X$ such that $x \sqsubseteq y \implies x \le y$.
+    The order $\le$ is called a \emph{linear extension} of $\sqsubseteq$.
+\end{theorem}
+
+\begin{definition}[Minimal/Maximal element]
+    Let $(X,\sqsubseteq)$ be an ordered set. An element $a \in X$ is called a \emph{minimal element} if there is no $x \in X$ such that $x \sqsubseteq a$ and $x \ne a$.
+    An element $b \in X$ is called a \emph{maximal element} if there is no $y \in X$ such that $b \sqsubseteq y$ and $b \ne y$.
+\end{definition}
+
+\begin{theorem}
+    Every finite partially ordered set has at least one minimal element.
+\end{theorem}
+
+\begin{definition}[Smallet/Largest element]
+    Let $(X,\sqsubseteq)$ be an ordered set. An element $a \in X$ is called a \emph{smallest element} if $\forall x \in X [a \sqsubseteq x]$.
+    An element $b \in X$ is called a \emph{largest element} if $\forall y \in X [y \sqsubseteq b]$.
+\end{definition}
+
+\begin{definition}[Embedding]
+    Let $(X,\sqsubseteq)$ and $(X^\prime,\sqsubseteq^\prime)$ be two ordered sets. A mapping $f: X \to X^\prime$ is called an \emph{embedding}
+    of $(X,\sqsubseteq)$ into $(X^\prime,\sqsubseteq^\prime)$ if the following conditions hold:
+    \begin{enumerate}[label=(\roman*)]
+        \item $f$ is injective
+        \item $\forall x,y \in X [x \sqsubseteq y \iff f(x) \sqsubseteq^\prime f(y)]$
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Isomorhpism]
+    A surjective embedding is called an \emph{isomorphism}.
+\end{definition}
+
+\begin{theorem}
+    For every ordered set $(X,\sqsubseteq)$ there exists an embedding into the ordered set $(\mathcal P(X),\subseteq)$
+\end{theorem}
+
+\begin{definition}
+    A set $A \subseteq X$ is called \emph{independent} in $(X, \sqsubseteq)$ if we never have $x \sqsubseteq y$ for two
+    distinct elements $x,y \in A$. It is also referred to as an \emph{antichain}.
+\end{definition}
+
+\begin{remark}
+    The set of all minimal elements in $(X,\sqsubseteq)$ is independeent.
+\end{remark}
+
+\begin{definition}
+    A set $A \subseteq X$ is called a \emph{chain} in $(X,\sqsubseteq)$ if for any two elements $x,y \in A$ we have $x \sqsubseteq y$ or $y \sqsubseteq x$.
+\end{definition}
+
+\begin{theorem}
+    Let $(X,\sqsubseteq)$ be a poset and $\alpha$ be the maximum size of an independent set in $X$ and $\omega$ be the maximum size of a chain in $X$. 
+    Then $\alpha \cdot \omega \ge |X|$.
+\end{theorem}
+
+\begin{theorem}[Erd\"os - Szekeres]
+    Let $n \in \mathbb N$. Then every sequence of $n^2+1$ distinct real numbers contains a monotone subsequence of length $n+1$.
+\end{theorem}
+
 \section{Counting}
+
+\subsection{functions}
+\begin{proposition}
+    Let $|N| =n, |M| = m$. Then number of all possible mappings $f: N \to M$ is $m^n$.
+\end{proposition}
+
+\begin{proposition}
+    An  $n$-element set $X$ has exactly $2^n$ subsets.
+\end{proposition}
+
+\begin{proposition}
+    Let $n \ge 1$. Each $n$-element set has exactly $2^{n-1}$ subsets of an odd size and exactly $2^{n-1}$ subsets of an even size.
+\end{proposition}
+
+\begin{proposition}
+    For given numbers $n,m \ge 0$, there exists exactly
+    $$m(m-1)\dots(m-n+1) = \prod_{i=0}^{n-1}(m-i)$$
+    injective mappings $f: \{1,2,\dots,n\} \to \{1,2,\dots,m\}$.
+\end{proposition}
+
+\subsection{Permutations}
+\begin{definition}[Permutation]
+    $|\sym_n| = n!$
+\end{definition}
+
+\subsection{Binomial coefficients}
+\begin{proposition}
+    For any finite set $X$, the number of all $k$-element subsets equals $\binom{|X|}{k}$.
+\end{proposition}
+
+\begin{proposition}[Balls and bins]
+    $\binom{m+r-1}{r-1}$
+\end{proposition}
+
+\subsection{Include-exclude principle}
+
 
 \section{Graphs}
 \subsection{Graphs}
