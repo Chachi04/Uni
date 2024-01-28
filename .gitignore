@@ -8,3 +8,5 @@ year1/quartile2/Foundations_of_Data_Analytics/GA1/GA1_files/aqw.db
 *.fdb_latexmk
 *.fls
 *.toc
+**/.ipynb_checkpoints/*
+**/__pycache__/*
