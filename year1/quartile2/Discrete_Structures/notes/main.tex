@@ -7,6 +7,9 @@
 
 \maketitle
 
+\tableofcontents
+\newpage
+
 \section{Sets}
 \subsection{Functions}
 \begin{proposition}
@@ -39,7 +42,7 @@
     Let $(X, \sqsubseteq)$ be an ordered set. We say that an element $x \in X$ is an \emph{immediate predecessor} of an element $y \in X$ if
     \begin{itemize}
         \item $x \sqsubseteq y$, and
-        \item there is no $t \in X$ such that $x \sqsubseteq y \sqsubseteq y$.
+        \item there is no $t \in X$ such that $x \sqsubseteq t \sqsubseteq y$.
     \end{itemize}
 \end{definition}
 \begin{proposition}
@@ -289,7 +292,7 @@
     A sequence of non-negative integers is a degree sequence of some graph if and only if the sum of the integers is even.
 \end{remark}
 
-\begin{lemma}{Hankshake lemma}
+\begin{lemma}[Hankshake lemma]
     For any graph $G=(V,E)$ the number of vertices of odd degree is even.
 \end{lemma}
 
@@ -600,5 +603,9 @@
 \begin{theorem}
     If $G=(V,E)$ is a n-vertex graph without a $K_{2,2}$ subgraph, then $G$ has at most $\frac{1}{2}(n^{\frac{3}{2}} +n)$ edges
 \end{theorem}
+\begin{proposition}
+    Let $G=(V,E)$ be a graph with $n$ vertices and $m$ edges. 
+    $$\sum_{v \in V} \deg(v) = 2 |E|.$$
+\end{proposition}
 
 \end{document}
