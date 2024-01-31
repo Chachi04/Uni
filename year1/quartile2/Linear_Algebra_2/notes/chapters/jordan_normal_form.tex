@@ -1,0 +1,210 @@
+\section{Jordan Normal Form}
+\begin{definition}[Jordan blocks]
+    We denote by $J_n(\lambda)$ the $n \times n$ matrix
+    $$J_n(\lambda)= \begin{bmatrix} \lambda & 1 \\ & \lambda & \cdots \\ & & \cdots & 1 \\ & & & \lambda \end{bmatrix}$$
+    that has $\lambda$'s on the diagonal, 1's directly above the diagonal, and 0's everywhere else.
+
+    We call a matrix $J$ a \emph{Jordan block} if it is of that shape, i.e. $J=J_n(\lambda)$ for some field element
+    $\lambda \in \K$ and some integer $n$.
+\end{definition}
+\begin{example}[Jordan block of dimension 3 for value 2]
+    $$J_3(2) = \begin{pmatrix}2&1&0\\0&2&1\\0&0&2\end{pmatrix}.$$
+\end{example}
+
+
+\begin{definition}[Jordan Blocks and Jordan Normal Form]
+    Let $A$ be a quadratic matrix with entries in $\K$. We say that $A$ is in \emph{Jordan normal form} if it is of a
+    diagonal block shape
+    $$A = \begin{bmatrix}J_1\\&\cdots\\&&J_p\end{bmatrix},$$
+    with each block $J_i$ being a Jordan block, so each block being $J_i = J_{n_i}(\lambda_i)$ for some field element
+    $\lambda_i \in \K$ and some integer $n_i$.
+\end{definition}
+
+\subsection{Annihilating matrices using minimal polynomials}
+\begin{theorem}[Cayley-Hamilton theorem for $\K = \C$]
+    A complex quadratic matrix's characteristic polynomial always annihilates it.
+
+    More formally: Let $A$ be a complex quadratic matrix with characteristic polynomial $\chi_A$, and let $\chi_A(A)$
+    be the matrix obtained by applying $\chi_A$ to $A$. Then $\chi_A(A) = 0$ (zero matrix).
+\end{theorem}
+
+\begin{definition}[Minimal polynomial]
+    Let $A$ be a quadratic square matrix. The minimal polynomial of $A$ is the (unique) polynomial $m_A$ for which
+    \begin{itemize}
+        \item $m_A$ annihilates $A$, i.e. $m_A(A) = 0$ (zero matrix)
+        \item $m_A$ is minimal, i.e. any other polynomial $p$ that annihilates $A$ is a multiple of $m_A$.
+        \item $m_A$ is monic, i.e. the leading coefficient of $m_A$ is 1.
+    \end{itemize}
+\end{definition}
+
+\begin{theorem}
+    Let $m$ be a monic polynomial that annihilates a complex square matrix $A$. Then the following two statements are
+    equivalent:
+    \begin{enumerate}
+        \item $m$ divides all other polynomials that annihilate $A$.
+        \item The degree of $m$ is minimal, i.e. the degree of all other polynomials annihilating $A$ is at least as
+            high as $m$'s degree.
+    \end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+    The minimal polynomial $m_A$ of a complex square matrix $A$ always divides the characteristic polynomial $\chi_A$.
+\end{corollary}
+
+\begin{theorem}
+    Let $\A: V \to V$ be a linear map on a finite-dimensional complex vector space $V$, with distinct
+    eigenvalues $\lambda_1,\dots,\lambda_n$.
+
+    Then $(\lambda-\lambda_1)\cdot(\lambda-\lambda_2)\dots(\lambda-\lambda_n)$ divides the minimal polynomial $m_A$.
+\end{theorem}
+
+\begin{corollary}
+    Let $\A:V \to V$ be a linear map on a finite-dimensional complex vector space $V$, with distinct eigenvalues
+    $\lambda_1, \dots, \lambda_n$ and characteristic polynomial $\chi_\A(\lambda)=\Pi_{i=1}^n(\lambda-\lambda_i)^{m_i}$.
+    Then the minimal polynomial of $\A$ is
+    $$m_\A(\lambda)=\Pi_{i=1}^n(\lambda-\lambda_i)^{e_i}$$
+    with each multiplicity $e_i$ being somewhere between 1 and $m_i$, the algebraic multiplicity of $\lambda_i$.
+\end{corollary}
+
+\subsection{Generalized eigenvectors and spaces}
+\begin{definition}[Generalized eigenvector]
+    Let $\A:V \to V$ be a linear map on a finite-dimensional vector space, and let $\mu$ be an eigenvalue of $\A$.
+    We call $\vec{x}$ a \emph{generalized eigenvector of rank} $m$ of $\A$ for eigenvalue $\mu$ if
+    \begin{itemize}
+        \item $(\A - \mu \id)^m\vec{x} = \vec{0}$, but
+        \item $(\A - \mu \id)^{m-1} \ne \vec{0}$
+    \end{itemize}
+    we denote the collection of all generalized eigenvectors of rank up to $m$ by $E_\mu^{(m)}$, so
+    $$E_\mu^{(m)} := \nullspace((\A-\mu \id)^m),$$
+    and call it the \emph{generalized eigenspace of rank} $m$ of $\A$ for eigenvalues $\mu$.
+\end{definition}
+
+\begin{theorem}
+    Generalized eigenspaces are invariant.
+\end{theorem}
+
+\begin{theorem}
+    Let $\A:V \to V$ be a linear map. For any polynomial $f$ with coefficients in $V$'s scalar field,
+    we have
+    $$f(\A)(\A\vec{v}) = \A(f(\A)\vec{v})$$
+\end{theorem}
+
+\begin{theorem}[Primary Decomposition Theorem]
+    For any linear map $\A: V \to V$ on a finite-dimensional complex vector
+    space $V$, we can find a basis of generalized eigenvectors. $V$ splits into
+    the (invariant) generalized eigenspaces, with the ranks corresponding to
+    the respective eigenvalue's degree in the minimal polynomial.
+
+    More formally, let $\A: V \to V$ be a linear map on a finite-dimensional
+    complex vector space $V$, with distinct eigenvalues
+    $\lambda_1,\dots,\lambda_n$ and minimal polynomial $m_\A(\lambda) =
+    \Pi_{i=1}^n(\lambda-\lambda_i)^e_i$.
+
+    Then for each $i$, we find a basis $\alpha_i$ of the generalized eigenspace
+    $E_{\lambda_i}^{(e_i)}$ in a way such that
+    \begin{itemize}
+        \item the bases $\alpha_1,\dots,\alpha_n$, are all linearly independent
+        \item combining the bases, so taking the union $\alpha:=\bigcup_i\alpha_i$, spans the full vector
+            space $V$.
+    \end{itemize}
+\end{theorem}
+
+\begin{remark}
+    Since we are decomposing the vector space along the map's eigenvalues, and
+    since the collection of the map's eigenvalues is called the spectrum, this
+    is also sometimes called \emph{spectral decomposition}.
+\end{remark}
+
+\subsection{Finding a basis that creates the Jordan Normal Form}
+\begin{theorem}
+    Let $\A: V \to V$ be a linear map on a finite-dimensional complex vector
+    space, and let $\mu$ be an eigenvalue such that $m_\text{geo}(\mu) <
+    m_\text{alg}(\mu)$.
+
+    Then there exists a vector $\vec{x}$ such that $(\A-\mu \id)\vec{x} \ne
+    \vec{0}$, but $(\A - \mu \id)^2\vec{x}=\vec{0}$. In other words, $\vec{x}$ is
+    a generalized eigenvector of rank 2.
+\end{theorem}
+
+\begin{theorem}
+    Let $\A:V \to V$ be a linear map on a finite-dimensional vector space. If
+    the algebraic multiplicity of 0 is larger than its geometric multiplicity,
+    then the intersection of $\A$'s range and null space contains more than the
+    zero vector.
+\end{theorem}
+
+\begin{theorem}[2-dimensional Jordan form from rank 2-eigenvector, general case]
+    In general, taking a generalized eigenvector $\vec{x}$ of rank 2 for an
+    eigenvalue $\mu$ and the vector $\vec{x}^\prime:=(\A - \mu \id)\vec{x}$
+    always creates an invariant, two-dimensional subspace of $E_\mu^{(2)}$, and
+    for the basis $\{\vec{x}^\prime, \vec{x}\}$, the respective representation
+    matrix for this subspace is the 2-dimensional Jordan block for eigenvalue
+    $\mu$, so $$J_2(\mu) = \begin{pmatrix}\mu & 1\\0&\mu\end{pmatrix}.$$
+\end{theorem}
+
+\begin{definition}[Jordan chain]
+    Let $\mu$ be an eigenvalue of the matrix $A$ whose degree in the minimal
+    polynomial $m_A$ is e, and let $\vec{x}$ be a generalized eigenvector of
+    rank $e$ for eigenvalue $\mu$. We set
+    \begin{itemize}
+        \item $\vec{x}_e:=\vec{x}$
+        \item $\vec{x}_{e-1}:= (A - \mu\id)\vec{x}_e$
+        \item $\vec{x}_{e-2}:= (A - \mu\id)\vec{x}_{e-1} = (A - \mu\id)^2\vec{x}$
+        \item \dots
+        \item $\vec{x}_1 := (A-\mu\id)\vec{x}_2 = (A-\mu\id)^{e-1}\vec{x}$
+    \end{itemize}
+    and call $(x_1,\dots,x_e)$ a \emph{Jordan chain} for eigenvalue $\mu$.
+\end{definition}
+
+\begin{theorem}[Jordan form from generalized eigenvectors of higher ranks]
+    A Jordan chain as defined creates an invariant, e-dimensional subspaces of
+    $E_\mu^{(e)}$, and when picking the Jordan chain as its basis, the
+    respective representation matrix for this subspace is the e-dimensional
+    Jordan block for eigenvalue $\mu$.
+\end{theorem}
+
+
+\begin{theorem}
+    Let $mu$ be an eigenvalue of a matrix $A$, and let the degree of the linear
+    term $\lambda - \mu$ in the matrix's minimal polynomial $m_A$ be e.
+
+    Then the length of the longest Jordan chain for $\mu$ is e.
+\end{theorem}
+
+\begin{theorem}
+    The dimension of a generalized eigenspace that appears in the vector space
+    in the vector space decomposition matches the algebraic multiplicity of the
+    respective eigenvalue.
+
+    More formally, let $\mu$ be an eigenvalue of a linear map $\A: V \to V$ on
+    a finite-dimensional vector space $V$, and let e denote the multiplicity of
+    $\mu$ in $\A$'s  minimal polynomial $m_\A$.
+
+    Then the dimension of the generalized eigenspace $E_\mu^{(e)}$ is equal to 
+    the algebraic multiplicity of $\mu$, i.e. the multiplicity of $\mu$ in the 
+    characteristic polynomial.
+\end{theorem}
+
+\begin{theorem}
+    The number of Jordan blocks for an eigenvalue $\mu$ equals the dimension of
+    the corresponding eigenspace $E_\mu$, so the dimension of the null space
+    $\nullspace(A - \mu\id)$.
+\end{theorem}
+
+\begin{remark} [Takeaway]
+    \begin{itemize}
+        \item We compute the distinct eigenvalues $\lambda_1,\dots,\lambda_n$ of
+            the matrix.
+        \item Per eigenvalue, we compute the following:
+            \begin{itemize}
+                \item Number of Jordan blocks for $\lambda_i$: is equal to the 
+                    number of linearly independent usual eigenvectors
+                \item Dimension of the largest Jordan block belonging to $\lambda_i$:
+                    is equal to the degree of the factor $\lambda-\lambda_i$ in the
+                    minimal polynomial.
+                \item Dimension of the generalized eigenspace for $\lambda_i$, so
+                    size of all $\lambda_i$-blocks combined: is equal to the degree
+                    of the factor $\lambda-\lambda_i$ in the characteristic polynomial.
+            \end{itemize}
+    \end{itemize}
+\end{remark}

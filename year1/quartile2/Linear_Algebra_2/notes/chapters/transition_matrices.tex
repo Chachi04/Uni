@@ -4,7 +4,7 @@ We can find matrices for linear maps $\mathbb{K}^n \to \mathbb{K}^m$ by using th
 However, working with abstract vector spaces, we do not have a standard basis. For that reason we look at transition matrices.
 
 \subsection{Coordinates}
-\begin{definition}[coordinates]
+\begin{definition}[Coordinates]
     Let $V$ be an n-dimensional vector space with basis $\alpha = \{\vec{a}_1, \dots, \vec{a}_n\}$. Every vector $\vec{v} \in V$ can be
     expressed as a linear combination of the basis vectors in exactly one way:
     % Let $V$ be a vector space with basis $\mathscr{B} = \{\vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n\}$. Let $\vec{v} \in V$. Then there exists unique $\lambda_1, \lambda_2, \cdots, \lambda_n \in \mathbb{K}$ such that
@@ -17,6 +17,11 @@ However, working with abstract vector spaces, we do not have a standard basis. F
 \begin{remark}
     Clearly, the coordinates depend on the choice of the basis $\alpha$.
 \end{remark}
+
+\begin{example}
+    Consider the vector space $V$ of real polynomials of degree at most 2, and take the polynomial $p := 1+2x+3x^2$. Let $\alpha := \{1,x,x^2\}$ be a basis of $V$.
+    The $\alpha$-coordinates of $p$ are $(1,2,3)$
+\end{example}
 
 \begin{theorem}
     Let $V$ be an n-dimensional vector space with basis $\alpha = \{\vec{a}_1, \dots, \vec{a}_n\}$. We will denote the

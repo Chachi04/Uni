@@ -1,0 +1,63 @@
+\section{Linear differential equations}
+
+\subsection{General solution}
+
+\begin{definition}[Derivative map]
+    We define the \textbf{derivative map on $n$ many differentiable functions $\R \to \C$}, by defining
+    $$\mathcal D \begin{pmatrix}x_1\\ \vdots \\ x_n\end{pmatrix} := \begin{pmatrix}\dot{x_1} \\ \vdots \\ \dot{x_n} \end{pmatrix}$$
+    or, shorter,
+    $$\mathcal D \vec{x} = \dot{\vec{x}}.$$
+\end{definition}
+
+\begin{definition}[System of linear differential equations]
+    A \emph{system of linear differential equations with constant coefficients} and in $n$ many unknown functions $x_1, \dots, x_n$ of a real variable $t$
+    has the form
+    $$\dot{\vec{x}} = A \vec{x} + \vec{f},$$
+    where $A$ is an $n \times n$ matrix and $\vec{f}$ is a vector of $n$ many functions of $t$.
+
+    We call the system \emph{homogeneous} if $\vec{f} = \vec{0}$ and \emph{inhomogeneous} otherwise.
+\end{definition}
+
+We define a linear map $\A\vec{x} = A \vec{x}$ and use the fact that $\mathcal D$ and $\A$ are linear maps on $V$ to rewrite the system as
+\begin{align*}
+    \dot{\vec{x}} &= \A \vec{x} + \vec{f} \\
+    \mathcal D \vec{x} - \A \vec{x} &= \vec{f} \\
+    (\mathcal D - \A) \vec{x} &= \vec{f} \\
+\end{align*}
+
+\begin{remark}[Takeaway]
+    We find all solutions to the system by:
+    \begin{enumerate}
+        \item Finding the general solution to the homogeneous system 
+            $$(\mathcal D - \A) \vec{x} = \vec{0}.$$
+            i.e.
+            $$\nullspace(\mathcal D - \A)$$
+        \item Finding a particular solution to the inhomogeneous system, i.e. a vector $\vec{p}$, such that
+            $$\dot{\vec{p}} = A\vec{p} + \vec{f}$$
+        \item Adding the general solution to the particular solution.
+            $$\vec{p} + \nullspace(\mathcal D - \A)$$
+    \end{enumerate}
+\end{remark}
+
+\subsection{Homogeneous system: diagonalization}
+\begin{theorem}
+    If $A$ is an $n \times n$ diagonal matrix with diagonal entries $\lambda_1, \dots, \lambda_n$, then the set of solutions
+    for the respective homogeneous system $\dot{\vec{x}} = A \vec{x}$ is
+    $$\{x\in V \mid \dot{\vec{x}} = \A \vec{x}\} = \{c_1 e^{\lambda_1 t}\vec{e}_1 + \dots c_n e^{\lambda_n t}\vec{e}_n \mid c_1, \dots, c_n \in \C\}$$
+\end{theorem}
+
+\begin{theorem}
+    If $A$ can be brought into real diagonal form via an eigenvector basis $\{\vec{a}_1, \dots, \vec{a}_n\}$, then the set of solutions for the
+    respective homogeneous system $\dot{\vec{x}} = A\vec{c}$
+    $$\{\vec{x} \in V \mid \dot{\vec{x}} = \A\vec{x}\} = \{c_1e^{\lambda_1t}\vec{a}_1 + \dots + c_ne^{\lambda_nt}\vec{a}_n \mid c_1, \dots, c_n \in \C \}$$
+    where $\lambda_i$ is the eigenvalue for the respective eigenvector $\vec{a}_i$.
+\end{theorem}
+
+\subsection{Particular solution}
+
+\begin{remark}
+    If the additional term $\vec{f}$ is a vector multiple of $e^{at}$, try $\vec{p} = \vec{u}e^{at}$.
+    But if $\vec{p} = \vec{u}e^{at}$ did not work, try bigger linear combinations. E.g. $((\vec{u} + \vec{v}t)e^{at}, (\vec{u}+\vec{v}t+\vec{w}t^2)e^{at},\dots)$
+
+    % If $\vec{f}$ is a vector multiple of $e^{at}\cos(bt)$ or $e^{at}\sin(bt)$, try $\vec{p} = \vec{u}e^{at}\cos(bt) + \vec{v}e^{at}\sin(bt)$.
+\end{remark}

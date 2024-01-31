@@ -15,7 +15,7 @@
 \end{theorem}
 
 \begin{theorem}
-    Let $V$ ba a finite real inner product space, and let $\A: V \to V$ be linear. Then the following are equivalent:
+    Let $V$ be a finite real inner product space, and let $\A: V \to V$ be linear. Then the following are equivalent:
     \begin{enumerate}
         \item $\A$ is orthogonal.
         \item $\norm{\A\vec{x}} = \norm{\vec{x}}$ for all $\vec{x} \in V$.
@@ -34,7 +34,7 @@
 \end{theorem}
 
 \begin{remark}
-    As a consequence, powers of orthogonal maps are orthogonal. However, in infinite dimensional spaces, there are exist orthogonal maps that are not invertible.
+    As a consequence, powers of orthogonal maps are orthogonal. However, in infinite dimensional spaces, there are orthogonal maps that are not invertible.
 \end{remark}
 
 \subsection{Orthogonal matrices}
@@ -52,7 +52,7 @@
         \item $\A$ is orthogonal.
         \item $A$ is orthogonal.
         \item $A\trans A = \Id_n$. In other words, the transpose the inverse.
-        \item Thr rows of $A$ form an orthonormal system in $\R^n$.
+        \item The rows of $A$ form an orthonormal system in $\R^n$.
     \end{enumerate}
 \end{theorem}
 
@@ -76,10 +76,297 @@
     $$\alpha S \beta = \beta S \alpha \inv = \beta S \alpha \trans$$
 \end{theorem}
 
+\begin{remark}
+    In a nutshell: we can switch between 
+    \begin{itemize}
+        \item the vector space level and the coordinate level or 
+        \item coordinate systems for different basis
+    \end{itemize}
+    without disrupting orthogonality (as long as we are working with an orthonormal basis).
+\end{remark}
+
 \begin{theorem}
     Let $\alpha$ be an orthonormal basis for a finite-dimensional real inner product space $V$, and 
     let $\A : V \to V$ be a linear map and $A_\alpha$ the matrix of $\A$ (with respect to basis $\alpha$).
     Then the map $\A$ is orthogonal if and only if its matrix $A_\alpha$ is orthogonal.
 \end{theorem}
 
+\subsection{Classification of orthogonal maps}
+\begin{theorem}
+    Let $\alpha$ be an orthonormal basis for a finite-dimensional real inner product space $V$, and let $\A: V \to V$ be
+    a linear map and $A_\alpha$ the matrix of $\A$
+
+    Then $\det(A_\alpha) = \pm 1$.
+    We say that an orthogonal map is
+    \begin{itemize}
+        \item \emph{directly orthogonal} if $\det(A_\alpha) = 1$
+        \item \emph{indirectly orthogonal} if $\det(A_\alpha) = -1$
+    \end{itemize}
+\end{theorem}
+
+\begin{theorem}
+    Let $\alpha$ be an orthonormal basis for a real inner product space $V$ of dimension $n$, and let $\A: V \to V$ be
+    an orthogonal map, $A_\alpha$ the matrix of $\A$, and $\chi_\A = \det(A_\alpha - \lambda\id)$ the characteristic
+    polynomial of $\A$. Then
+    \begin{itemize}
+        \item every real root of $\chi_\A$ is either $1$ or $-1$
+        \item for any non-real root $\mu$ of $\chi_\A$, the complex conjugate $\overline{\mu}$ is also a root of $\chi_\A$
+        \item if $\det(A_\alpha)=-1$, then $-1$ is an eigenvalue of $\A$then 
+    \end{itemize}
+\end{theorem}
+
+\begin{theorem}[Classification for dimension 1]
+    On real vector spaces of dimension 1,
+    \begin{itemize}
+        \item the only map with $\det(A\alpha)=1$ is $\id$
+        \item the only map with $\det(A\alpha)=-1$ is $-\id$
+    \end{itemize}
+\end{theorem}
+
+\begin{theorem}[Classification for dimension 2]
+    If $V$ is a real inner product space of dimension 2, then
+    \begin{itemize}
+        \item if $\det(A_\alpha)=1$, then $\A$ is a rotation around the origin by some angle $\varphi$, and we can
+            always find an orthonormal basis $\alpha$ such that
+            $$A_\alpha = \begin{pmatrix}\cos{\varphi} & -\sin{\varphi} \\ \sin{\varphi} & \cos{\varphi} \end{pmatrix}$$
+        \item if $\det(A_\alpha)=-1$, then $\A$ is a reflection with a line $\ell = <\vec{a}>$ as its reflection axis, with
+            eigenvalues $\pm 1$ and eigenspace $E_1 = \ell$ and $E_{-1}=\ell^\perp$. We can always find an orthonormal basis
+            $\alpha$ such that
+            $$A_\alpha = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$$
+    \end{itemize}
+\end{theorem}
+
+\begin{remark}
+    When looking for a basis that brings directly orthogonal maps on $\R^2$ into rotation matrix shape, \emph{any} 
+    orthonormal basis will do. In fact, any orthonormal basis will lead to almost the same rotation matrix
+\end{remark}
+
+\begin{remark}[$\R^2$: Rotation matrix looks mostly the same for different orthonormal bases]
+    We are now looking at a directly orthogonal map $\A$ acting on $\R^2$, and take the standard basis $\varepsilon$.
+    We always find an angle $\varphi$ such that the respective matrix $A_\varepsilon$ of $\A$ is
+    $$A_\varepsilon = \begin{pmatrix} \cos{\varphi} & -\sin{\varphi} \\ \sin{\varphi} & \cos{\varphi} \end{pmatrix}$$
+\end{remark}
+
+To analyze orthogonal maps on spaces of dimension larger than two, we will simplify the task by using an additional trick:
+we will pick an invariant subspace $W$ and split $V$ into $W$ and its orthogonal complement $W^\perp$.
+
+\begin{theorem}
+    Let $\A: V \to V$ be an orthogonal map on a real finite-dimensional inner product space $V$, and let $W$ be a 
+    linear subspace such that $W$ is invariant under $\A$.
+    
+    Then $W^\perp$ is also invariant under $\A$.
+\end{theorem}
+
+\begin{theorem}
+    Let $\A$ be an orthogonal map in a finite-dimensional inner product space $V$, and $W$ be an invariant subspace of $V$.
+    Let $\alpha_W$ be an orthonormal basis of $W$, $\alpha_{W^\perp}$ be an orthonormal basis of $W^\perp$, and
+    set $\alpha := \alpha_W \cup \alpha_{W^\perp}$. Then
+    $$A_\alpha = \begin{pmatrix}M_1 & O_1 \\ O_2 & M_2 \end{pmatrix}$$
+    where $M_1,M_2$ are the orthogonal matrices of the restrictions $\A: W \to W$ and $\A: W^\perp \to W^\perp$ and 
+    $O_1,O_2$ are the zero matrices of the right size. In addition, $\det(A_\alpha) = \det(M_1)\cdot\det(M_2)$.
+\end{theorem}
+
+\begin{theorem}[Classification for dimension 3]
+    If $V$ is a real inner product space of dimension 3, then
+    \begin{itemize}
+        \item if $\det(A)=1$, then $\A$ is a rotation around a line $\ell = <\vec{a}_1>$ (called the axis of rotation)
+            by some angle $\varphi$. We can always find an orthonormal basis $\alpha = \{\vec{a}_1, \vec{a}_2, \vec{a}_3\}$
+            of $V$ such that the respective matrix $A_\alpha$ of $\A$ has the following (rotation matrix) shape:
+            $$A_\alpha = \begin{pmatrix} 1 & 0 & 0 \\ 0 & \cos\varphi & -\sin\varphi \\ 0 & \sin\varphi & \cos\varphi \end{pmatrix}$$
+            $A_\alpha$ has the trace $\trace(A_\alpha) = 1 + 2\cos\varphi$
+        \item if $\det(A)=-1$, then $\A$ is a rotoreflection, i.e. a rotation around a line $\ell = <\vec{a}_1>$ by some
+            angle $\varphi$, together with a reflection with mirror plane $<\vec{a}_1>^\perp$. We can always find an
+            orthonormal basis $\alpha = \{\vec{a}_1,\vec{a}_2, \vec{a}_3\}$ of $V$ such that the respective matrix $A_\alpha$
+            of $\A$ has the following shape:
+            $$A_\alpha = \begin{pmatrix}-1 & 0 & 0 \\ 0 & \cos\varphi & -\sin\varphi \\ 0 & \sin\varphi & \cos\varphi \end{pmatrix}$$
+            $A_\alpha$ has the trace $\trace(A_\alpha) = -1 + 2\cos\varphi$.
+    \end{itemize}
+\end{theorem}
+
+\begin{remark}[Takeaway]
+    \begin{enumerate}
+        \item Compute $\det(A)$ to determine whether $\A$ is a rotation or a rotoreflection.
+        \item The determinant also tells us the signs of the eigenvalue.
+        \item We determine the rotation axis by computing an eigenvector $\vec{a}_1$ for the eigenvalue.
+        \item Once we know $\det(A)$, we can read out the rotation angle $\varphi$ from the trace.
+        \item We determine the basis $\alpha = \{\vec{a}_1,\vec{a}_2,\vec{a}_3\}$ for which the representation matrix
+            has the wanted shape. To enforce diagonal block shape, we split $V$ into the line spanned by $\vec{a}_1$ and
+            its orthogonal complement $<\vec{a}_1>^\perp$. Concretely:
+            \begin{itemize}
+                \item We set the first basis vector to $\vec{a}_1$.
+                \item To complete the basis, we need to fill up $\{\vec{a}_1\}$ with some orthonormal vectors $\vec{a}_2, \vec{a}_3$
+                    that are orthogonal to $\vec{a}_1$.
+                \item We can find $\vec{a}_2, \vec{a}_3$, e.g. by applying Gram-Schmidt to the 'prebasis' $\{\vec{a}_1, \vec{e}_2, \vec{e}_3\}$.
+            \end{itemize}
+        \item Rotoreflection case: the mirror plane is the plane which is orthogonal to the rotation axis, $<\vec{a}_1>$,
+            so we can determine the mirror plane as the plane spanned by the two bases vectors $\vec{a}_2, \vec{a}_3$.
+    \end{enumerate}
+\end{remark}
+
+\begin{theorem}[Classification for dimensions > 3]
+    If $V$ is a real inner product space of dimension $n \ge 3$ and $\A:V \to V$ is an orthogonal map, we can always
+    find an orthonormal basis $\alpha$ of $V$ and a number $m \ge 0$ such that the respective matrix $A_\alpha$ of $\A$
+    has the following form:
+    $$A_\alpha = \begin{pmatrix}
+        1 & \\
+          & \ddots \\
+          & & 1 \\
+          & & & -1 & & & 0\\
+          & & & & \ddots \\
+          & & & & & R_1 \\
+          & & & 0 & & & \ddots \\
+          & & & & & & & R_m
+    \end{pmatrix}$$
+    where $R_1, \dots, R_m$ are $2 \times 2$ rotation matrices for some rotation angles $\varphi_1, \dots, \varphi_m$.
+\end{theorem}
+
 \subsection{Symmetric maps}
+\begin{definition}[Symmetric map]
+    Let $V$ be a real inner product space. A linear map $\A: V \to V$ is called \emph{symmetric} if $(\A\vec{x},\vec{y}) = (\vec{x},\A\vec{y})$
+    for all $\vec{x},\vec{y} \in V$.
+\end{definition}
+\begin{example}[Orthogonal projection]
+    The orthogonal projection $\proj$ on a line $\ell$ is symmetric:
+
+    If $\ell = <\vec{a}>, \norm{\vec{a}} = 1$, then $\proj\vec{x} = (\vec{x},\vec{a})\vec{a}$.
+    For all $\vec{x},\vec{y} \in V$ we have
+    $$(\proj\vec{x},\vec{y})=((\vec{x},\vec{a})\vec{a},\vec{y})=(\vec{x},\vec{a})(\vec{a},\vec{y})$$
+    $$(\vec{x},\proj\vec{y})=(\vec{x},(\vec{y},\vec{a})\vec{a})=(\vec{y},\vec{a})(\vec{x},\vec{a})$$
+    meaning that $(\proj\vec{x},\vec{y}) = (\vec{x},\proj\vec{y})$.
+    Similarly, one can show that the orthogonal projection unto a subspace $W$ is a symmetric linear map.
+\end{example}
+
+\subsubsection{Symmetric matrices}
+\begin{theorem}
+    For a linear map $\A: V \to V$, the following are equivalent:
+    \begin{enumerate}
+        \item $\A$ is symmetric
+        \item for every orthonormal system $\vec{a}_1, \dots, \vec{a}_m$ in $V$, we have $(\A\vec{a}_i, \vec{a}_j) = (\vec{a}_i,\A\vec{a}_j)$ for all $i,j$
+        \item there is an orthonormal basis $\{\vec{a}_1, \dots \vec{a}_n\}$ of $V$ satisfying $(\A\vec{a}_i, \vec{a}_j) = (\vec{a}_i,\A\vec{a}_j)$ for all $i,j$
+    \end{enumerate}
+\end{theorem}
+
+\begin{proposition}
+    Let $V$ be a finite-dimensional real inner product space and $\alpha$ be an orthonormal basis of $V$. The linear
+    map $\A: V \to V$ is symmetric if and only if its matrix $A_\alpha$ satisfies $A_\alpha = A_\alpha\trans$.
+\end{proposition}
+
+This motivates how we define symmetric matrices:
+\begin{definition}[Symmetric matrix]
+    A real $n \times n$ matrix $A$ is called \emph{symmetric} if $A = A\trans$.
+\end{definition}
+
+\subsubsection*{We can always diagonalize symmetric matrices}
+\begin{theorem}
+    Let $\A:V \to V$ be a symmetric map on a real finite-dimensional inner product space $V$. Then all roots of the
+    characteristic polynomial $\chi_\A$ are real (and hence an eigenvalue).
+\end{theorem}
+
+\begin{theorem}
+    Let $\A: V \to V$ be a symmetric map on a real finite-dimensional inner product space $V$, and let $W$ be an invariant
+    subspace.
+    
+    Then $W^\perp$ is also invariant under $\A$.
+\end{theorem}
+
+\begin{theorem}
+    Let $\A: V \to V$ be a symmetric linear map on $V$ with $\dim(V) < \infty$. Then there exists an orthonormal basis
+    of eigenvectors of $\A$.
+\end{theorem}
+
+For symmetric maps, we can show that eigenspaces for different eigenvalues will always be orthogonal (so the space completely
+splits into orthogonal eigenspaces).
+
+\begin{theorem}
+    Let $\A:V \to V$ be a symmetric linear map on $V$ with $\dim(V) < \infty$, and $\lambda_1, \lambda_2$ be two distinct
+    eigenvalues. Then all vectors in the eigenspace $E_{\lambda_1}$ are orthogonal to all vectors in the eigenspace
+    $E_{\lambda_2}$. In other words, $E_{\lambda_1} \perp E_{\lambda_2}$.
+\end{theorem}
+
+\begin{corollary}
+    A symmetric matrix is diagonalizable by changing to an orthonormal basis of eigenvectors, so by means of an orthogonal
+    coordinate transformation and hence an orthogonal transition matrix.
+\end{corollary}
+
+\begin{remark}[Takeaway]
+    \begin{enumerate}
+        \item We use the characteristic polynomial $\det(A - \lambda\id)$ to find
+            eigenvalues $\lambda_1, \dots, \lambda_n$ with their respective eigenvectors $\vec{a}_1, \dots, \vec{a}_n$.
+        \item This gives us an eigenvector basis $\alpha := \{\vec{a}_1, \dots, \vec{a}_n\}$
+        \item We turn $\alpha$ into an orthonormal eigenvector basis by normalizing all eigenvectors
+        \item The representation matrix for basis $\alpha$ is the eigenvalue diagonal matrix:
+            $$A_\alpha = \begin{pmatrix}
+                \lambda_1 & 0 & \dots & 0 \\
+                0 & \lambda_ 2 & \ddots & \vdots \\
+                \vdots & \ddots & \ddots & 0 \\
+                0 & \dots & 0 & \lambda_n
+            \end{pmatrix}$$
+        \item To transform $A$ into $A_\alpha$ via $A_\alpha = _\alpha S _\varepsilon A_\varepsilon {_\varepsilon} S _\alpha$, we need
+            the basis transition matrices:
+            \begin{itemize}
+                \item $_\varepsilon S _\alpha$ is the matrix with the eigenvectors as columns
+                \item $_\alpha S _\varepsilon = _\varepsilon S _\alpha \trans$
+            \end{itemize}
+    \end{enumerate}
+\end{remark}
+
+\subsection{Quadratic forms and analyzing curves}
+\begin{definition}[Quadratic forms]
+    Quadratic forms over $\R$ are homogeneous polynomials of degree 2 with 
+    coefficients in $\R$, i.e. polynomials $p(x_1,\dots,x_n)$ of the form
+    $$p(x_1,\dots,x_n) = \sum_{i=1}a_{ii}x_i^2+\sum_{i,j>i}b_{ij}x_ix_j$$
+    for some scalars $a_1,\dots,a_n,b_{12},\dots,b_{n-1,n} \in \R$.
+\end{definition}
+
+\begin{remark}
+    Any quadratic form $p(x_1,\dots,x_n)$ over $\R$ ca  be written as a vector-matrix product $\vec{x}\trans A \vec{x}$ for a symmetric matrix $A$:
+
+    We set the diagonal elements of $A$ to the coefficients of $x_1^2,\dots,x_n^2$ and for the non-diagonal elements
+    $i \ne j$, we set $a_{ij}=a_{ji}$ to the coefficient of $x_ix_j$ divided by 2.
+\end{remark}
+
+\begin{remark}
+    If $D$ is a diagonal matrix with diagonal $(\lambda_1,\dots,\lambda_n)$, then the corresponding quadratic
+    form $p(x_1,\dots,x_n)$ is
+    $$\vec{x}\trans D \vec{x} = \vec{x}\trans \begin{pmatrix}\lambda_1 \\ & \ddots \\ & & \lambda_n \end{pmatrix} = \sum_i\lambda_ix_i^2.$$
+\end{remark}
+
+\begin{theorem}
+    For any quadratic form $p(x_1,\dots,x_n)$ over the reals, there exists a substitution rule $\vec{x} \mapsto \vec{y}$ that
+    brings $p(x_1,\dots,x_n)$ into a form without mixed products.
+
+    More formally, there exists a basis transformation map $\alpha: \R^n \to \R^n$ and a quadratic form $p^\prime(y_1,\dots,y_n)$
+    over the reals such that
+    \begin{itemize}
+        \item for $(y_1, \dots, y_n):= \alpha(x_1,\dots,x_n)$, we always get $p(x_1,\dots,x_n) = p^\prime(y_1,\dots,y_n)$ (same
+            form up to coordinate substitution)
+        \item $p^\prime(y_1,\dots,y_n)=\sum_i\lambda_iy_i^2$ for some coefficients $\lambda_1, \dots, \lambda_n$ (form has no mixed products)
+    \end{itemize}
+\end{theorem}
+
+\begin{remark}
+    As soon as we know the eigenvalues (including their multiplicities), we can already write down the mixed-term-free 'substituted' 
+    form $p^\prime(y_1,\dots,y_n)=\sum_i\lambda_iy_i^2$ without any further computations.
+\end{remark}
+
+\subsection*{Equations with additional linear terms}
+\begin{definition}[Quadratic hyper-surface]
+    A \emph{quadratic hyper-surface $H$ in $\R$} is the set of solutions for some quadratic equation:
+    $$H := \{\vec{x} \in \R^n \mid \vec{x}\trans A \vec{x} + \vec{b}\trans\vec{x}=0\},$$
+    where $A$ is a symmetric real $n \times n$ matrix, $\vec{b} \in \R^n$. (and $d$??? is some real number).
+\end{definition}
+
+\begin{theorem}
+    For any quadratic hyper-surface $H$ in $\R^n$, there exists a substitution $\vec{x}\mapsto\vec{y}$ that brings
+    the hyper-surface's equation into a form containing all variables just once, and without mixed products.
+
+    More formally: let $\vec{x}\trans A \vec{x} + \vec{b}\trans\vec{x} = 0$ be the defining equation of $H$. Then there
+    exists a 'coordinate substitution map' $T: \R^n \to \R^n$ and a quadratic form $p^\prime(z_1,\dots,z_2)$ over the reals such that
+    \begin{itemize}
+        \item for $(z_1,\dots,z_n) := T(x_1,\dots,x_n)$, we always get $\vec{x}\trans A \vec{x} + \vec{b}\trans\vec{x}=p^\prime(z_1,\dots,z_n)$ 
+            (same form up to coordinate substitution)
+        \item $p^\prime(z_1,\dots,z_n)$ only contains each $z_i$ once, either as a linear term $z_i$ or as a quadratic term $z_i^2$
+            (variables appear only once and not in mixed products).
+    \end{itemize}
+\end{theorem}
+
