@@ -1,0 +1,50 @@
+\section{Introduction}
+
+\subsection{Introduction}
+
+\begin{definition}[Algorithm]
+    A well-defined computational procedure that takes some value, or set of
+    values, as input and produces some value, or set of values, as output. An
+    algorithm is thus a sequence of computational steps that transform the
+    input into the output.
+\end{definition}
+
+\begin{definition}[Data Structure]
+    A way to store and organize data in order to facilitate access and modifications.
+\end{definition}
+
+\begin{definition}[Abstract Data Type (ADT)]
+    A data type that is defined by the operations that may be performed on it.
+\end{definition}
+
+\subsection{Describing algorithms}
+A complete description of an algorithm consists of three parts:
+\begin{enumerate}
+    \item \textbf{The algorithm}
+        \begin{itemize}
+            \item A description of the algorithm in a high-level language (English, pseudocode, etc).
+            \item Include clear specification of used data structures.
+        \end{itemize}
+    \item \textbf{Proof of correctness}
+    \item \textbf{Derivation of running time}
+\end{enumerate}
+
+\subsection{Sorting}
+
+\subsubsection*{Insertion sort}
+\begin{algorithm}[H]
+    \KwIn{A sequence of $n$ numbers $A = \langle a_1,\dots,a_n \rangle$}
+    \KwOut{A permutation of the input such that $\langle f(a_1) \le f(a_2) \le \dots \le f(a_n) \rangle$}
+    initialize: sort $A[1]$
+    \For{$j = 2$ to $A.length$}{
+        $key = A[j]$ \\
+        $i = j - 1$ \\
+        \While{$i > 0$ and $A[i] > key$}{
+            $A[i + 1] = A[i]$ \\
+            $i = i - 1$
+        }
+        $A[i + 1] = key$}
+    % \caption{Insertion sort}
+\end{algorithm}
+\subsubsection*{Loop invariants and the correctness of insertion sort}
+
