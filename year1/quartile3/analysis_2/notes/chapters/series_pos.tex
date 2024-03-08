@@ -1,0 +1,107 @@
+\section{Series with positive terms}
+
+\subsection{Comparison test}
+\begin{theorem}[Comparison test]
+    Let $a,b: \N \to [0, \infty)$ be two sequences. Assume that there exists an $N \in \N$ such that for all $n \ge N$ we have $a_n \le b_n$. Then
+    \begin{enumerate}
+        \item Suppose the series $\sum_{n=1}^\infty b_n$ converges. Then the series $\sum_{n=1}^\infty a_n$ converges as well.
+        \item Suppose the series $\sum_{n=1}^\infty a_n$ diverges. Then the series $\sum_{n=1}^\infty b_n$ diverges as well.
+    \end{enumerate}
+\end{theorem}
+\begin{example}
+    Consider the series
+    $$\sum_{k=2}^{\infty}\frac{k}{k^2-1}.$$
+
+    We first observe that for all $k \ge 2$ we have
+    $$\frac{k}{k^2-1} \ge \frac{k}{k^2} = \frac{1}{k}.$$
+
+    Because the series
+    $$\sum_{k=2}^{\infty}\frac{1}{k}$$
+    diverges, the series
+    $$\sum_{k=2}^{\infty}\frac{k}{k^2-1}$$
+    diverges as well by the comparison test.
+\end{example}
+
+\subsection{Limit comparison test}
+\begin{theorem}[Limit comparison test]
+    Let $a,b: \N \to [0, \infty)$ be two sequences.
+    \begin{enumerate}
+        \item Assume the series $\sum_{k=1}^\infty b_k$ converges and assume the limit
+            $$\limn \frac{a_n}{b_n}$$
+            exists. Then the series $\sum_{k=1}^\infty a_k$ converges as well.
+        \item Assume the series $\sum_{k=1}^\infty b_k$ diverges and assume the limit
+            $$\limn \frac{a_n}{b_n}$$
+            exists and is strictly larger than zero, or that the limit is infinity. Then the series $\sum_{k=1}^\infty a_k$ diverges as well.
+    \end{enumerate}
+\end{theorem}
+\begin{example}
+    Consider the series
+    $$\sum_{k=1}^{\infty}\frac{1}{k^2+1}.$$
+
+    We use sequences $a,b: \N \to [0, \infty)$ defined for $k \ge 2$ by
+    $$a_k = \frac{k}{k^2+1}$$ and
+    $$b_k = \frac{1}{k}.$$
+    Then
+    $$\frac{a_k}{b_k} = \frac{\frac{k }{k^2 + 1}}{\frac{1}{k }} = \frac{1}{1+\frac{1}{k^2}}.$$
+    By limit laws, we find that the limit of the denominator is 1, i.e.
+    $$\lim_{k\to\infty} \left(1 + \frac{1}{k^2}\right) = \lim_{k\to\infty} 1 + \lim_{k\to\infty} \frac{1}{k^2} = 1 + 0 = 1.$$
+    Therefore, we may apply the limit law for the quotient and conclude that
+    $$lim_{k\to\infty}\frac{a_k}{b_k} = \frac{1}{\lim_{k\to\infty}\left(1+\frac{1}{k^2}\right)} = \frac{1}{1} = 1.$$
+    The series $\displaystyle\sum_{k=2 }^{\infty}\frac{1}{k}$ diverges, and therefore it follows from the Limit Comparison Test that the series
+    $$\sum_{k=2 }^{\infty}a_k = \sum_{k=2 }^{\infty}\frac{k}{k^2+1}$$
+    diverges as well.
+\end{example}
+
+\subsection{Ratio test}
+\begin{theorem}[Ratio Test]
+    Let $a: \N \to [0, \infty)$ be a sequence.
+    \begin{enumerate}
+        \item If there exists an $N \in \N$ and a $q \in (0,1)$ such that for all $n \ge N$, it holds that
+            $$\frac{a_{n+1}}{a_n} \le q,$$
+            then the series $\sum_{k=1}^\infty a_k$ converges.
+        \item If there exists an $N \in \N$ such that for all $n \ge N$, it holds that
+            $$\frac{a_{n+1}}{a_n} \ge 1,$$
+            then the series $\sum_{k=1}^\infty a_k$ diverges.
+    \end{enumerate}
+\end{theorem}
+
+\subsection{Limit ratio test}
+\begin{theorem}[Limit Ratio Test]
+    Let $a: \N \to (0, \infty)$ be a sequence.
+    \begin{enumerate}
+        \item If $\limn \frac{a_{n+1}}{a_n} = q$ with $q \in [0,1)$, then the series $\sum_{k=1}^\infty a_k$ converges.
+        \item If $\limn \frac{a_{n+1}}{a_n} = q$ with $q > 1$, or if $\limn \frac{a_{n+1}}{a_n} = \infty$, then the series $\sum_{k=1}^\infty a_k$ diverges.
+    \end{enumerate}
+\end{theorem}
+
+\begin{remark}
+    We cannot conclude anything about the convergence of a series $\sum_{k }^{}a_k$ when
+    $$\limn \frac{a_{n+1}}{a_n} = 1.$$
+\end{remark}
+
+\subsection{Root test}
+\begin{theorem}[Root test]
+    Let $(a_n)$ be a sequence of non-negative real numbers.
+    \begin{enumerate}
+        \item If there exists an $N \in \N$ and a $q \in (0,1)$ such that for all $n \ge N$, it holds that
+            $$\sqrt[n]{a_n} \le q,$$
+            then the series $\sum_{k=1}^\infty a_k$ converges.
+        \item If there exists an $N \in \N$ such that for all $n \ge N$, it holds that
+            $$\sqrt[n]{a_n} \ge 1,$$
+            then the series $\sum_{k=1}^\infty a_k$ diverges.
+    \end{enumerate}
+\end{theorem}
+
+\subsection{Limit root test}
+\begin{theorem}[Limit Root Test]
+    Let $(a_n)$ be a sequence of non-negative real numbers.
+    \begin{enumerate}
+        \item If $\limn \sqrt[n]{a_n} = q$ with $q \in [0,1)$, then the series $\sum_{k=1}^\infty a_k$ converges.
+        \item If $\limn \sqrt[n]{a_n} = q$ with $q > 1$, or if $\limn \sqrt[n]{a_n} = \infty$, then the series $\sum_{k=1}^\infty a_k$ diverges.
+    \end{enumerate}
+\end{theorem}
+
+\begin{remark}
+    We cannot conclude anything about the convergence of a series $\sum_{k }^{}a_k$ when
+    $$\limn \sqrt[n]{a_n} = 1.$$
+\end{remark}

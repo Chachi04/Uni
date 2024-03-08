@@ -1,0 +1,69 @@
+\section{Higher order derivatives}
+List of most important message for this chapter:
+\begin{itemize}
+    \item That the $(n+1)$-th derivative is the derivative of the $n$-th derivative.
+    \item The interpretation of the $n$-th derivative in terms of iterated directional derivatives.
+    \item Concluding higher-order differentiability from continuity of higher order derivatives.
+    \item The symmetry of $n$-th order derivatives.
+\end{itemize}
+
+\subsection{Definition}
+\begin{definition}
+    We set $\Lin_1(V,W):= \Lin(V,W)$ and for every $n \in \N \{0\}$, we define
+    $\Lin_{n+1}(V,W):=\Lin(V, \Lin_n(V,W))$.
+\end{definition}
+
+\begin{definition}[Higher-order derivatives]
+    Let $n \in \N \{0,1\}$. Suppose $f: \Omega \to W$ is $n$ times differentiable on a ball $B(a,r) \subseteq \Omega$.
+    We then say that $f$ is $(n+1)$ times differentiable in the point $a$ if the function
+    $$D^nf:B(a,r) \to \Lin_n(V,W)$$
+    is differentiable in $a$. The $(n+1)$-th derivative in the point $a$ is then defined as
+    $$(D^{n+1}f)_a := (D(D^nf))_a \in \Lin_{n+1}(V,W).$$
+\end{definition}
+
+\subsection{Multilinear maps}
+\begin{definition}[Multilinear maps]
+    A map $L: V^n \to W$ is called multilinear, or $n$-linear, if for every $i \in \{1,\dots,n\}$
+    and every $v_1,\dots,v_{i-1},v_{i+1},\dots,v_n \in V$, the map
+    $$u \mapsto L(v_1,\dots,v_{i-1},u,v_{i+1},\dots,v_n)$$
+    is linear.
+
+    We will denote the vector space of $n$-linear maps from $V^n$ to $W$ by $\MLin(V^n,W)$.
+\end{definition}
+
+\begin{proposition}
+    $\mathcal J_n$ is invertible with inverse $\mathcal K_n$, and it preserves the norm.
+\end{proposition}
+
+\subsection{Relation to n-fold directional derivatives}
+\begin{proposition}
+    Suppose a function $f: \Omega \to W$ is $n$ times differentiable in a point
+    $a \in \Omega$. Then all directional $n$-fold derivatives exist in $a$ and for all
+    $v_1,\dots,v_n \in V$,
+    $$(D^nf)_a(v_n,v_{n-1},\dots,v_2,v_1) = (D_{v_n}(D_{v_{n-1}}\dots(D_{v_2}(D_{v_1}f))\dots))_a.$$
+\end{proposition}
+
+\subsection{A criterion for higher differentiability}
+\begin{theorem}
+    Let $f:\Omega \to W$ where $\Omega$ is an open subset of $\R^d$. If all partial derivatives
+    of $f$ of order less than or equal to $n$ exist, and if all partial derivatives of order $n$
+    are continuous on $\Omega$, then $f$ is $n$ timers differentiable on $\Omega$.
+\end{theorem}
+
+\subsection{Symmetry of second order derivatives}
+\begin{lemma}
+    Let $f:\Omega \to W$ be a function defined on an open domain $\Omega \subseteq V$. Let $a\in\Omega$
+    and assume that $f$ is twice differentiable in $a$. Then for all $u,v \in V,$
+    $$(D^2f)_a(u,v) = (D^2f)_a(v,u).$$
+\end{lemma}
+
+\subsection{Symmetry of higher-order derivatives}
+\begin{definition}
+    We denote by $\sym_n(V,W)$ the collection of symmetric, $n$-linear maps from $V^n$ to $W$. 
+    That is, a map $\mathcal S:V^n \to W$ is in $\sym_n(V,W)$ if and only if it is linear in
+    every argument and if for every permutation $\sigma:\{1,\dots,n\}\to\{1,\dots,n\}$ it holds that
+    $$\mathcal S(v_1,\dots,v_n) = \mathcal S(v_{\sigma(1)},\dots,v_{\sigma(n)}).$$
+
+    In conclusion, we may as well write
+    $$D^nf:\Omega \to \sym_n(V,W)$$
+\end{definition}

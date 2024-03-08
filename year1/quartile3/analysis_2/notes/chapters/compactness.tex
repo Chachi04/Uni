@@ -1,0 +1,63 @@
+\section{Compactness}
+
+\subsection{Definition of (sequential) compactness}
+\begin{definition}[(Sequential) compactness]
+    Let $(X, \dist)$ be a metric space. We say a subset $K \subseteq X$ is \emph{(sequentially) compact} if every sequence
+    $x: \N \to K$ has a converging subsequence $x \circ n$, converging to a point $z \in K$.
+\end{definition}
+
+\subsection{Boundedness and total boundedness}
+\begin{definition}[Bounded sets]
+    Let $(X, \dist)$ be a metric space. We say that a subset $A \subseteq X$ is \emph{bounded} if
+    \begin{myCenter}
+        \tabline{there exists $q \in X$,}
+        \tabline{there exists $M > 0$,}
+        \tabline{for all $p \in A$,}
+        \tabline{$\dist(p, q) \leq M$.}
+    \end{myCenter}
+\end{definition}
+
+Just as with the concept of boundedness for sequences, in normed vector spaces boundedness has a somewhat easier alternative characterization.
+\begin{proposition}
+    Let $(V, \norm{\cdot})$ be a normed linear space. A subset $A \subseteq V$ is bounded if and only if
+    \begin{myCenter}
+        \tabline{there exists $M > 0$,}
+        \tabline{for all $v \in A$,}
+        \tabline{$\norm{v} \leq M$.}
+    \end{myCenter}
+\end{proposition}
+
+\begin{definition}[Totally bounded sets]
+    Let $(X, \dist)$ be a metric space. We say that a subset $A \subseteq X$ is \emph{totally bounded} if
+    \begin{myCenter}
+        \tabline{for all $r > 0$,}
+        \tabline{there exists $N \in \N$,}
+        \tabline{there exists $p_1,\dots,p_N \in X$,}
+        \tabline{$A \subseteq \bigcup_{i=1}^N B(p_i,r)$.}
+    \end{myCenter}
+\end{definition}
+
+In the next proposition we will say that "total boundedness" is a stronger property than just "boundedness".
+
+\begin{proposition}
+    Let $(X, \dist)$ be a metric space and let $A$ be a subset of $X$. If $A$ is totally bounded, it is bounded.
+\end{proposition}
+
+In the special case of the normed vector space $(\R^d, \norm{\cdot}_2)$, however, a subset is totally bounded if and only
+if it is bounded.
+
+\begin{proposition}
+    Consider now the normed vector space $(\R^d, \norm{\cdot}_2)$. A subset $A \subseteq \R^d$ is bounded in $(\R^d, \norm{\cdot}_2)$
+    if and only if it is totally bounded.
+\end{proposition}
+
+\subsection{Alternative characterization of compactness}
+\begin{theorem}
+    A subset $K \subseteq X$ is compact if and only if it is complete and totally bounded.
+\end{theorem}
+
+In the special case of $(\R^d, \norm{\cdot})$ we have an easier alternative characterization of compactness.
+\begin{theorem}[Heine-Borel Theorem]
+    \label{thm:heine-borel}
+    A subset of $(\R^d, \norm{\cdot}_2)$ is compact if and only if it is closed and bounded.
+\end{theorem}

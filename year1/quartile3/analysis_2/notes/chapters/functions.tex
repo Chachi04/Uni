@@ -1,0 +1,283 @@
+\section{Real-valued functions}
+
+\subsection{More limit laws}
+\begin{theorem}[Limit laws for real-valued functinos]
+    Let $(X, \dist)$ be a metric space, let $D$ be a subset of $X$ and assume that $a \in D^\prime$. Let 
+    $f: D \to \R$ and $g: D \to \R$ be two real-valued functions and assume that $\lim_{x\to a}f(x)$ exists and
+    equals $M \in \R$ and that $\lim_{x\to a}g(x)$ exists and equals $L \in \R$. Then
+    \begin{enumerate}
+        \item For every $m \in \N$, the limit $\lim_{x\to a}(f(x))^m$ exists and equals $M^m$.
+        \item The limit $\lim_{x \to a}(f(x)g(x))$ exists and equals $ML$.
+        \item If $L \ne 0$, then the limit $\lim_{x \to a}\frac{f(x)}{g(x)}$ exists and equals $\frac{M}{L}$.
+        \item If for all $x \in D, f(x) \ge 0$, then for every $k \in \N \setminus \{0\}$,
+            $$\lim_{x\to a}\sqrt[k]{f(x)}=\sqrt[k]{M}$$
+    \end{enumerate}
+\end{theorem}
+
+\subsection{Building new continuous functions}
+The following theorem translates the limit laws from the previous section into statements
+about continuity.
+\begin{theorem}
+    Let $(X,\dist)$ be a metric space, let $D$ be a subset of $X$ and assume $a \in D$.
+    Let $f:D \to \R$ and $g:D \to \R$ be two real-valued functions that are continuous in $a$.
+    Then 
+    \begin{enumerate}
+        \item For every $m \in \N$, the function $f^m$ is continuous in $a$.
+        \item The function $f + g$ is continuous in $a$.
+        \item The function $fg$ is continuous in $a$. 
+        \item If $g(a) \ne 0$, then the function $\frac{f}{g}$ is continuous in $a$.
+        \item If for all $x \in D, f(x) \ge 0$, then for every $k \in \N \setminus \{0\}$,
+            the function $\sqrt[k]{f}$ is continuous in $a$.
+    \end{enumerate}
+\end{theorem}
+
+\subsection{Continuity of standard functions}
+\begin{proposition}[Polynomials are continuous]
+    Every (possibly multivariate) polynomial is continuous as a function from $(\R^d, \norm{\cdot}_2)$ to $(\R,|\cdot|)$.
+\end{proposition}
+\begin{proposition}[Rational functions are continuous]
+    Every (possibly multivariate) rational function is continuous as a function from $(\R^d, \norm{\cdot}_2)$ to $(\R,|\cdot|)$.
+\end{proposition}
+
+\begin{proposition}[Continuity of some standard functions]
+    The functions
+    \begin{center}
+        \begin{tabular}{l r}
+            $\exp:\R \to \R$ & $\ln: (0,\infty)\to\R$ \\
+            $\sin:\R \to \R$ & $\arcsin:[-1,1] \to \R$ \\
+            $\cos:\R \to \R$ & $\arccos:[-1,1] \to \R$ \\
+            $\tan:(-\pi/2,\pi/2) \to \R$ & $\arctan:\R \to \R$
+        \end{tabular}
+    \end{center}
+    are all continuous.
+\end{proposition}
+
+\subsection{Limits from the left and from the right}
+\begin{definition}[Limit from the left]
+    Let $(Y,\dist_Y)$ be a metric space, and let $D \subseteq \R$ be a subset of $\R$. Let $f: D \to Y$ be a function.
+    Let $a \in \R$ be such that $a \in ((-\infty,a)\cap D)^\prime$, i.e. such that $a$ is an accumulation point in the set
+    $(-\infty,a) \cap D$ in the metric space $(\R, \dist_\R)$. Let $q \in Y$. We say that $f(x)$ \emph{converges to q as
+    $x$ approaches $a$ from the left (or from below)}, and write
+    $$\lim_{x\uparrow a}f(x) = q (\lim_{x\to a^-}f(x)=q)$$
+    if
+    \begin{myCenter}
+        \tab{for all $\varepsilon > 0$,}
+        \tab{there exists $\delta > 0$,}
+        \tab{for all $x \in D \cap (-\infty, a)$,}
+        \tab{$0 < \dist_\R(x,a) < \delta \implies \dist_Y(f(x),q) < \varepsilon$}
+    \end{myCenter}
+\end{definition}
+\begin{definition}[Limit from the right]
+    Let $(Y,\dist_Y)$ be a metric space, and let $D \subseteq \R$ be a subset of $\R$. Let $f: D \to Y$ be a function.
+    Let $a \in \R$ be such that $a \in ((a,\infty)\cap D)^\prime$, i.e. such that $a$ is an accumulation point in the set
+    $(a,\infty) \cap D$ in the metric space $(\R, \dist_\R)$. Let $q \in Y$. We say that $f(x)$ \emph{converges to q as
+    $x$ approaches $a$ from the right (or from above)}, and write
+    $$\lim_{x\downarrow a}f(x) = q (\lim_{x\to a^+}f(x)=q)$$
+    if
+    \begin{myCenter}
+        \tab{for all $\varepsilon > 0$,}
+        \tab{there exists $\delta > 0$,}
+        \tab{for all $x \in D \cap (a, \infty)$,}
+        \tab{$0 < \dist_\R(x,a) < \delta \implies \dist_Y(f(x),q) < \varepsilon$}
+    \end{myCenter}
+\end{definition}
+
+\subsection{The extended real line}
+\begin{definition}[The extended real line]
+    The extended real line $\R_\text{ext}$ is the union -f the set $\R$ and two symbols, "$\infty$" and "$-\infty$".
+    That is $\R_\text{ext} = \R \cup \{\infty\} \cup \{-\infty\}$.
+\end{definition}
+
+To turn $\R_\text{ext}$ into a metric space, we need to define a distance function. First, we define a map $\iota: \R_\text{ext} \to [-1,1]$ by
+$$\iota(x) = \begin{cases}
+    -1 &\text{if } x = -\infty \\
+    \frac{x}{1+x} &\text{if } x \in \R \land x \ge 0 \\
+    \frac{x}{1-x} &\text{if } x \in \R \land x < 0 \\
+    1 &\text{if } x = \infty
+\end{cases}$$
+Because this function is injective, we can now build a distance on $\R_\text{ext}$.
+
+\begin{definition}[Distance on extended real line]
+    Given the definition of the injective function $\iota: \R_\text{ext} \to [-1,1]$ above, we define the distance on
+    $\R_\text{ext}$ by
+    $$\dist_{\R_\text{ext}}(x,y) := dist_\R(\iota(x),\iota(y)) \qquad \text{for }x,y \in \R_\text{ext}$$
+\end{definition}
+
+\subsection{Limits to \texorpdfstring{$\infty$}{infinity} or \texorpdfstring{$-\infty$}{minus infinity}}
+\begin{definition}[Divergence to $\infty$]
+    Let $(X,\dist_X)$ be a metric space and $D \subseteq X$ and assume $a \in D^\prime$. Let $f: D \to \R$.
+    We say that $f$ diverges to $\infty$ in $a$ if
+    \begin{myCenter}
+        \tab{for all $M \in \R$,}
+        \tab{there exists $\delta > 0$,}
+        \tab{for all $x \in D$,}
+        \tab{$0 < \dist_X(x,a) < \delta \implies f(x) > M$}
+    \end{myCenter}
+\end{definition}
+\begin{definition}[Divergence to $-\infty$]
+    Let $(X,\dist_X)$ be a metric space and $D \subseteq X$ and assume $a \in D^\prime$. Let $f: D \to \R$.
+    We say that $f$ diverges to $-\infty$ in $a$ if
+    \begin{myCenter}
+        \tab{for all $M \in \R$,}
+        \tab{there exists $\delta > 0$,}
+        \tab{for all $x \in D$,}
+        \tab{$0 < \dist_X(x,a) < \delta \implies f(x) < M$}
+    \end{myCenter}
+\end{definition}
+\begin{proposition}[Alternative characterization of divergence to $\infty$]
+    Let $(X,\dist_X)$ be a metric space and $D \subseteq X$ and assume $a \in D^\prime$. Let $f: D \to \R$.
+    Then $f$ diverges to $\infty$ in $a$ if and only if $f$ \emph{converges} in $a$ to the element $\infty \in \Rext$
+    when viewed as a function mapping from $D$ as a subset of $(X,\dist_X)$ to the extended real line $(\Rext, \dist_{\R_\text{ext}})$.
+\end{proposition}
+
+\subsection{Limits at \texorpdfstring{$\infty$}{infinity} and \texorpdfstring{$-\infty$}{minus infinity}}
+\begin{definition}[Limit at $\infty$]
+    Let $(Y,\dist_Y)$ be a metric space and let $D$ be a subset of $\R$ that is unbounded from above. Let $q \in Y$ and
+    $f: D \to Y$ be a function. We say that $f(x)$ converges to $q$ as $x \to \infty$, and write
+    $$\lim_{x\to\infty}f(x) = q$$
+    if
+    \begin{myCenter}
+        \tab{for all $\epsilon > 0$,}
+        \tab{there exists $z \in \R$,}
+        \tab{for all $x \in D$,}
+        \tab{$x > z \implies \dist_Y(f(x),q) < \epsilon$}
+    \end{myCenter}
+\end{definition}
+\begin{definition}[Limit at $-\infty$]
+    Let $(Y,\dist_Y)$ be a metric space and let $D$ be a subset of $\R$ that is unbounded from below. Let $q \in Y$ and
+    $f: D \to Y$ be a function. We say that $f(x)$ converges to $q$ as $x \to -\infty$, and write
+    $$\lim_{x\to-\infty}f(x) = q$$
+    if
+    \begin{myCenter}
+        \tab{for all $\epsilon > 0$,}
+        \tab{there exists $z \in \R$,}
+        \tab{for all $x \in D$,}
+        \tab{$x < z \implies \dist_Y(f(x),q) < \epsilon$}
+    \end{myCenter}
+\end{definition}
+
+We can also combine divergence to and at infinity.
+\begin{definition}[Divergence to $\infty$ at $\infty$]
+    Let $D \subseteq \R$ be unbounded from above. Let $f: D \to \R$ be a function. We say that $f$ diverges to $\infty$
+    as $x \to \infty$, and write
+    $$\lim_{x\to\infty}f(x) = \infty$$
+    if
+    \begin{myCenter}
+        \tab{for all $M \in \R$,}
+        \tab{there exists $z \in \R$,}
+        \tab{for all $x \in D$,}
+        \tab{$x > z \implies f(x) > M$}
+    \end{myCenter}
+\end{definition}
+\begin{definition}[Divergence to $-\infty$ at $\infty$]
+    Let $D \subseteq \R$ be unbounded from above. Let $f: D \to \R$ be a function. We say that $f$ diverges to $-\infty$
+    as $x \to \infty$, and write
+    $$\lim_{x\to\infty}f(x) = -\infty$$
+    if
+    \begin{myCenter}
+        \tab{for all $M \in \R$,}
+        \tab{there exists $z \in \R$,}
+        \tab{for all $x \in D$,}
+        \tab{$x > z \implies f(x) < M$}
+    \end{myCenter}
+\end{definition}
+
+\subsection{The Intermediate Value Theorem}
+\begin{theorem}[Intermediate Value Theorem]
+    Let $f: [a,b] \to \R$ be a continuous function and let $c \in \R$ be a value between $f(a)$ and $f(b)$. Then,
+    there exists an $x \in [a,b]$ such that $f(x) = c$.
+\end{theorem}
+
+\subsection{The Extreme Value Theorem}
+The \emph{Extreme Value Theorem} states that a continuous, real-valued function defined on a non-empty, compact domain
+$K$ always attains both a maximum and a minimum on $K$. 
+\begin{theorem}[Extreme Value Theorem]
+    Let $(X,\dist_X)$ be a metric space, $K \subseteq X$ be a non-empty compact subset and $f: K \to \R$ be continuous.
+    Then $f$ attains a maximum and a minimum on $K$.
+\end{theorem}
+
+\subsection{Equivalence of norms}
+\begin{definition}[Equivalent norms]
+    Let $V$ be a vector space and let $\norm{\cdot}_A$ and $\norm{\cdot}_B$ be two different norms on $V$. We say
+    that the norms $\norm{\cdot}_A$ and $\norm{\cdot}\_B$ are \emph{equivalent} if there exists a constant $c_1 > 0$ and
+    $c_2 > 0$ such that for all $v \in V$
+    $$c_1\norm{x}_A \le \norm{x}_B \le c_2\norm{x}_A.$$
+\end{definition}
+\begin{theorem}[Equivalence of norms on finite-dimensional vector spaces]
+    Let $V$ be a finite-dimensional vector space and let $\norm{\cdot}_A$ and $\norm{\cdot}_B$ be two norms on $V$.
+    Then the norms $\norm{\cdot}_A$ and $\norm{\cdot}_B$ are equivalent.
+\end{theorem}
+
+\begin{theorem}
+    Let $(V,\norm{\cdot})$ be a finite-dimensional normed vector space. Then $(V, \norm{\cdot})$ is complete.
+\end{theorem}
+
+\begin{theorem}[Heine-Borel Theorem for finite-dimensional normed vector spaces]
+    Let $(V,\norm{\cdot})$ be a finite-dimensional normed vector space. Then a subset $A \subseteq V$ is compact
+    if and only if $A$ is closed and bounded.
+\end{theorem}
+
+\subsection{Bounded linear maps and operator norms}
+\begin{definition}[Linear map]
+    Let $V$ and $W$ be two vector spaces. A function $L: V \to W$ is called a \emph{linear map} if both
+    \begin{enumerate}
+        \item for all $a,b \in V$,
+            $$L(a+b) = L(a) + L(b)$$
+
+        \item for all $\lambda \in \R$ and $a \in V$,
+            $$L(\lambda a) = \lambda L(a)$$
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Bounded linear map]
+    Let $(V, \norm{\cdot}_V)$ and $(W, \norm{\cdot}_W)$ be two normed vector spaces. We say that a linear map
+    $L: V \to W$ is \emph{bounded} if the image under $L$ of the closed unit ball
+    $$\bar{B}_V(0,1) = \{v \in V \mid \norm{v}_V \le 1\}$$
+    is a bounded subset of $(W, \norm{\cdot}_W)$, i.e. if
+    $$L(\bar{B}_V(0,1))$$
+    is a bounded subset of $(W, \norm{\cdot}_W)$.
+\end{definition}
+
+\begin{proposition}[Alternative characterization of bounded linear maps]
+    Let $(V, \norm{\cdot}_V)$ and $(W, \norm{\cdot}_W)$ be two normed vector spaces. A linear map $L: V \to W$ is
+    bounded if and only if there exists an $M > 0$ such that for all $v \in V$,
+    $$\norm{L(v)}_W \le M\norm{v}_V$$
+\end{proposition}
+
+\begin{proposition}
+    The space of bounded linear maps between one normed vector space to another is itself again a vector space, that 
+    we denote by $\BLin(V,W)$. Addition and scalar multiplication are defined pointwise, that means that if $L: V \to W$
+    and $K: V \to W$ are two linear maps and $\lambda \in \R$ is a scalar, then the linear map $L+K: V \to W$ is defined by
+    $$(L+K)(v) = L(v) + K(v)$$
+    and the map 
+    $$(\lambda L)(v) = \lambda(L(v)).$$
+    The zero-element in this vector space $\BLin(V,W)$ is the map that maps every vector to the zero-element of $W$.
+\end{proposition}
+
+We now define the operator norm on the space of bounded linear maps.
+\begin{proposition}
+    Let $(V,\norm{\cdot}_V)$ and $(W,\norm{\cdot}_W)$ be two normed vector spaces. Consider the vector space $\BLin(V,W)$
+    of bounded linear maps $L: V \to W$. Then the function $\norm{\cdot}_{V\to W}: \BLin(V,W) \to \R$ defined by
+    $$\norm{L}_{V \to W} := \sup_{x \in \bar{B}_V(0,1)} \norm{L(x)}_W$$
+    is a norm on $\BLin(V,W)$.
+\end{proposition}
+\begin{definition}[Operator norm]
+    The norm $\norm{\cdot}_{V \to W}$ on the vectors space $\BLin(V,W)$ is called the \emph{operator norm}.
+\end{definition}
+\begin{proposition}
+    Let $(V,\norm{\cdot}_V)$ and $(W,\norm{\cdot}_W)$ be two normed vector spaces. Let $L: V \to W$ be a bounded linear map.
+    Then for all $v \in V$,
+    $$\norm{L(v)}_W \le \norm{L}_{V \to W}\norm{v}_V$$
+    and in fact
+    $$\norm{L}_{L \to W} = \min\{C \ge 0 \mid \forall v \in V, \norm{L(v)}_W \le C\norm{v}_V\}$$
+\end{proposition}
+
+\begin{theorem}
+    Let $(V,\norm{\cdot}_V)$ and $(W,\norm{\cdot}_W)$ be two normed vector spaces and assume that $V$ is finite-dimensional. Let $L: V \to W$ be a linear map.
+    Then $L$ is bounded.
+\end{theorem}
+
+\begin{theorem}
+    Let $(V,\norm{\cdot}_V)$ and $(W,\norm{\cdot}_W)$ be two normed vector spaces. Let $L: V \to W$ be a linear map.
+    The function $L$ is continuous if and only if it is bounded.
+\end{theorem}

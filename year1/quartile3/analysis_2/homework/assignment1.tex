@@ -1,0 +1,95 @@
+\documentclass{assignment}
+
+\author{Group 4-4}
+\title{Assignment 1}
+
+\begin{document}
+\section{Exercise 15.12.1}
+\begin{problem}
+    Let $A: V \to W$ be a linear map from a finite-dimensional normed vector space $(V,\dotnorm_V)$ to
+    a normed vector space $(W,\dotnorm_W)$. Show that $A$ is differentiable on $V$.
+\end{problem}
+\begin{proof}
+    We need to show that for all $a \in V$ there exists a linear map $L_a:V\to W$ such that if we define
+    $$\Err(x) := A(x)-A(a)-L_a(x-a).$$
+    Then
+    $$\lim_{x \to a} \frac{\norm{\Err(x)}_W}{\norm{x-a}_V} = 0$$
+
+    \noindent Let $a \in V$. \\
+    Define $L_a:V \to W$ by $L_a = A$. \\
+    Then 
+    $$\Err(x) = A(x)-A(a)-A(x-a)= A(x)-A(a)-A(x)+A(a) = 0$$
+    Then it holds that 
+    $$\lim_{x \to a} \frac{\norm{\Err(x)}_W}{\norm{x-a}_V} = 0$$
+
+\end{proof}
+
+\section{Exercise 15.12.3}
+\begin{problem}
+    The function $\ln:(0,\infty) \to \R$ is the unique, differentiable function such that $\ln(1)=0$ and
+    $\ln'(x) = 1/x$. Show that for all $x \in (-1,\infty)$ it holds that
+    $$\ln(1+x) \le x$$
+    with equality if and only if $x=0$.
+\end{problem}
+\begin{proof}
+    % By proposition 15.1.3, we have that $\ln^\prime(x)$
+    Define $f(x) = \ln(1+x) - x$. \\
+    Then $f^\prime(x) = \frac{1}{1+x} - 1$ \\
+    It holds that for all $x \ge 0, f^\prime(x) \le 0$ \\
+    So 
+    \begin{align*}
+        \lim_{x\to a} \frac{f(x)-f(a)}{x-a} &\le 0 \\
+        \lim_{x\to a} \frac{\ln(1+x)-x - \ln(1+a)+a}{x-a} &\le 0
+    \end{align*}
+
+\end{proof}
+
+\section{Exercise 15.12.4}
+\begin{problem}
+    Let $\Omega \subseteq \R$ be an open subset of $\R$ and consider a function
+    $f:\Omega \to W$ interpreted as a function from the subset $\Omega$ of the
+    normed vector space $(\R,|\cdot|)$ to the normed vector space
+    $(W,\norm{\cdot}_W)$. Then $f$ is differentiable in $a \in \Omega$ if and
+    only if the limit 
+    $$\lim_{x \to a} \frac{f(x)-f(a)}{x-a}$$ 
+    exists. Moreover, if this limit exists, we call it $f^\prime(a)$, and then
+    for all $h \in \R$
+    $$f^\prime(a)\cdot h = (Df)_a(h).$$
+\end{problem}
+\begin{proof}
+    Let $a \in \Omega$
+    We prove the forward direction. \\
+    Assume $f$ is differentiable in $a$, then \\
+    there exists $L: V \to W$ such that for all $x \in \Omega$
+\end{proof}
+
+\section{Exercise 15.12.5}
+\begin{problem}
+    Let $(V,\dotnorm_V)$ and $(W,\dotnorm_W)$ be two two-dimensional vector spaces with bases $v_1,v_2$ and
+    $w_1,w_2$ respectively. Assume that a function $f:V \to W$ is differentiable in 0 with
+    $$(Df)_0(v_1+v_2) = w_1$$
+    and
+    $$(Df)_0(v_1-2v_2)=w_1-w_2.$$
+    Give the matrix representation of the linear map $(Df)_0:V \to W$ with respect to the bases $v_1,v_2$ and $w_1,w_2$.
+\end{problem}
+\begin{proof}
+\end{proof}
+
+\section{Exercise 16.4.4}
+\begin{problem}
+    \begin{enumerate}
+        \item Consider the function $f:\R \to \R^3$ given by
+            $$f(t) := (\cos(t), \sin(t), \arctan(t).$$
+            Show that $f$ is differentiable and give an expression for the function $f^\prime: \R \to \R^3$ and
+            for the derivative $(Df): \R \to \Lin(\R,\R^3)$.
+        \item Let $w_1,w_2$ be two vectors in a finite-dimensional normed vector space $(W,\dotnorm_W)$.
+            Consider the function $g:\R \to W$ given by
+            $$g(t) = \cosh(t)w_1 + \sinh(t)w_2$$
+            Show that $g$ is differentiable and give an expression for the function $g^\prime: \R \to W$
+            and for the derivative $(Dg): \R \to \Lin(\R,W)$.
+    \end{enumerate}
+\end{problem}
+\begin{proof}
+\end{proof}
+
+\end{document}

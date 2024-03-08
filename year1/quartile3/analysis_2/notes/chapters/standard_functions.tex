@@ -1,0 +1,86 @@
+\section{Differentiability of standard functions}
+
+\begin{itemize}
+    \item The constant function is differentiable
+    \item Linear functions between finite dimensional normed vector spaces are always differentiable
+    \item Sums, products, compositions and at times quotients of differentiable functions are differentiable.
+\end{itemize}
+
+\subsection{Global context}
+We will consider two normed vector spaces $(V,\dotnorm_V)$ and $(W,\dotnorm_W)$ and a function $f:\Omega \to W$
+where $\Omega \subseteq V$ is an open subset of $V$. We will assume that $V$ and $W$ are finite-dimensional, and
+we will denote $v_1,\dots,v_d$ a basis in $V$, with corresponding coordinate map $\Phi$, and by $w_1,\dots,w_m$
+a basis of $W$ with corresponding coordinate map $\Psi$.
+
+\subsection{Polynomials and rational functions are differentiable}
+\begin{proposition}[Differentiability of polynomials in one variable]
+    For every $n \in \N$, it holds that the function $f: \R \to \R$ given by
+    $f(x) = x^n$
+    is differentiable with
+    $$f^\prime(x) = nx^{n-1}.$$
+
+    In other words, the derivative of $f$. i.e. $(Df): \R \to \Lin(\R,\R)$ is
+    given by
+    $$x \mapsto (h \mapsto nx^{n-1}h)$$
+\end{proposition}
+
+\begin{proposition}[Every polynomial is differentiable]
+    Every polynomial on $\R^d$ is differentiable
+\end{proposition}
+
+\begin{proposition}[Every rational function is differentiable on its domain]
+    Let $p:\R^d \to \R$ and $q:\R^d \to \R$ be two polynomials. Let
+    $$D:=\{x \in \R^d \mid q(x) \ne 0\}.$$
+    Then the function $f:D \to \R$ given by
+    $$f(x) = \frac{p(x)}{q(x)}$$
+    is differentiable.
+\end{proposition}
+
+\subsection{Differentiability of other standard functions}
+\begin{proposition}
+    The functions
+    \begin{center}
+        \begin{tabular}{l r}
+            $\exp:\R\to\R$ & $\ln:(0,\infty) \to \R$ \\
+            $\sin:\R\to\R$ & $\cos:\R\to\R$ \\
+            $\tan:(-\pi/2,\pi/2)\to\R$ & $\arctan:\R\to\R$
+        \end{tabular}
+    \end{center}
+    are all differentiable on their domain, while the functions
+    \begin{center}
+        \begin{tabular}{l r}
+            $\arcsin:[-1,1] \to \R$ & $\arccos:[-1,1] \to \R$
+        \end{tabular}
+    \end{center}
+    are both differentiable on the interval $(-1,1)$.
+
+    The derivatives are given by: \newline
+    \begin{minipage}{.5\linewidth}
+        \begin{align*}
+            \exp^\prime(t) &= \exp(t) \\
+            \sin^\prime(t) &= \cos(t) \\
+            \tan^\prime(t) &= \frac{1}{\cos^2(t)} \\
+            \arcsin^\prime(t) &= \frac{1}{\sqrt{1-t^2}}
+        \end{align*}
+    \end{minipage}
+    \begin{minipage}{.5\linewidth}
+        \begin{align*}
+            \ln^\prime(t) &= 1/t \\
+            \cos^\prime(t) &= -sin(t) \\
+            \arctan^\prime(t) &= \frac{1}{1+t^2} \\
+            \arccos^\prime(t) &= -\frac{1}{\sqrt{1-t^2}}
+        \end{align*}
+    \end{minipage}
+\end{proposition}
+
+\begin{example}
+    Consider the function $f: \R \to \R^2$ given by 
+    $$f(t) = (t^2, \sin(t))$$
+    The component functions $f_1:\R \to \R$ and $f_2:\R\to\R$ are given by
+    $$f_1(t) = t^2$$ 
+    and 
+    $$f_2(t) = \sin(t)$$ 
+    Since these components are differentiable standard functions, we find that
+    $f$ is differentiable as well and 
+    $$f^\prime(t) = (f^\prime_1(t),f^\prime_2(t)) = (2t,\cos(t))$$
+\end{example}

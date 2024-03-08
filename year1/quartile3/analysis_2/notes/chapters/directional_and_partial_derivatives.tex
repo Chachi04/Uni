@@ -1,0 +1,201 @@
+\section{Directional and partial derivatives}
+
+\subsection{A recurring and very important construction}
+
+\subsection{Directional derivatives}
+\begin{definition}[Directional derivative]
+    Let $f: \Omega \to W$ be a function from an open domain $\Omega$ 
+    in a finite-dimensional normed vector space $V$ to a finite-dimensional
+    normed vector space $W$. Let $a \in \Omega$ and $v \in V$.
+
+    Then we say the \emph{directional derivative} in the direction of $v$
+    of $f$ exists in the point $a \in \Omega$ if there exists a $\delta > 0$
+    such that the function
+    $$g:= f \circ \ell_{a,v}:(-\delta,\delta) \to W$$
+    is differentiable at $0$, where the function $\ell_{a,v}:(-\delta,\delta) \to V$
+    is defined by
+    $$\ell_{a,v}:=a+tv.$$
+
+    Moreover, if it exists, we define the directional derivative in the direction
+    of $v$ of $f$ in the point $a$ as
+    $$(D_vf)_a := g^\prime(0) = \lim_{h\to 0}\frac{f(a+hv)-f(a)}{h}.$$
+\end{definition}
+
+\begin{proposition}
+    Suppose $f: \Omega \to W$ is differentiable in a point $a \in \Omega$.
+    Then for all $v \in V$, the directional derivative of $f$ at $a$ in the 
+    direction of $v$
+    $$(D_vf)_a$$
+    exists and is equal to the derivative of $f$ at the point $a$ applied to
+    the vector $v$
+    $$(Df)_a(v).$$
+\end{proposition}
+\begin{warning}
+    There are functions $f: \Omega \to W$ that are \emph{not differentiable in a point}
+    $a$ even though for every $v \in V$, the directional derivative $(D_vf)_a$ exists.
+\end{warning}
+\begin{example}
+    Consider the following function $f: \R^2 \to \R$:
+    $$f(x_1,x_2) := \begin{cases} x_1, \qquad &x_2 \ne 0 \\ 0, \qquad &x_2 = 0 \end{cases}$$
+    Let us verify that for all $v \in \R^2$, the directional derivative $(D_vf)_0$ exists.
+    Let $v \in \R^2$. If $v_2 \ne 0$, then
+    \begin{align*}
+        (D_vf)_0 &= \lim_{t\to 0}\frac{f(0+tv)-f(0)}{t} \\
+                 &= \lim_{t\to 0}\frac{tv_1 - 0}{t} \\
+                 &= \lim_{t\to 0}v_1 = v_1
+    \end{align*}
+    while if $v_2 = 0$ then
+    \begin{align*}
+        (D_vf)_0 &= \lim_{t\to 0}\frac{f(0+tv)-f(0)}{t} \\
+                 &= \lim_{t\to 0}\frac{0-0}{t} = 0
+    \end{align*}
+    In both cases, the directional derivative exists.
+
+    We now claim, that $f$ is not differentiable in $0$. Indeed, if $f$ would be 
+    differentiable in $0$, then the derivative $(Df)_0$ would be a linear map from
+    $\R^2 \to \R$. Since $(Df)_0(e_1) = 0$ and $(Df)_0(e_2) = 0$, in fact $(Df)_0$
+    maps every vector to zero. In particular, $(D_{(1,1)}f)_0 = 0$. However, the 
+    computation above shows that $(D_{(1,1)}f)_0 = 1$. This is a contradiction.
+\end{example}
+
+\subsection{Partial derivatives}
+Partial derivative are special types of directional derivatives, for functions that
+are defined on the vector space $\R^d$.
+
+\begin{definition}[Partial derivative]
+    Let $f:\Omega\to W$ be a function defined on an open domain $\Omega \subseteq \R^d$.
+    The $i$-th \emph{partial derivative} in a point $a \in \Omega$, denoted by
+    $$\frac{\partial f}{\partial x_i}(a),$$
+    is the directional derivative in the direction of the $i$-th unit vector $e_i$
+    $$\frac{\partial f}{\partial x_i}(a) := \left.\frac{d}{dt}f(a+te_i)\right|_{t=1}=\lim_{h\to 0}\frac{f(a+he_i)-f(a)}{h}.$$
+\end{definition}
+\begin{example}
+    Consider the function $f:\R^2\to\R$ given by
+    $$f(x_1,x_2) = x_1^2+2x_1x_2+3x_2^4.$$
+    Let us determine whether the partial derivative
+    $$\frac{\partial f}{\partial x_2}$$
+    exists in the point $a:=(a_1,a_2)$.
+
+    To do so, by definition, we need to see if the directional derivative of $f$
+    in the direction $e^2$ in the point $a$, namely
+    $$(D_{e_2}f)_a$$
+    exists.
+    I.e. we need to verify whether the derivative of the function $g: \R \to \R$
+    defined by
+    $$g(t):=(f \circ \ell_{a,e_2}(t) = f(a+te_2)$$
+    $$=f((a_1,a_2+t)) = a_1^2+2a_1(a_2+t)+3(a_2+t)^4$$
+    exists in the point $t=0$. Since $g$ is a polynomial in one variable, it is indeed
+    differentiable, and the derivative in the point $t=0$ exists and
+    $$g^\prime(0) = 2a_1+12a_2^3.$$
+    Therefore, the partial derivative of $f$ in the point $(a_1,a_2)$ exists and equals
+    $$\frac{\partial f}{\partial x_2}(a) = (D_{e_2}f)_a=2a_1+12a_2^3.$$
+\end{example}
+In general, there are manyy different expressions for the partial derivative of a
+function in some point $a$. Here are a few of them
+\begin{align*}
+    \frac{\partial f}{\partial x_i}(a) &= (D_{e_i}f)_a = \frac{d}{dt}f(a+te_i)\Bigr|_{t=0} \\
+                                       &= \frac{d}{dt}f(a_1,\dots,a_{i-1},a_i+t,a_{i+1},\dots,a_d)\Bigr|_{t=0} \\
+                                       &= \frac{d}{ds}f(a_1,\dots,a_{i-1},s,a_{i+1},\dots,a_d)\Bigr|_{s=a_i} \\
+\end{align*}
+\begin{proposition}
+    Let $f:\Omega\to W$ be a function from an open domain $\Omega$ in $\R^d$ to a
+    normed vector space $(W,\dotnorm_W)$. Let $a \in \Omega$.
+
+    The $i$-th partial derivative of $f$ in the point $a$ exists if and only if the 
+    function
+    $$t \mapsto f(a_1,\dots,a_{i-1},t,a_{i+1},\dots,a_d)$$
+    is differentiable in the point $a_i$, and in this case
+    $$\frac{\partial f}{\partial x_i}(a) = \left.\frac{d}{dt}f(a_1,\dots,a_{i-1},t,a_{i+1},\dots,a_d)\right|_{t=a_i}$$
+\end{proposition}
+\begin{example}
+    Consider again the function $f: \R^2\to\R$ given by
+    $$f(x_1,x_2) = x_1^2+2x_1x_2+3x_2^4.$$
+    By the previous proposition, to determine whether the partial derivative
+    $$\frac{\partial f}{\partial x_2}(x_1,x_2)$$
+    exists in a point $(x_1,x_2)$ and to determine its value, we just verify that
+    $$\frac{d}{dt}f(x_1,t)\Bigr|_{t=x_2}=\frac{d}{dt}(x_2^2+2x_1t+3t^4)\Bigr|_{t=x_2}=2x_1+12x_2^3.$$
+    We conclude as before that
+    $$\frac{\partial f}{\partial x_2}(x_1,x_2) = 2x_1+12x_2^3.$$
+\end{example}
+
+\subsection{The Jacobian of a map}
+\begin{proposition}
+    Suppose $f: \Omega \to \R^m$ is a function defined on an open domain $\Omega \subseteq \R^d$,
+    and suppose $f$ is differentiable in a point $a \in \Omega$. Then the Jacobian matrix of $f$
+    (with respect to the standard bases) is given by
+    $$[Df]_a := \begin{pmatrix}[2]
+        \frac{\partial f_1}{\partial x_1}(a) & \frac{\partial f_1}{\partial x_2}(a) & \dots & \frac{\partial f_1}{\partial x_d}(a) \\
+        \frac{\partial f_2}{\partial x_1}(a) & \frac{\partial f_2}{\partial x_2}(a) & \dots & \frac{\partial f_2}{\partial x_d}(a) \\
+        \vdots & \vdots & \ddots & \vdots \\
+        \frac{\partial f_m}{\partial x_1}(a) & \frac{\partial f_m}{\partial x_2}(a) & \dots & \frac{\partial f_m}{\partial x_d}(a)
+    \end{pmatrix}$$
+    In other words, for all $x \in \R^d$, it holds that
+    $$(Df)_a(x) = 
+    \begingroup 
+    \begin{pmatrix}[2]
+        \frac{\partial f_1}{\partial x_1}(a) & \frac{\partial f_1}{\partial x_2}(a) & \dots & \frac{\partial f_1}{\partial x_d}(a) \\
+        \frac{\partial f_2}{\partial x_1}(a) & \frac{\partial f_2}{\partial x_2}(a) & \dots & \frac{\partial f_2}{\partial x_d}(a) \\
+        \vdots & \vdots & \ddots & \vdots \\
+        \frac{\partial f_m}{\partial x_1}(a) & \frac{\partial f_m}{\partial x_2}(a) & \dots & \frac{\partial f_m}{\partial x_d}(a)
+    \end{pmatrix}
+    \begin{pmatrix}[2]
+        x_1 \\ x_2 \\ \vdots \\ x_d
+    \end{pmatrix}
+    \endgroup
+    $$
+\end{proposition}
+
+\begin{proposition}
+    Let $f:\Omega \to W$ with $\Omega \subseteq V$ open, and let $v_1,\dots,v_d$ be a basis of $V$
+    with coordinate map $\Phi$ and let $w_1,\dots,w_m$ be a basis of $W$ with coordinate map $\Psi$.
+    Then the Jacobian of $f$ with respect to these bases is given by
+    $$[Df]_a = [D\bar{f}]_{\Phi(a)}$$
+    where $\bar{f} := \Psi \circ f \circ \Phi\inv$ is the coordinate representation of $f$.
+\end{proposition}
+
+\subsection{Linearization and tangent planes}
+\begin{definition}[Linearization]
+    Let $f:\Omega\to W$ be a differentiable function in a point $a \in \Omega$. Then the \emph{linearization}
+    of $f$ is the function $\L_a: V \to W$ given by
+    $$L_a(x) = f(a) + (Df)_a(x-a).$$
+\end{definition}
+
+Recall that the \emph{graph} of a function $f:\Omega \to \R$ is the following subset of $\Omega \times \R$:
+$$\text{Graph}(f) := \{(x,f(x)) \mid x \in \Omega \}$$
+
+\begin{definition}
+    Let $f:\Omega \to \R$, where $\Omega$ is a subset of a normed vector space $V$. Assume $f$ is
+    differentiable in $a \in \Omega$. Then the \emph{tangent plane to the graph of $f$} at $a$ is
+    the graph of the linearization $L_a$ of $f$, i.e.
+    $$T_a := \{(v, \L_a(v)) \mid v \in V \}$$
+\end{definition}
+
+\begin{definition}
+    Let $f: \Omega \to \R$ where $\Omega$ is s subset of a normed vector space $V$. Let $a \in \Omega$, and
+    set $c:=f(a)$. Assume $f$ is differentiable in $a$ with $(Df)_a \ne 0$. Then the \emph{tangent plane to the level set}
+    $$f\inv(c) = \{x \in V \mid f(x) = c\}$$
+    at $a$ is given by
+    $$\{x \in V \mid L_a(x) = c\}.$$
+\end{definition}
+
+\subsection{The gradient of a function}
+\begin{definition}[Gradient]
+    Let $f: \Omega \to \R$ be a function from an open domain $\Omega$ in $(\R^d, \dotnorm_2)$ to $\R, |\cdot|)$ and
+    suppose $f$ is differentiable in the point $a \in \Omega$. Then we call the vector
+    $$\grad f(a) := \begin{pmatrix}[2] \pd{f}{x_1}(a) \\ \vdots \\ \pd{f}{x_d}(a) \end{pmatrix}$$
+    the \emph{gradient} of $f$ in the point $a$.
+\end{definition}
+
+If a function $f: \Omega \to \R$ is differentiable in a point $a$, then the derivative $(Df)_a$ relates to the gradient as follows.
+\begin{proposition}
+    Let $f:\Omega \to \R$ be a function from an open domain $\Omega$ in $(\R^d, \dotnorm_2)$ to $(\R,|\cdot|)$ and suppose $f$ is differentiable in the point $a \in \Omega$.
+    Then for all $v \in \R^d$, it holds that
+    $$(Df)_a(v) = (\grad f(a),v) = (\grad f(a))\trans v = \sum_{i=1}^d\pd{f}{x_1}v_i$$
+    where $(\cdot,\cdot)$ denotes the standard inner product on $\R^d$.
+\end{proposition}
+
+\begin{proposition}
+    Let $f:\Omega \to \R$ from an open domain $\Omega$ in $(\R^d,\dotnorm_2)$. Assume $f$ is differentiable in a point 
+    $a \in \Omega$ with $(Df)_a \ne 0$. Set $c:=f(a)$. Then the tangent plane to the level set $f\inv(c)$ at $a$ is given by
+    $$a + \{x \in \R^d \mid (\grad f(a), x) = 0\}.$$
+\end{proposition}

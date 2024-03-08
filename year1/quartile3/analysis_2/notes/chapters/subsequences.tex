@@ -1,0 +1,145 @@
+\section{Subsequences, \texorpdfstring{$\lim\sup$}{limsup} and \texorpdfstring{$\lim\inf$}{liminf}}
+
+\subsection{Index sequences and subsequences}
+\begin{definition}[Index sequence]
+    We say a sequence $n: \N \to \N$ is an \emph{index sequence} if it is strictly increasing.
+\end{definition}
+\begin{example}
+    The sequence $n: \N \to \N$ defined by
+    $$n_k := 2k$$
+    is a strictly increasing sequence of natural numbers. In other words, it is an index sequence.
+\end{example}
+
+\begin{definition}[Subsequence]
+    Let $a: \N \to \R$ be a sequence. A sequence $b: \N \to \R$ is called a \emph{subsequence} of $a$ if there exists an index sequence $n: \N \to \N$ such that
+    $b = a \circ n$
+\end{definition}
+Just as we often write $(a_n)_{n \in \N}$ for a sequence called $a$, we often write $(a_{n_k})_{k\in\N}$ for the subsequence $a \circ n$.
+
+\subsection{(Sequential) accumulation points}
+\begin{definition}[(Sequential) accumulation points]
+    Let $(X, \dist)$ be a metric space. A point $p \in X$ is called an \emph{accumulation point} of a sequence $a: \N \to X$ if there is
+    a subsequence $a \circ n$ of $a$ such that $a \circ n$ converges to $p$.
+\end{definition}
+
+\subsection{Subsequences of a converging sequence}
+\begin{proposition}
+    Let $(X, \dist)$ be a metric space. Let $(a_n)$ be a sequence in $X$ converging to $p \in X$. Then every subsequence of $(a_n)$ is convergent to $p$.
+\end{proposition}
+
+\subsection{\texorpdfstring{$\limsup$}{limsup}}
+Consider a real-valued sequence $(a_n)$ that is bounded from above and does not diverge to $-\infty$. We can then define a new sequence
+$$k \mapsto \sup_{n \ge k} a_n.$$
+
+Note that this sequence is decreasing, because for larger $k$ the supremum is taken over a smaller set. 
+\begin{lemma}
+    Let $a: \N \to \R$ be a sequence that is bounded from above and does not diverge to $-\infty$. Then, the sequence $k \mapsto \sup_{n \ge k}a_n$ is bounded
+    from below.
+\end{lemma}
+
+Since the sequence $k \mapsto \sup_{n \ge k}a_n$ is decreasing and bounded from below, it has a limit, and the limit is in fact equal to the infumum of the sequence. This limit is called the $\limsup$
+\begin{align*}
+    \limsup_{n\to\infty}a_n &:= \inf_{k\in\N}\sup_{n \ge k}a_n \\
+                            &=\lim_{k\to\infty}\left(\sup_{n\ge k}a_n\right)
+\end{align*}
+
+\begin{proposition}[Alternative characterization of $\limsup$]
+    Let $(a_n)$ be a real-valued sequence. Let $M \in \R$. Then, $M = \limsup_{n\to\infty}a_n$ if and only if
+    \begin{enumerate}[label=\roman*.]
+        \item 
+            \begin{center}
+                \parbox{\linewidth}{%
+                    \leftskip=0.4\linewidth
+                    For every $\epsilon > 0$, \\
+                    \hspace*{1em} there exists $N \in \N$, \\
+                    \hspace*{2em} for all $\ell \ge N$, \\
+                    \hspace*{3em} $a_\ell < M + \epsilon$
+                }
+            \end{center}
+        \item 
+            \begin{center}
+                \parbox{\linewidth}{
+                    \leftskip=0.4\linewidth
+                    For every $\epsilon > 0$, \\
+                    \hspace*{1em} for all $k \in \N$, \\
+                    \hspace*{2em} there exists $m \ge k$, \\
+                    \hspace*{3em} $a_m > M - \epsilon$ \\
+                }
+            \end{center}
+    \end{enumerate}
+\end{proposition}
+
+\begin{theorem}
+    \label{thm:8.4.3}
+    Let $a: \N \to \R$ be a real-valued sequence that is bounded from above and does not diverge to $-\infty$. Then
+    $\limsup_{\ell \to \infty}a_\ell$ is a (sequential) accumulation point of $a$, i.e. there exists a subsequences of $a$ that converges to $\limsup_{\ell \to \infty}a_\ell$.
+\end{theorem}
+
+\begin{corollary}[Bolzano-Weierstrass]
+    Every bounded, real-valued sequence has a subsequence that converges in $(\R, \dist_\R)$.
+\end{corollary}
+
+\begin{theorem}
+    Suppose a sequence $a: \N \to \R$ is bounded from above and does not diverge to $-\infty$. Then
+    $$\limsup_{\ell\to\infty}a_\ell$$
+    is the maximum of the set of sequential accumulation points.
+\end{theorem}
+
+\subsection{\texorpdfstring{$\liminf$}{liminf}}
+Similarly to the $\limsup$, we can define the $\liminf$. In some sense,
+$$\liminf_{\ell\to\infty}a_\ell = -\limsup_{\ell\to\infty}(-a_\ell)$$
+More precisely, 
+\begin{align*}
+    \liminf_{\ell\to\infty}a_\ell &:= \sup_{\ell\in\N}\inf_{k \ge \ell}a_k\\
+                                  &=\lim_{\ell\to\infty}\left(\inf_{k\ge\ell}a_k\right)
+\end{align*}
+
+\begin{proposition}[Alternative characterization of $\liminf$]
+    Let $a: \N \to \R$ and $M \in \R$. Then $M$ equals $\liminf_{\ell\to\infty}a_\ell$ if and only if
+    \begin{enumerate}
+        \item 
+            \begin{center}
+                \parbox{\linewidth}{
+                    \leftskip=0.4\linewidth
+                    For every $\epsilon > 0$, \\
+                    \hspace*{1em} there exists $N \in \N$, \\
+                    \hspace*{2em} for all $\ell \ge N$, \\
+                    \hspace*{3em} $a_\ell > M - \epsilon$
+                }
+            \end{center}
+        \item 
+            \begin{center}
+                \parbox{\linewidth}{
+                    \leftskip=0.4\linewidth
+                    For every $\epsilon > 0$, \\
+                    \hspace*{1em} for all $K \in \N$, \\
+                    \hspace*{2em} there exists $m \ge K$, \\
+                    \hspace*{3em} $a_m < M + \epsilon$ \\
+                }
+            \end{center}
+    \end{enumerate}
+\end{proposition}
+
+\begin{theorem}
+    Let $a: \N \to \R$ be a real-valued sequence that is bounded below and does not diverge to $\infty$. Then
+    $\liminf_{\ell\to\infty}a_\ell$ is a sequential accumulation point of the sequence $a$, i.e. there is a
+    subsequence of $a$ that converges to $\liminf_{\ell\to\infty}a_\ell$.
+\end{theorem}
+
+\begin{theorem}
+    Let $a: \N \to \R$ be a real-valued sequence that is bounded below and does not diverge to $\infty$. Then
+    $\liminf_{\ell\to\infty}a_\ell$ is the minimum of the set of sequential accumulation points.
+\end{theorem}
+
+\subsection{Relations between \texorpdfstring{$\lim$}{lim}, \texorpdfstring{$\lim\sup$}{limsup} and \texorpdfstring{$\lim\inf$}{liminf}}
+\begin{proposition}
+    Let $a: \N \to \R$ be a real-valued sequence and let $L \in \R$. Then $a: \N \to \R$ converges to $L$ if and only if
+    $$\liminf_{\ell\to\infty}a_\ell = \limsup_{\ell\to\infty} = L$$
+\end{proposition}
+
+\begin{proposition}
+    Let $a,b: \N \to \R$ be two real-valued sequences, such that there exists an $N \in \N$ such that for all $\ell \ge N$,
+    $a_\ell \le b_\ell.$ Then
+    $$\limsup_{\ell\to\infty}a_\ell \le \limsup_{\ell\to\infty}b_\ell$$ and 
+    $$\liminf_{\ell\to\infty}a_\ell \le \liminf_{\ell\to\infty}b_\ell.$$
+\end{proposition}

@@ -1,0 +1,159 @@
+\section{Limits and continuity}
+We will consider functions $f: D \to Y$ mappings from a subset $D \subseteq X$ of a metric space $(X, \dist_X)$ to
+a metric space $(Y, \dist_Y)$. These are quite some actors: an input metric space $(X, \dist_X)$, a subset $D$ of the
+metric space, and an output metric space $(Y, \dist_Y)$. And the concept of \emph{limits} and \emph{continuity} depend
+on all these actors.
+
+On the coarsest level, if $p \in X$ and $q \in Y$, then the statement that
+$$\lim_{x\to p}f(x) = q$$
+will mean that if the distance between $x$ and $p$ is small, but not zero, the distance between $f(x)$ and $q$ will be small.
+
+\subsection{Accumulation points}
+To get a useful concept of a limit in a point $p \in X$, the point $p$ needs to be an \emph{accumulation point} of the
+domain $D$ of the function.
+\begin{definition}[Accumulation points]
+    Let $(X, \dist_X)$ be a metric space and let $D \subseteq X$ be a subset of $X$. We say a point $p \in X$ is
+    an \emph{accumulation point} of the set $D$ if
+    \begin{myCenter}
+        \tab{for all $\epsilon > 0$,}
+        \tab{there exists $x \in D$.}
+        \tab{$0 < \dist_X(x,p) < \epsilon$}
+    \end{myCenter}
+    We denote the set of accumulation points of a set $D$ by $D^\prime$.
+\end{definition}
+
+Note that accumulation points of a set $D$ do not have to lie in the set $D$ themselves. If a point odes lie in $D$,
+but is not an accumulation point, then we call it an \emph{isolated point} of $D$.
+
+\begin{definition}[Isolated points]
+    Let $(X, \dist)$ be a metric space and let $D \subseteq X$ be a subset of $X$. We say a point $a \in D$ is an 
+    \emph{isolated point} if it is not an accumulation point, i.e. if $a \in D \setminus D^\prime$.
+\end{definition}
+
+\subsection{Limit in an accumulation point}
+We can now define limits in accumulation points of $D$.
+
+\begin{definition}[Limit in an accumulation point]
+    Let $(X, \dist_X)$ and $(Y, \dist_Y)$ be two metric spaces and let $D \subseteq X$ be a subset of $X$. 
+    Let $f: D \to Y$ be a function and let $q \in Y$ be a point in $Y$. Let $a \in D^\prime$ be an accumulation point
+    of $D$. Then we say $f$ converges to $q$ as $x$ goes to $a$, and write
+    $$\lim_{x\to a}f(x) = q$$
+    if
+    \begin{myCenter}
+        \tabline{for all $\epsilon > 0$,}
+        \tabline{there exists $\delta > 0$,}
+        \tabline{for all $x \in D$,}
+        \tabline{if $0< \dist_X(x,a) < \delta$, then $\dist_Y(f(x),q) < \epsilon$.}
+    \end{myCenter}
+\end{definition}
+
+\subsection{Uniqueness of limits}
+\begin{proposition}
+    Let $(X, \dist_X)$ and $(Y, \dist_Y)$ be metric spaces and let $D \subseteq X$ be a subset of $X$.
+    Let $f: D \to Y$ be a function on $D$. Let $a \in D^\prime$ and assume
+    $$\lim{x\to a}f(x) = p \quad \text{and} \quad \lim_{x \to a}f(x) = q$$
+    for points $p,q \in Y$. Then $p = q$.
+\end{proposition}
+
+\subsection{Sequential characterization of limits}
+\begin{theorem}[Sequence characterization of limits]
+    Let $(X, \dist_X)$ and $(Y, \dist_Y)$ be two metric spaces. Let $D \subseteq X$. Let $f: D \to Y$ and let $a \in D^\prime$.
+    Let $q \in Y$. Then
+    $$\lim_{x \to a}f(x) = q$$
+    if and only if
+    \begin{myCenter}
+        \tab{for all sequences $(x^n)$ in $D \setminus \{a\}$ converging to $a$,}
+        \tab{$\displaystyle\lim_{n\to\infty}f(x^n) = q$}
+    \end{myCenter}
+\end{theorem}
+
+\subsection{Limit laws}
+\begin{theorem}
+    Let $(X, \dist_X)$ be a metric space and let $(V, \norm{\cdot})$ be a normed vector space. Let $D \subseteq X$ and
+    let $f:D \to V$ and $g: D \to V$ be two functions. Let $a \in D^\prime$. Moreover, assume that the limit $lim_{n\to a}f(x)$
+    exists and equals $p \in V$ and that limii $\lim_{n\to a}g(x)$ exists and equals $q \in V$. Let $\lambda \in \R$. Then
+    \begin{enumerate}
+        \item The limit $\lim_{x \to a}(f(x) + g(x))$ exists and equals $p + q$.
+        \item The limit $\lim_{x \to a}(\lambda f(x))$ exists and equals $\lambda p$.
+    \end{enumerate}
+\end{theorem}
+
+\subsection{Continuity}
+\begin{definition}[Continuity in a point]
+    Let $(X, \dist_X)$ and $(Y, \dist_Y)$ be two metric spaces and let $D \subseteq X$ be a subset of $X$. We say a function
+    $f: D \to Y$ is \emph{continuous} in a point $a \in D \cap D^\prime$ if
+    $$\lim_{x \to a} f(x) = f(a).$$
+    If $a \in D$ is an isolated point, i.e. if $a \in D \setminus D^\prime$, then we also say that $f$ is continuous in $a$.
+\end{definition}
+
+We say a function is continuous if it is continuous in every point in its domain.
+
+\begin{definition}[Continuity on the domain]
+    Let $(X, \dist_X)$ and $(Y, \dist_Y)$ be two metric spaces and let $D \subseteq X$ be a subset of $X$. We say a function
+    $f: D \to Y$ is \emph{continuous on} $D$ if $f$ is continuous in $a$ for every $a \in D$.
+\end{definition}
+
+Sometimes it si a bit cumbersome to make the distinction between isolated points and accumulation points. The following alternative
+characterization of continuity in a point circumvecnts this issue.
+
+\begin{proposition}[Alternative $\epsilon - \delta$ characterization of continuity in a point]
+    Let $(X, \dist_X)$ and $(Y, \dist_Y)$ be two metric spaces and let $D \subseteq X$ be a subset of $X$.
+    Let $a \in D$. Then the function $f$ is continuous in $a$ if and only if
+    \begin{myCenter}
+        \tab{for all $\epsilon > 0$,}
+        \tab{there exists $\delta > 0$,}
+        \tab{for all $x \in D$,}
+        \tab{if 0 < $\dist_X(x,a) < \delta$, then $\dist_Y(f(x),f(a)) < \epsilon$.}
+    \end{myCenter}
+\end{proposition}
+
+\subsection{Sequence characterization of continuity}
+As with many concepts in analysis, continuity is conveniently probed with sequences.
+
+\begin{theorem}[Sequence characterization of continuity]
+    Let $(X, \dist_X)$ and $(Y, \dist_Y)$ be metric spaces. Let $D \subseteq X$ and let $f: D \to Y$ be function.
+    Let $a \in D$. The function $f$ is continuous in $a$ if and only if
+    \begin{myCenter}
+        \tab{for all sequences $(x^n)$ in $D$ converging to $a$,}
+        \tab{$\displaystyle\lim_{n\to\infty}f(x^n) = f(a)$.}
+    \end{myCenter}
+\end{theorem}
+
+\subsection{Rules for continuous functions}
+The following proposition implies that the composition of two continuous functions is also continuous.
+\begin{proposition}
+    Let $(X, \dist_X)$, $(Y, \dist_Y)$ and $Z, \dist_Z)$ be metric spaces, let $D \subseteq X$ and $E \subseteq Y$.
+    Let $f: D \to Y$ and $g: E \to Z$ be two functions, and assume that $f(D) \subseteq E$. Let $a \in D$. If $f$ is
+    continuous in $a$ and $g$ is continuous in $f(a)$, then $g \circ f$ is continuous in $a$.
+\end{proposition}
+
+\subsection{Images of compact sets under continuous functions are compact}
+\begin{proposition}
+    Let $(X, \dist_X)$ and $(Y, \dist_Y)$ be two metric spaces and let $K \subseteq X$ be a a compact subset of $X$.
+    Let $f: K \to Y$ be continuous on $K$. Then $f(K)$ is a compact subset of $Y$.
+\end{proposition}
+
+\subsection{Uniform continuity}
+\begin{definition}
+    Let $(X, \dist_X)$ and $(Y, \dist_Y)$ be metric spaces and let $D \subseteq X$ be a non-empty subset. We say
+    that $f: D \to Y$ is \emph{uniformly continuous} on $D$ if
+    \begin{myCenter}
+        \tab{for all $\epsilon > 0$,}
+        \tab{there exists $\delta > 0$,}
+        \tab{for all $p,q \in D$,}
+        \tab{$0 < \dist_X(p,q) < \delta \implies \dist_Y(f(p),f(q)) < \epsilon$.}
+    \end{myCenter}
+\end{definition}
+
+The following proposition shows that \emph{uniform continuity} is a stronger property that continuity.
+
+\begin{proposition}
+    Let $(X, \dist_X)$ and $(Y, \dist_Y)$ be metric spaces and let $D \subseteq X$ be a non-empty subset. Let $f: D \to Y$
+    be uniformly continuous on $D$. Then $f$ is continuous on $D$.
+\end{proposition}
+
+Although uniform continuity is a stronger property than continuity, it is not as strong as continuity on compact sets.
+\begin{theorem}
+    Let $(X, \dist_X)$ and $(Y, \dist_Y)$ be metric spaces, let $K \subseteq X$ be compact and let $f: K \to Y$ be
+    continuous on $K$. Then $f$ is uniformly continuous on $K$.
+\end{theorem}

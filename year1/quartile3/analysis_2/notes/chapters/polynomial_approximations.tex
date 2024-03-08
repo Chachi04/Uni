@@ -1,0 +1,39 @@
+\section{Polynomials and approximation by polynomials}
+
+\subsection{Homogeneous polynomials}
+\begin{definition}[multi-index]
+    A $d$-dimensional multi-index $\alpha$ of order $k \in \N$ is a map
+    $\{1,\dots,d\} \to \N$ such that
+    $$\alpha_1 + \alpha_2 + \dots + \alpha_d = k$$
+
+    We write $|\alpha|$ for the order of a multi-index $\alpha$.
+\end{definition}
+
+If $\alpha$ is a multi-index, we use the notation
+$$x^\alpha = x_1^{\alpha_1}x_2^{\alpha_2}\dots x_d^{\alpha_d}.$$
+
+Similarly, for a function $f: \Omega \to W$ where $\Omega \subseteq \R^d$, we will use the notation
+$$\frac{\partial^{|\alpha|}f}{\partial x^\alpha}:=\left(\frac{\partial}{\partial x_1}\right)^{\alpha_1}\dots\left(\frac{\partial}{\partial x_d}\right)^{\alpha_d}f$$
+
+We also define
+$$\alpha!:=\alpha_1!\alpha_2!\dots\alpha_d!$$
+
+Note that 
+$$\frac{\partial^{|\alpha|}}{\partial x^\alpha}x^\alpha = \alpha!$$
+
+\begin{example}
+    $$\frac{\partial^{14}}{\partial x_1^3\partial x_2^7\partial x_3^4}((x_1)^3(x_2^7)(x_3)^4) = 3!7!4!$$
+\end{example}
+
+\begin{proposition}
+    Every homogeneous polynomial $f: \R^d \to \R$ of degree $n$ can be written as
+    $$\sum_{|\alpha|=n}\frac{1}{\alpha!}s_\alpha x^\alpha$$
+    for some coefficients $s_\alpha \in \R$. Moreover, the coefficients $s_alpha$ are precisely determined by
+    $$s_\alpha = \frac{\partial^{|\alpha|}f}{\partial x^\alpha}(0)$$
+\end{proposition}
+
+% \begin{lemma} 
+
+\subsection{Taylor's theorem}
+
+\subsection{Taylor approximations of standard functions}

@@ -1,0 +1,115 @@
+\section{Series}
+
+\subsection{Definition}
+\begin{definition}
+    Let $(V, \norm{\cdot})$ be a normed vector space and let $a: \N \to V$ be a sequence in $V$. Let $K \in \N$. We say that a series
+    $$\sum_{n=K}^{\infty}a_n$$
+    is \emph{convergent} if the associatedd \emph{sequence of partial sums} $S_k:\N \to V$, i.e. the sequence $(S_K^n)_{n\in\N}$ converges. The term $S_K^n$ is, for $n \in \N$, defined as
+    $$S_K^n:= \sum_{k=K}^na_k$$
+
+    If $K = 0$, we usually jusst write $S^n$ or even $S_n$ instead of $S_0^n$.
+
+    If the series $\sum_{n=K}^\infty a_n$ is convergent, the \emph{value} of the series is by definition equal to the limit of  the sequence of partial sums, i.e.
+    $$\sum_{k=K}^\infty a_k := \limn S_k^n = \limn \sum_{k=K}^n a_k$$
+\end{definition}
+
+\subsection{Geometric series}
+\begin{proposition}
+    Let $a \ne 1$ and $n \in \N$. Then
+    $$\sum_{k=0}^n a^k = \frac{1-a^{n+1}}{1-a}.$$
+\end{proposition}
+\begin{proof}
+    We consider
+    \begin{align*}
+        (1-a)\sum_{k=0}^n a^k &= \sum_{k=0}^n a^k - a\sum_{k=0}^n a^k  \\
+                              &= \sum_{k=0}^n a^k - \sum_{k=0}^n a^{k+1} \\
+                              &= \sum_{k=0}^n a^k - \sum_{k=1}^{n+1} a^k \\
+                              &= 1 - a^{n+1}
+    \end{align*}
+\end{proof}
+
+\begin{proposition}[Geometric series]
+    Let $a \in (-1,1)$. Then the series
+    $$\sum_{k=0}^\infty a^k$$
+    is convergent and has the value
+    $$\sum_{k=0}^\infty a^k = \frac{1}{1-a}.$$
+\end{proposition}
+
+\subsection{The harmonic series}
+\begin{proposition}[Harmonic series]
+    The series 
+    $$\sum_{k=1}^\infty \frac{1}{k}$$
+    diverges.
+\end{proposition}
+
+\subsection{The hyperharmonic series}
+\begin{proposition}[Hyperharmonic series]
+    Let $p > 1$. Then the series 
+    $$\sum_{k=1}^\infty \frac{1}{k^p}$$
+    converges.
+\end{proposition}
+
+\begin{example}
+    Here is an example of a series taking values in the normed vector space $(\R^2, \norm{\cdot})$:
+    $$\sum_{k=1}^\infty \left(\frac{1}{k^2}, \left(\frac{1}{2}\right)^k\right)$$
+\end{example}
+
+\subsection{Only the tail matters for convergence}
+\begin{lemma}
+    Let $(V, \norm{\cdot})$ be a normed vector space and let $a: \N \to V$ be a sequence taking values in $V$. Let $K,L \in \N$. The series
+    $$\sum_{n=K}^\infty a_n$$
+    is conovergent is and only if the series
+    $$\sum_{n=L}^\infty a_n$$
+    is convergent. Moreover, if either the series converges, and $K < L$, then
+$$\sum_{n=K}^\infty a_n = \sum_{n=K}^{L-1} + \sum_{n=L}^\infty a_n.$$
+\end{lemma}
+
+\begin{proposition}
+    Let $a: \N \to V$ be a sequence, let $M \in \N$ and assume that the series
+    $$\sum_{k=M}^\infty a_k$$
+    is convergent. Then
+    $$\lim_{m\to\infty} \sum_{k=m}^\infty a_k = 0.$$
+\end{proposition}
+
+\begin{proposition}[Index shift for series]
+    Let $a: \N \to V$ be a sequence, let $M \in \N$ and let $\ell \in \N$. Then the series
+    $$\sum_{k=M}^\infty a_k$$
+    converges if and only if the series
+    $$\sum_{k=M}^\infty a_{k+\ell}$$
+    converges. Moreoever, if either series converges, then
+    $$\sum_{k=M}^\infty a_{k+\ell} = \sum_{k=M+\ell}^\infty a_{k}.$$
+\end{proposition}
+
+\subsection{Divergence test}
+\begin{proposition}
+    Let $(V,\norm{\cdot})$ be a normed vector space, and let $a:\N \to V$ be a sequence in $V$. Suppose the series $\displaystyle\sum_{n=0}^{\infty}a_n$ is convergent. Then
+    $$\limn a_n = 0.$$
+\end{proposition}
+\begin{proof}[Proof]
+    Suppose the series $\displaystyle\sum_{n=0}^{\infty}a_n$ is convergent to $L \in V$. Then
+    $$a_n = S_n - S_{n-1}$$
+    where $S_n$ denote the partial sum $\displaystyle\sum_{k=0 }^{n }a_k$. Because $S_n$ and $S_{n-1}$ are both convergent to $L$, the sequence $(a_n)$ is convergent as well and converges to $L - L = 0$.
+\end{proof}
+
+\begin{theorem}[Divergence test]
+    Let $(V, \norm{\cdot})$ be a normed vector space and let $a: \N \to V$ be a sequence in $V$. Suppose the limit $\limn a_n$ does not exist or is not equal to $0$. Then the series
+    $$\sum_{n=0}^\infty a_n$$
+    is divergent.
+\end{theorem}
+
+\subsection{Limit laws for series}
+\begin{theorem}[Limit laws for series]
+    Let $(V, \norm{\cdot})$ be a normed vector space and let $a,b: \N \to V$ be sequences in $V$. Suppose the series
+    $$\sum_{n=0}^\infty a_n \qquad \text{and} \qquad \sum_{n=0}^\infty b_n$$
+    are convergent. Suppose $\lambda \in \R$. Then
+    \begin{enumerate}
+        \item The series
+            $$\sum_{n=0}^{\infty}(a_n + b_n)$$
+            is converget and converges to
+            $$\sum_{n=0}^\infty a_n + \sum_{n=0}^\infty b_n.$$
+        \item The series 
+            $$\sum_{n=0}^\infty \lambda a_n$$
+            is convergent and converges to
+            $$\lambda \sum_{n=0}^\infty a_n.$$
+    \end{enumerate}
+\end{theorem}

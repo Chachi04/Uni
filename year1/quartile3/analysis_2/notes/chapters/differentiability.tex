@@ -1,0 +1,225 @@
+\section{Differentiability}
+
+\subsection{Definitions}
+
+\begin{definition}[Differentiability in a point]
+    Let $(V,\norm{\cdot}_V)$ and $(W,\norm{\cdot}_W)$ be two vector spaces. Let
+    $\Omega \subseteq V$ be an open subset of $V$. Let $f:\Omega \to W$ be a
+    function and let $a \in \Omega$. We say that $f$ is differentiable in $a$
+    if there exists a bounded linear map $L_a:V \to W$ such that if we define
+    the error function $\Err_a:\Omega \to W$ by $$\Err_a(x) := f(x) - f(a) -
+    L_a(x-a)$$ it holds that $$\lim_{x\to a}
+    \frac{\norm{\Err_a(x)}_W}{\norm{x-a}_V} = 0$$ We call $L_a$ the derivative
+    of $f$ in $a$ and instead of $L_a$ we often write $(Df)_a$.
+\end{definition}
+
+\begin{definition}[DFifferentiability on an open set]
+    Let $(V,\norm{\cdot}V)$ and $(W,\norm{\cdot}_W)$ be two vector spaces. Let
+    $\Omega \subseteq V$ be an open subset of $V$. We say that a function $f:
+    \Omega \to W$ is differentiable on $\Omega$ if for every $a \in \Omega$,
+    the function $f$ is differentiable in $a$.
+\end{definition}
+
+\begin{proposition}
+    Let $\Omega \subseteq \R$ be an open subset of $\R$ and consider a function
+    $f:\Omega \to W$ interpreted as a function from the subset $\Omega$ of the
+    normed vector space $(\R,|\cdot|)$ to the normed vector space
+    $(W,\norm{\cdot}_W)$. Then $f$ is differentiable in $a \in \Omega$ if and
+    only if the limit 
+    $$\lim_{x \to a} \frac{f(x)-f(a)}{x-a}$$ 
+    exists. Moreover, if this limit exists, we call it $f^\prime(a)$, and then
+    for all $h \in \R$
+    $$f^\prime(a)\cdot h = (Df)_a(h).$$
+\end{proposition}
+\begin{remark}
+    The limit above exists if and only if the limit
+    $$\lim_{h \to 0} \frac{f(a+h)-f(a)}{h}$$
+    exists, and then they have the same value.
+\end{remark}
+
+\begin{example}
+    Consider the function $f: \R \to \R$ given by
+    $$f(x) = x.$$
+    Let $a \in \R$, then
+    \begin{align*}
+        \lim_{x \to a}\frac{f(x)-f(a)}{x-a} &= \lim_{x \to a}\frac{x-a}{x-a} \\
+                                            &= 1
+    \end{align*}
+\end{example}
+
+\subsection{The derivative as a function}
+\begin{definition}[The derivative as a function]
+    Let $f: \Omega \to W$ be a function from an open domain $\Omega$ in a finite-dimensional
+    normed vector space $(V, \norm{\cdot}_V)$ to a finite-dimensional normed vector space
+    $(W,\norm{\cdot}_W)$. Suppose that $f$ is differentiable on $\Omega$. Then we
+    define the \emph{derivative of $f$} as the function
+    $$Df:\Omega \to \Lin(V,W)$$
+    that maps every $a \in \Omega$ to the derivative of $f$ in $a$.
+\end{definition}
+
+\subsection{Constant and linear maps are differentiable}
+\begin{proposition}[Constant maps are differentiable]
+    Let $(V,\norm{\cdot}_V)$ and $(W,\norm{\cdot}_W)$ be two normed vector
+    spaces. Let $b \in W$ and consider the constant function $f: V \to W$
+    given by $f(v) = b$ for all $v \in V$. Then $f$ is differentiable and
+    for all $a \in V$, $(Df)_a = 0$ (zero map).
+\end{proposition}
+
+\begin{proposition}[Linear maps are differentiable]
+    Let $A: V \to W$ be a linear map between the finite-dimensional normed
+    vector spaces $(V,\norm{\cdot}_V)$ and $(W,\norm{\cdot}_W)$. Then $A$ is
+    differentiable and for all $a \in V$, $(DA)_a = A$. Hence, the derivative
+    of $A$ is the constant function $DA: V \to \Lin(V,W)$ given by
+    $$a \mapsto A.$$
+\end{proposition}
+
+\subsection{Bases and coordinates}
+\begin{definition}[Coordinate projections]
+    Let $i \in \{1,\dots,m\}$ and consider the map $P^i:\R^m \to \R$ giiven by
+    $$P^i(x) = e_i\trans x = (e_i,x) = x_i.$$
+    The map $P^i$ is called the projection to the $i$-th coordinate.
+\end{definition}
+
+\begin{proposition}
+    Coordinate projections $P^i$ in the above definition are linear.
+\end{proposition}
+
+\begin{definition}[Coordinate map]
+    Let $W$ be a finite-dimensional vector space and assume that 
+    $w_1,\dots,w_m$ is a basis of $W$. The map $\Psi:W \to \R^m$
+    that assigns to every $v \in W$ its coordinates with respect
+    to the basis $w_1,\dots,w_m$ is called the \emph{coordinate map}
+    with respect to the basis $w_1,\dots,w_m$.
+\end{definition}
+
+\begin{proposition}
+    The coordinate map $\Psi: W \to \R^m$ with respect to a basis $w_1,\dots,w_m$ is linear.
+\end{proposition}
+
+\begin{corollary}
+    The derivative $D\Psi:W \to \Lin(W,\R^m)$ is given by
+    $$(D\Psi)_a = \Psi$$
+    for all $a \in W$.
+\end{corollary}
+
+\begin{proposition}[Dual basis]
+    If $W$ is a finite-dimensional normed vector space, and 
+    $w_1,\dots,w_m$ is a basis of $W$, then there exist
+    linear maps $\Psi_i:W\to\R$ for $i= 1,\dots,m$ such that
+    for all $v \in W$,
+    $$v = \Psi_1(v)w_1 + \Psi_2(v)w_2 + \dots + \Psi_m(v)w_m.$$
+
+    Together, the function $\Psi_1,\dots,\Psi_m$ form a basis
+    of the vecetor space $\Lin(W,\R)$ and they are called
+    \emph{the dual basis} of $w_1,\dots,w_m$.
+
+    Every $\Psi_i$ is a linear map from $W$ to $\R$, and
+    $$\Psi_i(w_j) = \begin{cases}1 &\text{ if } i = j \\2 &\text{ if } i \ne j \end{cases}$$
+\end{proposition}
+
+\subsection{The matrix representation}
+\begin{definition}[Jacobian with respect to bases]
+    We will sometimes call the matrix representation of a derivative $(Df)_a: V \to W$
+    the Jacobian of $f$ (with respect to bases $v_1,\dots,v_d$ and $w_1,\dots,w_m$) in
+    the point $a$, and we will denote it by $[Df]_a$.
+\end{definition}
+
+\subsection{The chain rule}
+
+\begin{theorem}[Chain rule]
+    Let $(U,\dotnorm_U), (V, \dotnorm_V)$ and $(W, \dotnorm_W)$ be normed vector spaces.
+
+    Let $\Omega \subseteq U$ and $E \subseteq V$ both be open. Let $f:\Omega \to V$ be such that
+    $f(\Omega) \subseteq E$. Let $g: E \to W$.
+
+    If $f$ is differentiable in a point $a \in \Omega$ and $g$ is differentiable in the point $f(a)$,
+    then the function $g \circ f$ is differentiable in $a$ and
+    $$(D(g \circ f))_a = (Dg)_{f(a)} \circ (Df)a.$$
+\end{theorem}
+
+\subsection{Sum, product and quotient rules}
+\begin{theorem}
+    Let $(V,\dotnorm_V)$ and $(W,\dotnorm_W)$ be normed vector spaces. Let $\Omega \subseteq V$ be an open
+    and let $f: \Omega \to W$ and $g: \Omega \to W$ be two functions, that are both differentiable in a
+    point $a \in \Omega$, with derivative $(Df)_a:V \to W$ and $(Dg)_a:V \to W$ respectively.
+
+    Then the function $f+g: \Omega \to W$ is also differentiable in $a$ with derivative
+    $(D(f+g))_a = (Df)_a + (Dg)_a$
+\end{theorem}
+
+\begin{theorem}
+    Let $(V,\dotnorm_V)$ and $(W,\dotnorm_W)$ be normed vector spaces. Let $\Omega \subseteq V$ be open
+    and let $f:\Omega \to W$ and $g:\Omega \to \R$ be two functions. Assume both $f$ and $g$ are 
+    differentiable in a point $a \in \Omega$, with derivatives $(Df)_a:V \to W$ and $(Dg)_a:V \to \R$
+    respectively. Then
+    \begin{enumerate}
+        \item \textbf{Product rule:} The function $f \cdot g$ is differentiable in $a$ with derivative given by
+            $$(D(f \cdot g))_a(h) = f(a)(Dg)_a(h) + g(a)(Df)_a(h)$$
+            for all $h \in V$
+        \item \textbf{Quotient rule:} If $g(a) \ne 0$, then the function $f/g$ is differentiable in $a$ with
+            derivative given by
+            $$(D(f/g))_a(h) = \frac{1}({g(a)^2}g(a)(Df)_a(h) - f(a)(Dg)_a(h))$$
+            for all $h \in V$.
+    \end{enumerate}
+\end{theorem}
+
+\subsection{Differentiability of components}
+\begin{proposition}
+    Let $w_1, \dots, w_m$ be a basis of $W$ and let $\Psi_1,\dots,\Psi_m$ be the dual basis.
+
+    Then a function $f: \Omega \to W$ is differentiable in a point $a \in \Omega$ if and
+    only if for every $i \in \{1, \\dots, m\}$, the function
+    $$\Psi_i \circ f$$
+    is differentiable in $a \in \Omega$. Moreover, if the function $f$ is differentiable
+    in $a \in \Omega$, tehn for every $v \in V$, 
+    $$(Df)_a(v) = \sum_{i=1}^mw_iD(\Psi_i \circ f)_a(v)$$
+\end{proposition}
+
+\begin{corollary}
+    A function $f: \Omega \to \R^m$ is differentiable in a point $a \in \Omega$ if and only
+    if for $i = 1,\dots, m$ the component function $f_1:\Omega \to \R$ given by $f_i = P^i\circ f$
+    is differentiable. Moreover, if $f$ is differentiable in $a$, then for all $v \in V$.
+    $$(Df)_a(v) = \sum_{i=1}^me_i(Df_i)_a(v) = ((Df_1)_a(v), \dots, (Df_m)_a(v))$$
+    where $e_i$ denote the standard unit vectors.
+
+    If in fact $\Omega$ is a subset of $\R$, then
+    $$f^\prime(a) = (f_1^\prime(a),\dots,f_m^\prime(a)).$$
+\end{corollary}
+
+\subsection{Differentiability implies continuity}
+\begin{theorem}
+    Let $\Omega \subseteq V$ be open and suppose $f: D \to W$ is differentiable in a point $a \in \Omega$.
+    Then $f$ is continuous in $a$.
+\end{theorem}
+
+\subsection{Derivative vanishes in local maxima and minima}
+
+\begin{theorem}
+    Let $\Omega$ be an open subset of a normed vector space $V$. Suppose $f: \Omega \to \R$ is differentiable
+    in $a \in \Omega$. Suppose that $f(a)$ is a local maximum or minimum, i.e. suppose there exists an $r > 0$
+    such that either
+    \begin{myCenter}
+        \tab{for all $x \in B(a,r)$,}
+        \tab{$f(x) \le f(a)$}
+    \end{myCenter}
+    or 
+    \begin{myCenter}
+        \tab{for all $x \in B(a,r)$,}
+        \tab{$f(x) \ge f(a)$.}
+    \end{myCenter}
+    Then $(Df)_a = 0$
+\end{theorem}
+
+\subsection{The mean-value theorem}
+
+\begin{theorem}[Rolle's theorem]
+    Let $f:[a.b] \to \R$ be continuous, assume that $f$ is differentiable on $(a,b)$ and that $f(a) = f(b)$.
+    Then there exists a $c \in (a,b)$ such that $f^\prime(c) = 0$.
+\end{theorem}
+
+\begin{theorem}[Mean-value theorem]
+    Let $f: [a,b] \to \R$ be continuous, and assume that $f$ is differentiable on $(a,b)$. Then there exists
+    a $c \in (a,b)$ such that
+    $$f^\prime(c) = \frac{f(b)-f(a)}{b-a}$$
+\end{theorem}
+

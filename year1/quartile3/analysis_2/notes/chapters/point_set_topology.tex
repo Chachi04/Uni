@@ -1,0 +1,251 @@
+\section{Point-set topology of metric spaces}
+Here we introduce three properties for subsets of a metric space: \emph{closedness}, \emph{completeness}, and \emph{compactness}.
+For those three properties we known that every compact set is complete, and every complete set is closed. However, not every closed set is complete,
+and not every complete set is compact.
+
+\subsection{Open sets}
+\begin{definition}[Open set]
+    Let $(X, \dist)$ be a metric space. We say that a subset $O \subseteq X$ is \emph{open} if every $x \in O$ is an interior point of $O$.
+\end{definition}
+
+Now we need to say what it means to be an interior point.
+\begin{definition}[Interior point]
+    Let $(X, \dist)$ be a metric space and let $A$ be subset of $X$. A point $a \in A$ is called an \emph{interior point} of $A$ if
+    \begin{myCenter}
+        \tabline{there exists $r > 0$}
+        \tabline{$B(a,r) \subseteq A$ }
+    \end{myCenter}
+    where $B(a,r)$ is an (open) ball around point $a$ with radius $r$ (\cref{ball}).
+\end{definition}
+
+\begin{proposition}
+    Let $(X, \dist)$ be a metric space. The ball
+    $$B(p,r) := \{x \in X | \dist(x,p) < r \}$$
+    is indeed open.
+\end{proposition}
+
+\begin{proposition}['Open' intervals are open]
+    Let $a,b \in \R$ with $a<b$. Then the intervals $(a,b), (-\infty,b), (a,\infty)$ are all open subsets of $\R$.
+\end{proposition}
+
+\begin{proposition}
+    Let $(X, \dist)$ be a metric space. Then both the empty set $\emptyset$ and the set $X$ itself (both of these are subsets of $X$) are open.
+\end{proposition}
+\begin{proof}
+    We first show that the empty set is open. We argue by contradiction. Suppose there exists a point $x \in \emptyset$ such that
+    $x$ is not an interior point of $X$. Then we have a contradiction, because the empty set has no elements.
+
+    We will now show that $X$ is open. Let $x \in X$. We will show that $x$ is an interior point, i.e. we will show that there exists an $r > 0$
+    such that $B(x,r) \subseteq X$.\\
+    Choose $r:=1$. Then $B(x,r) = B(x,1) \subseteq X$.
+\end{proof}
+
+The set of all interior points of a subset $A \subseteq X$ is called the \emph{interior} of the set $A$.
+\begin{definition}[The interior of a set]
+    Let $(X,\dist)$ be a metric space and let $A \subseteq X$ be a subset of $X$. Then the \emph{interior} of the set $A$, denoted
+    by $\inter\ A$ is the set of all interior points of $A$, i.e $\inter\ A$ is defined as
+    $$\inter\ A := \{x \in A \mid x \text{ is an interior point of } A \}.$$
+\end{definition}
+\begin{example}
+    The interior of the interval $[2,5)$ (viewed as subset of $(\R, |\cdot|)$) is the interval $(2,5)$.
+\end{example}
+
+The interior of a set is always open.
+\begin{proposition}
+    Let $(X, \dist)$ be a metric space and let $A \subseteq X$. Then $\inter\ A$ is open.
+\end{proposition}
+
+\subsection*{The union of open sets is always open}
+Unions of open sets are always open. You may recall that if $\mathcal{I}$ is some set and if for every $\alpha \in \mathcal{I}$
+we have a subset $A_\alpha \subseteq X$, then the union
+$$\bigcup_{\alpha \in \mathcal{I}}A_\alpha$$
+is defined as 
+$$\bigcup_{\alpha \in \mathcal{I}}A_\alpha := \{x \in X \mid \text{ there exists } \alpha \in \mathcal{I} \text{ such that } x \in A_\alpha\}$$
+
+\begin{proposition}
+    Let $(X, \dist)$ be a metric space, let $\mathcal{I}$ be some set and assume that for every $\alpha \in \mathcal{I}$, we have a subset
+    $O_\alpha \subseteq X$. Suppose that for all $\alpha \in \mathcal{I}$ the set $O_\alpha$ is open. Then also the union
+    $$\bigcup_{\alpha \in \mathcal{I}}O_\alpha$$
+    is open.
+\end{proposition}
+\begin{example}
+    We already know that for every $n \in \N$, the interval $(2n, 2n+1)$ is an open subset of $(\R, |\cdot|)$. Therefore,
+    (choosing $\mathcal{I} = \N$ and $O_\alpha = (2\alpha, 2\alpha+1)$ in the previous proposition,) we also know that the set
+    $$\bigcup_{n\in\N}(2n,2n+1)$$
+    is an open set of $(\R, |\cdot|)$ as well.
+\end{example}
+
+\subsection*{Finite intersections of open sets are open}
+\begin{proposition}
+    Let $(X, \dist)$ be a metric space and let $O_1,\dots,O_N$ be open subsets of $X$. Then the intersection
+    $$O_1 \cap \dots \cap O_N$$
+    is also open.
+\end{proposition}
+
+\subsection*{Cartesian products of open sets}
+\begin{proposition}
+    Let $O_1,\dots,O_d$ be open subsets of $\R$. Then
+    $$O_1 \times \dots \times O_d (=\{(o_1, \dots, o_d) \mid o_i \in O_i\})$$
+    is an open subset of $(\R^d, \norm{\cdot}_2)$.
+\end{proposition} 
+
+\subsection{Closed sets}
+\begin{definition}
+    Let $(X, \dist)$ be a metric space. We say that a subset $C \subseteq X$ is \emph{closed} if its complement
+    $X \setminus C$ is open.
+\end{definition}
+
+\begin{proposition}
+    Let $(X, \dist)$ be a metric space. Then both the empty set $\emptyset$ and the set $X$ itself (both of these are subsets of $X$) are closed.
+\end{proposition}
+\begin{warning}
+    If you want to show that a set is closed \emph{it is not enough} to show that the set is not open.
+\end{warning}
+
+\begin{proposition}[Sequence characterization of closedness]
+    A set $C \subseteq X$ is closed if and only if for every sequence $(c_n)$ in $C$ converging to some $x \in X$,
+    it holds that $x \in C$.
+\end{proposition}
+\begin{example}
+    Consider the subset $A$ of the metric space $(\R^2, \norm{\cdot})$ defined by
+    $$A:=\{(x_1,x_2) \in \R^2 \mid x_1 \le (x_2)^2\}$$
+\end{example}
+\begin{proof}[Proof]
+    By the sequence characterization of closedness, it suffices to show that for all sequences $y: \N \to A$, if the sequence $y$
+    converges to some point $z \in \R^2$, then actually $z \in A$.
+
+    \noindent Let $y: \N \to A$ be a sequence in $A$. \\
+    Assume that the sequence $(y)$ converges to some point $z \in \R^2$. \\
+    We need to show that $z \in A$. \\
+    Since $y$ converges to $z$, we know that the components sequences $y_1$ and $y_2$ of $y$ converge to the components $z_1$ and $z_2$ of $z$, namely
+    $$\limn y_1^{(n)}=z_1 \quad \text{and} \quad \limn y_2^{(n)}=z_2.$$
+    By limit theorems, we know that
+    $$\limn \left(y_2^{(n)}\right)^2 = (z_2)^2.$$
+    Since for all $n \in \N, y^{(n)}\in A$, we also know that for all $n \in \N, y_1(n) \le (y_2(n))^2$. Therefore,
+    $$z_1 = \limn y_1^{(n)} \le \limn \left(y_2^{(n)}\right)^2 = (z_2)^2.$$
+    We conclude that indeed $z \in A$.
+\end{proof}
+
+\begin{proposition}
+    Let $a,b \in \R$ with $a<b$. Then the intervals $[a,b], (-\infty,b]$ and $[a, \infty)$ are all closed.
+\end{proposition}
+
+We now provide a few ways to create new closed sets out of sets about which you already know that they are closed.
+
+\subsection*{Intersections of closed sets are always closed}
+Let $(X, \dist)$ be a metric space. If $\mathcal{I}$ is a set, and for every $\alpha \in \mathcal{I}$, we have a subset
+$A_\alpha$ of $X$, then the intersection
+$$\bigcap_{\alpha \in \mathcal{I}}A_\alpha$$
+is defined as
+$$\bigcap_{\alpha \in \mathcal{I}}A_\alpha := \{x \in X \mid \text{ for all } \alpha \in \mathcal{I}, x \in A_\alpha\}.$$
+
+\begin{proposition}
+    Let $(X, \dist)$ be a metric space. Let $\mathcal{I}$ be a set and suppose for every $\alpha \in \mathcal{I}$ we have a subset $C_\alpha \subseteq X$.
+    Assume that for every $\alpha \in \mathcal{I}$ the set $C_\alpha$ is closed. Then the intersection
+    $$\bigcap_{\alpha\in\mathcal{I}}C_\alpha$$
+    is closed as well.
+\end{proposition}
+
+\subsection*{Finite unions of closed sets are closed}
+\begin{proposition}
+    Let $(X, \dist)$ be a metric space. Let $C_1, \dots, C_N$ be closed subsets of $X$. Then the finite union
+    $$C_1 \cup \dots \cup C_N$$
+    is also closed.
+\end{proposition}
+
+\subsection*{Products of closed sets}
+\begin{proposition}
+    Let $C_1,\dots,C_d$ be closed subsets of $\R$. Then
+    the Cartesian product
+    $$C_1 \times \dots \times C_d (=\{(c_1,\dots,c_d) \mid c_i \in C_i\})$$
+    is a closed subset of $(\R^d, |\cdot|)$
+\end{proposition}
+
+\subsection*{The topological boundary of a set}
+\begin{definition}[The topological boundary]
+    Let $(X, \dist)$ be a metric space and let $A \subseteq X$. The \emph{topological boundary} of a set $A$ is denoted by
+    $\partial A$ and defined as
+    $$\partial A := X \setminus ((\inter A)\cup(\inter (X \setminus A)))$$
+\end{definition}
+
+\begin{example}
+    The topological boundary of the interval $[2,5)$ is the set $\{2,5\}$ that consists of exactly the points 2 and 5.
+\end{example}
+
+\subsection{Cauchy sequences}
+\begin{definition}[Cauchy sequence]
+    Let $(X, \dist)$ be a metric space. We say that a sequence $a: \N \to X$ is a Cauchy sequence if
+    \begin{myCenter}
+        \tabline{for all $\epsilon > 0$,}
+        \tabline{there exists $N \in \N$,}
+        \tabline{for all $m,n \ge N$,}
+        \tabline{$\dist(a_m, a_n) < \epsilon$}
+    \end{myCenter}
+\end{definition}
+
+\begin{proposition}
+    Every Cauchy sequence is bounded
+\end{proposition}
+
+\begin{proposition}
+    \label{prop:8.3.3}
+    Let $a: \N \to X$ be a Cauchy sequence and assume that $a$ has a subsequence converging to $p \in X$. Then the sequence
+    $a$ itself converge to $p$.
+\end{proposition}
+
+\begin{proposition}
+    Let $(X, \dist)$ be a metric space. Let $(x_n)$ be a converging sequence in $X$. Then $(x_n)$ is a Cauchy sequence.
+\end{proposition}
+
+\subsection{Completeness}
+\begin{definition}
+    Let $(X, \dist)$ be a metric space. We say that a subset $A \subseteq X$ is \emph{complete} (in $(X, \dist)$) if every
+    Cauchy sequence in $A$ is convergent, with limit in $A$.
+
+    We also say the metric space $(X, \dist)$ itself is complete if $X$ is a complete subset of $X$ in $(X,\dist)$.
+\end{definition}
+
+\begin{theorem}
+    The metric space $(\R, \dist_\R)$ is complete.
+\end{theorem}
+\begin{proof}
+    Let $a:\N\to\R$ be a Cauchy sequence. Because $a$ is a Cauchy sequence, it is in particular bounded. as a consequence, by
+    \cref{thm:8.4.3}, there is a subsequence $a \circ n$ such that $a \circ n$ converges to 
+    $$\limsup_{k\to\infty}a_k$$
+    Finally, we know from \cref{prop:8.3.3} that if a subsequence of a Cauchy sequence converges, that then the whole
+    sequence converges. Therefore, the sequence $a: \N \to \R$ converges.
+\end{proof}
+
+\begin{proposition}
+    The metric space $(\R^d, \dist_{\norm{\cdot}_2})$ is complete, where $\norm{\cdot}_2$ is the Euclidean norm.
+\end{proposition}
+
+\begin{proposition}
+    Let $(X, \dist)$ be a metric space. Suppose $A \subseteq X$ is complete. Then $A$ is closed
+\end{proposition}
+
+\begin{proposition}
+    Let $(X, \dist)$ be a metric space and let $C \subseteq X$ be a complete subset. Let $A \subseteq C$ be a subset of
+    $C$. Then, $A$ is complete if and only if $A$ is closed.
+\end{proposition}
+
+\subsection*{Series characterization of completeness in normed vector spaces}
+\begin{theorem}
+    Let $(V, \norm{\cdot})$ be a normed vector space. Then $(V, \norm{\cdot})$ is complete if and only if every
+    absolutely converging series is convergent.
+\end{theorem}
+
+\begin{corollary}
+    Let $a: \N \to \R$ be a real-valued sequence. Suppose the series
+    $$\sum_{n=0}^\infty a_n$$
+    converges absolutely, i.e. the series
+    $$\sum_{n=0}^\infty |a_n|$$
+    converges. Then also the series
+    $$\sum_{n=0}^\infty a_n$$
+    converges.
+\end{corollary}
+\begin{example}
+    The series
+    $$\sum_{k=0}^\infty (-1)^k\frac{1}{k^2}$$
+    converges, because it converges absolutely.
+\end{example}

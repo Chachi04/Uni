@@ -1,0 +1,97 @@
+\section{The Mean-Value Inequality}
+
+\subsection{The mean-value inequality for functions defined on an interval}
+\begin{theorem}[Mean-value inequality (v0)]
+    Let $\gamma: [a,b] \to V$ be continuous on $[a,b]$ and differentiable on $(a,b)$. Then
+    $$\norm{\gamma(b) - \gamma(a)}_V \le \sup_{t \in (a,b)} \norm{\gamma^\prime(t)}_V(b-a).$$
+\end{theorem}
+
+
+\subsection{The mean-value inequality for functions defined on a domain}
+\subsubsection*{Recap: operator norm}
+Given a linear map $L: V \to W$, the  norm $\norm{L}_{V \to W}$ is the smallest
+constant $K \in \R$ such that for all $v \in V$,
+$$\norm{L(v)}_W \le K\norm{v}_V.$$
+
+In other words,
+\begin{enumerate}
+    \item for all $v \in V$, and every $L \in \Lin(V,W),$ 
+        $$\norm{L(v)}_W \le \norm{L}_{V \to W}\norm{v}_V$$
+    \item for every $L \in \Lin(V,W)$ we have the following: if $K \in \R$ is a constant
+        such that for all $v \in V$
+        $$\norm{L(v)}_W \le K\norm{V}_V,$$
+        then
+        $$\norm{L}_{V \to W} \le K.$$
+\end{enumerate}
+
+\begin{proposition}[Mean-value inequality]
+    Let $f:\Omega \to W$ be a differentiable function on $\Omega$, and assume that for all $\tau \in [0,1], p,q\in\Omega$,
+    $\gamma(\tau) = (1-\tau)p + \tau q \in \Omega$.
+    Then 
+    $$\norm{f(p) - f(q)}_W = \sup_{\tau \in [0,1]} \norm{(Df)_{(1-\tau)p+\tau q}}_{V\to W}\norm{p-q}_V.$$
+\end{proposition}
+
+\begin{proof}
+    Note that $\gamma:[0,1] \to V$ satisfies by assumption that for all $\tau \in [0,1]$, $\gamma(\tau) \in \Omega$.
+    So $\gamma$ is a path in $\Omega$.
+
+    Moreover, $\tau \mapsto (1-\tau)p + \tau q$ is affine, therefore continuous and differentiable.
+    So $\gamma$ is continuous on $[0,1]$ and differentiable on $(0,1)$.
+    $$\gamma^\prime = (q-p)$$
+
+    Define $g: [0,1] \to W$, given by
+    $$g:= f \circ \gamma.$$
+
+    Since $f$ is differentiable, it is continuous. Since $\gamma$ is continuous, $g$ is continuous.
+    By the chain rule $g$ is differentiable on $(0,1)$.
+    $$\norm{f(p) - f(q)}_W = \norm{f(\gamma(0)) - f(\gamma(1))}_W = \norm{g(0)-g(1)}_W$$
+    $$\le \sup_{\tau \in (0,1)} \norm{g^\prime(\tau)}_W(1-0)$$
+    By chain rule
+    \begin{align*}
+        g^\prime(\tau) &= (Df)_\tau(1)\\
+                       &= (D(f \circ \gamma))_\tau(1)\\
+                       &= (Df)_{g(\tau)}(D\gamma)_\tau(1)\\
+                       &= (Df)_{g(\tau)}((D\gamma)_\tau(1))\\
+                       &= (Df)_{g(\tau)}(\gamma^\prime(\tau)).
+    \end{align*}
+    Therefore,
+    \begin{align*}
+        \norm{f(p)-f(q)}_W &\le \sup_{\tau \in (0,1)}\norm{(Df)_{\gamma(\tau)}(\gamma^\prime(\tau)}_W
+                           &= \sup_{\tau \in (0,1)}\norm{(Df)_\tau}_W.
+                           &= \sup_{\tau \in (0,1)}\norm{(Df)_{(1-\tau)p+\tau q}(q-p)}_W 
+        % &= \sup_{\tau \in [0,1]}\norm{(Df)_{(1-\tau)p+\tau q}(q-p)}_W.
+    \end{align*}
+
+\end{proof}
+
+\begin{lemma}
+    Suppose $f: \Omega \to W$ is differentiable on $\Omega$, and suppose its
+    derivative $Df: \Omega \to \Lin(V,W)$ is bounded. Let $a \in \Omega$ and
+    assume $r > 0$ is such that $B(a,r) \subseteq \Omega$. Then for all
+    $x \in B(a,r)$,
+    $$\norm{Err_a^f(x)}_W \le \sup_{z \in B(a,r)} \norm{(Df)_z - (Df)_a}_{V \to W}\norm{x-a}_V.$$
+\end{lemma}
+
+\subsection{Continuous partial derivatives implies differentiability}
+\begin{theorem}
+    Let $f:\Omega\subseteq\R^d \to W$. Suppose for all $i, a \in \Omega$
+    $$\pd{f}{x_i}(a)$$
+    exists. Moreover, assume that $\pd{f}{x_i}: \Omega \to W$ are continuous. Then $f$ is differentiable on $\Omega$,
+    and the derivative $(Df): \Omega \to \Lin(\R^d, W)$ is continuous.
+
+    We say that $f$ is continuously differentiable on $\Omega$.
+    $$(Df)(a) = (Df)_a$$
+\end{theorem}
+
+\begin{proposition}
+    Let $f: \Omega \to W$ be a function defined on some open set $\Omega \subseteq \R^d$ and let $a \in \Omega$.
+    Assume that there exists a radius $r > 0$ such that for all $x \in B(a,r)$, and for all $i \in \{1,\dots,d\}$,
+    the partial derivative
+    $$\pd{f}{x_i}(x)$$
+    exists and the function
+    $$\pd{f}{x_i}: \Omega \to W$$
+    is continuous on $B(a,r)$.
+
+    Then the function $f$ is continuously differentiable on $B(a,r)$.
+\end{proposition}
+
