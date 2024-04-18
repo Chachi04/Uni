@@ -1,9 +1,78 @@
 \section{Implicit function theorem}
 
 \subsection{The objective}
+We will be considering continuously differential functions $f: \Omega \subset \R^{d+m} \to \R^m$.
+It is good to think of the vector space $\R^{d+m}$ as the vector space $\R^d \bigoplus \R^m$, i.e.
+as the vector space of pairs $(x,y)$ of vectors $x \in \R^d$ and $y \in \R^m$.
 
 \subsection{Notation}
+Consider a function $f: \R^{d+m} \to \R^m$.
+Then for a point $(a,b) \in \R^{d+m}$
+$$[Df]_{(a,b)}= \left(\begin{array}{ccc|ccc}
+    \frac{\partial f_1}{\partial x_1}((a,b)) & \dots & \frac{\partial f_d}{\partial x_1}((a,b)) & \frac{\partial f_{d+1}}{\partial x_1}((a,b)) & \dots & \frac{\partial f_{d+m}}{\partial x_1}((a,b)) \\
+    \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+    \frac{\partial f_1}{\partial x_m}((a,b)) & \dots & \frac{\partial f_d}{\partial x_m}((a,b)) & \frac{\partial f_{d+1}}{\partial x_m}((a,b)) & \dots & \frac{\partial f_{d+m}}{\partial x_m}((a,b)) \\
+    \end{array}\right)
+$$
+We will denote by
+$$(D_1f)_{(a,b)}:\R^d\to\R^m$$
+the restriction of the derivative $(Df)_{(a,b)}:\R^{d+m} \to \R^m$ to the subspace $\R^d \subset \R^{d+m}$.
+In other words, for all $h \in \R^d$,
+$$(D_1f)_{(a,b)}(h) = (Df)_{(a,b)}((h,0)).$$
+
+Similarly, we will denote by
+$$(D_2f)_{a,b}:\R^m \to \R^m$$
+the restriction of the derivative $(Df)_{(a,b)}:\R^{d+m} \to \R^m$ to the subspace $\R^m \subset \R^{d+m}$.
+In other words, for all $k \in \R^m$.
+$$(D_2f)_{(a,b)}(k) = (Df)_{(a,b)}((0,k)).$$
+
+By linearity of the derivative, we have that for all $h \in \R^d$ and $k \in \R^m$,
+$$(Df)_{(a,b)}((h,k)) = (D_1f)_{(a,b)}(h) + (D_2f)_{(a,b)}(k).$$
+
+We will denote the matrix representations of the maps $(D_1f)_{(a,b)}$ and $(D_2f)_{(a,b)}$ by
+$[D_1f]_{(a,b)}$ and $[D_2f]_{(a,b)}$ respectively.\\
+So
+$$[D_1f]_{(a,b)} = \left(\begin{array}{ccc}
+    \frac{\partial f_1}{\partial x_1}((a,b)) & \dots & \frac{\partial f_d}{\partial x_1}((a,b)) \\
+    \vdots & \ddots & \vdots \\
+    \frac{\partial f_1}{\partial x_m}((a,b)) & \dots & \frac{\partial f_d}{\partial x_m}((a,b)) \\
+    \end{array}\right)
+$$
+and 
+$$[D_2f]_{(a,b)} = \left(\begin{array}{ccc}
+    \frac{\partial f_{d+1}}{\partial x_1}((a,b)) & \dots & \frac{\partial f_{d+m}}{\partial x_1}((a,b)) \\
+    \vdots & \ddots & \vdots \\
+    \frac{\partial f_{d+1}}{\partial x_m}((a,b)) & \dots & \frac{\partial f_{d+m}}{\partial x_m}((a,b)) \\
+    \end{array}\right)
+$$
+Then
+\begin{align*}
+    (Df)_{(a,b)}((h,k)) &= (D_1f)_{(a,b)}(h) + (D_2f)_{(a,b)}(k)\\
+                        &= [D_1f]_{(a,b)}\begin{pmatrix}h_1\\h_2\\h_3\end{pmatrix} + [D_2f]_{(a,b)}\begin{pmatrix}k_1\\k_2\end{pmatrix}.
+\end{align*}
 
 \subsection{The implicit function theorem}
+\begin{theorem}[Implicit function theorem]
+    Let $\Omega \subset \R^{d+m}$, $f:\Omega \to \R^m$ be a continuously differentiable function and let $(a,b) \in \Omega$ be a point such that
+    $f(a,b) = 0$ and the matrix $[D_2f]_{(a,b)}$ is invertible. Then there exists an $r_1 > 0$ and an $r_2 > 0$, and a continuously differentiable function
+    $g:B(a,r_1) \to \R^m$ such that for all $x \in B(a,r_1)$ and all $y \in B(b,r_2)$,
+    $$f(x,y) = 0 \qquad \text{if and only if} \qquad y=g(x).$$
+
+    Moreover, for all $x \in B(a,r_1),$
+    $$(Dg)_x = -(D_2f)\inv_{(x,g(x))} \circ (D_1f)_{(x,g(x))}.$$
+\end{theorem}
 
 \subsection{The inverse function theorem}
+\begin{theorem}[Inverse function theorem]
+    Let $\Omega \subset \R^m$ be open and let $h: \Omega \to \R^m$ be a function which is continuously differentiable.
+    Suppose $b \in \Omega$ and suppose that $(Dh)_b$ is non-singular. Then there exists an $r_1 > 0$ and an $r_2 >0$,
+    and a continuously differentiable function $g: B(h(b),r_1) \to \R^m$ such that for all $x \in B(h(b),r_1)$
+    and all $y \in B(b,r_2)$,
+    $$x = h(y) \qquad \text{if and only if} \qquad y=g(x).$$
+
+    Moreover, for all $x \in B(h(b),r_1)$,
+    $$(Dg)_x=(Dh)\inv_{g(x)}.$$
+
+    In particular, for $r_3 > 0$ small enough, the function $h$ restricted to $B(b,r_3)$ mapping to $h(B(b,r_3))$
+    is invertible with continuously differentiable inverse $g$.
+\end{theorem}

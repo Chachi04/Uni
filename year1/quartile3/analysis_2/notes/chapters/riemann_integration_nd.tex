@@ -1,19 +1,184 @@
 \section{Riemann integration in multiple dimensions}
 
 \subsection{Partitions in multiple dimensions}
+\begin{definition}[Closed rectangle]
+    By a \emph{closed rectangle} in $\R^d$ we mean a set $R$ of the form
+    $$R = [a_1,b_1] \times [a_2,b_2] \times \dots \times [a_d,b_d].$$
+\end{definition}
 
-\subsection{Riemann integral on rectangles in \texorpdfstring{$\mathbb{R}^n$}{Rn}}
+\begin{definition}[Partition of a rectangle]
+    Let $R = [a_1,b_1] \times \dots \times [a_d,b_d]$ be a closed rectangle in $\R^d$.
+    By a partition $Q$ of $R$ we mean a Cartesian product 
+    $$Q = P^1 \times \dots \times P^d$$
+    where for $i \in \{1,\dots,d\}$, the partition $P^i = \{x_1^i,\dots,x_{n_i}^i\}$ is
+    a partition of $[a_i,b_i]$.
+\end{definition}
+
+\subsection{Riemann integral on rectangles in \texorpdfstring{$\mathbb{R}^d$}{Rd}}
+\begin{definition}
+    Let $R \subset \R^d$ be a closed rectangle,
+    $$R = [a_1,b_1] \times \dots \times [a_d,b_d],$$
+    $f:R \to \R$ be a bounded function and 
+    $$Q = P^1 \times \dots \times P^d$$
+    be a partition of $R$.
+
+    Then the \emph{upper sum} of $f$ with respect to $Q$ is defined as
+    $$U(Q,f) := \sum_{k_1=1}^{n_1} \dots \sum_{k_d=1}^{n_d} M_{k_1,\dots,k_d} \Delta x_{k_1}^1 \dots \Delta x_{k_d}^d$$
+    where
+    where $\Delta x_{k_i}^i := (x_{k_i}^i - x_{k_i-1}^i)$ and
+    $$M_{k_1,\dots,k_d} := \sup_{x \in R_{k_1,\dots,k_d}} f(x).$$
+
+    Similarly, we define the \emph{lower sum} of $f$ with respect to $Q$ as
+    $$L(Q,f) := \sum_{k_1=1}^{n_1} \dots \sum_{k_d=1}^{n_d} m_{k_1,\dots,k_d} \Delta x_{k_1}^1 \dots \Delta x_{k_d}^d$$
+    where
+    $$m_{k_1,\dots,k_d} := \inf_{x \in R_{k_1,\dots,k_d}} f(x).$$
+\end{definition}
+
+\begin{definition}
+    Let $R \subseteq \R^d$ be a closed rectangle and $f:R \to \R$ be a bounded function.
+    We define the upper Darboux integral of $f$ as 
+    $$\overline{\int_R} f d\mathbf{x} := \inf\{U(P,f) \mid P \text{ partition of } R\}$$
+    and the lower Darboux integral of $f$ as
+    $$\underline{\int_R} f d\mathbf{x} := \sup\{L(P,f) \mid P \text{ partition of } R\}.$$
+\end{definition}
+
+\begin{definition}[Riemann integral in multiple dimensions]
+    Let $R \subseteq \R^d$ be a closed rectangle and $f:R \to \R$ be a bounded function.
+    We say that $f$ is \emph{Riemann integrable} if
+    $$\underline{\int_R} f d\mathbf{x} = \overline{\int_R} f d\mathbf{x}.$$
+
+    In this case we say that the \emph{Riemann integral} of $f$ over $R$ is
+    $$\int_R f d\mathbf{x} := \underline{\int_R} f d\mathbf{x} = \overline{\int_R} f d\mathbf{x}.$$
+\end{definition}
+    $$\forall \epsilon > 0 \exists P \text{ partition of } R: U(P,f) - L(P,f) < \epsilon.$$
+
+\begin{proposition}[Alternative characterization of Riemann integrability]
+    Let $R \subseteq \R^d$ be a closed rectangle and $f:R \to \R$ be a bounded function.
+    Then $f$ is Riemann integrable if and only if
+    \begin{myCenter}
+        \tab{for all $\epsilon > 0$,}
+        \tab{there exists a partition $P$ of $R$, }
+        \tab{$U(P,f) - L(P,f) < \epsilon$}
+    \end{myCenter}
+\end{proposition}
 
 \subsection{Properties of the multidimensional Riemann integral}
+\begin{proposition}
+    Let $R \subseteq \R^d$ be a closed rectangle and $f,g:R \to \R$ be bounded
+    and Riemann integrable on $R$. Then
+    \begin{enumerate}
+        \item \hfill (volume)
+            $$\int_R 1 d\mathbf{x} =(b_1-a_1)\cdot(b_2-a_2)\dots(b_d-a_d) =: \text{Vol}(R).$$
+        \item If for all $x \in R, f(x) \le g(x)$, then \hfill (monotonicity)
+            $$\int_Rf(x)dx \le \int_Rg(x)dx.$$
+        \item The function $|f|$ is Riemann integrable on $R$ and \hfill (triangle inequality)
+            $$\left|\int_Rf(x)fx\right| \le \int_R|f(x)|dx.$$
+        \item If $Q$ is a closed rectangle contained in $R$, then $f$ is integrable on $Q$.
+            Moreover, if $Q_1, \dots, Q_N$ are finitely many closed rectanlges,
+            \begin{itemize}
+                \item if their interiors are disjoint, i.e. $\inter Q_i \cap \inter Q_j = \emptyset$ if $i \ne j$ and
+                \item if the union of $Q_i$'s equals $R$, i.e.
+                    $$\bigcup_{i=1}^NQ_i = R,$$
+            \end{itemize}
+            then
+            $$\int_Rf(x)dx = \sum_{i=1}^N\int_{Q_i}f(x)dx.$$
+    \end{enumerate}
+\end{proposition}
 
 \subsection{Continuous functions are Riemann integrable}
+\begin{theorem}
+    Let $R \subseteq \R^d$ be a closed rectangle and $f: R \to \R$ be a continuous function.
+    Then $f$ is bounded and Riemann integrable on $R$.
+\end{theorem}
 
 \subsection{Fubini's theorem}
+\begin{theorem}[Fubini]
+    Let $R = A \times B$ be a rectangle in $\R^{d+m}$. Let $f: R \to \R$ be bounded
+    and Riemann integrable on $R$, and suppose for every $x \in \R^d$ the function
+    $h_x:\R^m \to \R$ defined by
+    $$h_x(y) := f(x,y)$$
+    is Riemann integrable. Then the function $F: \R^d \to \R$ given by
+    $$F(x) := \int_Bf(x,y)dy$$
+    is Riemann integrable and
+    $$\int_Rf(z)dz = \int_A\left(\int_Bf(x,y)dy\right)dx.$$
+\end{theorem}
 
 \subsection{The (topological) boundary of a set}
+\begin{definition}[Topological boundary]
+    Let $E$ be a subset of the normed vector space $(\R^d, \dotnorm)$. The boundary of $E$
+    is defined as
+    $$\partial E:=\R^d\setminus((\inter E) \cup (\int(\R^d\setminus E))).$$
+\end{definition}
 
 \subsection{Jordan content}
+\begin{definition}[Volume of a rectangle]
+    Let $R \subseteq \R^d$ be a closed rectangle. The volume of $R$ is defined as
+    $$\text{Vol}(R) := (b_1-a_1)\cdot(b_2-a_2)\dots(b_d-a_d).$$
+\end{definition}
+
+\begin{definition}[Cube]
+    We say that a closed rectangle $R \subseteq \R^d$ is a \emph{cube} if all
+    sides have the same length, i.e. if
+    $R = [a_1,b_1] \times \dots \times [a_d,b_d]$
+    then for all $i,j \in \{1,\dots,d\}$,
+    $$b_i - a_i = b_j - a_j$$
+\end{definition}
+
+\begin{definition}[Jordan content zero]
+    We say that a subset $S \subseteq \R^d$ has \emph{Jordan content zero} if
+    \begin{myCenter}
+        \tab{for all $\epsilon > 0$,}
+        \tab{there exists $N \in \N$,}
+        \tab{there exists rectangles $R_1,\dots,R_N$,}
+        \tab{$S \subseteq \displaystyle\bigcup_{i=1}^NR_i \quad\text{and}\quad \sum_{i=1}^N\text{Vol}(R_i) \le \epsilon$.}
+    \end{myCenter}
+\end{definition}
+
+\begin{lemma}
+    Suppose a set $S \subseteq \R^d$ has Jordan content zero. Then for all $\epsilon > 0$,
+    there exists an $M \in \N$ and cubes $Q_1,\dots,Q_M$ such that
+    $$S \subseteq \bigcup_{i=1}^MQ_i \quad\text{and}\quad \sum_{i=1}^M\text{Vol}(Q_i) \le \epsilon.$$
+\end{lemma}
+
+\begin{proposition}
+    Let $S \subseteq \R^d$ be a subset with Jordan content zero and let $F:S\to\R^d$ be Lipschitz.
+    Then $F(S)$ has Jordan content zero.
+\end{proposition}
+
+\begin{proposition}
+    Let $E$ be a bounded subset on $\R^d$, and let $F:E \to \R^{d+m}$ be Lipschitz where $m\ge 1$.
+    Then $F(E)$, as a subset of $\R^{d+m}$, has Jordan content zero.
+\end{proposition}
 
 \subsection{Integration over general domains}
+\begin{definition}[Integration over bounded subsets]
+    Let $E$ be a bounded subset of $\R^d$. We say that a function $f:E \to \R$ is integrable on $E$ if,
+    with some rectangle $R$ in $\R^d$ containing $E$, the function $f_E: R \to \R$ defined by
+    $$f_E(x):=\begin{cases}f(x) &\text{ if }x \in E \\0 &\text{ if } x \notin E \end{cases}$$
+    is integrable on $R$. Moreover, we define
+    $$\int_Ef(x)dx := \int_Rf_E(x)dx.$$
+\end{definition}
+
+\begin{definition}[Jordan set]
+    Let $E \subseteq \R^d$. We say that $E$ is a \emph{Jordan set} if the topological
+    boundary $\partial E$ of $E$ has Jordan content zero.
+\end{definition}
+
+\begin{proposition}
+    Let $R \subseteq \R^d$ be a closed rectangle and assume that $E \subseteq R$ is a bounded
+    subset of $\R^d$ and assume $E$ is a Jordan set. Let $f$ be a bounded and Riemann
+    integrable function on $R$. Then $f$ is integrable on $E$.
+\end{proposition}
 
 \subsection{The volume of bounded sets}
+\begin{definition}[Characterisistic function of a set]
+    Let $E \subseteq \R^d$. The characteristic function of $E$ is the function 
+    $\mathds 1_E:\R^d \to \R$ given by
+    $$\mathds 1_E(x) := \begin{cases} 1 &\text{ if } x \in E \\ 0 \text{ if } x \notin E \end{cases}.$$
+\end{definition}
+
+\begin{definition}[Volume of a set]
+    Let $E$ be a bounded set such that the characteristic function $\mathds 1_E:\R^d \to \R$ is
+    Riemann integrable. Then the \emph{volume} of $E$ is defined as
+    $$\Vol(E) := \int_E1dx.$$
+\end{definition}

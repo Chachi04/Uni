@@ -1,7 +1,37 @@
 \section{Change-of-variables Theorem}
 
+\subsection{Change-of-variables Theorem}
+\begin{theorem}[Change-of-variable theorem]
+    Let $\Omega \subset \R^d$ be open, $E \subset \Omega$ be a Jordan set such that also its closure $\bar{E} \subset \Omega$,
+    $\Phi:\Omega \to \R^d$ be continuously differentiable and injective. Asssume that also the inverse function $\Phi\inv$ is
+    differentiable.
+
+    Assume that $f:\Phi(E) \to \R$ is integrable on $\Phi(E)$ and assume that $f \circ \Phi$ is integrable on $E$.
+
+    Then
+    $$\int_{\Phi(E)}f(x)dx = \int_Ef(\Phi(y))|\det([D\Phi]_y)|dy.$$
+\end{theorem}
+
 \subsection{Polar coordinates}
+The transformation is given by the function
+$$\Phi_{pol}:(0,\infty)\times(0,2\pi) \to \R^2$$
+defined by
+$$\Phi_{pol}(r,\phi):=(r\cos\phi,r\sin\phi)$$
+Here,
+$$\det[D\Phi_{pol}]_{(r,\phi)} = r$$
 
 \subsection{Cylindrical coordinates}
+The transformation is given by the function
+$$\Phi_{cyl}:(0,\infty) \times (0,2\pi) \times \R \to \R^3$$
+defined by
+$$\Phi_{cyl}(r,\phi,z) := (r\cos\phi,r\sin\phi,z)$$
+Here,
+$$\det[D\Phi_{cyl}]_{(r,\phi,z)} = r$$
 
 \subsection{Spherical coordinates}
+The transformation is given by the function
+$$\Phi_{sph}:(0,\infty) \times (0,2\pi) \times (0,\pi) \to \R^3$$
+given by
+$$\Phi_{sph}(\rho,\phi,\theta) := (\rho\cos\phi\sin\theta,\rho\sin\phi\cos\theta,\rho\cos\theta)$$
+Here,
+$$\det[D\Phi_{sph}]_{(\rho,\phi,\theta)} = \rho^2\sin\theta.$$

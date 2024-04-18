@@ -1,9 +1,134 @@
 \section{Riemann integration in one dimension}
+\subsubsection*{Main message:}
+\begin{itemize}
+    \item Every continuous function $f: [a,b] \to \R$ is Riemann integrable.
+    \item The fundamental theorem of calculus, mainly the part that when
+        $F:[a,b] \to \R$ and $f:[a,b] \to \R$ satisfy that $F^\prime = f$
+        and $f$ is bounded and Riemann integrable, then
+        $$\int_a^bf(x)dx = F(b)-F(a).$$
+\end{itemize}
 
 \subsection{Riemann integrable functions and the Riemann integral}
+\begin{definition}[Partition]
+    A \emph{partition} $P$ of an interval $[a,b]$ (with $n$ intervals) is
+    a subset $\{x_0,x_1,\dots,x_n\} \subset [a,b]$ such that $a=x_0<x_1<\dots<x_n=b$
+\end{definition}
+
+\begin{definition}[Upper/Lower sum]
+    Let $f:[a,b] \to \R$ be a bounded function and let $P = (x_0,x_1,\dots,x_n)$
+    be a partition of $[a,b]$. Then the upper sum of $f$ with respect to $P$ is
+    defined as
+    $$U(P,f) := \sum_{k=1}^n M_k \Sigma x_k$$
+    where $\Sigma x_k := (x_k - x_{k-1}$ and
+    $$M_k := \sup_{x\in[x_{k-1},x_k]}f(x).$$
+    Similarly, we define the lower sup of $f$ with respect to $P$ as
+    $$L(P,f) := \sum_{k=1}^n m_k \Sigma x_k$$
+    where
+    $$m_k := \inf_{x\in[x_{k-1},x_k]}f(x).$$
+\end{definition}
+
+\begin{definition}[Refinement]
+    Let $\tilde{P}$ be a partition of $[a,b] \subseteq \R$. A partition $P$ is called
+    a \emph{refinement} of $\tilde{P}$ if $\tilde{P} \subset P$.
+
+    If $\tilde{P}, \tilde{Q}$ are two partitions of $[a,b]$, then a partition $P$ is
+    called a \emph{common refinement} of $\tilde{P}$ and $\tilde{Q}$ if $P$ is both
+    a refinement of $\tilde{P}$ and $\tilde{Q}$.
+\end{definition}
+
+Note that two partitions $P,Q$ always have a common refinement, namely $P \cup Q$.
+
+\begin{proposition}
+    For every bounded $f: [a,b] \to \R$ and every partition $P$ of $[a,b]$ we have
+    $$L(P,f) \leq U(P,f).$$
+\end{proposition}
+
+\begin{definition}[Darboux integral]
+    Let $f:[a,b] \to \R$ be a bounded function. We define the upper Darboux integral
+    of $f$ as
+    $$\overline{\int_a^b}fdx := \inf\{U(P,f) \mid P \text{ partition of } [a,b] \}$$
+    and the lower Darboux integral of $f$ as
+    $$\underline{\int_a^b}fdx := \sup\{L(P,f) \mid P \text{ partition of } [a,b] \}.$$
+\end{definition}
+
+\begin{proposition}
+    Let $f:[a,b] \to \R$ be a bounded function. Then
+    $$\underline{\int_a^b}fdx \leq \overline{\int_a^b}fdx.$$
+\end{proposition}
+
+\begin{definition}[Riemann integral]
+    Let $f:[a,b] \to \R$ be a bounded function. We say that $f$ is \emph{Riemann integrable} if
+    $$\underline{\int_a^b}fdx = \overline{\int_a^b}fdx.$$
+
+    In this case we say that the \emph{Riemann integral} of $f$ over $[a,b]$ is
+    $$\int_a^b f(x)dx := \underline{\int_a^b}fdx = \overline{\int_a^b}fdx.$$
+\end{definition}
+
+\begin{proposition}[Alternative characterization of Riemann integrability]
+    Let $f:[a,b] \to \R$ be a bounded function. Then $f$ is Riemann integrable if and only if
+    \begin{myCenter}
+        \tab{for every $\epsilon > 0$,}
+        \tab{there exists a partition $P$ of $[a,b]$, }
+        \tab{$U(P,f) - L(P,f) < \epsilon$}
+    \end{myCenter}
+\end{proposition}
+
+\begin{definition}
+    We denote the set of bounded, Riemann-integrable functions $f:[a,b] \to \R$ by
+    $\mathcal R[a,b]$.
+\end{definition}
 
 \subsection{Sums, products of Riemann integrable functions}
+\begin{proposition}[R[a,b] is a vector space]
+    Let $f,g \in \mathcal R [a,b]$ and let $\lambda \in \R$. Then
+    \begin{enumerate}
+        \item The function $f+g \in \mathcal R[a,b]$ and
+            $$\int_a^b(f(x)+g(x))dx = \int_a^bf(x)dx + \int_a^bg(x)dx$$
+        \item The function $\lambda f \in \mathcal R[a,b]$ and
+            $$\int_a^b\lambda f(x)dx = \lambda \int_a^bf(x)dx$$
+    \end{enumerate}
+\end{proposition}
+
+\begin{definition}
+    If $f:[a,b] \to \R$ is bounded and Riemann integrable on $[a,b]$,
+    then we define
+    $$\int_b^a f(x)dx := -\int_a^b f(x)dx.$$
+\end{definition}
+
+\begin{proposition}[Further properties]
+    Let $f,g[a,b] \to \R$ be two bounded and Riemann integrable functions.
+    \begin{enumerate}[label=\roman*.]
+        \item We have
+            $$\int_a^b1dx = b-a.$$
+        \item If for all $x \in [a,b]$, we have $f(x) \le g(x)$, then \hfill (monotonicity)
+            $$\int_a^bf(x)dx \le \int_a^bg(x)dx.$$
+        \item If $z \in (a,b)$, then $f$ is integrable on $[a,z]$ and $[z,b]$ and \hfill (restriction)
+            $$\int_a^bf(x)dx = \int_a^zf(x)dx + \int_z^bf(x)dx.$$
+        \item We have\hfill \text{(triangle inequality)}
+            $$\left|\int_a^bf(x)dx\right| \le \int_a^b|f(x)|dx. $$
+        \item The function $f \cdot g$ is Riemann integrable on $[a,b]$.
+    \end{enumerate}
+\end{proposition}
 
 \subsection{Continuous functions are Riemann integrable}
+\begin{proposition}
+    Let $f:[a,b] \to \R$ be continuous. Then $f$ is Riemann integrable.
+\end{proposition}
 
 \subsection{The fundamental theorem of calculus}
+\begin{theorem}[Fundamental theorem of calculus]
+    \begin{enumerate}[label=\roman*.]
+        \item Let $f:[a,b] \to \R$ be continuous. Then the function
+            $$F:[a,b] \to \R$$
+            given by
+            $$F(x) := \int_a^xf(s)ds$$
+            is differentiable on $(a,b)$ and for all $x \in (a,b)$
+            $$F^\prime(x) = f(x).$$
+        \item Let $F:[a,b] \to \R$ be an anti-derivative of a function $f:[a,b] \to \R$,
+            i.e. for all $x \in (a,b)$,
+            $$F^\prime(x) = f(x)$$
+            and suppose that $f$ is bounded and Riemann integrable on $[a,b]$.
+            Then
+            $$\int_a^bf(x)dx = F(b) - F(a).$$
+    \end{enumerate}
+\end{theorem}

@@ -1,2 +1,43 @@
 \section{Banach fixed point theorem}
 
+\subsection{The Banach fixed point theorem}
+\begin{definition}[Contraction]
+    Let $(X,\dist_X)$ and $(Y,\dist_Y)$ be metric spaces. Let $D \subseteq X$ be a subset of $X$ and let 
+    $f:D \to Y$ be a function. We say that $f$ is a contraction if there exists a $\kappa \in [0,1)$ such that
+    for all $x,y \in D$, it holds that
+    $$\dist_Y(f(x),f(z)) \le \kappa\dist_X(x,z).$$
+    If $f$ satisfies the inequality for all $x,z$, and a constant $\kappa \in [0,1)$, then we will also
+    sometimes say that $f$ is a $\kappa$-contraction.
+\end{definition}
+
+\begin{definition}[Banach fixed point theorem, metric space version]
+    Let $(X,\dist_X)$ be a metric space, $D \subseteq X$ be a non-empty and complete subset of $X$,
+    $f:D \to D$ be a function and $\kappa \in [0,1)$.
+    Assume that for all $x,z \in D$, it holds that
+    $$\dist_X(f(x),f(z)) \le \kappa\dist_X(x,z).$$
+
+    Then there exists a unique point $p \in D$ such that $f(p) = p.$
+    
+    Moreover, for all $q \in D$, if we define the sequence $(x^{(n)})_n$ by
+    \begin{align*}
+        x^{(0)} &= q,\\
+        x^{(n+1)} &= f(x^{(n)}),
+    \end{align*}
+    then the sequence $(x^{(n)})_n$ converges to $p$ and for all $n\in\N$,
+    $$\dist_X(x^{(n)},p) \le \frac{\kappa^n}{1-\kappa}\dist_X(q,x^{(0)}).$$
+\end{definition}
+
+\begin{theorem}[Banach fixed point theorem, $\R^d$ version]
+    Let $\subseteq \R^d$ be a closed non-empty set, $f:D \to D$ be a function and $\kappa \in [0,1)$.
+    Assume that for all $x,z \in D$, ti holds that
+    $$\norm{f(x)-f(z)}_2 \le \kappa \norm{x-z}_2.$$
+
+    Then there exists a unique point $p \in D$ such that $f(p) = p.$
+    Moreover, for all $q \in D$ we define the sequence $(X^{(n)})_n$ by
+    \begin{align*}
+        x^{(0)} &= q,\\
+        x^{(n+1)} &= f(x^{(n)}), \qquad \text{for } n \in \N.
+    \end{align*}
+    Then the sequence $(x^{(n)})_n$ converges to $p$ and for all $n \in \N$,
+    $$\norm{x^{(n)}-p}_2 \le \frac{\kappa^n}{1-\kappa}\norm{x^{(1)}-x^{(0)}}_2.$$
+\end{theorem}

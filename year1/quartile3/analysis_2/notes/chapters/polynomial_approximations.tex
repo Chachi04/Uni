@@ -32,8 +32,145 @@ $$\frac{\partial^{|\alpha|}}{\partial x^\alpha}x^\alpha = \alpha!$$
     $$s_\alpha = \frac{\partial^{|\alpha|}f}{\partial x^\alpha}(0)$$
 \end{proposition}
 
-% \begin{lemma} 
+\begin{lemma} 
+    Given a basis $v_1,\dots,v_d$ of the vector space $V$, there is a one-to-one correspondence
+    between homogeneous polynomials of degree $n$ and $\sym_n(V,\R)$. More precisely there is an
+    invertible linear map $\mathcal F$ from $\sym_n(V,\R)$ to the vector space of homogeneous
+    polynomials in $d$ variables of degree $n$. With the linear map $\kappa:\R^d \to V$ defined as
+    $$\kappa(x) = x_1v_1 + \dots + x_dv_d$$
+    the n-linear symmetric map $\mathcal S \in \sym_n(V,\R)$ gets mapped to the homogeneous polynomial
+    $F:=\mathcal F(\mathcal S):\R^d \to \R$ given by
+    $$\mathcal F(\mathcal S)(x) = \frac{1}{n!}\mathcal S(\kappa(x),\dots,\kappa(x)).$$
+
+    Then the following equality holds for all $x \in \R^d$
+    $$\mathcal F(\mathcal S)(x) = \frac{1}{n!}\mathcal S(\kappa(x),\dots,\kappa(x)) = \sum_{|\alpha|=n}\frac{1}{\alpha!}x^\alpha\mathcal S^{(\alpha)}$$
+    where
+    $$S^{(\alpha)} = \mathcal S(v_{i_1}, v_{i_2},\dots, v_{i_n}$$
+    where $i_1,\dots,i_n \in \{1,\dots,d\}$ are such that $v_1$ appears $\alpha_1$ times, $v_2$ appears $\alpha_2$ times, and so on.
+    In particular,
+    $$\mathcal S^{(\alpha)} = \frac{\partial^{|\alpha|}F}{\partial x^\alpha}(0).$$
+
+    In particular, an element of $\sym_n(V,\R)$ is completely determined by the values on the diagonal, i.e. if
+    $\mathcal S, \mathcal T \in \sym_n(V,\R)$, then $\mathcal S = \mathcal T$ if and only if 
+    for all $v \in V$,
+    $$\mathcal S(v,\dots,v) = \mathcal T(v,\dots, v).$$
+\end{lemma}
 
 \subsection{Taylor's theorem}
+\begin{definition}[Taylor expansion]
+    Let $f: \Omega \to W$ be $n$ times differentiable in a point $a \in \Omega$.
+    Then the function $T_{a,n}:V \to W$ given by
+    $T_{a,n}(x) := f(a) + \sum_{k=1}^n\frac{1}{k!}(D^kf)_a(x-a,\dots,x-a)$
+    is called the Taylor expansion of $f$ around $a$.
+\end{definition}
+
+\begin{theorem}
+    Let $\Omega \subseteq V$ be open, let $a \in \Omega$ and suppose $f: \Omega \to W$
+    is $n$ times differentiable in a point $a$. Then there exists a function 
+    $\Err_{a,n}:\Omega \to W$ such that
+    $$f(v) = f(a) + \sum_{k=1}^n\frac{1}{k!}(D^kf)_a(x-a,\dots,x-a) + \Err_{a,n}(v)$$
+    and such that
+    $$\lim_{v \to a}\frac{\norm{\Err_{a,n}(v)}_W}{\norm{v-a}_V^n} = 0$$
+\end{theorem}
+
+\begin{proposition}
+    Let $a \in V$, $k \in \N$, $\mathcal S \in \sym_k(V,W)$ and consider the function $f:V \to W$
+    defined by
+    $$f(x) := \frac{1}{k!}\mathcal S(x-a,\dots,x-a).$$
+    
+    Then
+    \begin{enumerate}[label=\roman*]
+        \item for all $b \in V$,
+            $$(D^kf)_b = \mathcal S$$
+        \item for all $b \in V$ and all $j > k,$
+            $$(D^jf)_b = 0$$
+        \item for all $b \in V$, all $j < k$, all $u_1,\dots,u_j \in V$,
+            $$(D^jf)_b(u_1,\dots,u_j) = \frac{1}{(k-j)!}\mathcal S(u_1,\dots,u_j,b-a,\dots,b-a).$$
+    \end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+    Suppose $f:\Omega \to W$ and $g: \Omega \to W$ are both $n$ times differentiable
+    in $a \in \Omega$ and
+    $$\lim{x \to a} \frac{\norm{f(x)-g(x)}_W}{\norm{x-a}^n_V} = 0$$
+
+    Then for all $k = 0,\dots,n$
+    $$(D^kf)_a = (D^kg)_a$$
+\end{proposition}
+
+\begin{proposition}
+    Let $\Omega \subseteq \R^d$ be open, let $a \in \Omega$ and suppose $f: \Omega \to \R^m$
+    is $n$ times differentiable in $a \in \Omega$. Then for all $k=1,\dots,n$ and all $x \in \R^d$,
+    $$\frac{1}{k!}(D^kf)_a(x,\dots,x) = \sum_{|\alpha|=k}\frac{1}{\alpha!}\frac{\partial^{|\alpha|}f}{\partial x^\alpha}(a)x^\alpha.$$
+\end{proposition}
+
+\begin{example}
+    Let $f: \R^2 \to \R$, $a \in \R^2$ and suppose we want to find a function $f:\R^2 \to \R$ such
+    that for all $u \in \R^2$,
+    $$(D^3f)_a(u,u,u) = 2(u_1)^2(u_2).$$
+
+    Note that it is necessary for the right-hand side to be a homogeneous polynomial of degree 3,
+    otherwise such an $f$ cannot be found. We call this homogeneous polynomial $q:\R^2 \to \R$.
+
+    By the earlier proposition, we know that
+    $$q(u) = \sum_{|\alpha|=}\frac{1}{\alpha!}s_\alpha u^\alpha,$$
+    where
+    $$s_a = \frac{\partial^3 q}{\partial x^\alpha}(0).$$
+
+    We know by the previous proposition that if such a function $f$ exist that then for all $u \in \R^2$,
+    $$\sum_{|\alpha|=3}\frac{1}{\alpha!}\frac{\partial^{|\alpha|}f}{\partial x^\alpha}(a)u^\alpha = \frac{1}{3!}(D^3f)_a(u,u,u) = \frac{2}{3!}(u_1)^2(u_2).$$
+
+    If we compare the left-hand side and right-hand side this may suggest us to find a function such that
+    $$\frac{1}{3!}\frac{\partial^3 f}{(\partial x_1)^2\partial x_2}(a) = \frac{2}{3!},$$
+    and all other partial derivatives in $a$ vanish. Now the polynomial $f:\R^2 \to \R$ given by
+    $f(x) \mapsto \frac{1}{3}(x_1-a_1)^2(x_2-a_2)$
+    is such a polynomial.
+\end{example}
+
+\begin{theorem}[Taylor's theorem in coordinates]
+    Let $\Omega \subseteq \R^d$ be open, let $a \in \Omega$ and suppose $f:\Omega \to \R^m$ is $n$ times
+    differentiable in the point $a\in\Omega$. Then, defining the function $\Err_{a,n}:\Omega \to \R^m$ by
+    $$\Err_{a,n}(x):= f(x) - \left( f(a) + \sum_{1\le|\alpha|\le n}\frac{1}{\alpha!}\frac{\partial^{|\alpha|}f}{\partial x^\alpha}(a)(x-a)^\alpha\right)$$
+    we have that
+    $$\lim_{x \to a}\frac{\norm{\Err_{a,n}(x)}_{2}}{\norm{x-a}^n_{2}} = 0.$$
+\end{theorem}
+
+\begin{definition}
+    Let $\Omega \subseteq \R^d$ be open and $a \in \Omega$. Suppose $f:\Omega\to\R$ is $n$ times differentiable
+    in $a$. Then the polynomial
+    $$T_{a,n}(x) = f(a) + \sum_{1\le|\alpha|\le n}\frac{1}{\alpha!}\frac{\partial^{|\alpha|}f}{\partial x^\alpha}(a)(x-a)^\alpha$$
+    is called the $n$-th Taylor polynomial of $f$ around the point $a$.
+\end{definition}
+
+\begin{corollary}[Taylor's theorem for functions of one variable]
+    Let $\Omega \subseteq \R$ be a function such that $f$ is $n$ times differentiable in a point $a \in \Omega$.
+    Then there exists a function $\Err_{a,n}: \Omega \to \R$ such that
+    $$f(x) = f(a) + \sum_{k=1}^n\frac{1}{k!}f^{(k)}(a)\cdot(x-a)^k+\Err_{a,n}(x)$$
+    and such that
+    $$\lim_{x \to a}\frac{|\Err_{a,n}(x)|}{|x-a|^n} = 0.$$
+\end{corollary}
+
+\begin{theorem}[Taylor's theorem with Lagrangge remainder]
+    Let $f: \Omega \to \R$ be $(n+1)$ times differentiable on $\Omega$, $a \in \Omega$. Then there
+    exists a $\theta \subseteq (0,1)$ such that
+    \begin{align*}
+        f(x) = f(a) &+ \sum_{1\le|\alpha|\le n}\frac{1}{\alpha!}\frac{\partial^{|\alpha|} f}{\partial x^\alpha}(x-a)^\alpha
+                    &+ \frac{1}{(n+1)!}(D^(n_1)f)_{a+\theta(x-a)}(x-a,\dots,x-a).
+    \end{align*}
+\end{theorem}
 
 \subsection{Taylor approximations of standard functions}
+\begin{corollary}
+    For every $n \in \N$, it holds that
+    \begin{align*}
+        \exp(x) &= \sum_{k=0}^n\frac{x^k}{k!}+O(|x|^{n+1})\\
+        \sin(x) &= \sum_{k=0}^n\frac{(-1)^kx^{2k+1}}{(2k+1)!}+O(|x|^{2n+3})\\
+        \cos(x) &= \sum_{k=0}^n\frac{(-1)^kx^{2k}}{(2k)!}+O(|x|^{2n+2})\\
+        \ln(1+x) &= \sum_{k=1}^n\frac{(-1)^{k-1}x^k}{k}+O(|x|^{n+1})
+    \end{align*}
+\end{corollary}
+
+The notation
+$$f(x) = g(x) + O(|x|^N)$$
+should be read as that there exists a $C \ge 0$ and a $\delta > 0$ such that for all $x \in (-\delta,\delta)$,
+$$|f(x) - g(x)| \le C|x|^N.$$

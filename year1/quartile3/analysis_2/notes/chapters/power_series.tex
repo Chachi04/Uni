@@ -1,11 +1,149 @@
 \section{Power series}
+\begin{definition}[Power series]
+    A \emph{power series} at a point $c \in \R$ is a function series of the form
+    $$\sum_{k=0}^\infty a_k(x-c)^k$$
+    where $a: \N \to \R$ is a real-valued sequence.
+\end{definition}
 
 \subsection{Convergence of power series}
+\begin{lemma}
+    Suppose a power series
+    $$\sum_{k=0}^\infty a_k(x-c)^k$$
+    converges at a point $z \in \R$. Let $\delta > 0$ be such that $\delta < |z-c|$.
+    Then the power series converges absolutely and uniformly on the interval $[c-\delta, c + \delta]$.
+\end{lemma}
+
+\begin{corollary}
+    For every power series
+    $$\sum_{k=0}^\infty a_k(x-c)^k$$
+    around a point $c \in \R$ exactly one of the following occurs:
+    \begin{enumerate}[label=\roman*]
+        \item The series converges for $x = c$ and diverges for $x \ne c$. In this case
+            we say that the radius of convergence of the power series is 0.
+        \item There exists an $R > 0$ such that for all $x \in (c-R, c+R)$ the power
+            series converges and for all $x \in \R \setminus [c-R,c+R]$ the series diverges.
+            In this case we say the radius of convergence equals $R$.
+        \item The series converges for all $x \in \R$. In this case we say the radius of
+            convergence is $\infty$.
+    \end{enumerate}
+\end{corollary}
+
+\begin{proposition}
+    Let 
+    $$\sum_{k=0}^\infty a_k(x-c)^k$$
+    be a power series around $c$ and define the (extended real) number
+    $$L := \limsup_{k \to \infty}\sqrt[k]{|a_k|}$$
+    Then
+    \begin{enumerate}[label=\roman*]
+        \item If $L = 0$, then the radius of convergence is $\infty$.
+        \item If $L = \infty$, then the radius of convergence is 0.
+        \item If $L \in (0,\infty)$, then the radius of convergence is $1/L$.
+    \end{enumerate}
+\end{proposition}
+
+\begin{theorem}[Root test, $\limsup$ version]
+    Let $(b_k)$ be a sequence of non-negative real numbers.
+    \begin{enumerate}
+        \item If
+            $$\limsup_{k \to \infty}\sqrt[k]{b_k} < 1,$$
+            then the series $\sum_{k=0}^\infty b_k$ converges.
+        \item If
+            $$\limsup_{k \to \infty}\sqrt[k]{b_k} > 1,$$
+            then the series $\sum_{k=0}^\infty b_k$ diverges.
+    \end{enumerate}
+\end{theorem}
 
 \subsection{Standard functions defined as power series}
 
+\begin{proposition}
+    The power series
+    $$\sum_{k=0}^\infty \frac{1}{k!}x^k$$
+    has a radius of convergence $R = \infty$.
+\end{proposition}
+
+\begin{definition}
+    The function $\exp: \R \to \R$ is defined as the power series
+    $$\exp(x) := \sum_{k=0}^\infty\frac{1}{k!}x^k.$$
+    It has radius of convergence $R = \infty$.
+\end{definition}
+
+\begin{definition}
+    The function $\sin: \R \to \R$ is defined as the power series
+    $$\sin(x):=\sum_{k=0}^\infty(-1)^k\frac{1}{(2k+1)!}x^{2k+1}.$$
+    It has a radius of convergence $R = \infty$.
+\end{definition}
+
+\begin{definition}
+    The function $\cos: \R \to \R$ is defined as the power series
+    $$\cos(x):=\sum_{k=0}^\infty(-1)^k\frac{1}{(2k)!}x^{2k}.$$
+    It has a radius of convergence $R = \infty$.
+\end{definition}
+
 \subsection{Operations with power series}
+
+\begin{proposition}[Sums of power series]
+    Let
+    \begin{align*}
+        \sum_{k=0}^\infty a_k(x-c)^k\quad \text{and} \quad \sum_{k=0}^\infty b_k(x-c)^k
+    \end{align*}
+    be two power series around $c$, with radii of convergence $R_1$ and $R_2$
+    respectively. The sum of these functions is the power series
+    $$\sum_{k=0}^\infty(a_k+b_k)(x-c)^k$$
+    and the radius of convergence $R$ for this new power series satisfies
+    $$R \ge \min(R_1,R_2).$$
+\end{proposition}
+
+\begin{proposition}(Products of power series)
+    Let 
+    \begin{align*}
+        \sum_{k=0}^\infty a_k(x-c)^k \quad \text{and} \quad \sum_{k=0}^\infty b_k(x-c)^k
+    \end{align*}
+    be two power series around $c$, with radii of convergence $R_1$ and $R_2$
+    respectively. The product of these functions is the power series
+    $$\sum_{k=0}^\infty c_k(x-c)^k$$
+    where
+    $$c_k = \sum_{\ell=0}^k a_{\ell_{k-\ell}}.$$
+    The radius of convergence $R$ for this new power series satisfies
+    $$R \ge \min(R_1,R_2).$$
+\end{proposition}
 
 \subsection{Differentiation of power series}
 
+\begin{proposition}
+    Let
+    $$\sum_{k=0}^\infty a_k(x-c)^k$$
+    be a power series with radius of convergence $R$. Then, the power series
+    is differentiable on the interval $(c-R,c+R)$ and its derivative is the power series
+    $$\sum_{\ell=0}^\infty (\ell+1)a_{\ell+1}(x-c)^\ell$$
+    which has the same radius of convergence $R$.
+\end{proposition}
+
+\begin{corollary}
+    Let $$\sum_{k=0}^\infty a_k(x-c)^k$$ be a power series with radius of
+    convergence $R$. Then the power series is infinitely many times
+    differentiable on the interval $(c-R,c+R)$, and for every $\ell \in \N$,
+    the $\ell$-th derivative has the same radius of convergence.
+\end{corollary}
+
+\begin{theorem}[Identification of coefficients]
+    Let $R > 0$ and let $f:(c-R,c+R) \to \R$ be given by a power series
+    $$f(x):= \sum_{k=0}^\infty a_k(x-c)^k.$$
+    Then for all $k \in \N$,
+    $$a_k = \frac{f^{(k)}(c)}{k!}.$$
+\end{theorem}
+
+\begin{theorem}[Identity theorem for power series]
+    Let $R>0$ and let $f, g:(c-R,c+R) \to \R$ be given by power series
+    $$f(x) = \sum_{k=0}^\infty a_k(x-c)^k \quad \text{and} \quad g(x) = \sum_{k=0}^\infty b_k(x-c)^k$$
+    and assume for all $x \in (c-R,c+R)$, 
+    $$f(x) = g(x).$$
+    Then for all $k \in \N$,
+    $$a_k = b_k$$
+\end{theorem}
+
 \subsection{Taylor series}
+\begin{definition}[Taylor series]
+    Let $f:(c-R,c+R) \to \R$ be a function that is infinitely many times
+    differentiable. The Taylor series of $f$ around $c$ is the power series
+    $$\sum_{k=0}^\infty \frac{f^{(k)}(c)}{k!}(x-c)^k.$$
+\end{definition}
