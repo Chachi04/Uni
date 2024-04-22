@@ -1,0 +1,4 @@
+{Student1 Jiaqi Wang: 1986619 / Mil Majerus : 1978233}
+
+IR, SigmaA, IP <- RAM[SigmaA], IP, IP+1
+

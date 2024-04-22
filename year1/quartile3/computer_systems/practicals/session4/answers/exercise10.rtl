@@ -1,0 +1,5 @@
+{Student1 Mil Majerus: 1978233 / Student2 Jiaqi Wang: 1986619}
+SigmaR <- RAM[SigmaA]
+IP <- SigmaA(Abus) + SigmaR(Bbus)
+SigmaA, IP <- IP, IP + 1
+IR, SigmaA, IP <- RAM[SigmaA], IP, IP + 1

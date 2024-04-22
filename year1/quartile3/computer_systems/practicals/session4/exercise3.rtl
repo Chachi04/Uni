@@ -1,0 +1,11 @@
+{Student1 Jiaqi Wang: 1986619 / Mil Majerus : IDK}
+
+{IP = ip}
+SigmaA, IP <- IP(Bbus), IP(Abus) + 1
+{SigmaA = ip, IP = ip + 1}
+SigmaR <- RAM[SigmaA]
+{SigmaA = ip, SigmaR = RAM[ip], IP = ip + 1}
+IR <- SigmaR(Bbus)
+
+{BCC disp}
+IP <- IP(Abus) + IR.compl(Bbus)

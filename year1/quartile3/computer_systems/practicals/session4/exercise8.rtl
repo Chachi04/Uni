@@ -1,0 +1,5 @@
+{Student1 Jiaqi Wang: 1986619 / Mil Majerus : 1978233}
+
+SigmaR, IP, SigmaA <- RAM[SigmaA], IP + 1, IP
+RA, CC, IP, SigmaA, IR  <- RA(Abus) + SigmaR(Bbus), ALU.cc, IP + 1, IP, RAM[SigmaA]
+

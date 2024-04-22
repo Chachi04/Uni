@@ -1,0 +1,12 @@
+{Student1 Mil Majerus: 1978233 / Student2 Jiaqi Wang: 1986619}
+{IP = ip}
+SigmaA, IP <- IP(Bbus), IP(Abus) + 1
+
+{Add = ip, IP = ip + 1}
+SigmaR <- RAM[SigmaA]
+
+{SigmaR = RAM[ip]}
+IR <- SigmaR(Bbus)
+
+{IR = RAM[ip]}
+RA, CC<- RA(Abus) + RB(Bbus), ALU.cc

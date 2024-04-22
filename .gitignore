@@ -10,3 +10,5 @@ year1/quartile2/Foundations_of_Data_Analytics/GA1/GA1_files/aqw.db
 *.toc
 **/.ipynb_checkpoints/*
 **/__pycache__/*
+**/exam/*
+**/exams/*

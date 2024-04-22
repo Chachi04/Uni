@@ -1,0 +1,4 @@
+{Student1 Jiaqi Wang: 1986619 / Mil Majerus : 1978233}
+
+RA, CC, IR, SigmaA, IP <- RA(Abus) + IR.val(Bbus), ALU.cc, RAM[SigmaA], IP, IP + 1
+{RA = RA + IR.val, CC = ALU.cc, SigmaA = RAM[RA], IP = IP + 1}}

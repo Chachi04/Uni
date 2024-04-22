@@ -1,0 +1,2 @@
+SigmaA, IP <- IP(Bbus), IP+1
+IR, SigmaA, IP <- RAM[SigmaW](Ibus), IP(Bbus), IP+1

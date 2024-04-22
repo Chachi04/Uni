@@ -1,0 +1,3 @@
+{Student1 Mil Majerus: 1978233 / Student2 Jiaqi Wang: 1986619}
+SigmaA, IPB, SigmaW <- IR.val, RAM[SigmaA], RA
+RAM[SigmaA], IR, IP, SigmaA, CC <- SigmaW, IPB, IP + 1, IP, ALU.cc

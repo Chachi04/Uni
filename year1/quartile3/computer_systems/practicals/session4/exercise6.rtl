@@ -1,0 +1,6 @@
+{Student1 Jiaqi Wang: 1986619 / Mil Majerus : 1978233}
+
+SigmaA, SigmaW, IPB <- IR.val, RA, RAM[SigmaA]
+{SigmaA = ir.val, sigmaW = ra, IPB = ram[ip + 1]}
+RAM[SigmaA], CC, IR, SigmaA, IP <- SigmaW, ALU.cc, IPB, IP, IP+1
+{RAM[sigmaA] = sigmaW, IR = RAM[ip + 1], CC = alu.cc, SigmaA = ip + 1 + 1, IP = ip + 1 + 1 + 1}
