@@ -1,0 +1,135 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define Article %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{empheq}
+\usepackage{mdframed}
+\usepackage{booktabs}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{psfrag}
+\usepackage{pgfplots}
+\usepackage{bm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Other Settings
+\usepackage{enumitem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Page Setting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\geometry{a4paper}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define some useful colors %%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{ocre}{RGB}{243,102,25}
+\definecolor{mygray}{RGB}{243,243,244}
+\definecolor{deepGreen}{RGB}{26,111,0}
+\definecolor{shallowGreen}{RGB}{235,255,255}
+\definecolor{deepBlue}{RGB}{61,124,222}
+\definecolor{shallowBlue}{RGB}{235,249,255}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define an orangebox command %%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\orangebox[1]{\fcolorbox{ocre}{mygray}{\hspace{1em}#1\hspace{1em}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% English Environments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{mytheoremstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\newtheoremstyle{myproblemstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowGreen,linecolor=deepGreen,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{theorem}{Theorem}[section]
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowBlue,linecolor=deepBlue,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{definition}{Definition}[section]
+\theoremstyle{myproblemstyle}
+\newmdtheoremenv[linecolor=black,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{problem}{Problem}[section]
+\theoremstyle{myproblemstyle}
+\newmdtheoremenv[linecolor=black,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{example}{Example}[section]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Plotting Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepgfplotslibrary{colorbrewer}
+\pgfplotsset{width=8cm,compat=1.9}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Linear Algebra Exercises}
+\author{Jiaqi Wang}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+\section{Summary}
+\subsection{Vector/Parametric descriptions of lines and planes}
+\subsubsection{Lines}
+$$ \textit{l}: \underbar{x} = \underbar{v} + \lambda \underbar{u} $$
+where $\underbar{v}$ lands on the line and is called the \emph{position vector},
+and $\underbar{u}$ is vector that is in the "direction" of the line, called the
+direction vector.
+
+\subsubsection{Plane}
+$$ V: \underbar{x} = \underbar{u} + \lambda\underbar{v} + \mu\underbar{w} $$
+where $\underbar{u}$ is a vector that lands on the plane, and $\underbar{v}$
+and $\underbar{w}$ are two linearly independent vectors in the plane.
+
+\subsection{Determining parametric description from equations}
+\begin{example}
+	Suppose $2x_1-x_2+3x_3 = 4$ is the equation of the plane $V$. To determine a parametric description we proceed as follows.
+	If you assign any value, say $\lambda$ to $x_2$, and any value, say $\mu$ to $x_3$, then $x_1$ is determined: $x_1 = 2+\lambda/2 - 3\mu/2$.
+	So
+	$$x_1 = 2+\lambda/2 - 3\mu/2, x_2 = \lambda, x_3 = \mu$$
+	In vector notation:
+	$$(x_1,x_2,x_3) = (2+\lambda/2-3\mu/2,\lambda,\mu) = (2,0,0) + \lambda(1/2,1,0) + \mu(-3/2,0,1).$$
+	Then the vector parametric description is
+	$$V: \underbar{x} = (2,0,0) + \lambda(\frac{1}{2},1,0) + \mu(-\frac{3}{2}, 0, 1).$$
+	To avoid fraction, you could also take
+	$$V: \underbar{x} = (2,0,0) + \rho(1,2,0) + \sigma(-3,0,2).$$
+\end{example}
+
+\begin{example}
+	To find an equation of the plane $V$ with vector parametric equation
+	$\underbar{x} = (2,0,0) + \lambda(1,1,0) + \mu(0,2,1)$. We can find
+	two vectors in the plane, say $\underbar{v}$ and $\underbar{w}$, and then
+	use the cross product to find the normal vector to the plane. Then we can
+	use the normal vector to find the equation of the plane.
+
+	For example, we can take $\underbar{v} = (1,1,0)$ and $\underbar{w} = (0,2,1)$.
+	Then the normal vector to the plane is $\underbar{n} = \underbar{v} \times \underbar{w} = (1,1,0) \times (0,2,1) = (1,-1,2)$.
+	Then the equation of the plane is
+	$$V: \underbar{n} \cdot (\underbar{x} - (2,0,0)) = 0$$
+	\begin{align*}
+		(1,-1,2) \cdot (x_1-2,x_2,x_3) & = 0 \\
+		x_1-2 -x_2 + 2x_3              & = 0 \\
+		x_1-x_2+3x_3                   & = 2 \\
+	\end{align*}
+\end{example}
+\begin{definition}[Cross product]
+	Let $\underbar{u} = (u_1,u_2,u_3)$ and $\underbar{v} = (v_1,v_2,v_3)$ be two vectors in $\mathbb{R}^3$. The cross product of $\underbar{u}$ and $\underbar{v}$ is the vector
+	$$\underbar{u} \times \underbar{v} = (u_2v_3-u_3v_2,u_3v_1-u_1v_3,u_1v_2-u_2v_1).$$
+	The cross product is orthogonal to both $\underbar{u}$ and $\underbar{v}$.
+\end{definition}
+
+% \begin{problem}
+% Determine a parametric equation for each of the lines in a) and b) and for
+% each of the planes in c) and d).
+% \begin{enumerate}[label=\alph*.]
+% 	\item The line passing through $(2, 1, 5)$ and $(5, -1, 4)$.
+% 	\item The line passing through $(1, 2)$ and $(2, 4)$.
+% 	\item The plane passing through $(1, 2, 2)$, $(0, 1, 1)$ and $(1, 3, 2)$.
+% 	\item The plane containing the line $x = (-2, 1, 3) + \lambda(1, 2, -1)$ and the point $(4, 0, 3)$.
+% \end{enumerate}
+% \end{problem}
+
+% \begin{problem}
+% Determine whether $(3, 4, 0)$ is on the line with parametric description $x =
+% 	(1, 2, 1) + \lambda(2, 2, -1)$. Are $x = (3, 4, 0) + \lambda(2, 2, -1)$ and $x = (1, 2, 1) + \mu(-2, -2, 1)$
+% vector parametric equations of the same line?
+% \end{problem}
+
+
+\end{document}

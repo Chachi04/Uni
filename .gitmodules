@@ -1,0 +1,6 @@
+[submodule "year1/quartile4/embedded/2IO75-SPEC"]
+	path = year1/quartile4/embedded/2IO75-SPEC
+	url = git@github.com:MilMajerus/2IO75-SPEC.git
+[submodule "year1/quartile4/embedded/2IO75-CODE"]
+	path = year1/quartile4/embedded/2IO75-CODE
+	url = git@github.com:MilMajerus/2IO75-CODE.git
